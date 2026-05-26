@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Betreiberpflichten Aufzug — Schaubild | ElevonIQ</title>
+  <meta name="description" content="Das ElevonIQ-Schaubild zeigt alle Betreiberpflichten nach BetrSichV auf einen Blick: ZÜS, Wartung, Notruf, Inaugenscheinnahme, Dokumentation — mit Akteuren und Fristen.">
+  <link rel="canonical" href="https://elevoniq.de/betreiberpflichten/schaubild/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Betreiberpflichten Aufzug — Schaubild | ElevonIQ">
+  <meta property="og:description" content="Alle Betreiberpflichten nach BetrSichV auf einen Blick. Wer macht was? Was ist gesetzlich vorgeschrieben? Wo hilft ElevonIQ?">
+  <meta property="og:url" content="https://elevoniq.de/betreiberpflichten/schaubild/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="ElevonIQ">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Betreiberpflichten Aufzug — Schaubild | ElevonIQ">
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Startseite",
+        "item": "https://elevoniq.de/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Betreiberpflichten",
+        "item": "https://elevoniq.de/betreiberpflichten/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Schaubild",
+        "item": "https://elevoniq.de/betreiberpflichten/schaubild/"
+      }
+    ]
+  }
+  </script>
+  <!-- Schema.org: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://elevoniq.de/#org",
+    "name": "ElevonIQ GmbH",
+    "url": "https://elevoniq.de"
+  }
+  </script>
+  <!-- Google Fonts: Work Sans — TODO: self-host for production -->
+  
+  
+  <link rel="stylesheet" href="../../assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .breadcrumb {
+      font-size: 13px;
+      color: #6B7280;
+      padding: 0.75rem 0;
+    }
+    .breadcrumb a { color: #6B7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1E2761; }
+    .breadcrumb span { margin: 0 0.4rem; }
+
+    /* Schaubild card grid */
+    .schaubild-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .sb-pflicht-card {
+      background: #fff;
+      padding: 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      position: relative;
+    }
+    .sb-pflicht-card:hover { background: #FAFAFA; }
+    .sb-pflicht-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .sb-pflicht-card.color-teal::before  { background: #69B0AB; }
+    .sb-pflicht-card.color-coral::before { background: #FF5B5C; }
+    .sb-pflicht-card.color-navy::before  { background: #1E2761; }
+    .sb-pflicht-card.color-amber::before { background: #C8873A; }
+
+    .sb-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(0,0,0,0.2);
+      letter-spacing: 0.08em;
+    }
+    .sb-title {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #1A1A1A;
+    }
+    .sb-sub {
+      font-size: 11px;
+      font-weight: 400;
+      color: #6B7280;
+    }
+    .sb-what {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.6;
+      flex-grow: 1;
+    }
+    .sb-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .sb-meta-row {
+      display: flex;
+      gap: 6px;
+      align-items: baseline;
+      font-size: 11px;
+    }
+    .sb-meta-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.3);
+      white-space: nowrap;
+      min-width: 68px;
+    }
+    .sb-meta-value {
+      color: #333;
+      font-weight: 500;
+    }
+    .sb-risk {
+      font-size: 11px;
+      font-weight: 600;
+      color: #C8873A;
+      margin-top: 0.25rem;
+    }
+    .sb-elevoniq-note {
+      font-size: 11px;
+      font-weight: 600;
+      color: #4A8F8A;
+      display: flex;
+      gap: 4px;
+      align-items: flex-start;
+      margin-top: 0.25rem;
+    }
+    .sb-elevoniq-note::before {
+      content: '→';
+      flex-shrink: 0;
+    }
+
+    /* Perspective grid */
+    .perspective-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .perspective-item {
+      background: #fff;
+      padding: 1.25rem 1rem;
+    }
+    .perspective-item.elevoniq-persp {
+      background: rgba(105,176,171,0.07);
+    }
+    .perspective-who {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .perspective-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .perspective-item p {
+      font-size: 11px;
+      color: #6B7280;
+      line-height: 1.6;
+    }
+    .perspective-item.elevoniq-persp p {
+      color: #4A8F8A;
+      font-weight: 500;
+    }
+
+    /* Law tags */
+    .law-strip {
+      background: rgba(105,176,171,0.10);
+      border-top: 1px solid rgba(105,176,171,0.2);
+      padding: 0.875rem 2rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .law-strip-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4A8F8A;
+      white-space: nowrap;
+    }
+    .law-tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: #1E2761;
+      background: rgba(30,39,97,0.07);
+      border: 1px solid rgba(30,39,97,0.12);
+      border-radius: 4px;
+      padding: 2px 9px;
+    }
+
+    @media (max-width: 960px) {
+      .schaubild-grid { grid-template-columns: repeat(2, 1fr); }
+      .perspective-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .schaubild-grid { grid-template-columns: 1fr; }
+      .perspective-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile Nav Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">&#10005;</button>
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;">
+    <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+  </a>
+  <span class="mobile-nav-section-label">Leistungen</span>
+  <a href="/einmalige-leistungen/" class="mobile-nav-link">Alle Einmaligen Leistungen</a>
+  <a href="/einmalige-leistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
+  <a href="/laufende-betreuung/" class="mobile-nav-link">Alle Laufenden Leistungen</a>
+  <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">All-inclusive-Paket</a>
+  <span class="mobile-nav-section-label">Informationen</span>
+  <a href="../index.html" class="mobile-nav-link">Betreiberpflichten</a>
+  <a href="index.html" class="mobile-nav-link" aria-current="page">Betreiberpflichten-Schaubild</a>
+  <a href="/wissen/" class="mobile-nav-link">Wissen</a>
+  <a href="/ueber-uns/" class="mobile-nav-link">Über uns</a>
+  <div class="mobile-nav-cta">
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary btn-full">
+      Erstgespräch buchen
+    </a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite">
+      <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+    </a>
+    <div class="nav-links" role="list">
+      <div class="nav-dropdown" role="listitem">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Leistungen
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div>
+            <div class="dropdown-col-label">Einmalige Leistungen</div>
+            <a href="/einmalige-leistungen/" class="dropdown-item" role="menuitem">Alle einmaligen Leistungen</a>
+            <a href="/einmalige-leistungen/pruefbericht-check/" class="dropdown-item" role="menuitem">
+              Prüfbericht-Check
+              <span class="item-price">Kostenlos, Ergebnis in 48 h</span>
+            </a>
+            <a href="/einmalige-leistungen/angebotspruefung/" class="dropdown-item" role="menuitem">
+              Angebotsprüfung
+              <span class="item-price">Erfolgshonorar — kein Risiko</span>
+            </a>
+            <a href="/einmalige-leistungen/vertragscheck/" class="dropdown-item" role="menuitem">
+              Vertragscheck
+              <span class="item-price">Kostenlos</span>
+            </a>
+            <a href="/einmalige-leistungen/zustandsbericht/" class="dropdown-item" role="menuitem">Zustandsbericht &amp; Budgetplanung</a>
+            <a href="/einmalige-leistungen/wartungsvertrag-ausschreiben/" class="dropdown-item" role="menuitem">Wartungsvertrag ausschreiben</a>
+            <a href="/einmalige-leistungen/modernisierung/" class="dropdown-item" role="menuitem">Modernisierung begleiten</a>
+          </div>
+          <div>
+            <div class="dropdown-col-label">Laufende Betreuung</div>
+            <a href="/laufende-betreuung/" class="dropdown-item" role="menuitem">Alle laufenden Leistungen</a>
+            <a href="/laufende-betreuung/all-inclusive/" class="dropdown-item" role="menuitem">
+              All-inclusive-Paket
+              <span class="item-price">Ab 69 €/Aufzug/Monat</span>
+            </a>
+            <a href="/laufende-betreuung/elevator-hub/" class="dropdown-item" role="menuitem">
+              ELEVATOR HUB
+              <span class="item-price">Digitales Aufzugscockpit</span>
+            </a>
+            <a href="/laufende-betreuung/betriebskontrolle/" class="dropdown-item" role="menuitem">Betriebskontrolle</a>
+            <a href="/laufende-betreuung/iot-monitoring/" class="dropdown-item" role="menuitem">IoT-Monitoring</a>
+            <a href="/laufende-betreuung/smart-flap/" class="dropdown-item" role="menuitem">Smart Flap</a>
+            <a href="/laufende-betreuung/wartung-klappen/" class="dropdown-item" role="menuitem">Wartungsklappen</a>
+          </div>
+        </div>
+      </div>
+      <a href="../index.html" role="listitem">Betreiberpflichten</a>
+      <a href="/wissen/" role="listitem">Wissen</a>
+      <a href="/ueber-uns/" role="listitem">Über uns</a>
+    </div>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+      Erstgespräch buchen
+    </a>
+    <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- Breadcrumb -->
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Startseite</a>
+    <span aria-hidden="true">›</span>
+    <a href="../index.html">Betreiberpflichten</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Schaubild</span>
+  </nav>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<section class="section-navy" aria-label="Einleitung">
+  <div class="container" style="padding-top:3rem;padding-bottom:3rem;">
+    <span class="section-eyebrow">Betreiberpflichten Aufzug</span>
+    <h1 class="section-title" style="color:#fff;max-width:760px;margin-bottom:1rem;">
+      Was der Gesetzgeber verlangt — und wer sich darum kümmert.
+    </h1>
+    <p class="section-lead" style="max-width:640px;margin-bottom:1.5rem;">
+      Als Betreiber eines Aufzugs tragen Sie acht gesetzliche Pflichten gleichzeitig. Jede hat eine eigene Rechtsgrundlage, einen eigenen Rhythmus und einen eigenen Verantwortungsträger. Dieses Schaubild gibt den Überblick.
+    </p>
+    <div class="law-strip" style="margin:-1rem -2rem;padding:0.875rem 2rem;margin-bottom:0;border-radius:0;">
+      <span class="law-strip-label">Rechtsgrundlagen</span>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <span class="law-tag">BetrSichV</span>
+        <span class="law-tag">TRBS 1201</span>
+        <span class="law-tag">TRBS 3121</span>
+        <span class="law-tag">DIN EN 13015</span>
+        <span class="law-tag">DIN EN 81-28</span>
+        <span class="law-tag">ArbSchG §5</span>
+        <span class="law-tag">DGUV 208-054</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SCHAUBILD ─────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="schaubild-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Compliance-Übersicht</span>
+      <h2 class="section-title" id="schaubild-heading">Alle Betreiberpflichten auf einen Blick.</h2>
+      <p class="section-lead">Jede Pflicht mit Rhythmus, Verantwortlichen, Rechtsgrundlage, Konsequenz bei Versäumnis und ElevonIQ-Rolle.</p>
+    </div>
+
+    <div class="schaubild-grid" role="list" aria-label="Betreiberpflichten Übersicht">
+
+      <!-- 01 ZÜS-Prüfung -->
+      <div class="sb-pflicht-card color-teal" role="listitem">
+        <div class="sb-num">01</div>
+        <div class="sb-title">ZÜS-Prüfung <span class="sb-sub">TÜV / DEKRA</span></div>
+        <div class="sb-what">Amtliche Bestätigung der Betriebssicherheit durch eine zugelassene Überwachungsstelle. Hauptprüfung alle 2 Jahre, Zwischenprüfung jährlich versetzt.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber (Beauftragung)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">TÜV / DEKRA / zugelassene ZÜS</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">Jährlich (abwechselnd)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">§16 BetrSichV</span>
+          </div>
+          <div class="sb-risk">Versäumnis: Betriebsuntersagung, Haftungsrisiko</div>
+          <div class="sb-elevoniq-note">Fristen überwachen, Termin koordinieren, Ergebnis dokumentieren</div>
+        </div>
+      </div>
+
+      <!-- 02 Wartung -->
+      <div class="sb-pflicht-card color-teal" role="listitem">
+        <div class="sb-num">02</div>
+        <div class="sb-title">Wartung</div>
+        <div class="sb-what">Regelmäßige technische Inspektion und Instandhaltung durch einen zugelassenen Fachbetrieb. Auch bei Vollwartungsvertrag bleibt die Verantwortung beim Betreiber.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber (Pflicht)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">Zugelassener Wartungsbetrieb</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">2–4× pro Jahr (je nach GBU)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">§4 BetrSichV</span>
+          </div>
+          <div class="sb-risk">Versäumnis: Versicherungsschutz kann entfallen</div>
+          <div class="sb-elevoniq-note">Wartungsvertrag prüfen, Protokolle archivieren, Mängel verfolgen</div>
+        </div>
+      </div>
+
+      <!-- 03 Betriebskontrolle -->
+      <div class="sb-pflicht-card color-coral" role="listitem">
+        <div class="sb-num">03</div>
+        <div class="sb-title">Betriebskontrolle <span class="sb-sub">Aufzugswärter</span></div>
+        <div class="sb-what">Regelmäßige Sichtkontrolle durch eine schriftlich bestellte und unterwiesene Person nach 11 definierten Punkten (TRBS 3121). Kein Fachmann erforderlich, aber Dokumentation Pflicht.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber (Benennung + Unterweisung)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">Beauftragte Person (Hausmeister o.ä.)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">Wöchentlich, mind. monatlich</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">TRBS 3121</span>
+          </div>
+          <div class="sb-risk">Versäumnis: Erhöhte Haftung bei Einschluss</div>
+          <div class="sb-elevoniq-note">Aufzugswärter benennen, schulen, Protokolle führen</div>
+        </div>
+      </div>
+
+      <!-- 04 Notruf -->
+      <div class="sb-pflicht-card color-coral" role="listitem">
+        <div class="sb-num">04</div>
+        <div class="sb-title">Notruf 24/7</div>
+        <div class="sb-what">Dauernd erreichbare Zwei-Wege-Kommunikation aus dem Fahrkorb. Seit 2020 ist analoge Übertragung nicht mehr zulässig. Monatliche Funktionsprüfung mit Nachweis.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber (Bereitstellung + Betrieb)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">Notrufanbieter (24/7-Leitstelle)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">Dauerbetrieb; monatl. Prüfung</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">BetrSichV Anh. 2 / DIN EN 81-28</span>
+          </div>
+          <div class="sb-risk">Versäumnis: Haftung bei Personenschaden</div>
+          <div class="sb-elevoniq-note">Dienstleister auswählen, Erreichbarkeit prüfen, Nachweise archivieren</div>
+        </div>
+      </div>
+
+      <!-- 05 Notbefreiung -->
+      <div class="sb-pflicht-card color-navy" role="listitem">
+        <div class="sb-num">05</div>
+        <div class="sb-title">Notbefreiung &amp; Anleitung</div>
+        <div class="sb-what">Dokumentiertes Verfahren zur sicheren Befreiung eingeschlossener Personen. Die Notbefreiungsanleitung muss physisch am Aufzug aushängen und bei Personalwechsel aktualisiert werden.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber (Erstellung + Aushang)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">Wartungsfirma oder Fachkundiger</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">Dauerhaft verfügbar</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">BetrSichV / TRBS 3121</span>
+          </div>
+          <div class="sb-risk">Versäumnis: Haftungsexposition bei Personenschaden</div>
+          <div class="sb-elevoniq-note">Anleitung prüfen, Unterweisungen dokumentieren</div>
+        </div>
+      </div>
+
+      <!-- 06 Notfallplan -->
+      <div class="sb-pflicht-card color-navy" role="listitem">
+        <div class="sb-num">06</div>
+        <div class="sb-title">Notfallplan</div>
+        <div class="sb-what">Schriftlich festgelegter Ablaufplan: Wer tut was im Störungsfall — von der ersten Meldung bis zur Wiederherstellung. Muss allen Beteiligten bekannt sein.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber (Erstellung + Bekanntmachung)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">Betreiber + Fachkundiger / Berater</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">Einmalig; Revision bei Änderungen</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">BetrSichV §5</span>
+          </div>
+          <div class="sb-risk">Versäumnis: Unkoordinierte Reaktion, längere Ausfallzeiten</div>
+          <div class="sb-elevoniq-note">Notfallplan erstellen, Eskalationskette sichern</div>
+        </div>
+      </div>
+
+      <!-- 07 GBU -->
+      <div class="sb-pflicht-card color-amber" role="listitem">
+        <div class="sb-num">07</div>
+        <div class="sb-title">Gefährdungsbeurteilung <span class="sb-sub">GBU</span></div>
+        <div class="sb-what">Systematische Risikoanalyse — Grundlage für alle Wartungsintervalle und Betriebsmaßnahmen. Einmalig zur Inbetriebnahme, Revision alle 3–5 Jahre oder bei wesentlichen Änderungen.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">Fachkundiger / Sachverständiger</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">Erstinbetriebnahme; Revision alle 3–5 Jahre</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">BetrSichV §3</span>
+          </div>
+          <div class="sb-risk">Versäumnis: OWiG-Verfahren, erhöhte Haftung</div>
+          <div class="sb-elevoniq-note">GBU beauftragen, dokumentieren, in Wartungsplanung überführen</div>
+        </div>
+      </div>
+
+      <!-- 08 Dokumentation -->
+      <div class="sb-pflicht-card color-amber" role="listitem">
+        <div class="sb-num">08</div>
+        <div class="sb-title">Dokumentation &amp; Prüfbuch</div>
+        <div class="sb-what">Vollständige Ablage aller Prüfergebnisse, Wartungsprotokolle und Mängelmeldungen als Nachweis ordnungsgemäßen Betriebs. Aufbewahrungspflicht für die gesamte Betriebsdauer.</div>
+        <div class="sb-meta">
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Verantwortung</span>
+            <span class="sb-meta-value">Betreiber (Aufbewahrung + Vorlage)</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Durchführung</span>
+            <span class="sb-meta-value">Betreiber / Dienstleister / ElevonIQ</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Rhythmus</span>
+            <span class="sb-meta-value">Laufend; dauerhaft aufbewahren</span>
+          </div>
+          <div class="sb-meta-row">
+            <span class="sb-meta-label">Grundlage</span>
+            <span class="sb-meta-value">BetrSichV §14</span>
+          </div>
+          <div class="sb-risk">Versäumnis: Bußgelder, Versicherungsschutz gefährdet</div>
+          <div class="sb-elevoniq-note">Zentrale digitale Ablage, Vollständigkeit sichern</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PERSPEKTIVEN ──────────────────────────────────────────── -->
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="perspektiven-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Wer hat welches Interesse?</span>
+      <h2 class="section-title" id="perspektiven-heading">Perspektiven aller Beteiligten.</h2>
+    </div>
+    <div class="perspective-grid" role="list">
+      <div class="perspective-item" role="listitem">
+        <div class="perspective-who">
+          <span class="perspective-dot" style="background:#1E2761;"></span>
+          Betreiber / Eigentümer
+        </div>
+        <p>Rechtssicher betreiben, Kosten kontrollieren, Haftungsrisiken minimieren — ohne ständig selbst den Überblick zu behalten.</p>
+      </div>
+      <div class="perspective-item" role="listitem">
+        <div class="perspective-who">
+          <span class="perspective-dot" style="background:#6B7280;"></span>
+          Nutzer / Mieter
+        </div>
+        <p>Sicherer Betrieb, zuverlässige Notrufverbindung, kurze Ausfallzeiten und ein funktionierender Aufzug im Alltag.</p>
+      </div>
+      <div class="perspective-item" role="listitem">
+        <div class="perspective-who">
+          <span class="perspective-dot" style="background:#69B0AB;"></span>
+          ZÜS / Behörde
+        </div>
+        <p>Compliance mit BetrSichV, vollständige Dokumentation und nachweisbare Erfüllung aller Betreiberpflichten bei jeder Prüfung.</p>
+      </div>
+      <div class="perspective-item" role="listitem">
+        <div class="perspective-who">
+          <span class="perspective-dot" style="background:#C8873A;"></span>
+          Wartungsfirma
+        </div>
+        <p>Klare Auftragserteilung, dokumentierte Zustandsübergabe und verlässliche Ansprechpartner auf Betreiberseite.</p>
+      </div>
+      <div class="perspective-item elevoniq-persp" role="listitem">
+        <div class="perspective-who">
+          <span class="perspective-dot" style="background:#FF5B5C;"></span>
+          ElevonIQ
+        </div>
+        <p>Wir koordinieren alle Akteure herstellerneutral, überwachen Fristen, dokumentieren vollständig und sichern Ihre Compliance — dauerhaft.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ERKLÄRUNG & BACK-LINK ─────────────────────────────────── -->
+<section class="section" aria-labelledby="erklaerung-heading">
+  <div class="container" style="max-width:760px;">
+    <h2 class="section-title" id="erklaerung-heading" style="margin-bottom:1rem;">Was dieses Schaubild zeigt.</h2>
+    <p style="font-size:15px;color:#444;line-height:1.75;margin-bottom:1.25rem;">
+      Jede Pflicht hat einen anderen Akteur, eine andere Häufigkeit und eine andere Konsequenz. Was alle gemeinsam haben: Die Verantwortung bleibt dauerhaft beim Betreiber — unabhängig davon, wen er beauftragt oder welche Verträge bestehen.
+    </p>
+    <p style="font-size:15px;color:#444;line-height:1.75;margin-bottom:2rem;">
+      ElevonIQ übernimmt die operative Steuerung: Fristenmanagement, Prüfbericht-Analyse, Dokumentation, Koordination mit ZÜS und Wartungsfirmen. Herstellerneutral. Vollständig umlagefähig nach §2 BetrKV.
+    </p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+      <a href="../index.html" class="btn-secondary">Vollständige Betreiberpflichten-Seite</a>
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+         target="_blank" rel="noopener" class="btn-primary">
+        Kostenlose Erstberatung buchen
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--color-teal);margin-bottom:1rem;">Jetzt starten</p>
+    <h2 id="cta-heading">Pflichten kennen. Pflichten erfüllen. Haftung vermeiden.</h2>
+    <p>15 Minuten Erstgespräch — wir zeigen, wo Ihre Anlage steht und was konkret zu tun ist.</p>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-white-solid">
+      Kostenloses Erstgespräch buchen
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">
+          Elevo<span class="logo-n">n</span>IQ
+        </a>
+        <p class="footer-tagline">Die externe Aufzugsabteilung.<br>Herstellerneutral. Bundesweit.</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Einmalige Leistungen</div>
+        <a href="/einmalige-leistungen/" class="footer-link">Übersicht</a>
+        <a href="/einmalige-leistungen/pruefbericht-check/" class="footer-link">Prüfbericht-Check</a>
+        <a href="/einmalige-leistungen/angebotspruefung/" class="footer-link">Angebotsprüfung</a>
+        <a href="/einmalige-leistungen/vertragscheck/" class="footer-link">Vertragscheck</a>
+        <a href="/einmalige-leistungen/zustandsbericht/" class="footer-link">Zustandsbericht</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Laufende Betreuung</div>
+        <a href="/laufende-betreuung/" class="footer-link">Übersicht</a>
+        <a href="/laufende-betreuung/all-inclusive/" class="footer-link">All-inclusive-Paket</a>
+        <a href="/laufende-betreuung/elevator-hub/" class="footer-link">ELEVATOR HUB</a>
+        <a href="/laufende-betreuung/betriebskontrolle/" class="footer-link">Betriebskontrolle</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Wissen &amp; Unternehmen</div>
+        <a href="../index.html" class="footer-link">Betreiberpflichten</a>
+        <a href="index.html" class="footer-link" aria-current="page">Betreiberpflichten-Schaubild</a>
+        <a href="/fuer-hausverwaltungen/" class="footer-link">Für Hausverwaltungen</a>
+        <a href="/wissen/" class="footer-link">Wissen / Blog</a>
+        <a href="/ueber-uns/" class="footer-link">Über uns</a>
+        <div style="margin-top:1.5rem;" class="footer-col-label">Rechtliches</div>
+        <a href="/impressum/" class="footer-link">Impressum</a>
+        <a href="/datenschutz/" class="footer-link">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ElevonIQ GmbH, Berlin</span>
+      <div class="footer-legal-links">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cta = document.getElementById('nav-cta-desktop');
+    if (cta) cta.style.display = 'inline-block';
+  });
+</script>
+<script src="../../assets/js/nav.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+</body>
+</html>

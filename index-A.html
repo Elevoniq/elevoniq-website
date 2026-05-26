@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- ElevonIQ – Web-Entwicklung | 2026-05-26 | Variante A: Institutionell & Autorität -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aufzugsverwaltung &amp; Aufzugsberatung — herstellerneutral | ElevonIQ</title>
+  <meta name="description" content="ElevonIQ ist Ihre externe Aufzugsabteilung: Wartungsverträge optimieren, TÜV-Fristen überwachen, Kosten senken. Herstellerneutral. Bundesweit. Jetzt kostenloses Erstgespräch buchen.">
+  <link rel="canonical" href="https://elevoniq.de/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aufzugsverwaltung &amp; Aufzugsberatung — herstellerneutral | ElevonIQ">
+  <meta property="og:description" content="ElevonIQ ist Ihre externe Aufzugsabteilung. Herstellerneutral. Bundesweit.">
+  <meta property="og:url" content="https://elevoniq.de/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="ElevonIQ">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aufzugsverwaltung &amp; Aufzugsberatung | ElevonIQ">
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://elevoniq.de/#org",
+        "name": "ElevonIQ GmbH",
+        "url": "https://elevoniq.de",
+        "description": "Herstellerneutrale Aufzugsberatung und externe Aufzugsabteilung für Hausverwalter, WEG-Verwalter, Genossenschaften und Gebäudeeigentümer.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kurfürstendamm 90",
+          "addressLocality": "Berlin",
+          "postalCode": "10709",
+          "addressCountry": "DE"
+        },
+        "email": "info@elevoniq.de"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://elevoniq.de/#website",
+        "name": "ElevonIQ",
+        "url": "https://elevoniq.de",
+        "publisher": { "@id": "https://elevoniq.de/#org" }
+      }
+    ]
+  }
+  </script>
+  <!-- Google Fonts: Work Sans — TODO: self-host for production -->
+  
+  
+  <link rel="stylesheet" href="assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Dashboard Mockup Styles -->
+  <style>
+    .dashboard-frame {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px -12px rgba(30,39,97,0.22), 0 4px 16px rgba(0,0,0,0.06);
+      transform: perspective(1200px) rotateY(-3deg) rotateX(1.5deg);
+      transition: transform 0.5s ease;
+    }
+    .dashboard-frame:hover {
+      transform: perspective(1200px) rotateY(-1deg) rotateX(0.5deg);
+    }
+    .db-chrome {
+      background: #f2f2f2;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .db-dots { display: flex; gap: 5px; }
+    .db-dots span {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #d0d0d0;
+    }
+    .db-dots span:nth-child(1) { background: #ff5f57; }
+    .db-dots span:nth-child(2) { background: #febc2e; }
+    .db-dots span:nth-child(3) { background: #28c840; }
+    .db-url {
+      flex: 1;
+      background: #e8e8e8;
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #777;
+      font-family: monospace;
+    }
+    .db-body { padding: 16px; background: #fafbfc; }
+    .db-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .db-topbar-brand {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1E2761;
+    }
+    .db-topbar-date {
+      font-size: 11px;
+      color: #999;
+    }
+    .db-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .db-kpi {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .db-kpi-num {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .db-kpi-label {
+      font-size: 10px;
+      color: #888;
+      margin-top: 3px;
+    }
+    .db-kpi.ok   .db-kpi-num { color: #1D8348; }
+    .db-kpi.warn .db-kpi-num { color: #C8873A; }
+    .db-kpi.crit .db-kpi-num { color: #E8474A; }
+    .db-table { background: #fff; border: 1px solid rgba(0,0,0,0.07); border-radius: 8px; overflow: hidden; }
+    .db-table-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4px;
+      padding: 7px 12px;
+      font-size: 11px;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      align-items: center;
+    }
+    .db-table-row:last-child { border-bottom: none; }
+    .db-table-row.head {
+      background: #f5f6f8;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .db-status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .db-status.ok   { background: rgba(29,131,72,0.1); color: #1D8348; }
+    .db-status.warn { background: rgba(200,135,58,0.12); color: #C8873A; }
+    .db-status.crit { background: rgba(232,71,74,0.1); color: #E8474A; }
+  </style>
+</head>
+<body>
+
+<!-- Mobile Nav Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">✕</button>
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;">
+    <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+  </a>
+  <span class="mobile-nav-section-label">Leistungen</span>
+  <span class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Einmalige Leistungen</span>
+  <a href="/einmalige-leistungen/" class="mobile-nav-link">Alle Einmaligen Leistungen</a>
+  <a href="/einmalige-leistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
+  <a href="/einmalige-leistungen/angebotspruefung/" class="mobile-nav-link">Angebotsprüfung</a>
+  <a href="/einmalige-leistungen/vertragscheck/" class="mobile-nav-link">Vertragscheck</a>
+  <a href="/einmalige-leistungen/zustandsbericht/" class="mobile-nav-link">Zustandsbericht</a>
+  <a href="/einmalige-leistungen/wartungsvertrag-ausschreiben/" class="mobile-nav-link">Wartungsvertrag ausschreiben</a>
+  <a href="/einmalige-leistungen/modernisierung/" class="mobile-nav-link">Modernisierung begleiten</a>
+  <span class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Laufende Betreuung</span>
+  <a href="/laufende-betreuung/" class="mobile-nav-link">Alle Laufenden Leistungen</a>
+  <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">All-inclusive-Paket</a>
+  <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link">ELEVATOR HUB</a>
+  <a href="/laufende-betreuung/wartung-klappen/" class="mobile-nav-link">Wartungsklappen</a>
+  <span class="mobile-nav-section-label">Informationen</span>
+  <a href="/betreiberpflichten/" class="mobile-nav-link">Betreiberpflichten</a>
+  <a href="/wissen/" class="mobile-nav-link">Wissen</a>
+  <a href="/ueber-uns/" class="mobile-nav-link">Über uns</a>
+  <div class="mobile-nav-cta">
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary btn-full">
+      Erstgespräch buchen
+    </a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite">
+      <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+    </a>
+    <div class="nav-links" role="list">
+      <div class="nav-dropdown" role="listitem">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Leistungen
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div>
+            <div class="dropdown-col-label">Einmalige Leistungen</div>
+            <a href="/einmalige-leistungen/" class="dropdown-item" role="menuitem">
+              Alle einmaligen Leistungen
+            </a>
+            <a href="/einmalige-leistungen/pruefbericht-check/" class="dropdown-item" role="menuitem">
+              Prüfbericht-Check
+              <span class="item-price">Kostenlos, Ergebnis in 48 h</span>
+            </a>
+            <a href="/einmalige-leistungen/angebotspruefung/" class="dropdown-item" role="menuitem">
+              Angebotsprüfung
+              <span class="item-price">Erfolgshonorar — kein Risiko</span>
+            </a>
+            <a href="/einmalige-leistungen/vertragscheck/" class="dropdown-item" role="menuitem">
+              Vertragscheck
+              <span class="item-price">Kostenlos</span>
+            </a>
+            <a href="/einmalige-leistungen/zustandsbericht/" class="dropdown-item" role="menuitem">
+              Zustandsbericht &amp; Budgetplanung
+            </a>
+            <a href="/einmalige-leistungen/wartungsvertrag-ausschreiben/" class="dropdown-item" role="menuitem">
+              Wartungsvertrag ausschreiben
+            </a>
+            <a href="/einmalige-leistungen/modernisierung/" class="dropdown-item" role="menuitem">
+              Modernisierung begleiten
+            </a>
+          </div>
+          <div>
+            <div class="dropdown-col-label">Laufende Betreuung</div>
+            <a href="/laufende-betreuung/" class="dropdown-item" role="menuitem">
+              Alle laufenden Leistungen
+            </a>
+            <a href="/laufende-betreuung/all-inclusive/" class="dropdown-item" role="menuitem">
+              All-inclusive-Paket
+              <span class="item-price">Ab 69 €/Aufzug/Monat</span>
+            </a>
+            <a href="/laufende-betreuung/elevator-hub/" class="dropdown-item" role="menuitem">
+              ELEVATOR HUB
+              <span class="item-price">Digitales Aufzugscockpit</span>
+            </a>
+            <a href="/laufende-betreuung/betriebskontrolle/" class="dropdown-item" role="menuitem">
+              Betriebskontrolle
+            </a>
+            <a href="/laufende-betreuung/iot-monitoring/" class="dropdown-item" role="menuitem">
+              IoT-Monitoring
+            </a>
+            <a href="/laufende-betreuung/smart-flap/" class="dropdown-item" role="menuitem">
+              Smart Flap
+            </a>
+            <a href="/laufende-betreuung/wartung-klappen/" class="dropdown-item" role="menuitem">
+              Wartungsklappen
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="/betreiberpflichten/" role="listitem">Betreiberpflichten</a>
+      <a href="/wissen/" role="listitem">Wissen</a>
+      <a href="/ueber-uns/" role="listitem">Über uns</a>
+    </div>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+      Erstgespräch buchen
+    </a>
+    <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<section class="hero-section" aria-label="Intro">
+  <div class="container hero-grid">
+    <!-- Text Column -->
+    <div class="hero-text">
+      <span class="hero-eyebrow">Herstellerneutrale Aufzugsberatung</span>
+      <h1 class="hero-headline">
+        Aufzüge kosten zu viel.<br>
+        Und Sie merken es meistens <span class="accent">zu spät.</span>
+      </h1>
+      <p class="hero-subline">
+        ElevonIQ ist Ihre externe Aufzugsabteilung — herstellerneutral, datenbasiert, bundesweit.
+        Wir senken Ihre Kosten, sichern Ihre Dokumentation und überwachen Ihre Fristen.
+      </p>
+      <div class="hero-cta-row">
+        <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+           target="_blank" rel="noopener" class="btn-primary">
+          Kostenloses Erstgespräch buchen
+        </a>
+        <a href="/laufende-betreuung/" class="btn-secondary">
+          Leistungen ansehen
+        </a>
+      </div>
+      <div class="hero-trust-row">
+        <span class="trust-badge">8.000+ Aufzüge analysiert</span>
+        <span class="trust-badge">Herstellerneutral</span>
+        <span class="trust-badge">DSGVO-konform, DE-Hosting</span>
+      </div>
+    </div>
+    <!-- Dashboard Mockup -->
+    <div aria-hidden="true">
+      <div class="dashboard-frame">
+        <div class="db-chrome">
+          <div class="db-dots"><span></span><span></span><span></span></div>
+          <div class="db-url">customer.elevoniq.de/hub</div>
+        </div>
+        <div class="db-body">
+          <div class="db-topbar">
+            <span class="db-topbar-brand">ELEVATOR HUB</span>
+            <span class="db-topbar-date">Mai 2026</span>
+          </div>
+          <div class="db-kpi-row">
+            <div class="db-kpi ok">
+              <div class="db-kpi-num">48</div>
+              <div class="db-kpi-label">Anlagen aktiv</div>
+            </div>
+            <div class="db-kpi warn">
+              <div class="db-kpi-num">3</div>
+              <div class="db-kpi-label">Prüfungen fällig</div>
+            </div>
+            <div class="db-kpi crit">
+              <div class="db-kpi-num">1</div>
+              <div class="db-kpi-label">Mängel offen</div>
+            </div>
+          </div>
+          <div class="db-table">
+            <div class="db-table-row head">
+              <span>Adresse</span><span>Status</span><span>Nächste Prüfung</span>
+            </div>
+            <div class="db-table-row">
+              <span>Musterstr. 12, Berlin</span>
+              <span><span class="db-status ok">OK</span></span>
+              <span>15.09.2026</span>
+            </div>
+            <div class="db-table-row">
+              <span>Lindenweg 7, Hamburg</span>
+              <span><span class="db-status warn">Fällig</span></span>
+              <span>01.07.2026</span>
+            </div>
+            <div class="db-table-row">
+              <span>Parkalle 33, München</span>
+              <span><span class="db-status ok">OK</span></span>
+              <span>22.11.2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST NUMBERS ──────────────────────────────────────────── -->
+<section class="trust-numbers" aria-label="Kennzahlen">
+  <div class="container trust-numbers-grid">
+    <div>
+      <div class="trust-number-value" data-count="8000" data-suffix="+">8.000+</div>
+      <div class="trust-number-label">Aufzüge analysiert &amp; betreut</div>
+    </div>
+    <div>
+      <div class="trust-number-value" data-count="500" data-suffix="">500</div>
+      <div class="trust-number-label">Datenpunkte pro Anlage</div>
+    </div>
+    <div>
+      <div class="trust-number-value" data-count="18" data-suffix=" %">18 %</div>
+      <div class="trust-number-label">Ø Einsparung nach Vertragscheck</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROBLEM MATRIX ─────────────────────────────────────────── -->
+<section class="section" aria-labelledby="problem-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Womit können wir helfen?</span>
+      <h2 class="section-title" id="problem-heading">Was beschäftigt Sie gerade?</h2>
+      <p class="section-lead">Wählen Sie Ihre Situation — wir zeigen Ihnen den direkten Weg zur Lösung.</p>
+    </div>
+    <div class="problem-matrix">
+      <a href="/einmalige-leistungen/pruefbericht-check/" class="card card-link problem-card">
+        <h4>TÜV-Prüfbericht mit Mängeln erhalten?</h4>
+        <p>Wir analysieren kostenlos, was wirklich dringend ist und was warten kann. Ergebnis in 48 Stunden.</p>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Kostenloser Prüfbericht-Check →</span>
+      </a>
+      <a href="/einmalige-leistungen/angebotspruefung/" class="card card-link problem-card">
+        <h4>Wartungsvertrag zu teuer?</h4>
+        <p>Wir prüfen ob der Preis marktgerecht ist und verhandeln für Sie. Sie zahlen nur bei nachgewiesener Ersparnis.</p>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Angebotsprüfung starten →</span>
+      </a>
+      <a href="/betreiberpflichten/" class="card card-link problem-card">
+        <h4>Betreiberpflichten unklar?</h4>
+        <p>BetrSichV, TRBS, ZÜS-Fristen: Wir verschaffen Ihnen Klarheit und übernehmen die laufende Überwachung.</p>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Betreiberpflichten verstehen →</span>
+      </a>
+      <a href="/laufende-betreuung/" class="card card-link problem-card">
+        <h4>Gesamtpaket für Ihr Portfolio gesucht?</h4>
+        <p>Laufende Betreuung ab 69 €/Aufzug/Monat. Vollständig umlagefähig nach §2 BetrKV.</p>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Laufende Betreuung entdecken →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── LEISTUNGSÜBERSICHT ──────────────────────────────────────── -->
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="leistungen-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Das Angebot</span>
+      <h2 class="section-title" id="leistungen-heading">Einmalig oder laufend — Sie wählen.</h2>
+      <p class="section-lead">Keine Vertragsbindung bei Einzelleistungen. Klare Preise. Kein Kleingedrucktes.</p>
+    </div>
+    <div class="grid-2">
+      <!-- Einmalige Leistungen -->
+      <div class="card" style="border-top:3px solid var(--color-coral-dark);">
+        <span class="badge badge-coral" style="margin-bottom:1.25rem;">Einmalige Leistungen</span>
+        <h3 style="margin-bottom:0.75rem;">Genau das, was Sie jetzt brauchen.</h3>
+        <p style="font-size:14px;color:var(--color-gray);margin-bottom:1.5rem;">Ohne Vertragsbindung. Ohne Laufzeit. Beauftragen Sie einen Service und fertig.</p>
+        <ul class="feature-list" style="margin-bottom:1.75rem;">
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Prüfbericht-Check</strong> Kostenlos, Ergebnis in 48 h</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Angebotsprüfung</strong> Erfolgshonorar, kein Risiko</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Vertragscheck</strong> Kostenlos</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Zustandsbericht &amp; Budgetplanung</strong></span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Gefährdungsbeurteilung &amp; Cybersecurity</strong></span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Wartungsvertrag ausschreiben</strong></span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Modernisierung begleiten</strong></span>
+          </li>
+        </ul>
+        <a href="/einmalige-leistungen/" class="btn-secondary">Alle Einmaligen Leistungen</a>
+      </div>
+      <!-- Laufende Betreuung -->
+      <div class="card" style="border-top:3px solid var(--color-teal);">
+        <span class="badge badge-teal" style="margin-bottom:1.25rem;">Laufende Betreuung</span>
+        <h3 style="margin-bottom:0.75rem;">Ihre externe Aufzugsabteilung.</h3>
+        <p style="font-size:14px;color:var(--color-gray);margin-bottom:1.5rem;">Ab 69 €/Aufzug/Monat. Monatlich kündbar. Vollständig umlagefähig nach §2 BetrKV.</p>
+        <ul class="feature-list" style="margin-bottom:1.75rem;">
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>ELEVATOR HUB</strong> Digitales Cockpit für Ihr Portfolio</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Betriebskontrolle</strong> Fristenmanagement &amp; Dokumentation</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>IoT-Monitoring</strong> Echtzeit-Daten, Ausfallfrüherkennung</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Smart Flap</strong> Energieoptimierung Aufzugstüren</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>All-inclusive-Paket</strong> Vollständige Rundum-Betreuung</span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text"><strong>Vertragsverhandlung</strong> Bei Bedarf inklusive</span>
+          </li>
+        </ul>
+        <a href="/laufende-betreuung/" class="btn-teal">Laufende Betreuung ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ELEVATOR HUB FEATURE SECTION ─────────────────────────── -->
+<section class="section-navy" aria-labelledby="hub-heading">
+  <div class="container">
+    <div class="grid-2" style="align-items:center;gap:4rem;">
+      <div>
+        <span class="section-eyebrow">ELEVATOR HUB</span>
+        <h2 class="section-title" id="hub-heading" style="color:#fff;">Ihr digitales Aufzugscockpit.</h2>
+        <p class="section-lead" style="margin-bottom:2rem;">Alle Aufzüge, Dokumente, Fristen und Kosten auf einer Plattform. Herstellerneutral. DSGVO-konform. In Deutschland gehostet.</p>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text" style="color:rgba(255,255,255,0.85);">
+              <strong style="color:#fff;">360°-Dokumentation</strong>
+              Vollständige Anlageninformationen analog Google Street View
+            </span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text" style="color:rgba(255,255,255,0.85);">
+              <strong style="color:#fff;">Automatisches Fristenmanagement</strong>
+              TÜV-Termine, ZÜS-Prüfungen, Wartungsintervalle — nichts geht verloren
+            </span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text" style="color:rgba(255,255,255,0.85);">
+              <strong style="color:#fff;">Kostenanalyse &amp; Benchmarking</strong>
+              Vergleichen Sie Ihre Kosten mit 8.000+ Anlagen in unserer Datenbank
+            </span>
+          </li>
+          <li class="feature-item">
+            <span class="feature-check">✓</span>
+            <span class="feature-item-text" style="color:rgba(255,255,255,0.85);">
+              <strong style="color:#fff;">Prüfberichte automatisch verstehen</strong>
+              KI-gestützte Analyse, klare Handlungsempfehlungen
+            </span>
+          </li>
+        </ul>
+        <div style="margin-top:2rem;">
+          <a href="/laufende-betreuung/elevator-hub/" class="btn-white-outline">ELEVATOR HUB entdecken</a>
+        </div>
+      </div>
+      <div aria-hidden="true">
+        <div class="dashboard-frame" style="transform:none;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
+          <div class="db-chrome">
+            <div class="db-dots"><span></span><span></span><span></span></div>
+            <div class="db-url">ELEVATOR HUB — Portfolio-Übersicht</div>
+          </div>
+          <div class="db-body">
+            <div class="db-topbar">
+              <span class="db-topbar-brand">Portfolio Q2 2026</span>
+              <span class="db-topbar-date">48 Anlagen</span>
+            </div>
+            <div class="db-kpi-row">
+              <div class="db-kpi ok"><div class="db-kpi-num">44</div><div class="db-kpi-label">Prüfung aktuell</div></div>
+              <div class="db-kpi warn"><div class="db-kpi-num">3</div><div class="db-kpi-label">Fällig in 60 Tagen</div></div>
+              <div class="db-kpi crit"><div class="db-kpi-num">1</div><div class="db-kpi-label">Überfällig</div></div>
+            </div>
+            <div style="background:#f5f7fa;border-radius:6px;padding:8px 12px;font-size:11px;color:#555;margin-top:8px;">
+              <div style="font-weight:700;margin-bottom:4px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#999;">Kostenentwicklung</div>
+              <div style="display:flex;gap:4px;align-items:flex-end;height:36px;">
+                <div style="width:14%;background:#69B0AB;opacity:.4;border-radius:2px 2px 0 0;height:60%;"></div>
+                <div style="width:14%;background:#69B0AB;opacity:.5;border-radius:2px 2px 0 0;height:70%;"></div>
+                <div style="width:14%;background:#69B0AB;opacity:.6;border-radius:2px 2px 0 0;height:55%;"></div>
+                <div style="width:14%;background:#69B0AB;opacity:.7;border-radius:2px 2px 0 0;height:80%;"></div>
+                <div style="width:14%;background:#E8474A;opacity:.5;border-radius:2px 2px 0 0;height:100%;"></div>
+                <div style="width:14%;background:#1D8348;opacity:.8;border-radius:2px 2px 0 0;height:65%;"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:9px;color:#aaa;margin-top:3px;">
+                <span>Jan</span><span>Feb</span><span>Mär</span><span>Apr</span><span>Mai</span><span>Jun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Kundenstimmen</span>
+      <h2 class="section-title" id="testimonials-heading">Was unsere Kunden sagen.</h2>
+    </div>
+    <div class="grid-2">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          „Wir haben unseren Wartungsvertrag nie wirklich hinterfragt. ElevonIQ hat in drei Wochen 23 % Einsparung verhandelt — ohne einen einzigen Aufwand unsererseits."
+        </p>
+        <div class="testimonial-attribution">
+          Thomas K.
+          <span>Geschäftsführer, Hausverwaltung Berlin (47 Aufzüge)</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          „Die TÜV-Fristen lagen bei uns in vier verschiedenen Excel-Tabellen verteilt. Jetzt habe ich alles auf einem Blick — und werde automatisch erinnert."
+        </p>
+        <div class="testimonial-attribution">
+          Andrea M.
+          <span>WEG-Verwalterin, Hamburg (12 Anlagen)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEGMENT CARDS ──────────────────────────────────────────── -->
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="segments-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Zielgruppen</span>
+      <h2 class="section-title" id="segments-heading">Für wen ist ElevonIQ?</h2>
+    </div>
+    <div class="grid-4">
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-coral-dark);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">Hausverwaltungen</h4>
+        <p style="font-size:13px;color:var(--color-gray);">Betreiberpflichten erfüllen, Kosten senken, Fristen überwachen — ohne internes Fachwissen.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
+      </div>
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-teal);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">WEG-Verwalter</h4>
+        <p style="font-size:13px;color:var(--color-gray);">Klare Dokumentation für die Eigentümerversammlung. Rechtssichere Abrechnungen.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
+      </div>
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-navy);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">Genossenschaften</h4>
+        <p style="font-size:13px;color:var(--color-gray);">ESG-Reporting, Portfolio-Analyse, Koordination mit technischem Vorstand.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
+      </div>
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-amber);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">Gebäudeeigentümer</h4>
+        <p style="font-size:13px;color:var(--color-gray);">Kostenbenchmarking über das Portfolio. Compliance at Scale. Budgetsicherheit.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ────────────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:800px;">
+    <div class="section-header centered">
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Häufige Fragen.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Was genau macht ElevonIQ?</summary>
+        <div class="faq-answer">ElevonIQ ist Ihre herstellerneutrale externe Aufzugsabteilung. Wir prüfen Ihre Wartungsverträge, analysieren Prüfberichte, überwachen Fristen und begleiten Modernisierungen — ohne selbst Aufzugsunternehmen oder Hersteller zu sein. Kein Interessenkonflikt. Jede Empfehlung ausschließlich in Ihrem Interesse.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Sind die Kosten umlagefähig?</summary>
+        <div class="faq-answer">Ja. Die Kosten für laufende Betreuungsleistungen sind vollständig umlagefähig nach §2 Abs. 1 Nr. 2 BetrKV als Betriebskosten für technische Anlagen und Einrichtungen. Wir stellen Ihnen auf Wunsch die entsprechenden Nachweise für die Betriebskostenabrechnung bereit.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Wie schnell kann ElevonIQ starten?</summary>
+        <div class="faq-answer">Bei Einzelleistungen wie dem Prüfbericht-Check oder Vertragscheck beginnen wir innerhalb von 24–48 Stunden nach Beauftragung. Für die laufende Betreuung planen wir ein 2-wöchiges Onboarding ein, in dem wir alle Anlagen und Dokumente in den ELEVATOR HUB übertragen.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Arbeitet ElevonIQ mit bestimmten Aufzugsunternehmen zusammen?</summary>
+        <div class="faq-answer">Nein. Das ist unser entscheidender Vorteil. Wir sind unabhängig von allen Herstellern und Wartungsunternehmen — kein Provisionsmodell, kein Rahmenvertrag mit einem Anbieter. Das ermöglicht uns, wirklich im Interesse des Betreibers zu handeln und marktgerechte Konditionen durchzusetzen.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Was ist der ELEVATOR HUB?</summary>
+        <div class="faq-answer">Der ELEVATOR HUB ist unsere eigene Software-Plattform für die digitale Verwaltung Ihres Aufzugsportfolios. Alle Anlagen, Dokumente, Fristen, Prüfberichte und Kosten auf einem übersichtlichen Dashboard. DSGVO-konform, in Deutschland gehostet. Als Standalone buchbar oder im Rahmen der laufenden Betreuung inklusive.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--color-teal);margin-bottom:1rem;">Jetzt starten</p>
+    <h2 id="cta-heading">Bereit für Klarheit über Ihre Aufzugskosten?</h2>
+    <p>15 Minuten reichen. Kein Druck. Kein Verkaufsgespräch. Nur Fakten.</p>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-white-solid">
+      Kostenloses Erstgespräch buchen
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">
+          Elevo<span class="logo-n">n</span>IQ
+        </a>
+        <p class="footer-tagline">Die externe Aufzugsabteilung.<br>Herstellerneutral. Bundesweit.</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Einmalige Leistungen</div>
+        <a href="/einmalige-leistungen/" class="footer-link">Übersicht</a>
+        <a href="/einmalige-leistungen/pruefbericht-check/" class="footer-link">Prüfbericht-Check</a>
+        <a href="/einmalige-leistungen/angebotspruefung/" class="footer-link">Angebotsprüfung</a>
+        <a href="/einmalige-leistungen/vertragscheck/" class="footer-link">Vertragscheck</a>
+        <a href="/einmalige-leistungen/zustandsbericht/" class="footer-link">Zustandsbericht</a>
+        <a href="/einmalige-leistungen/wartungsvertrag-ausschreiben/" class="footer-link">Wartungsvertrag ausschreiben</a>
+        <a href="/einmalige-leistungen/modernisierung/" class="footer-link">Modernisierung</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Laufende Betreuung</div>
+        <a href="/laufende-betreuung/" class="footer-link">Übersicht</a>
+        <a href="/laufende-betreuung/all-inclusive/" class="footer-link">All-inclusive-Paket</a>
+        <a href="/laufende-betreuung/elevator-hub/" class="footer-link">ELEVATOR HUB</a>
+        <a href="/laufende-betreuung/betriebskontrolle/" class="footer-link">Betriebskontrolle</a>
+        <a href="/laufende-betreuung/iot-monitoring/" class="footer-link">IoT-Monitoring</a>
+        <a href="/laufende-betreuung/smart-flap/" class="footer-link">Smart Flap</a>
+        <a href="/laufende-betreuung/wartung-klappen/" class="footer-link">Wartungsklappen</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Wissen &amp; Unternehmen</div>
+        <a href="/betreiberpflichten/" class="footer-link">Betreiberpflichten</a>
+        <a href="/ueber-uns/" class="footer-link">Über uns</a>
+        <a href="/kontakt/" class="footer-link">Kontakt</a>
+        <div style="margin-top:1.5rem;" class="footer-col-label">Rechtliches</div>
+        <a href="/impressum/" class="footer-link">Impressum</a>
+        <a href="/datenschutz/" class="footer-link">Datenschutz</a>
+        <a href="#" class="footer-link">AGB</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ElevonIQ GmbH, Berlin</span>
+      <div class="footer-legal-links">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Desktop Nav CTA
+  document.addEventListener('DOMContentLoaded', function() {
+    var cta = document.getElementById('nav-cta-desktop');
+    if (cta) cta.style.display = 'inline-block';
+  });
+</script>
+<script src="assets/js/nav.js" defer></script>
+<script src="assets/js/cookie-consent.js" defer></script>
+</body>
+</html>

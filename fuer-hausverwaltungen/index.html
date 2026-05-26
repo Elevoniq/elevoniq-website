@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aufzüge für Hausverwaltungen — herstellerneutral &amp; rechtssicher | ElevonIQ</title>
+  <meta name="description" content="ElevonIQ entlastet Hausverwaltungen bei Aufzugspflichten, Prüfberichten und Wartungskosten. Herstellerneutral. Bundesweit. Jetzt kostenloses Erstgespräch.">
+  <link rel="canonical" href="https://elevoniq.de/fuer-hausverwaltungen/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aufzüge für Hausverwaltungen — herstellerneutral &amp; rechtssicher | ElevonIQ">
+  <meta property="og:description" content="ElevonIQ entlastet Hausverwaltungen bei Aufzugspflichten, Prüfberichten und Wartungskosten. Herstellerneutral. Bundesweit.">
+  <meta property="og:url" content="https://elevoniq.de/fuer-hausverwaltungen/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="ElevonIQ">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aufzüge für Hausverwaltungen | ElevonIQ">
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://elevoniq.de/#org",
+    "name": "ElevonIQ GmbH",
+    "url": "https://elevoniq.de",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kurfürstendamm 90",
+      "addressLocality": "Berlin",
+      "postalCode": "10709",
+      "addressCountry": "DE"
+    },
+    "email": "info@elevoniq.de"
+  }
+  </script>
+  <!-- Google Fonts: Work Sans — TODO: self-host for production -->
+  
+  
+  <link rel="stylesheet" href="../assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .breadcrumb {
+      font-size: 13px;
+      color: #6B7280;
+      padding: 0.75rem 0;
+    }
+    .breadcrumb a { color: #6B7280; text-decoration: none; }
+    .breadcrumb a:hover { color: #1E2761; }
+    .breadcrumb span { margin: 0 0.4rem; }
+
+    .segment-card {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .segment-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 12px 12px 0 0;
+    }
+    .segment-card.coral::before  { background: #FF5B5C; }
+    .segment-card.teal::before   { background: #69B0AB; }
+    .segment-card.navy::before   { background: #1E2761; }
+    .segment-card.amber::before  { background: #C8873A; }
+
+    .segment-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #1A1A1A;
+    }
+    .segment-card p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    .situation-card {
+      background: var(--color-bg-subtle, #F4F7F6);
+      border-left: 4px solid #1E2761;
+      border-radius: 0 10px 10px 0;
+      padding: 1.25rem 1.5rem;
+    }
+    .situation-card strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 0.25rem;
+    }
+    .situation-card p {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.65;
+      margin: 0;
+    }
+    .situation-card .resolution {
+      font-size: 13px;
+      color: #4A8F8A;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+
+    .leistung-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .leistung-row:last-child { border-bottom: none; }
+    .leistung-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(105,176,171,0.15);
+      color: #4A8F8A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .leistung-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 0.2rem;
+    }
+    .leistung-text span {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile Nav Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">&#10005;</button>
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;">
+    <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+  </a>
+  <span class="mobile-nav-section-label">Leistungen</span>
+  <span class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Einmalige Leistungen</span>
+  <a href="/einmalige-leistungen/" class="mobile-nav-link">Alle Einmaligen Leistungen</a>
+  <a href="/einmalige-leistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
+  <a href="/einmalige-leistungen/angebotspruefung/" class="mobile-nav-link">Angebotsprüfung</a>
+  <a href="/einmalige-leistungen/vertragscheck/" class="mobile-nav-link">Vertragscheck</a>
+  <span class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Laufende Betreuung</span>
+  <a href="/laufende-betreuung/" class="mobile-nav-link">Alle Laufenden Leistungen</a>
+  <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">All-inclusive-Paket</a>
+  <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link">ELEVATOR HUB</a>
+  <span class="mobile-nav-section-label">Informationen</span>
+  <a href="/betreiberpflichten/" class="mobile-nav-link">Betreiberpflichten</a>
+  <a href="/wissen/" class="mobile-nav-link">Wissen</a>
+  <a href="/ueber-uns/" class="mobile-nav-link">Über uns</a>
+  <div class="mobile-nav-cta">
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary btn-full">
+      Erstgespräch buchen
+    </a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite">
+      <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+    </a>
+    <div class="nav-links" role="list">
+      <div class="nav-dropdown" role="listitem">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Leistungen
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div>
+            <div class="dropdown-col-label">Einmalige Leistungen</div>
+            <a href="/einmalige-leistungen/" class="dropdown-item" role="menuitem">Alle einmaligen Leistungen</a>
+            <a href="/einmalige-leistungen/pruefbericht-check/" class="dropdown-item" role="menuitem">
+              Prüfbericht-Check
+              <span class="item-price">Kostenlos, Ergebnis in 48 h</span>
+            </a>
+            <a href="/einmalige-leistungen/angebotspruefung/" class="dropdown-item" role="menuitem">
+              Angebotsprüfung
+              <span class="item-price">Erfolgshonorar — kein Risiko</span>
+            </a>
+            <a href="/einmalige-leistungen/vertragscheck/" class="dropdown-item" role="menuitem">
+              Vertragscheck
+              <span class="item-price">Kostenlos</span>
+            </a>
+            <a href="/einmalige-leistungen/zustandsbericht/" class="dropdown-item" role="menuitem">Zustandsbericht &amp; Budgetplanung</a>
+            <a href="/einmalige-leistungen/wartungsvertrag-ausschreiben/" class="dropdown-item" role="menuitem">Wartungsvertrag ausschreiben</a>
+            <a href="/einmalige-leistungen/modernisierung/" class="dropdown-item" role="menuitem">Modernisierung begleiten</a>
+          </div>
+          <div>
+            <div class="dropdown-col-label">Laufende Betreuung</div>
+            <a href="/laufende-betreuung/" class="dropdown-item" role="menuitem">Alle laufenden Leistungen</a>
+            <a href="/laufende-betreuung/all-inclusive/" class="dropdown-item" role="menuitem">
+              All-inclusive-Paket
+              <span class="item-price">Ab 69 €/Aufzug/Monat</span>
+            </a>
+            <a href="/laufende-betreuung/elevator-hub/" class="dropdown-item" role="menuitem">
+              ELEVATOR HUB
+              <span class="item-price">Digitales Aufzugscockpit</span>
+            </a>
+            <a href="/laufende-betreuung/betriebskontrolle/" class="dropdown-item" role="menuitem">Betriebskontrolle</a>
+            <a href="/laufende-betreuung/iot-monitoring/" class="dropdown-item" role="menuitem">IoT-Monitoring</a>
+            <a href="/laufende-betreuung/smart-flap/" class="dropdown-item" role="menuitem">Smart Flap</a>
+            <a href="/laufende-betreuung/wartung-klappen/" class="dropdown-item" role="menuitem">Wartungsklappen</a>
+          </div>
+        </div>
+      </div>
+      <a href="/betreiberpflichten/" role="listitem">Betreiberpflichten</a>
+      <a href="/wissen/" role="listitem">Wissen</a>
+      <a href="/ueber-uns/" role="listitem">Über uns</a>
+    </div>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+      Erstgespräch buchen
+    </a>
+    <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- Breadcrumb -->
+<div class="container">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Startseite</a>
+    <span aria-hidden="true">›</span>
+    <span aria-current="page">Für Hausverwaltungen</span>
+  </nav>
+</div>
+
+<!-- ── HERO ───────────────────────────────────────────────────── -->
+<section class="hero-section" aria-label="Einleitung" style="padding-bottom:3rem;">
+  <div class="container">
+    <span class="hero-eyebrow">Für Hausverwaltungen</span>
+    <h1 class="hero-headline" style="max-width:800px;">
+      Aufzüge verwalten. <span class="accent">Ohne Fachwissen?</span>
+    </h1>
+    <p class="hero-subline" style="max-width:680px;">
+      ElevonIQ ist Ihre externe Aufzugsabteilung — für alle, die Aufzüge verwalten müssen, aber keine Aufzugsexperten sind. Wir übernehmen technische Pflichten, prüfen Ihre Verträge und schaffen Klarheit über Kosten und Fristen.
+    </p>
+    <div class="hero-cta-row">
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+         target="_blank" rel="noopener" class="btn-primary">
+        Kostenloses Erstgespräch buchen
+      </a>
+      <a href="/betreiberpflichten/" class="btn-secondary">
+        Betreiberpflichten verstehen
+      </a>
+    </div>
+    <div class="hero-trust-row">
+      <span class="trust-badge">Herstellerneutral</span>
+      <span class="trust-badge">Bundesweit</span>
+      <span class="trust-badge">Umlagefähig nach §2 BetrKV</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── SEGMENTE ──────────────────────────────────────────────── -->
+<section class="section" aria-labelledby="segmente-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Für wen ist ElevonIQ?</span>
+      <h2 class="section-title" id="segmente-heading">Vier Kundengruppen. Eine externe Aufzugsabteilung.</h2>
+    </div>
+    <div class="grid-4" style="gap:1.25rem;">
+
+      <div class="segment-card coral">
+        <h3>Hausverwaltungen</h3>
+        <p>Betreiberpflichten erfüllen, Kosten senken, Fristen überwachen — ohne internes Aufzugswissen und ohne zusätzliches Personal.</p>
+        <p style="margin-top:0.75rem;font-size:13px;color:#4A8F8A;font-weight:600;">Vollständig umlagefähig nach §2 BetrKV</p>
+      </div>
+
+      <div class="segment-card teal">
+        <h3>WEG-Verwalter</h3>
+        <p>Klare Zahlen und Dokumentation für die Eigentümerversammlung. Prüfberichte verständlich erklärt. Haftungsrisiken minimiert.</p>
+        <p style="margin-top:0.75rem;font-size:13px;color:#4A8F8A;font-weight:600;">Automatische Berichte für die ETV</p>
+      </div>
+
+      <div class="segment-card navy">
+        <h3>Genossenschaften</h3>
+        <p>Portfolio-Übersicht über alle Anlagen. ESG-Reporting. Koordination mit technischem Vorstand und Servicepartnern.</p>
+        <p style="margin-top:0.75rem;font-size:13px;color:#4A8F8A;font-weight:600;">Skalierbar über das gesamte Portfolio</p>
+      </div>
+
+      <div class="segment-card amber">
+        <h3>Gebäudeeigentümer</h3>
+        <p>Kostenbenchmarking, Haftungssicherheit und Compliance-Nachweis — ohne eigene Fachkompetenz und ohne Hersteller-Abhängigkeit.</p>
+        <p style="margin-top:0.75rem;font-size:13px;color:#4A8F8A;font-weight:600;">Herstellerneutral, keine Provision</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TYPISCHE SITUATIONEN ──────────────────────────────────── -->
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="situationen-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Typische Situationen</span>
+      <h2 class="section-title" id="situationen-heading">Das kennen Hausverwaltungen.</h2>
+      <p class="section-lead">Drei Szenarien, die im Alltag von Hausverwaltungen regelmäßig auftreten — und wie ElevonIQ konkret hilft.</p>
+    </div>
+    <div style="display:grid;gap:1.25rem;max-width:860px;margin:0 auto;">
+
+      <div class="situation-card">
+        <strong>Prüfbericht mit Mängeln erhalten — niemand weiß, was wirklich dringend ist</strong>
+        <p>TÜV oder DEKRA hat geprüft und einen Prüfbericht mit mehreren Mängelpunkten ausgestellt. Welche Mängel müssen sofort behoben werden? Welche kann man beobachten? Was kostet das — und hat die Wartungsfirma schuld?</p>
+        <p class="resolution">ElevonIQ analysiert den Prüfbericht kostenlos. Klare Priorisierung in 48 Stunden.</p>
+      </div>
+
+      <div class="situation-card">
+        <strong>Wartungsvertrag läuft seit Jahren — niemand hat die Konditionen geprüft</strong>
+        <p>Der Vertrag mit dem Aufzugsunternehmen wurde vor 8 Jahren unterschrieben. Seitdem wurde automatisch verlängert. Ist der Preis noch marktgerecht? Welche Leistungen sind tatsächlich enthalten? Gibt es Kündigungsfristen, die jetzt relevant werden?</p>
+        <p class="resolution">ElevonIQ prüft Ihren Vertrag kostenlos und verhandelt nachgewiesene Einsparungen — ohne Vorkosten.</p>
+      </div>
+
+      <div class="situation-card">
+        <strong>Eigentümer fragen nach Aufzugskosten — belastbare Zahlen fehlen</strong>
+        <p>In der Eigentümerversammlung kommen Fragen zu Betriebskosten, geplanten Modernisierungen und Fristterminen. Die Unterlagen liegen in mehreren Ordnern verteilt. Eine übersichtliche Antwort ist nicht möglich.</p>
+        <p class="resolution">ElevonIQ bündelt alle Daten im ELEVATOR HUB — jederzeit abrufbar, auf einen Blick.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── LEISTUNGSÜBERSICHT ─────────────────────────────────────── -->
+<section class="section" aria-labelledby="leistungen-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Das Angebot</span>
+      <h2 class="section-title" id="leistungen-heading">Was ElevonIQ für Hausverwaltungen leistet.</h2>
+    </div>
+    <div class="grid-2" style="gap:2rem;align-items:start;">
+
+      <!-- Einmalige Leistungen -->
+      <div class="card" style="border-top:3px solid var(--color-coral-dark);">
+        <span class="badge badge-coral" style="margin-bottom:1.25rem;">Einmalige Leistungen</span>
+        <h3 style="margin-bottom:1.5rem;">Genau das, was Sie jetzt brauchen.</h3>
+        <div style="display:flex;flex-direction:column;">
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>Prüfbericht-Check — kostenlos</strong>
+              <span>ZÜS- oder TÜV-Prüfbericht analysiert. Klare Handlungsempfehlung in 48 Stunden.</span>
+            </div>
+          </div>
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>Angebotsprüfung — Erfolgshonorar</strong>
+              <span>Wartungsangebot oder bestehenden Vertrag prüfen. Sie zahlen nur bei nachgewiesener Ersparnis.</span>
+            </div>
+          </div>
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>Vertragscheck — kostenlos</strong>
+              <span>Bestehenden Wartungsvertrag auf Fairness, Lücken und Kündigungsfristen prüfen.</span>
+            </div>
+          </div>
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>Zustandsbericht &amp; Budgetplanung</strong>
+              <span>Belastbare Kostenschätzung für Wartung, Reparaturen und Modernisierung über 5 Jahre.</span>
+            </div>
+          </div>
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>Wartungsvertrag ausschreiben</strong>
+              <span>Herstellerneutrale Ausschreibung, Angebote vergleichen, beste Konditionen durchsetzen.</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="/einmalige-leistungen/" class="btn-secondary">Alle einmaligen Leistungen</a>
+        </div>
+      </div>
+
+      <!-- Laufende Betreuung -->
+      <div class="card" style="border-top:3px solid var(--color-teal);">
+        <span class="badge badge-teal" style="margin-bottom:1.25rem;">Laufende Betreuung</span>
+        <h3 style="margin-bottom:1.5rem;">Ihre externe Aufzugsabteilung.</h3>
+        <div style="display:flex;flex-direction:column;">
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>ELEVATOR HUB</strong>
+              <span>Alle Aufzüge, Fristen, Prüfberichte und Kosten auf einer Plattform — jederzeit abrufbar.</span>
+            </div>
+          </div>
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>Betriebskontrolle &amp; Fristenmanagement</strong>
+              <span>Alle ZÜS-Termine, Wartungsintervalle und Unterweisungsfristen werden überwacht. Nichts fällt durch das Raster.</span>
+            </div>
+          </div>
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>IoT-Monitoring</strong>
+              <span>Echtzeit-Daten über Betriebszustand und Ausfallfrüherkennung. Störungen werden erkannt, bevor Mieter sich beschweren.</span>
+            </div>
+          </div>
+          <div class="leistung-row">
+            <div class="leistung-check">✓</div>
+            <div class="leistung-text">
+              <strong>All-inclusive-Paket</strong>
+              <span>Ab 69 €/Aufzug/Monat. Monatlich kündbar. Vollständig umlagefähig nach §2 BetrKV.</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <a href="/laufende-betreuung/" class="btn-teal">Laufende Betreuung ansehen</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ──────────────────────────────────────────── -->
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Kundenstimmen</span>
+      <h2 class="section-title" id="testimonials-heading">Was Hausverwaltungen sagen.</h2>
+    </div>
+    <div class="grid-2">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "Wir haben unseren Wartungsvertrag nie wirklich hinterfragt. ElevonIQ hat in drei Wochen 23 % Einsparung verhandelt — ohne einen einzigen Aufwand unsererseits."
+        </p>
+        <div class="testimonial-attribution">
+          Thomas K.
+          <span>Geschäftsführer, Hausverwaltung Berlin (47 Aufzüge)</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "Die TÜV-Fristen lagen bei uns in vier verschiedenen Excel-Tabellen verteilt. Jetzt habe ich alles auf einem Blick — und werde automatisch erinnert, bevor eine Frist fällig wird."
+        </p>
+        <div class="testimonial-attribution">
+          Andrea M.
+          <span>WEG-Verwalterin, Hamburg (12 Anlagen)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────── -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="container">
+    <p class="section-eyebrow" style="color:var(--color-teal);margin-bottom:1rem;">Jetzt starten</p>
+    <h2 id="cta-heading">Keine internen Aufzugsexperten? Das brauchen Sie auch nicht.</h2>
+    <p>15 Minuten Erstgespräch — wir zeigen, was in Ihrem Portfolio an Kosten und Risiken liegt.</p>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-white-solid">
+      Kostenloses Erstgespräch buchen
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">
+          Elevo<span class="logo-n">n</span>IQ
+        </a>
+        <p class="footer-tagline">Die externe Aufzugsabteilung.<br>Herstellerneutral. Bundesweit.</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Einmalige Leistungen</div>
+        <a href="/einmalige-leistungen/" class="footer-link">Übersicht</a>
+        <a href="/einmalige-leistungen/pruefbericht-check/" class="footer-link">Prüfbericht-Check</a>
+        <a href="/einmalige-leistungen/angebotspruefung/" class="footer-link">Angebotsprüfung</a>
+        <a href="/einmalige-leistungen/vertragscheck/" class="footer-link">Vertragscheck</a>
+        <a href="/einmalige-leistungen/zustandsbericht/" class="footer-link">Zustandsbericht</a>
+        <a href="/einmalige-leistungen/wartungsvertrag-ausschreiben/" class="footer-link">Wartungsvertrag ausschreiben</a>
+        <a href="/einmalige-leistungen/modernisierung/" class="footer-link">Modernisierung</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Laufende Betreuung</div>
+        <a href="/laufende-betreuung/" class="footer-link">Übersicht</a>
+        <a href="/laufende-betreuung/all-inclusive/" class="footer-link">All-inclusive-Paket</a>
+        <a href="/laufende-betreuung/elevator-hub/" class="footer-link">ELEVATOR HUB</a>
+        <a href="/laufende-betreuung/betriebskontrolle/" class="footer-link">Betriebskontrolle</a>
+        <a href="/laufende-betreuung/iot-monitoring/" class="footer-link">IoT-Monitoring</a>
+        <a href="/laufende-betreuung/smart-flap/" class="footer-link">Smart Flap</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Wissen &amp; Unternehmen</div>
+        <a href="/betreiberpflichten/" class="footer-link">Betreiberpflichten</a>
+        <a href="index.html" class="footer-link" aria-current="page">Für Hausverwaltungen</a>
+        <a href="/wissen/" class="footer-link">Wissen / Blog</a>
+        <a href="/ueber-uns/" class="footer-link">Über uns</a>
+        <div style="margin-top:1.5rem;" class="footer-col-label">Rechtliches</div>
+        <a href="/impressum/" class="footer-link">Impressum</a>
+        <a href="/datenschutz/" class="footer-link">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ElevonIQ GmbH, Berlin</span>
+      <div class="footer-legal-links">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cta = document.getElementById('nav-cta-desktop');
+    if (cta) cta.style.display = 'inline-block';
+  });
+</script>
+<script src="../assets/js/nav.js" defer></script>
+<script src="../assets/js/cookie-consent.js" defer></script>
+</body>
+</html>

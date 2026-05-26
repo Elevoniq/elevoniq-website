@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- ElevonIQ – Web-Entwicklung | 2026-05-26 | Danke / Conversion Confirmation -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vielen Dank — ElevonIQ</title>
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://elevoniq.de/danke/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vielen Dank — ElevonIQ">
+  <meta property="og:url" content="https://elevoniq.de/danke/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="ElevonIQ">
+  <!-- Google Fonts: Work Sans — TODO: self-host for production -->
+  
+  
+  <link rel="stylesheet" href="../assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* Minimal nav on confirmation page */
+    .danke-wrap {
+      min-height: calc(100vh - 120px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1.5rem;
+    }
+    .danke-card {
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+    }
+    .danke-check {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 2rem;
+      display: block;
+    }
+    .danke-card h1 {
+      font-size: clamp(2.25rem, 6vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--color-navy, #1E2761);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .danke-card .danke-subline {
+      font-size: 1.0625rem;
+      color: var(--color-gray, #555);
+      line-height: 1.65;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+    }
+    /* Content cards */
+    .danke-links-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gray, #888);
+      margin-bottom: 1.25rem;
+    }
+    .danke-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 580px) {
+      .danke-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+    .danke-card-link {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 10px;
+      padding: 1.25rem 1rem;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .danke-card-link:hover {
+      border-color: var(--color-teal, #69B0AB);
+      box-shadow: 0 4px 16px rgba(105,176,171,0.15);
+      transform: translateY(-2px);
+    }
+    .danke-card-link .dcl-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-teal, #69B0AB);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .danke-card-link .dcl-title {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--color-navy, #1E2761);
+      line-height: 1.3;
+    }
+    .btn-home {
+      display: inline-block;
+      background: transparent;
+      border: 2px solid var(--color-navy, #1E2761);
+      color: var(--color-navy, #1E2761);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      padding: 0.75rem 2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+    .btn-home:hover {
+      background: var(--color-navy, #1E2761);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Mobile Nav Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">&#10005;</button>
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;">
+    <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+  </a>
+  <span class="mobile-nav-section-label">Leistungen</span>
+  <a href="/einmalige-leistungen/" class="mobile-nav-link">Alle Einmaligen Leistungen</a>
+  <a href="/laufende-betreuung/" class="mobile-nav-link">Laufende Betreuung</a>
+  <span class="mobile-nav-section-label">Informationen</span>
+  <a href="/betreiberpflichten/" class="mobile-nav-link">Betreiberpflichten</a>
+  <a href="/wissen/" class="mobile-nav-link">Wissen</a>
+  <div class="mobile-nav-cta">
+    <a href="/" class="btn-primary btn-full">Zurück zur Startseite</a>
+  </div>
+</div>
+
+<!-- Navigation — minimal on confirmation page -->
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite">
+      <span class="logo-elevo">Elevo</span><span class="logo-n">n</span><span class="logo-iq">IQ</span>
+    </a>
+    <div class="nav-links" role="list">
+      <a href="/betreiberpflichten/" role="listitem">Betreiberpflichten</a>
+      <a href="/wissen/" role="listitem">Wissen</a>
+    </div>
+    <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<div class="danke-wrap">
+  <div class="danke-card">
+
+    <!-- Teal checkmark icon -->
+    <svg class="danke-check" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+      <circle cx="36" cy="36" r="36" fill="#69B0AB"/>
+      <path d="M20 36.5L30.5 47L52 26" stroke="#fff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <h1>Vielen Dank.</h1>
+    <p class="danke-subline">
+      Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden.
+      Schauen Sie sich in der Zwischenzeit unsere Ressourcen an.
+    </p>
+
+    <p class="danke-links-label">Das könnte Sie interessieren</p>
+    <div class="danke-cards">
+      <a href="/betreiberpflichten/" class="danke-card-link">
+        <span class="dcl-eyebrow">Pflichten &amp; Recht</span>
+        <span class="dcl-title">Betreiberpflichten</span>
+      </a>
+      <a href="/einmalige-leistungen/pruefbericht-check/" class="danke-card-link">
+        <span class="dcl-eyebrow">Kostenlos</span>
+        <span class="dcl-title">Prüfbericht-Check</span>
+      </a>
+      <a href="/wissen/" class="danke-card-link">
+        <span class="dcl-eyebrow">Ressourcen</span>
+        <span class="dcl-title">Wissen</span>
+      </a>
+    </div>
+
+    <a href="/" class="btn-home">Zurück zur Startseite</a>
+
+  </div>
+</div>
+
+</main>
+
+<!-- Footer — minimal -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© 2026 ElevonIQ GmbH, Berlin</span>
+      <div class="footer-legal-links">
+        <a href="../impressum/">Impressum</a>
+        <a href="../datenschutz/">Datenschutz</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cta = document.getElementById('nav-cta-desktop');
+    if (cta) cta.style.display = 'inline-block';
+  });
+</script>
+<script src="../assets/js/nav.js" defer></script>
+<script src="../assets/js/cookie-consent.js" defer></script>
+</body>
+</html>

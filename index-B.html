@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- ElevonIQ – Web-Entwicklung | 2026-05-26 | Variante B: Conversion-Dense -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aufzugsverwaltung &amp; Aufzugsberatung — herstellerneutral | ElevonIQ</title>
+  <meta name="description" content="ElevonIQ ist Ihre externe Aufzugsabteilung: Wartungsverträge optimieren, TÜV-Fristen überwachen, Kosten senken. Herstellerneutral. Bundesweit. Jetzt kostenloses Erstgespräch buchen.">
+  <link rel="canonical" href="https://elevoniq.de/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Aufzugsverwaltung &amp; Aufzugsberatung — herstellerneutral | ElevonIQ">
+  <meta property="og:description" content="ElevonIQ ist Ihre externe Aufzugsabteilung. Herstellerneutral. Bundesweit.">
+  <meta property="og:url" content="https://elevoniq.de/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="ElevonIQ">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://elevoniq.de/#org",
+        "name": "ElevonIQ GmbH",
+        "url": "https://elevoniq.de",
+        "description": "Herstellerneutrale Aufzugsberatung und externe Aufzugsabteilung für Hausverwalter, WEG-Verwalter, Genossenschaften und Gebäudeeigentümer.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kurfürstendamm 90",
+          "addressLocality": "Berlin",
+          "postalCode": "10709",
+          "addressCountry": "DE"
+        },
+        "email": "info@elevoniq.de"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://elevoniq.de/#website",
+        "name": "ElevonIQ",
+        "url": "https://elevoniq.de",
+        "publisher": { "@id": "https://elevoniq.de/#org" }
+      }
+    ]
+  }
+  </script>
+  
+  
+  <link rel="stylesheet" href="assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* ── Variante B specifics ── */
+    .promo-bar {
+      background: var(--color-coral);
+      color: #fff;
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .promo-bar a {
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .promo-bar a:hover { opacity: 0.85; }
+
+    /* Hero B: single-column, centered, proof-first */
+    .hero-b {
+      background: #fff;
+      padding: 96px 24px 72px;
+      text-align: center;
+    }
+    .hero-b .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff4f4;
+      color: var(--color-coral);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid rgba(255,91,92,0.2);
+      margin-bottom: 28px;
+    }
+    .hero-b h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--color-ink);
+      max-width: 780px;
+      margin: 0 auto 20px;
+    }
+    .hero-b h1 .accent { color: var(--color-coral); }
+    .hero-b .sub {
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--color-ink-soft);
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+    .hero-b .cta-cluster {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .trust-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.8rem;
+      color: var(--color-ink-soft);
+      font-weight: 500;
+      padding-bottom: 8px;
+    }
+    .trust-strip .sep {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--color-teal);
+      opacity: 0.5;
+      display: inline-block;
+    }
+
+    /* Trust numbers (inline strip) */
+    .trust-wall {
+      background: #f9f9f9;
+      border-top: 1px solid #ebebeb;
+      border-bottom: 1px solid #ebebeb;
+      padding: 48px 24px;
+    }
+    .trust-wall-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .trust-wall-item {
+      text-align: center;
+      padding: 16px 24px;
+      border-right: 1px solid #e8e8e8;
+    }
+    .trust-wall-item:last-child { border-right: none; }
+    .trust-wall-item .num {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--color-navy);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .trust-wall-item .label {
+      font-size: 0.82rem;
+      color: var(--color-ink-soft);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    /* Problem strip */
+    .problem-strip {
+      padding: 80px 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .problem-strip h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 48px;
+      max-width: 680px;
+    }
+    .problem-strip h2 .accent { color: var(--color-coral); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .problem-item {
+      padding: 28px 24px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid #eaeaea;
+      border-left: 3px solid var(--color-coral);
+      position: relative;
+    }
+    .problem-item .pi-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-coral);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .problem-item h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--color-ink);
+    }
+    .problem-item p {
+      font-size: 0.9rem;
+      color: var(--color-ink-soft);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ROI Calculator */
+    .roi-section {
+      background: var(--color-navy);
+      color: #fff;
+      padding: 80px 24px;
+    }
+    .roi-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .roi-copy .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .roi-copy h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      margin: 0 0 16px;
+    }
+    .roi-copy h2 .accent { color: var(--color-coral); }
+    .roi-copy p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.72);
+      margin: 0;
+    }
+    .roi-form-wrap {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .roi-form-wrap h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 24px;
+      color: #fff;
+    }
+    .roi-field {
+      margin-bottom: 16px;
+    }
+    .roi-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .roi-field input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .roi-field input:focus {
+      border-color: var(--color-teal);
+      background: rgba(255,255,255,0.12);
+    }
+    .roi-field input::placeholder { color: rgba(255,255,255,0.3); }
+    #roi-form button[type="submit"] {
+      width: 100%;
+      padding: 14px;
+      background: var(--color-coral);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: opacity 0.2s;
+    }
+    #roi-form button[type="submit"]:hover { opacity: 0.88; }
+    #roi-result {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+      padding: 20px;
+      background: rgba(105,176,171,0.15);
+      border: 1px solid rgba(105,176,171,0.3);
+      border-radius: 10px;
+    }
+    #roi-result.visible { display: block; }
+    #roi-result .roi-label {
+      font-size: 0.78rem;
+      color: var(--color-teal);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    #roi-savings-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      display: block;
+    }
+    #roi-result .roi-sub {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 6px;
+    }
+
+    /* Services section B */
+    .services-b {
+      padding: 88px 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .services-b .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .services-b .section-header h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin: 0;
+      max-width: 520px;
+    }
+    .services-b .section-header a {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--color-coral);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .services-b .section-header a:hover { text-decoration: underline; }
+    .services-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: #f0f0f0;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .service-card-b {
+      background: #fff;
+      padding: 32px 28px;
+      position: relative;
+    }
+    .service-card-b:first-child {
+      border-radius: 10px 0 0 10px;
+    }
+    .service-card-b:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+    .service-card-b .svc-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .service-card-b.einmalig .svc-badge {
+      background: #fff0f0;
+      color: var(--color-coral);
+    }
+    .service-card-b.laufend .svc-badge {
+      background: #ecf5f4;
+      color: var(--color-teal);
+    }
+    .service-card-b h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 8px;
+    }
+    .service-card-b .price-note {
+      font-size: 0.85rem;
+      color: var(--color-ink-soft);
+      margin-bottom: 20px;
+    }
+    .service-card-b ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+    .service-card-b ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--color-ink-soft);
+      margin-bottom: 8px;
+    }
+    .service-card-b ul li::before {
+      content: "";
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .service-card-b.einmalig ul li::before {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23FF5B5C'/%3E%3Cpath d='M4.5 8l2.5 2.5 4.5-4.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") center/cover;
+    }
+    .service-card-b.laufend ul li::before {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%2369B0AB'/%3E%3Cpath d='M4.5 8l2.5 2.5 4.5-4.5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E") center/cover;
+    }
+    .service-card-b .svc-link {
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .service-card-b.einmalig .svc-link { color: var(--color-coral); }
+    .service-card-b.laufend .svc-link { color: var(--color-teal); }
+    .service-card-b .svc-link:hover { text-decoration: underline; }
+
+    /* Social proof section */
+    .social-proof {
+      background: #f9f9f9;
+      padding: 80px 24px;
+      border-top: 1px solid #eaeaea;
+    }
+    .social-proof-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .social-proof-inner h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin: 0 0 48px;
+      text-align: center;
+    }
+    .testimonials-b {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .testimonial-b {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px 24px;
+      border: 1px solid #eaeaea;
+      position: relative;
+    }
+    .testimonial-b .result-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--color-navy);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .testimonial-b .result-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-teal);
+      margin-bottom: 16px;
+    }
+    .testimonial-b blockquote {
+      margin: 0 0 16px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--color-ink-soft);
+      font-style: italic;
+    }
+    .testimonial-b .attribution {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-ink);
+    }
+    .testimonial-b .attribution span {
+      font-weight: 400;
+      color: var(--color-ink-soft);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Segments */
+    .segments-b {
+      padding: 80px 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .segments-b h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .segments-grid-b {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .segment-b {
+      border-radius: 10px;
+      padding: 24px 20px;
+      border: 1px solid #eaeaea;
+      background: #fff;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .segment-b:hover {
+      box-shadow: 0 8px 24px -8px rgba(30,39,97,0.12);
+      transform: translateY(-2px);
+    }
+    .segment-b .seg-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 1.3rem;
+    }
+    .segment-b h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+    }
+    .segment-b p {
+      font-size: 0.8rem;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* FAQ B */
+    .faq-b {
+      padding: 80px 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faq-b h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* CTA B */
+    .cta-b {
+      background: var(--color-navy);
+      color: #fff;
+      padding: 96px 24px;
+      text-align: center;
+    }
+    .cta-b-inner {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .cta-b .section-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-teal);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .cta-b h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0 0 16px;
+    }
+    .cta-b p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1rem;
+      margin: 0 0 36px;
+      line-height: 1.6;
+    }
+    .cta-b .cta-cluster {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .cta-b .reassurance {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* Responsive B */
+    @media (max-width: 1024px) {
+      .trust-wall-inner { grid-template-columns: repeat(2, 1fr); }
+      .trust-wall-item { border-right: none; border-bottom: 1px solid #e8e8e8; }
+      .trust-wall-item:nth-child(odd) { border-right: 1px solid #e8e8e8; }
+      .trust-wall-item:nth-last-child(-n+2) { border-bottom: none; }
+      .roi-inner { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials-b { grid-template-columns: 1fr; }
+      .segments-grid-b { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .services-tabs { grid-template-columns: 1fr; }
+      .service-card-b:first-child { border-radius: 10px 10px 0 0; }
+      .service-card-b:last-child { border-radius: 0 0 10px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Conversion banner -->
+  <div class="promo-bar">
+    Prüfbericht erhalten? <a href="/einmalige-leistungen/pruefbericht-check/">Kostenloser Check — jetzt anfragen</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" id="site-nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-container">
+      <a href="/" class="nav-logo" aria-label="ElevonIQ — Startseite">
+        <svg width="120" height="28" viewBox="0 0 120 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0" y="6" width="16" height="16" rx="3" fill="#FF5B5C"/>
+          <rect x="3" y="9" width="10" height="10" rx="1.5" fill="#1E2761"/>
+          <text x="22" y="21" font-family="Work Sans, sans-serif" font-weight="800" font-size="16" fill="#1A1A1A" letter-spacing="-0.5">ElevonIQ</text>
+        </svg>
+      </a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" role="list">
+        <li class="nav-item has-dropdown">
+          <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">
+            Leistungen
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+          <div class="nav-dropdown" role="menu">
+            <div class="nav-dropdown-inner">
+              <div class="nav-dropdown-col">
+                <p class="nav-dropdown-label">Einmalige Leistungen</p>
+                <a href="/einmalige-leistungen/pruefbericht-check/" class="nav-dropdown-item" role="menuitem">
+                  <strong>Prüfbericht-Check</strong>
+                  <span>ab 149 €</span>
+                </a>
+                <a href="/einmalige-leistungen/angebotspruefung/" class="nav-dropdown-item" role="menuitem">
+                  <strong>Angebotsprüfung</strong>
+                  <span>ab 199 €</span>
+                </a>
+                <a href="/einmalige-leistungen/vertragscheck/" class="nav-dropdown-item" role="menuitem">
+                  <strong>Vertragscheck</strong>
+                  <span>ab 249 €</span>
+                </a>
+                <a href="/einmalige-leistungen/" class="nav-dropdown-item nav-dropdown-more" role="menuitem">
+                  Alle einmaligen Leistungen →
+                </a>
+              </div>
+              <div class="nav-dropdown-col">
+                <p class="nav-dropdown-label">Laufende Betreuung</p>
+                <a href="/laufende-betreuung/elevator-hub/" class="nav-dropdown-item" role="menuitem">
+                  <strong>ELEVATOR HUB</strong>
+                  <span>Vollbetreuung</span>
+                </a>
+                <a href="/laufende-betreuung/all-inclusive/" class="nav-dropdown-item" role="menuitem">
+                  <strong>All-Inclusive</strong>
+                  <span>ab 49 €/Monat</span>
+                </a>
+                <a href="/laufende-betreuung/betriebskontrolle/" class="nav-dropdown-item" role="menuitem">
+                  <strong>Betriebskontrolle</strong>
+                  <span>ab 19 €/Monat</span>
+                </a>
+                <a href="/laufende-betreuung/wartung-klappen/" class="nav-dropdown-item" role="menuitem"><strong>Wartungsklappen</strong><span>Energetisch sanieren</span></a>
+                <a href="/laufende-betreuung/" class="nav-dropdown-item nav-dropdown-more" role="menuitem">
+                  Alle laufenden Leistungen →
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item"><a href="/betreiberpflichten/" class="nav-link">Betreiberpflichten</a></li>
+        <li class="nav-item"><a href="/wissen/" class="nav-link">Wissen</a></li>
+        <li class="nav-item"><a href="/ueber-uns/" class="nav-link">Über uns</a></li>
+      </ul>
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-primary nav-cta" id="nav-cta" style="display:none">Erstgespräch buchen</a>
+    </div>
+  </nav>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+      <a href="/" class="nav-logo" aria-label="ElevonIQ — Startseite">
+        <svg width="110" height="26" viewBox="0 0 120 28" fill="none" aria-hidden="true">
+          <rect x="0" y="6" width="16" height="16" rx="3" fill="#FF5B5C"/>
+          <rect x="3" y="9" width="10" height="10" rx="1.5" fill="#1E2761"/>
+          <text x="22" y="21" font-family="Work Sans, sans-serif" font-weight="800" font-size="16" fill="#1A1A1A">ElevonIQ</text>
+        </svg>
+      </a>
+      <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Menü schließen">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 4l12 12M16 4L4 16" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-links" role="list">
+      <li><a href="/einmalige-leistungen/">Einmalige Leistungen</a></li>
+      <li><a href="/laufende-betreuung/">Laufende Betreuung</a></li>
+      <li><a href="/betreiberpflichten/">Betreiberpflichten</a></li>
+      <li><a href="/wissen/">Wissen</a></li>
+      <li><a href="/ueber-uns/">Über uns</a></li>
+    </ul>
+    <div class="mobile-nav-footer">
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-primary" style="width:100%;text-align:center">Erstgespräch buchen</a>
+    </div>
+  </div>
+
+  <!-- HERO B -->
+  <section class="hero-b" aria-labelledby="hero-heading">
+    <span class="eyebrow">Herstellerneutral &middot; Bundesweit &middot; Seit 2019</span>
+    <h1 id="hero-heading">Ihr Aufzugsvertrag kostet Sie<br><span class="accent">wahrscheinlich zu viel.</span></h1>
+    <p class="sub">Bei 85 % unserer Erstprüfungen finden wir Einsparpotenzial. Die meisten Betreiber bezahlen mehr als nötig — und merken es erst, wenn wir nachschauen.</p>
+    <div class="cta-cluster">
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-primary">Kostenloses Erstgespräch buchen</a>
+      <a href="/einmalige-leistungen/pruefbericht-check/" class="btn btn-secondary">Prüfbericht einreichen</a>
+    </div>
+    <div class="trust-strip">
+      <span>Über 8.000 Aufzüge betreut</span>
+      <span class="sep"></span>
+      <span>Ø 18 % Kosteneinsparung</span>
+      <span class="sep"></span>
+      <span>500+ zufriedene Kunden</span>
+      <span class="sep"></span>
+      <span>Keine Herstellerbindung</span>
+    </div>
+  </section>
+
+  <!-- TRUST WALL -->
+  <div class="trust-wall" aria-label="Kennzahlen">
+    <div class="trust-wall-inner">
+      <div class="trust-wall-item">
+        <span class="num" data-count="8000" data-suffix="+">0+</span>
+        <span class="label">Aufzüge bundesweit betreut</span>
+      </div>
+      <div class="trust-wall-item">
+        <span class="num" data-count="500" data-suffix="+">0+</span>
+        <span class="label">Kunden vertrauen ElevonIQ</span>
+      </div>
+      <div class="trust-wall-item">
+        <span class="num" data-count="18" data-suffix=" %">0 %</span>
+        <span class="label">Durchschnittliche Kostensenkung</span>
+      </div>
+      <div class="trust-wall-item">
+        <span class="num" data-count="7" data-suffix=" J.">0 J.</span>
+        <span class="label">Marktpräsenz in Deutschland</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMS -->
+  <section class="problem-strip reveal" aria-labelledby="problems-heading">
+    <h2 id="problems-heading">Vier Probleme, die <span class="accent">fast jeder Betreiber</span> hat</h2>
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="pi-label">Problem 1</div>
+        <h3>Überhöhte Wartungskosten</h3>
+        <p>Herstellergebundene Wartungsverträge liegen regelmäßig 20 bis 40 % über dem Marktpreis. Ohne unabhängigen Vergleich fällt das nicht auf.</p>
+      </div>
+      <div class="problem-item">
+        <div class="pi-label">Problem 2</div>
+        <h3>Prüfberichte unverstanden</h3>
+        <p>ZÜS-Prüfberichte listen Mängel auf, ohne zu priorisieren. Betreiber reagieren falsch — oder gar nicht — und riskieren Haftung.</p>
+      </div>
+      <div class="problem-item">
+        <div class="pi-label">Problem 3</div>
+        <h3>Fristen werden verpasst</h3>
+        <p>TÜV-Hauptprüfungen, DGUV-Unterweisungen, Dokumentationspflichten — ein verpasster Termin kann zu Betriebsstop oder Bußgeld führen.</p>
+      </div>
+      <div class="problem-item">
+        <div class="pi-label">Problem 4</div>
+        <h3>Niemand mit Fachkenntnis</h3>
+        <p>Hausverwalter sind keine Aufzugstechniker. Ein eigener Aufzugs&shy;beauftragter lohnt sich erst ab 50+ Anlagen. Dazwischen entsteht eine Lücke.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section class="roi-section reveal" aria-labelledby="roi-heading">
+    <div class="roi-inner">
+      <div class="roi-copy">
+        <p class="section-label">ROI-Rechner</p>
+        <h2 id="roi-heading">Was kostet Sie Ihr Aufzug <span class="accent">zu viel</span>?</h2>
+        <p>Geben Sie die Anzahl Ihrer Aufzüge und die durchschnittlichen Monatkosten an. Wir zeigen Ihnen das typische Einsparpotenzial — basierend auf über 8.000 geprüften Anlagen.</p>
+      </div>
+      <div class="roi-form-wrap">
+        <h3>Schnell-Kalkulation</h3>
+        <form id="roi-form" novalidate>
+          <div class="roi-field">
+            <label for="roi-count">Anzahl Aufzüge</label>
+            <input type="number" id="roi-count" name="roi-count" min="1" max="500" placeholder="z. B. 12" required>
+          </div>
+          <div class="roi-field">
+            <label for="roi-monthly">Monatliche Kosten pro Aufzug (€)</label>
+            <input type="number" id="roi-monthly" name="roi-monthly" min="1" placeholder="z. B. 320" required>
+          </div>
+          <button type="submit">Einsparpotenzial berechnen</button>
+          <div id="roi-result" role="status" aria-live="polite">
+            <div class="roi-label">Typisches Jahres-Einsparpotenzial</div>
+            <span id="roi-savings-number"></span>
+            <p class="roi-sub">Durchschnittswert basierend auf 8.000+ geprüften Anlagen. Individuelle Ergebnisse können abweichen.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section class="services-b reveal" aria-labelledby="services-heading">
+    <div class="section-header">
+      <h2 id="services-heading">Was wir für Sie tun</h2>
+      <a href="/leistungen/">Alle Leistungen ansehen →</a>
+    </div>
+    <div class="services-tabs">
+      <div class="service-card-b einmalig">
+        <span class="svc-badge">Einmalige Leistungen</span>
+        <h3>Sofortige Klarheit bei konkreten Fragen</h3>
+        <p class="price-note">Ab 149 € pro Leistung — kein Abonnement, kein Vertrag</p>
+        <ul>
+          <li>Prüfbericht-Check: Mängel verstehen &amp; priorisieren</li>
+          <li>Angebotsprüfung: Vergleich mit Marktpreisen</li>
+          <li>Vertragscheck: Fallen &amp; Fallstricke aufdecken</li>
+          <li>Zustandsbericht: technische Gesamtbewertung</li>
+          <li>Gefährdungsbeurteilung nach BetrSichV</li>
+          <li>Wartungsvertrag-Ausschreibung bundesweit</li>
+        </ul>
+        <a href="/einmalige-leistungen/" class="svc-link">Einmalige Leistungen ansehen →</a>
+      </div>
+      <div class="service-card-b laufend">
+        <span class="svc-badge">Laufende Betreuung</span>
+        <h3>Ihre externe Aufzugsabteilung — dauerhaft</h3>
+        <p class="price-note">Ab 19 €/Monat — monatlich kündbar</p>
+        <ul>
+          <li>ELEVATOR HUB: digitale Akte, Fristen, Kommunikation</li>
+          <li>All-Inclusive: Vollbetreuung inkl. Besichtigungen</li>
+          <li>Betriebskontrolle: monatlicher Status-Report</li>
+          <li>IoT-Monitoring: Echtzeit-Überwachung</li>
+          <li>Smart Flap: automatische Klappeninspektion</li>
+          <li>Wartungsklappen: planmäßige Begehungen</li>
+        </ul>
+        <a href="/laufende-betreuung/" class="svc-link">Laufende Betreuung ansehen →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof reveal" aria-labelledby="proof-heading">
+    <div class="social-proof-inner">
+      <h2 id="proof-heading">Was unsere Kunden berichten</h2>
+      <div class="testimonials-b">
+        <div class="testimonial-b">
+          <span class="result-number">34 %</span>
+          <div class="result-label">Kostensenkung im ersten Jahr</div>
+          <blockquote>„Wir haben sechs Aufzüge und drei unterschiedliche Wartungsverträge geerbt. ElevonIQ hat das in vier Wochen bereinigt."</blockquote>
+          <div class="attribution">
+            Thorsten K.
+            <span>Kaufmännischer Leiter, Wohnungsgenossenschaft Leipzig</span>
+          </div>
+        </div>
+        <div class="testimonial-b">
+          <span class="result-number">0</span>
+          <div class="result-label">Verpasste TÜV-Fristen seit Vertrag</div>
+          <blockquote>„Früher musste ich selbst nachverfolgen, wann welche Prüfung fällig ist. Das läuft jetzt automatisch über den ELEVATOR HUB."</blockquote>
+          <div class="attribution">
+            Sandra M.
+            <span>WEG-Verwalterin, Berlin Mitte — 23 Einheiten</span>
+          </div>
+        </div>
+        <div class="testimonial-b">
+          <span class="result-number">6 Wo.</span>
+          <div class="result-label">Bis zur neuen Ausschreibung</div>
+          <blockquote>„Der Prüfbericht-Check hat uns klar gemacht, was wirklich dringend ist und was warten kann. Die Kosteneinsparung hat sich sofort gezeigt."</blockquote>
+          <div class="attribution">
+            Michael R.
+            <span>Eigentümer, Wohnportfolio Hamburg — 4 Objekte</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZUR ZIELGRUPPE -->
+  <section class="segments-b reveal" aria-labelledby="segments-heading">
+    <h2 id="segments-heading">Für wen ist ElevonIQ?</h2>
+    <div class="segments-grid-b">
+      <a href="/fuer-hausverwaltungen/" class="segment-b" style="text-decoration:none;color:inherit">
+        <div class="seg-icon" style="background:#fff0f0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF5B5C" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Hausverwaltungen</h3>
+        <p>Entlastung bei technischen Pflichten, schnelle Reaktion bei Störungen</p>
+      </a>
+      <a href="/fuer-hausverwaltungen/#weg" class="segment-b" style="text-decoration:none;color:inherit">
+        <div class="seg-icon" style="background:#ecf5f4;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#69B0AB" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <h3>WEG-Verwalter</h3>
+        <p>Klare Berichte für die Eigentümerversammlung, Kostentransparenz</p>
+      </a>
+      <a href="/fuer-hausverwaltungen/#genossenschaften" class="segment-b" style="text-decoration:none;color:inherit">
+        <div class="seg-icon" style="background:#e8edf5;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E2761" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Genossenschaften</h3>
+        <p>Portfolio-Übersicht über viele Objekte, standardisierte Abläufe</p>
+      </a>
+      <a href="/fuer-hausverwaltungen/#eigentuemer" class="segment-b" style="text-decoration:none;color:inherit">
+        <div class="seg-icon" style="background:#fef5e8;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8873A" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Gebäudeeigentümer</h3>
+        <p>Direkte Haftungsentlastung, Compliance nach BetrSichV gesichert</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-b reveal" aria-labelledby="faq-heading">
+    <h2 id="faq-heading">Häufige Fragen</h2>
+    <details class="faq-item">
+      <summary>Was kostet ElevonIQ?</summary>
+      <p>Einmalige Leistungen beginnen bei 149 € (Prüfbericht-Check). Die laufende Betreuung startet bei 19 € pro Monat für die Betriebskontrolle. Alle Preise sind transparent — kein Kleingedrucktes, kein Mindestabnahme.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Sind Sie herstellerunabhängig?</summary>
+      <p>Vollständig. ElevonIQ hat keine Vertriebs- oder Kooperationsverträge mit Aufzugsherstellern oder Wartungsunternehmen. Unsere Empfehlungen basieren ausschließlich auf technischen und wirtschaftlichen Faktoren.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Wie schnell kann ich starten?</summary>
+      <p>Einmalige Leistungen beginnen nach Auftragserteilung innerhalb von 48 Stunden. Das Erstgespräch für die laufende Betreuung findet innerhalb einer Woche statt — meist früher.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Wie viele Aufzüge brauche ich mindestens?</summary>
+      <p>Keinen Mindestumfang. Wir betreuen Eigentümer mit einem einzigen Aufzug genauso wie Genossenschaften mit 500+ Anlagen. Das Angebot ist skalierbar.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Was passiert, wenn mein Aufzug ausfällt?</summary>
+      <p>Mit der laufenden Betreuung erhalten Sie eine Hotline und Krisenunterstützung. Wir koordinieren Entstörung, Kommunikation mit dem Wartungsunternehmen und Dokumentation — damit Sie nicht selbst improvisieren müssen.</p>
+    </details>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-b reveal">
+    <div class="cta-b-inner">
+      <p class="section-label">Nächster Schritt</p>
+      <h2>Kostenlose Ersteinschätzung in 30 Minuten</h2>
+      <p>Kein Verkaufsgespräch. Wir schauen uns Ihre Situation an und sagen Ihnen ehrlich, ob und wie wir helfen können.</p>
+      <div class="cta-cluster">
+        <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-white-solid">Erstgespräch buchen</a>
+        <a href="/kontakt/" class="btn btn-white-outline">Nachricht schreiben</a>
+      </div>
+      <p class="reassurance">Kostenlos &middot; Unverbindlich &middot; Kein Vertrieb</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="ElevonIQ — Startseite">
+          <svg width="110" height="26" viewBox="0 0 120 28" fill="none" aria-hidden="true">
+            <rect x="0" y="6" width="16" height="16" rx="3" fill="#FF5B5C"/>
+            <rect x="3" y="9" width="10" height="10" rx="1.5" fill="#1E2761"/>
+            <text x="22" y="21" font-family="Work Sans, sans-serif" font-weight="800" font-size="16" fill="#ffffff">ElevonIQ</text>
+          </svg>
+        </a>
+        <p class="footer-tagline">Die externe Aufzugsabteilung.<br>Herstellerneutral. Bundesweit.</p>
+        <address class="footer-address">
+          ElevonIQ GmbH<br>
+          Kurfürstendamm 90<br>
+          10709 Berlin<br>
+          <a href="mailto:info@elevoniq.de">info@elevoniq.de</a>
+        </address>
+      </div>
+      <div class="footer-col">
+        <h3>Leistungen</h3>
+        <ul>
+          <li><a href="/einmalige-leistungen/pruefbericht-check/">Prüfbericht-Check</a></li>
+          <li><a href="/einmalige-leistungen/angebotspruefung/">Angebotsprüfung</a></li>
+          <li><a href="/einmalige-leistungen/vertragscheck/">Vertragscheck</a></li>
+          <li><a href="/laufende-betreuung/elevator-hub/">ELEVATOR HUB</a></li>
+          <li><a href="/laufende-betreuung/all-inclusive/">All-Inclusive</a></li>
+          <li><a href="/einmalige-leistungen/">Alle Leistungen</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Themen</h3>
+        <ul>
+          <li><a href="/betreiberpflichten/">Betreiberpflichten</a></li>
+          <li><a href="/betreiberpflichten/#betrsichv">BetrSichV erklärt</a></li>
+          <li><a href="/betreiberpflichten/#zues">ZÜS-Prüfung</a></li>
+          <li><a href="/wissen/">Wissensdatenbank</a></li>
+          <li><a href="/wissen/podcast/">Podcast</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Unternehmen</h3>
+        <ul>
+          <li><a href="/ueber-uns/">Über uns</a></li>
+          <li><a href="/fuer-hausverwaltungen/">Für Hausverwaltungen</a></li>
+          <li><a href="/kontakt/">Kontakt</a></li>
+          <li><a href="/impressum/">Impressum</a></li>
+          <li><a href="/datenschutz/">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ElevonIQ GmbH &middot; <a href="/impressum/">Impressum</a> &middot; <a href="/datenschutz/">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/cookie-consent.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('nav-cta').style.display = '';
+      // Dropdown keyboard navigation
+      document.querySelectorAll('.nav-dropdown-trigger').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.nav-dropdown-trigger').forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            b.closest('.has-dropdown').classList.remove('open');
+          });
+          if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            this.closest('.has-dropdown').classList.add('open');
+          }
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.has-dropdown')) {
+          document.querySelectorAll('.nav-dropdown-trigger').forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            b.closest('.has-dropdown').classList.remove('open');
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
