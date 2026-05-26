@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="420" height="120">
+  <defs>
+    <linearGradient id="ambGradB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="navyGradB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a1530;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2d6b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon: Hexagon Hub with upward arrow -->
+  <!-- Hexagon background -->
+  <polygon points="56,10 80,24 80,52 56,66 32,52 32,24" fill="url(#navyGradB)" />
+  <!-- Inner lighter hexagon -->
+  <polygon points="56,18 74,29 74,51 56,62 38,51 38,29" fill="#0f2550" />
+
+  <!-- Hub spokes (4 subtle lines radiating) -->
+  <line x1="56" y1="18" x2="56" y2="10" stroke="#c7d8f8" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="56" y1="62" x2="56" y2="70" stroke="#c7d8f8" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="32" y1="38" x2="24" y2="38" stroke="#c7d8f8" stroke-width="1.5" stroke-opacity="0.4"/>
+  <line x1="80" y1="38" x2="88" y2="38" stroke="#c7d8f8" stroke-width="1.5" stroke-opacity="0.4"/>
+
+  <!-- Connection dots on spokes -->
+  <circle cx="56" cy="10" r="3" fill="#f59e0b" />
+  <circle cx="56" cy="70" r="3" fill="#c7d8f8" opacity="0.6"/>
+  <circle cx="24" cy="38" r="3" fill="#c7d8f8" opacity="0.6"/>
+  <circle cx="88" cy="38" r="3" fill="#c7d8f8" opacity="0.6"/>
+
+  <!-- Upward arrow (center, amber) -->
+  <polygon points="56,24 50,34 53.5,34 53.5,52 58.5,52 58.5,34 62,34" fill="url(#ambGradB)" />
+
+  <!-- Wordmark -->
+  <text x="104" y="42" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="30" font-weight="800" fill="#0f1e40" letter-spacing="-0.8">ELEVATOR</text>
+  <text x="104" y="72" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="30" font-weight="800" fill="#f59e0b" letter-spacing="-0.8">HUB</text>
+  <!-- Dot separator and ® -->
+  <circle cx="214" cy="68" r="3" fill="#f59e0b" />
+  <text x="222" y="72" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="600" fill="#64748b">®</text>
+
+  <!-- Tagline below -->
+  <text x="104" y="93" font-family="'Inter', 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="600" fill="#64748b" letter-spacing="0.15em">AUFZUGS-MANAGEMENT · DIGITAL</text>
+</svg>
