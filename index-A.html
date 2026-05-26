@@ -61,6 +61,42 @@
     /* 4-col problem matrix */
     @media (max-width: 900px) { .problem-matrix { grid-template-columns: repeat(2, 1fr) !important; } }
     @media (max-width: 600px) { .problem-matrix { grid-template-columns: 1fr !important; } }
+
+    /* ── Hero rotating question ──────────────────────────────── */
+    .hero-question-box {
+      position: relative;
+      border-left: 3px solid var(--color-coral-dark);
+      padding: 18px 24px;
+      background: rgba(232, 71, 74, 0.04);
+      border-radius: 0 6px 6px 0;
+      max-width: 600px;
+      margin-bottom: 28px;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-question-text {
+      font-size: clamp(16px, 2vw, 21px);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--color-dark);
+      line-height: 1.45;
+      letter-spacing: -0.2px;
+      margin: 0;
+    }
+    .hero-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.9em;
+      background: var(--color-coral-dark);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: hero-blink 0.85s step-end infinite;
+    }
+    @keyframes hero-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
   </style>
   <!-- Dashboard Mockup Styles -->
   <style>
@@ -299,14 +335,15 @@
   <div class="container hero-grid">
     <!-- Text Column -->
     <div class="hero-text">
-      <span class="hero-eyebrow">Herstellerneutrale Aufzugsberatung</span>
+      <span class="hero-eyebrow">DIE EXTERNE AUFZUGSABTEILUNG · HERSTELLERNEUTRAL</span>
+      <div class="hero-question-box">
+        <p class="hero-question-text">"<span id="heroQuestionText">Zahle ich für meine Aufzugs-Wartung eigentlich zu viel?</span><span class="hero-cursor"></span>"</p>
+      </div>
       <h1 class="hero-headline">
-        Aufzüge kosten zu viel.<br>
-        Und Sie merken es meistens <span class="accent">zu spät.</span>
+        Elevoniq <span class="accent">beantwortet das.</span><br>Technisch. Kaufmännisch. Unabhängig.
       </h1>
       <p class="hero-subline">
-        ElevonIQ ist Ihre externe Aufzugsabteilung — herstellerneutral, datenbasiert, bundesweit.
-        Wir senken Ihre Kosten, sichern Ihre Dokumentation und überwachen Ihre Fristen.
+        Prüfberichte verstehen. Kosten hinterfragen. Entscheidungen treffen. Für jeden, der professionelle Unterstützung und technische Expertise wünscht — genau dann, wenn Sie sie benötigen.
       </p>
       <div class="hero-cta-row">
         <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
@@ -1214,6 +1251,58 @@
   </div>
 </footer>
 
+<script>
+/* ── Hero typewriter — rotating operator questions ──────── */
+(function () {
+  /* Edit this list to update which questions cycle in the hero */
+  const questions = [
+    'Zahle ich für meine Aufzugs-Wartung eigentlich zu viel?',
+    'Was bedeuten die Mängel in meinem TÜV-Bericht — und was muss ich jetzt tun?',
+    'Wer haftet, wenn jemand im Aufzug stecken bleibt?',
+    'Wie vergleiche ich Angebote, wenn ich kein Techniker bin?',
+    'Brauche ich wirklich einen Aufzugswärter — und was kostet das?',
+    'Darf ich meinen Wartungsvertrag einfach kündigen?',
+    'Was kostet eine Modernisierung — und wann lohnt sie sich?',
+    'Sind meine Aufzüge nach TRBS 1115-1 cybersicher dokumentiert?',
+    'Bin ich von der 2G-Abschaltung betroffen?',
+  ];
+  const el = document.getElementById('heroQuestionText');
+  if (!el) return;
+
+  let qi = 0, ci = questions[0].length, deleting = false, waiting = false;
+  const PAUSE_AFTER_TYPE  = 3200;
+  const PAUSE_BEFORE_TYPE = 400;
+  const TYPE_SPEED        = 38;
+  const DELETE_SPEED      = 16;
+
+  function tick() {
+    if (waiting) return;
+    const q = questions[qi];
+    if (!deleting) {
+      ci++;
+      el.textContent = q.slice(0, ci);
+      if (ci >= q.length) {
+        waiting = true; deleting = true;
+        setTimeout(() => { waiting = false; tick(); }, PAUSE_AFTER_TYPE);
+      } else {
+        setTimeout(tick, TYPE_SPEED);
+      }
+    } else {
+      ci--;
+      el.textContent = q.slice(0, ci);
+      if (ci <= 0) {
+        deleting = false;
+        qi = (qi + 1) % questions.length;
+        waiting = true;
+        setTimeout(() => { waiting = false; tick(); }, PAUSE_BEFORE_TYPE);
+      } else {
+        setTimeout(tick, DELETE_SPEED);
+      }
+    }
+  }
+  setTimeout(tick, 1200); // start after hero fade-in
+})();
+</script>
 <script>
   // Desktop Nav CTA
   document.addEventListener('DOMContentLoaded', function() {
