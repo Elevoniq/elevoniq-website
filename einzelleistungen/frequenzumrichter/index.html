@@ -367,7 +367,7 @@
     /* Pricing cards */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 22px;
       margin-top: 36px;
     }
@@ -884,15 +884,17 @@
           <li>Hinweis auf möglichen Nachhaltigkeitsbonus bei geeigneten Fällen</li>
         </ul>
       </div>
-      <div class="pricing-card pricing-card-free">
-        <span class="pricing-badge pricing-badge-free">Kostenlos</span>
-        <div class="pricing-amount pricing-amount-free">0 &euro;</div>
-        <h3>Umrichter-Check</h3>
+      <div class="pricing-card pricing-card-paid">
+        <span class="pricing-badge pricing-badge-paid">Optional</span>
+        <div class="pricing-amount pricing-amount-paid">989 &euro; netto</div>
+        <div class="pricing-vat-light">zzgl. MwSt. &middot; Vor-Ort-Termin</div>
+        <h3 style="margin-top:12px;">Vor-Ort-Besuch inkl. Umrichter-Check</h3>
         <ul class="pricing-list">
           <li>Einordnung ob Umrichter wahrscheinliche Ursache</li>
           <li>Prüfung Reparierbarkeit / Austausch sinnvoll</li>
-          <li>Empfehlung für nächsten Schritt</li>
-          <li>Digitale Rückmeldung</li>
+          <li>Empfehlung für nächsten Schritt mit schriftlicher Dokumentation</li>
+          <li>Ausbau des defekten Umrichters inbegriffen</li>
+          <li>Termin innerhalb von max. 5 Werktagen</li>
         </ul>
       </div>
       <div class="pricing-card pricing-card-paid">
@@ -905,18 +907,6 @@
           <li>Plausibilitätsprüfung Preis und Umfang</li>
           <li>Empfehlung: freigeben / nachverhandeln</li>
           <li>Ergebnis digital und als PDF</li>
-        </ul>
-      </div>
-      <div class="pricing-card pricing-card-paid">
-        <span class="pricing-badge pricing-badge-paid">Optional</span>
-        <div class="pricing-amount pricing-amount-paid">989 &euro; netto</div>
-        <div class="pricing-vat-light">zzgl. MwSt. &middot; Vor-Ort-Termin</div>
-        <h3 style="margin-top:12px;">Vor-Ort-Besuch</h3>
-        <ul class="pricing-list">
-          <li>Persönliche Inspektion durch Fachmann vor Ort</li>
-          <li>Ausbau des defekten Umrichters inbegriffen</li>
-          <li>Termin innerhalb von max. 5 Werktagen</li>
-          <li>Schriftliche Bewertung im Elevator HUB</li>
         </ul>
       </div>
     </div>
@@ -942,9 +932,8 @@
           <select class="form-select" id="sf_service" name="sf_service" required>
             <option value="">Bitte auswählen</option>
             <option value="express-angebot">Express-Angebot anfordern — kostenlos</option>
-            <option value="umrichter-check">Umrichter-Check — kostenlos</option>
+            <option value="vor-ort-check">Vor-Ort-Besuch inkl. Umrichter-Check — 989 € netto zzgl. MwSt.</option>
             <option value="angebot-gegenpruefen">Angebot gegenprüfen — 249 € netto zzgl. MwSt.</option>
-            <option value="vor-ort-besuch">Vor-Ort-Besuch — 989 € netto zzgl. MwSt.</option>
           </select>
         </div>
 
