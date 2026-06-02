@@ -1879,3 +1879,12 @@ details.faq-item .faq-answer {
 .footer-col-label--mt {
   margin-top: 1.5rem;
 }
+
+/* ─── NEUE KOMPONENTEN (2026-06-01) ─── */
+
+/* ── 360° Tour section — light Teal-Grey override ── */
+.section-teal-light .section-eyebrow { color: var(--color-teal-dark); }
+.section-teal-light .section-title   { color: #1A1A1A; }
+.section-teal-light .section-lead--navy { color: #4B5563; }
+.section-teal-light .feature-item-text--navy { color: #374151; }
+.section-teal-light .feature-item-text--navy strong { color: #1A1A1A; }

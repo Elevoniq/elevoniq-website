@@ -13,7 +13,7 @@ Diese URLs haben nachweislichen SEO-Wert (Keyword-Ausrichtung, Canonical vorhand
 | `/produkte/elevator-services/` | `/laufende-betreuung/` | KRITISCH | Stärkste Produktseite, hohe Keyword-Dichte "Aufzugsmanagement" |
 | `/produkte/elevator-hub/` | `/laufende-betreuung/elevator-hub/` | KRITISCH | Direktes Produkt-Mapping, SEO-Equity vorhanden |
 | `/vorteile/pflichten-gesetze/` | `/betreiberpflichten/` | KRITISCH | 1:1-Entsprechung, starkes Keyword "Betreiberpflichten Aufzug" |
-| `/neuer-frequenzumrichter/` | `/wissen/frequenzumrichter/` | KRITISCH | Dedizierte Long-Tail-Campaign-Page mit Kaufabsicht — SEO-Equity erhalten |
+| `/neuer-frequenzumrichter/` | `/einzelleistungen/frequenzumrichter/` | KRITISCH | Dedizierte Long-Tail-Campaign-Page mit Kaufabsicht — SEO-Equity erhalten |
 | `/ueber-uns/podcast/` | `/wissen/podcast/` | KRITISCH | Inhaltsreichste Seite (5.400+ Wörter), höchste SEO-Equity der gesamten Site |
 
 ---
@@ -39,7 +39,7 @@ Diese URLs haben nachweislichen SEO-Wert (Keyword-Ausrichtung, Canonical vorhand
 | 15 | `/datenschutzerklaerung/` | `/datenschutz/` | HOCH | URL-Slug wird vereinfacht — altes Muster mit "erklarung" muss weitergeleitet werden |
 | 16 | `/impressum/` | `/impressum/` | — | Bleibt identisch, kein Redirect nötig |
 | 17 | `/agb/` | `/agb/` | NIEDRIG | AGB-Seite bleibt oder wird neu angelegt — bei Entscheidung anpassen |
-| 18 | `/neuer-frequenzumrichter/` | `/wissen/frequenzumrichter/` | KRITISCH | Long-Tail-Keyword mit Kaufabsicht, SEO-Equity erhalten |
+| 18 | `/neuer-frequenzumrichter/` | `/einzelleistungen/frequenzumrichter/` | KRITISCH | Long-Tail-Keyword mit Kaufabsicht, SEO-Equity erhalten |
 
 ---
 
@@ -55,7 +55,7 @@ Für Deployment auf Netlify: Diese Datei als `_redirects` (ohne Extension) im Ro
 /produkte/elevator-services/          /laufende-betreuung/                    301
 /produkte/elevator-hub/               /laufende-betreuung/elevator-hub/       301
 /vorteile/pflichten-gesetze/          /betreiberpflichten/                    301
-/neuer-frequenzumrichter/             /wissen/frequenzumrichter/              301
+/neuer-frequenzumrichter/             /einzelleistungen/frequenzumrichter/    301
 /ueber-uns/podcast/                   /wissen/podcast/                        301
 
 # Weitere Produktseiten
@@ -102,7 +102,7 @@ Für Deployment auf Vercel: In `vercel.json` im Projekt-Root eintragen (oder in 
     },
     {
       "source": "/neuer-frequenzumrichter/",
-      "destination": "/wissen/frequenzumrichter/",
+      "destination": "/einzelleistungen/frequenzumrichter/",
       "permanent": true
     },
     {
@@ -175,7 +175,7 @@ GitHub Pages unterstützt keine serverseitigen Redirects nativ. Optionen:
 
 - Alle Redirects sind 301 (permanent) — nur 301 überträgt SEO-Equity.
 - Trailing Slashes sind konsistent gehalten — neue Site verwendet durchgängig trailing slash.
-- `/neuer-frequenzumrichter/` muss zwingend auf eine neue, inhaltlich gleichwertige Seite zeigen. Das Ziel `/wissen/frequenzumrichter/` muss vor Go-Live existieren, sonst SEO-Equity-Verlust.
+- `/neuer-frequenzumrichter/` muss zwingend auf eine neue, inhaltlich gleichwertige Seite zeigen. Das Ziel `/einzelleistungen/frequenzumrichter/` existiert als vollständige Landingpage. `/wissen/frequenzumrichter/` leitet per Meta-Refresh auf `/einzelleistungen/frequenzumrichter/` weiter.
 - `/ueber-uns/podcast/` hat die höchste Content-Dichte der alten Site (5.400+ Wörter, 27+ Episodentexte). Das Redirect-Ziel `/wissen/podcast/` muss diese Inhalte aufnehmen.
 - `/datenschutzerklaerung/` (alter WordPress-Slug) → `/datenschutz/` (neuer Slug): Dieser Redirect ist für alle eingehenden Links aus Cookie-Bannern, Formularen und externen Verweisen kritisch.
 - Die Seite `/ueber-uns/referenzen/` enthält altes Simplifa-Branding. Redirect auf Homepage bis Seite neu erstellt wird.

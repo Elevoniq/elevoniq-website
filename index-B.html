@@ -216,8 +216,9 @@
 
     /* ROI Calculator */
     .roi-section {
-      background: var(--color-navy);
-      color: #fff;
+      background: #EAF4F3;
+      color: #1A1A1A;
+      border-top: 1px solid rgba(105,176,171,0.25);
       padding: 80px 24px;
     }
     .roi-inner {
@@ -232,7 +233,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--color-teal);
+      color: var(--color-teal-dark);
       font-weight: 700;
       margin-bottom: 16px;
     }
@@ -242,17 +243,18 @@
       letter-spacing: -0.025em;
       line-height: 1.2;
       margin: 0 0 16px;
+      color: #1A1A1A;
     }
     .roi-copy h2 .accent { color: var(--color-coral); }
     .roi-copy p {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: rgba(255,255,255,0.72);
+      color: #6B7280;
       margin: 0;
     }
     .roi-form-wrap {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: #FFFFFF;
+      border: 1px solid #E5E5E5;
       border-radius: 16px;
       padding: 32px;
     }
@@ -260,7 +262,7 @@
       font-size: 1.05rem;
       font-weight: 700;
       margin: 0 0 24px;
-      color: #fff;
+      color: #1A1A1A;
     }
     .roi-field {
       margin-bottom: 16px;
@@ -269,17 +271,17 @@
       display: block;
       font-size: 0.78rem;
       font-weight: 600;
-      color: rgba(255,255,255,0.65);
+      color: #6B7280;
       margin-bottom: 6px;
       letter-spacing: 0.04em;
     }
     .roi-field input {
       width: 100%;
       padding: 12px 14px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: #F4F7F6;
+      border: 1px solid #DDE6E5;
       border-radius: 8px;
-      color: #fff;
+      color: #1A1A1A;
       font-family: inherit;
       font-size: 1rem;
       font-weight: 500;
@@ -289,9 +291,9 @@
     }
     .roi-field input:focus {
       border-color: var(--color-teal);
-      background: rgba(255,255,255,0.12);
+      background: #EAF4F3;
     }
-    .roi-field input::placeholder { color: rgba(255,255,255,0.3); }
+    .roi-field input::placeholder { color: #6B7280; }
     #roi-form button[type="submit"] {
       width: 100%;
       padding: 14px;
@@ -312,14 +314,14 @@
       margin-top: 20px;
       text-align: center;
       padding: 20px;
-      background: rgba(105,176,171,0.15);
+      background: rgba(105,176,171,0.12);
       border: 1px solid rgba(105,176,171,0.3);
       border-radius: 10px;
     }
     #roi-result.visible { display: block; }
     #roi-result .roi-label {
       font-size: 0.78rem;
-      color: var(--color-teal);
+      color: var(--color-teal-dark);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-weight: 700;
@@ -328,13 +330,13 @@
     #roi-savings-number {
       font-size: 2.2rem;
       font-weight: 800;
-      color: #fff;
+      color: #1A1A1A;
       letter-spacing: -0.03em;
       display: block;
     }
     #roi-result .roi-sub {
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.55);
+      color: #6B7280;
       margin-top: 6px;
     }
 
@@ -583,8 +585,9 @@
 
     /* CTA B */
     .cta-b {
-      background: var(--color-navy);
-      color: #fff;
+      background: #FAF8F3;
+      color: #1A1A1A;
+      border-top: 1px solid #E5E5E5;
       padding: 96px 24px;
       text-align: center;
     }
@@ -596,7 +599,7 @@
       font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--color-teal);
+      color: var(--color-teal-dark);
       font-weight: 700;
       margin-bottom: 16px;
     }
@@ -606,9 +609,10 @@
       letter-spacing: -0.03em;
       line-height: 1.15;
       margin: 0 0 16px;
+      color: #1A1A1A;
     }
     .cta-b p {
-      color: rgba(255,255,255,0.72);
+      color: #6B7280;
       font-size: 1rem;
       margin: 0 0 36px;
       line-height: 1.6;
@@ -622,7 +626,7 @@
     }
     .cta-b .reassurance {
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.45);
+      color: #6B7280;
     }
 
     /* Responsive B */
@@ -660,7 +664,7 @@
 <body>
   <!-- Conversion banner -->
   <div class="promo-bar">
-    Prüfbericht erhalten? <a href="/einmalige-leistungen/pruefbericht-check/">Kostenloser Check — jetzt anfragen</a>
+    Prüfbericht erhalten? <a href="/einzelleistungen/pruefbericht-check/">Kostenloser Check — jetzt anfragen</a>
   </div>
 
   <!-- Navigation -->
@@ -681,21 +685,21 @@
           <div class="nav-dropdown" role="menu">
             <div class="nav-dropdown-inner">
               <div class="nav-dropdown-col">
-                <p class="nav-dropdown-label">Einmalige Leistungen</p>
-                <a href="/einmalige-leistungen/pruefbericht-check/" class="nav-dropdown-item" role="menuitem">
+                <p class="nav-dropdown-label">Einzelleistungen</p>
+                <a href="/einzelleistungen/pruefbericht-check/" class="nav-dropdown-item" role="menuitem">
                   <strong>Prüfbericht-Check</strong>
                   <span>ab 149 €</span>
                 </a>
-                <a href="/einmalige-leistungen/angebotspruefung/" class="nav-dropdown-item" role="menuitem">
+                <a href="/einzelleistungen/angebotspruefung/" class="nav-dropdown-item" role="menuitem">
                   <strong>Angebotsprüfung</strong>
                   <span>ab 199 €</span>
                 </a>
-                <a href="/einmalige-leistungen/vertragscheck/" class="nav-dropdown-item" role="menuitem">
+                <a href="/einzelleistungen/vertragscheck/" class="nav-dropdown-item" role="menuitem">
                   <strong>Vertragscheck</strong>
                   <span>ab 249 €</span>
                 </a>
-                <a href="/einmalige-leistungen/" class="nav-dropdown-item nav-dropdown-more" role="menuitem">
-                  Alle einmaligen Leistungen →
+                <a href="/einzelleistungen/" class="nav-dropdown-item nav-dropdown-more" role="menuitem">
+                  Alle Einzelleistungen →
                 </a>
               </div>
               <div class="nav-dropdown-col">
@@ -739,7 +743,7 @@
       </button>
     </div>
     <ul class="mobile-nav-links" role="list">
-      <li><a href="/einmalige-leistungen/">Einmalige Leistungen</a></li>
+      <li><a href="/einzelleistungen/">Einzelleistungen</a></li>
       <li><a href="/laufende-betreuung/">Laufende Betreuung</a></li>
       <li><a href="/betreiberpflichten/">Betreiberpflichten</a></li>
       <li><a href="/wissen/">Wissen</a></li>
@@ -757,7 +761,7 @@
     <p class="sub">Bei 85 % unserer Erstprüfungen finden wir Einsparpotenzial. Die meisten Betreiber bezahlen mehr als nötig — und merken es erst, wenn wir nachschauen.</p>
     <div class="cta-cluster">
       <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-primary">Kostenloses Erstgespräch buchen</a>
-      <a href="/einmalige-leistungen/pruefbericht-check/" class="btn btn-secondary">Prüfbericht einreichen</a>
+      <a href="/einzelleistungen/pruefbericht-check/" class="btn btn-secondary">Prüfbericht einreichen</a>
     </div>
     <div class="trust-strip">
       <span>Über 8.000 Aufzüge betreut</span>
@@ -853,11 +857,11 @@
   <section class="services-b reveal" aria-labelledby="services-heading">
     <div class="section-header">
       <h2 id="services-heading">Was wir für Sie tun</h2>
-      <a href="/leistungen/">Alle Leistungen ansehen →</a>
+      <a href="/einzelleistungen/">Alle Leistungen ansehen →</a>
     </div>
     <div class="services-tabs">
       <div class="service-card-b einmalig">
-        <span class="svc-badge">Einmalige Leistungen</span>
+        <span class="svc-badge">Einzelleistungen</span>
         <h3>Sofortige Klarheit bei konkreten Fragen</h3>
         <p class="price-note">Ab 149 € pro Leistung — kein Abonnement, kein Vertrag</p>
         <ul>
@@ -868,7 +872,7 @@
           <li>Gefährdungsbeurteilung nach BetrSichV</li>
           <li>Wartungsvertrag-Ausschreibung bundesweit</li>
         </ul>
-        <a href="/einmalige-leistungen/" class="svc-link">Einmalige Leistungen ansehen →</a>
+        <a href="/einzelleistungen/" class="svc-link">Einzelleistungen ansehen →</a>
       </div>
       <div class="service-card-b laufend">
         <span class="svc-badge">Laufende Betreuung</span>
@@ -1019,7 +1023,7 @@
     <h2 id="faq-heading">Häufige Fragen</h2>
     <details class="faq-item">
       <summary>Was kostet ElevonIQ?</summary>
-      <p>Einmalige Leistungen beginnen bei 149 € (Prüfbericht-Check). Die laufende Betreuung startet bei 19 € pro Monat für die Betriebskontrolle. Alle Preise sind transparent — kein Kleingedrucktes, kein Mindestabnahme.</p>
+      <p>Einzelleistungen beginnen bei 149 € (Prüfbericht-Check). Die laufende Betreuung startet bei 19 € pro Monat für die Betriebskontrolle. Alle Preise sind transparent — kein Kleingedrucktes, kein Mindestabnahme.</p>
     </details>
     <details class="faq-item">
       <summary>Sind Sie herstellerunabhängig?</summary>
@@ -1027,7 +1031,7 @@
     </details>
     <details class="faq-item">
       <summary>Wie schnell kann ich starten?</summary>
-      <p>Einmalige Leistungen beginnen nach Auftragserteilung innerhalb von 48 Stunden. Das Erstgespräch für die laufende Betreuung findet innerhalb einer Woche statt — meist früher.</p>
+      <p>Einzelleistungen beginnen nach Auftragserteilung innerhalb von 48 Stunden. Das Erstgespräch für die laufende Betreuung findet innerhalb einer Woche statt — meist früher.</p>
     </details>
     <details class="faq-item">
       <summary>Wie viele Aufzüge brauche ich mindestens?</summary>
@@ -1046,8 +1050,8 @@
       <h2>Kostenlose Ersteinschätzung in 30 Minuten</h2>
       <p>Kein Verkaufsgespräch. Wir schauen uns Ihre Situation an und sagen Ihnen ehrlich, ob und wie wir helfen können.</p>
       <div class="cta-cluster">
-        <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-white-solid">Erstgespräch buchen</a>
-        <a href="/kontakt/" class="btn btn-white-outline">Nachricht schreiben</a>
+        <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-primary">Erstgespräch buchen</a>
+        <a href="/kontakt/" class="btn btn-secondary">Nachricht schreiben</a>
       </div>
       <p class="reassurance">Kostenlos &middot; Unverbindlich &middot; Kein Vertrieb</p>
     </div>
@@ -1071,12 +1075,12 @@
       <div class="footer-col">
         <h3>Leistungen</h3>
         <ul>
-          <li><a href="/einmalige-leistungen/pruefbericht-check/">Prüfbericht-Check</a></li>
-          <li><a href="/einmalige-leistungen/angebotspruefung/">Angebotsprüfung</a></li>
-          <li><a href="/einmalige-leistungen/vertragscheck/">Vertragscheck</a></li>
+          <li><a href="/einzelleistungen/pruefbericht-check/">Prüfbericht-Check</a></li>
+          <li><a href="/einzelleistungen/angebotspruefung/">Angebotsprüfung</a></li>
+          <li><a href="/einzelleistungen/vertragscheck/">Vertragscheck</a></li>
           <li><a href="/laufende-betreuung/elevator-hub/">ELEVATOR HUB</a></li>
           <li><a href="/laufende-betreuung/all-inclusive/">All-Inclusive</a></li>
-          <li><a href="/einmalige-leistungen/">Alle Leistungen</a></li>
+          <li><a href="/einzelleistungen/">Alle Leistungen</a></li>
         </ul>
       </div>
       <div class="footer-col">
