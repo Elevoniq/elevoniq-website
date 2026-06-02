@@ -592,5 +592,23 @@
 </script>
 <script src="../assets/js/nav.js" defer></script>
 <script src="../assets/js/cookie-consent.js" defer></script>
+<!-- GA4 — nur nach Analytics-Consent -->
+<script>
+(function() {
+  function loadGA4() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPSDHVCT33';
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RPSDHVCT33');
+  }
+  if (window.elevoniqConsent) {
+    window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+  }
+})();
+</script>
 </body>
 </html>

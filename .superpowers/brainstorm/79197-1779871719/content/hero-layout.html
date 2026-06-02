@@ -1,0 +1,152 @@
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .split { display: flex; gap: 24px; align-items: flex-start; }
+  .split > div { flex: 1; }
+  .option-wrap {
+    border: 2px solid transparent; border-radius: 12px; overflow: hidden;
+    cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .option-wrap.selected { border-color: #FF5B5C; box-shadow: 0 0 0 4px rgba(255,91,92,0.13); }
+  .option-label {
+    padding: 12px 18px; background: #fff; border-bottom: 1px solid #eee;
+    font-weight: 700; font-size: 14px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .tag { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .tag-rec { background: #FFF0F0; color: #E8474A; }
+  .tag-cur { background: #F4F7F6; color: #6B7280; }
+
+  /* shared hero styles */
+  .hero-box { background: #fff; padding: 32px 28px; font-family: 'Inter', sans-serif; }
+  .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #69B0AB; margin-bottom: 12px; }
+  .qbox { border-left: 3px solid #E8474A; background: rgba(232,71,74,0.03); padding: 10px 14px; font-style: italic; font-size: 13px; color: #444; margin-bottom: 16px; border-radius: 0 4px 4px 0; }
+  .h1 { font-size: 22px; font-weight: 800; line-height: 1.2; color: #1A1A1A; margin-bottom: 10px; }
+  .h1 span { color: #E8474A; }
+  .sub { font-size: 12px; color: #6B7280; line-height: 1.6; margin-bottom: 16px; }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .btn-p { background: #E8474A; color: #fff; padding: 9px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; }
+  .btn-g { border: 1.5px solid #E8474A; color: #E8474A; padding: 9px 16px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+  .pills { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill { font-size: 10px; color: #6B7280; background: #F4F7F6; padding: 3px 9px; border-radius: 20px; }
+
+  /* dashboard mockup */
+  .db { background: #1E2761; border-radius: 8px; overflow: hidden; font-family: 'Inter', sans-serif; }
+  .db-bar { background: #151D4F; padding: 8px 12px; display: flex; align-items: center; gap: 6px; }
+  .db-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .db-url { font-size: 10px; color: rgba(255,255,255,0.3); margin-left: 6px; font-family: monospace; }
+  .db-body { padding: 14px; }
+  .db-header { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+  .db-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+  .kpi { background: rgba(255,255,255,0.07); border-radius: 6px; padding: 8px; text-align: center; }
+  .kpi-num { font-size: 18px; font-weight: 800; color: #fff; }
+  .kpi-ok .kpi-num { color: #69B0AB; }
+  .kpi-warn .kpi-num { color: #F59E0B; }
+  .kpi-crit .kpi-num { color: #FF5B5C; }
+  .kpi-label { font-size: 9px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+  .db-row { display: grid; grid-template-columns: 1fr auto auto; gap: 8px; padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 10px; color: rgba(255,255,255,0.6); align-items: center; }
+  .db-row:last-child { border-bottom: none; }
+  .status-ok { color: #69B0AB; font-weight: 700; }
+  .status-warn { color: #F59E0B; font-weight: 700; }
+
+  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: #1A1A1A; }
+  .stat { text-align: center; padding: 14px 8px; border-right: 1px solid rgba(255,255,255,0.07); }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 17px; font-weight: 800; color: #FF5B5C; }
+  .stat-lbl { font-size: 9px; color: rgba(255,255,255,0.4); margin-top: 2px; line-height: 1.3; }
+</style>
+
+<h2>Hero-Layout für Richtung A</h2>
+<p class="subtitle">Selbe visuelle Sprache — zwei verschiedene Strukturen.</p>
+
+<div class="split">
+
+  <!-- Option 1: Two-column with dashboard -->
+  <div>
+    <div class="option-wrap" data-choice="1" onclick="toggleSelect(this)">
+      <div class="option-label">
+        1 — Zweispaltig mit Dashboard <span class="tag tag-cur">Aktueller Stand</span>
+      </div>
+      <div style="background:#fff;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+          <div class="hero-box" style="border-right:1px solid #eee;">
+            <div class="eyebrow">Die externe Aufzugsabteilung · Herstellerneutral</div>
+            <div class="qbox">"Darf ich meinen Wartungsvertrag einfach kündigen?"</div>
+            <div class="h1">Elevoniq <span>beantwortet das.</span><br>Technisch. Kaufmännisch. Unabhängig.</div>
+            <div class="sub">Prüfberichte verstehen. Kosten hinterfragen. Entscheidungen treffen.</div>
+            <div class="btns">
+              <span class="btn-p">Erstgespräch buchen</span>
+              <span class="btn-g">Leistungen ansehen</span>
+            </div>
+            <div class="pills">
+              <span class="pill">8.000+ Aufzüge</span>
+              <span class="pill">Herstellerneutral</span>
+              <span class="pill">DSGVO-konform</span>
+            </div>
+          </div>
+          <div class="hero-box" style="background:#F8F9FB;display:flex;align-items:center;padding:24px 20px;">
+            <div class="db" style="width:100%;">
+              <div class="db-bar">
+                <div class="db-dot" style="background:#FF5F57;"></div>
+                <div class="db-dot" style="background:#FEBC2E;"></div>
+                <div class="db-dot" style="background:#28C840;"></div>
+                <div class="db-url">ELEVATOR HUB · Portfolio Q2 2026</div>
+              </div>
+              <div class="db-body">
+                <div class="db-header">Portfolio-Übersicht</div>
+                <div class="db-kpis">
+                  <div class="kpi kpi-ok"><div class="kpi-num">44</div><div class="kpi-label">Aktuell</div></div>
+                  <div class="kpi kpi-warn"><div class="kpi-num">3</div><div class="kpi-label">Fällig</div></div>
+                  <div class="kpi kpi-crit"><div class="kpi-num">1</div><div class="kpi-label">Überfällig</div></div>
+                </div>
+                <div class="db-row"><span>Musterstr. 12, Berlin</span><span class="status-ok">OK</span><span>Sep 2026</span></div>
+                <div class="db-row"><span>Lindenweg 7, Hamburg</span><span class="status-warn">Fällig</span><span>Jul 2026</span></div>
+                <div class="db-row"><span>Parkallee 33, München</span><span class="status-ok">OK</span><span>Nov 2026</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-bar">
+          <div class="stat"><div class="stat-num">15</div><div class="stat-lbl">Jahre Erfahrung</div></div>
+          <div class="stat"><div class="stat-num">8.000</div><div class="stat-lbl">Aufzüge erfasst</div></div>
+          <div class="stat"><div class="stat-num">&gt;€1 Mio.</div><div class="stat-lbl">Eingespart</div></div>
+          <div class="stat"><div class="stat-num">~500</div><div class="stat-lbl">Datenpunkte</div></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#9CA3AF;margin-top:8px;padding:0 4px;">Dashboard zeigt den ELEVATOR HUB sofort — Produkt sichtbar ohne Scrollen.</p>
+  </div>
+
+  <!-- Option 2: Single column, focused -->
+  <div>
+    <div class="option-wrap" data-choice="2" onclick="toggleSelect(this)">
+      <div class="option-label">
+        2 — Einspaltig, fokussiert <span class="tag tag-rec">Empfehlung</span>
+      </div>
+      <div style="background:#fff;">
+        <div class="hero-box" style="max-width:100%;padding:40px 32px;">
+          <div class="eyebrow">Die externe Aufzugsabteilung · Herstellerneutral</div>
+          <div class="qbox" style="max-width:560px;">"Darf ich meinen Wartungsvertrag einfach kündigen?"</div>
+          <div class="h1" style="font-size:28px;max-width:540px;">Elevoniq <span>beantwortet das.</span><br>Technisch. Kaufmännisch. Unabhängig.</div>
+          <div class="sub" style="max-width:480px;font-size:13px;">Prüfberichte verstehen. Kosten hinterfragen. Entscheidungen treffen. Für jeden, der professionelle Unterstützung wünscht — genau dann, wenn Sie sie benötigen.</div>
+          <div class="btns">
+            <span class="btn-p">Kostenloses Erstgespräch buchen</span>
+            <span class="btn-g">Alle Leistungen ansehen</span>
+          </div>
+          <div class="pills">
+            <span class="pill">8.000+ Aufzüge analysiert</span>
+            <span class="pill">Herstellerneutral</span>
+            <span class="pill">DSGVO-konform, DE-Hosting</span>
+          </div>
+        </div>
+        <div class="stats-bar">
+          <div class="stat"><div class="stat-num">15</div><div class="stat-lbl">Jahre Erfahrung</div></div>
+          <div class="stat"><div class="stat-num">8.000</div><div class="stat-lbl">Aufzüge erfasst</div></div>
+          <div class="stat"><div class="stat-num">&gt;€1 Mio.</div><div class="stat-lbl">Eingespart</div></div>
+          <div class="stat"><div class="stat-num">~500</div><div class="stat-lbl">Datenpunkte</div></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:#9CA3AF;margin-top:8px;padding:0 4px;">Volle Aufmerksamkeit auf die Frage und den Headline. Dashboard erscheint tiefer auf der Seite beim ELEVATOR HUB-Abschnitt.</p>
+  </div>
+
+</div>

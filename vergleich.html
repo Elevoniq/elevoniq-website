@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vergleich: Lokal vs. GitHub Pages</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #1A1A1A; color: #fff; }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #111;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header h1 { font-size: 14px; font-weight: 600; }
+.nav-links { display: flex; gap: 8px; }
+.nav-links button {
+  padding: 6px 14px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+.nav-links button:hover { background: rgba(255,255,255,0.15); }
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: calc(100vh - 48px);
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #333;
+}
+.col:last-child { border-right: none; }
+.col-label {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #222;
+  border-bottom: 1px solid #333;
+}
+.col-label.new { color: #69B0AB; }
+.col-label.old { color: #FF5B5C; }
+iframe {
+  flex: 1;
+  border: none;
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>Vergleich — ElevonIQ Website</h1>
+  <div class="nav-links">
+    <button onclick="navigate('/')">Homepage</button>
+    <button onclick="navigate('/einzelleistungen/angebotspruefung/')">Angebotsprüfung</button>
+    <button onclick="navigate('/laufende-betreuung/elevator-hub/')">Elevator HUB</button>
+    <button onclick="navigate('/ueber-uns/')">Über uns</button>
+    <button onclick="navigate('/betreiberpflichten/')">Betreiberpflichten</button>
+  </div>
+</div>
+<div class="columns">
+  <div class="col">
+    <div class="col-label new">Neu (lokal)</div>
+    <iframe id="frame-new" src="http://localhost:8765/index-A.html"></iframe>
+  </div>
+  <div class="col">
+    <div class="col-label old">Alt (GitHub Pages)</div>
+    <iframe id="frame-old" src="https://elevoniq.github.io/elevoniq-website/"></iframe>
+  </div>
+</div>
+<script>
+function navigate(path) {
+  document.getElementById('frame-new').src = 'http://localhost:8765' + (path === '/' ? '/index-A.html' : path);
+  const ghBase = 'https://elevoniq.github.io/elevoniq-website';
+  document.getElementById('frame-old').src = ghBase + path;
+}
+</script>
+<!-- GA4 — nur nach Analytics-Consent -->
+<script>
+(function() {
+  function loadGA4() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPSDHVCT33';
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RPSDHVCT33');
+  }
+  if (window.elevoniqConsent) {
+    window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+  }
+})();
+</script>
+</body>
+</html>
