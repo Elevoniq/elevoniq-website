@@ -367,9 +367,12 @@
     /* Pricing cards */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 22px;
       margin-top: 36px;
+    }
+    @media (max-width: 1100px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
     }
     .pricing-card {
       border-radius: 18px;
@@ -894,7 +897,7 @@
       </div>
       <div class="pricing-card pricing-card-paid">
         <span class="pricing-badge pricing-badge-paid">Optional</span>
-        <div class="pricing-amount pricing-amount-paid">149 &euro;</div>
+        <div class="pricing-amount pricing-amount-paid">249 &euro; netto</div>
         <div class="pricing-vat-light">zzgl. MwSt. &middot; pro Gerät</div>
         <h3 style="margin-top:12px;">Angebot gegenprüfen</h3>
         <ul class="pricing-list">
@@ -902,6 +905,18 @@
           <li>Plausibilitätsprüfung Preis und Umfang</li>
           <li>Empfehlung: freigeben / nachverhandeln</li>
           <li>Ergebnis digital und als PDF</li>
+        </ul>
+      </div>
+      <div class="pricing-card pricing-card-paid">
+        <span class="pricing-badge pricing-badge-paid">Optional</span>
+        <div class="pricing-amount pricing-amount-paid">989 &euro; netto</div>
+        <div class="pricing-vat-light">zzgl. MwSt. &middot; Vor-Ort-Termin</div>
+        <h3 style="margin-top:12px;">Vor-Ort-Besuch</h3>
+        <ul class="pricing-list">
+          <li>Persönliche Inspektion durch Fachmann vor Ort</li>
+          <li>Ausbau des defekten Umrichters inbegriffen</li>
+          <li>Termin innerhalb von max. 5 Werktagen</li>
+          <li>Schriftliche Bewertung im Elevator HUB</li>
         </ul>
       </div>
     </div>
@@ -929,7 +944,8 @@
             <option value="" disabled selected>Bitte auswählen</option>
             <option value="check">Umrichter-Check — kostenlos</option>
             <option value="express">Express-Angebot anfordern — kostenlos</option>
-            <option value="pruefung">Angebot gegenprüfen — 149 € zzgl. MwSt.</option>
+            <option value="pruefung">Angebot gegenprüfen — 249 € netto zzgl. MwSt.</option>
+            <option value="vorort">Vor-Ort-Besuch — 989 € netto zzgl. MwSt.</option>
           </select>
         </div>
 
@@ -1016,7 +1032,7 @@
       </details>
       <details class="faq-item">
         <summary>Kann ich auch ein bestehendes oder überteuert wirkendes Angebot prüfen lassen?</summary>
-        <div class="faq-answer">Ja. Laden Sie Ihr vorhandenes Angebot hoch — wir gleichen Preis und Umfang gegen den Bedarf ab. Kosten: 149 € zzgl. MwSt. pro Gerät.</div>
+        <div class="faq-answer">Ja. Laden Sie Ihr vorhandenes Angebot hoch — wir gleichen Preis und Umfang gegen den Bedarf ab. Kosten: 249 € netto zzgl. MwSt. pro Gerät.</div>
       </details>
       <details class="faq-item">
         <summary>Muss mein Aufzugsunternehmen mitziehen?</summary>
