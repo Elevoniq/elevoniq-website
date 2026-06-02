@@ -935,17 +935,16 @@
       <h2 class="section-title" id="formular-heading">Jetzt Angebot anfragen</h2>
       <p style="font-size:15px;color:var(--color-gray);margin-bottom:2rem;">Schildern Sie kurz Ihren Fall. Wir melden uns schnell mit einer ersten Einschätzung.</p>
 
-      <!-- TODO: Backend-Integration ausstehend — action="#" Platzhalter, kein Server-Handler vorhanden. onsubmit="return false;" verhindert unerwartetes Page-Reload bis Endpunkt konfiguriert ist. -->
-      <form action="#" method="post" enctype="multipart/form-data" onsubmit="return false;" style="background:#fff;border-radius:8px;padding:40px;border:1px solid rgba(0,0,0,0.07);">
+      <form id="frequenzumrichter-form" action="#" method="post" enctype="multipart/form-data" style="background:#fff;border-radius:8px;padding:40px;border:1px solid rgba(0,0,0,0.07);">
 
         <div class="form-group">
           <label class="form-label" for="sf_service">Leistungsauswahl <span class="req">*</span></label>
           <select class="form-select" id="sf_service" name="sf_service" required>
-            <option value="" disabled selected>Bitte auswählen</option>
-            <option value="check">Umrichter-Check — kostenlos</option>
-            <option value="express">Express-Angebot anfordern — kostenlos</option>
-            <option value="pruefung">Angebot gegenprüfen — 249 € netto zzgl. MwSt.</option>
-            <option value="vorort">Vor-Ort-Besuch — 989 € netto zzgl. MwSt.</option>
+            <option value="">Bitte auswählen</option>
+            <option value="express-angebot">Express-Angebot anfordern — kostenlos</option>
+            <option value="umrichter-check">Umrichter-Check — kostenlos</option>
+            <option value="angebot-gegenpruefen">Angebot gegenprüfen — 249 € netto zzgl. MwSt.</option>
+            <option value="vor-ort-besuch">Vor-Ort-Besuch — 989 € netto zzgl. MwSt.</option>
           </select>
         </div>
 
@@ -1139,6 +1138,42 @@
     window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
   }
 })();
+</script>
+<script>
+document.getElementById('frequenzumrichter-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var formData = new FormData(this);
+  formData.set('queueType', 'other-documents');
+
+  var userInfo = {
+    name: ((formData.get('sf_vorname') || '') + ' ' + (formData.get('sf_nachname') || '')).trim(),
+    email: formData.get('sf_email') || '',
+    company: formData.get('sf_firma') || '',
+    leistung: formData.get('sf_service') || '',
+    typennummer: formData.get('sf_typennummer') || ''
+  };
+  formData.set('userInfo', JSON.stringify(userInfo));
+
+  var submitBtn = this.querySelector('button[type="submit"]');
+  var originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Wird gesendet...';
+  submitBtn.disabled = true;
+
+  try {
+    var response = await fetch('/api/upload', { method: 'POST', body: formData });
+    if (response.ok) {
+      window.location.href = '/danke/';
+    } else {
+      alert('Fehler beim Senden. Bitte versuchen Sie es erneut.');
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  } catch(err) {
+    alert('Verbindungsfehler. Bitte versuchen Sie es erneut.');
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
+});
 </script>
 </body>
 </html>
