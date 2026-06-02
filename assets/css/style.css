@@ -603,7 +603,7 @@ p { line-height: 1.7; }
 .trust-number-value {
   font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-weight: var(--font-weight-extrabold);
-  color: var(--color-coral-dark);
+  color: var(--color-teal);
   letter-spacing: -0.03em;
   line-height: 1;
 }
