@@ -4,3 +4,5 @@ Thumbs.db
 *.bak
 .superpowers/
 vergleich.html
+.env.local
+.env

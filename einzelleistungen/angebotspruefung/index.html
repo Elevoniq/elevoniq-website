@@ -884,24 +884,18 @@ document.getElementById('angebotspruefung-form').addEventListener('submit',funct
   var success=document.getElementById('ap-success');
   var error=document.getElementById('ap-error');
   btn.disabled=true;
-  btn.textContent='Wird gesendet…';
+  btn.textContent='Wird hochgeladen…';
   success.style.display='none';
   error.style.display='none';
   var data=new FormData(form);
-  fetch('https://lyft-form-intake.azurewebsites.net/api/FormIntake',{method:'POST',body:data})
+  data.set('queueType','quotation');
+  fetch('/api/upload',{method:'POST',body:data})
     .then(function(r){
       if(!r.ok)throw new Error('server');
-      success.style.display='block';
-      form.reset();
-      var widerruf=document.getElementById('widerruf-label');
-      if(widerruf)widerruf.style.display='none';
-      var small=document.querySelector('#ap-file-input').closest('label').querySelector('small');
-      if(small)small.textContent='PDF, Word oder Foto · max. 10 MB';
+      window.location.href='/danke/';
     })
     .catch(function(){
       error.style.display='block';
-    })
-    .finally(function(){
       btn.disabled=false;
       btn.textContent='Kostenfreie Ersteinschätzung anfordern';
     });

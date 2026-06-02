@@ -940,22 +940,18 @@ document.getElementById('pruefbericht-form').addEventListener('submit',function(
   var success=document.getElementById('pb-success');
   var error=document.getElementById('pb-error');
   btn.disabled=true;
-  btn.textContent='Wird gesendet…';
+  btn.textContent='Wird hochgeladen…';
   success.style.display='none';
   error.style.display='none';
   var data=new FormData(form);
-  fetch('https://lyft-form-intake.azurewebsites.net/api/FormIntake',{method:'POST',body:data})
+  data.set('queueType','assessment-report');
+  fetch('/api/upload',{method:'POST',body:data})
     .then(function(r){
       if(!r.ok)throw new Error('server');
-      success.style.display='block';
-      form.reset();
-      var small=document.querySelector('#pb-file-input').closest('label').querySelector('small');
-      if(small)small.textContent='PDF oder Foto · Einzelbericht oder Sammelupload · max. 20 MB';
+      window.location.href='/danke/';
     })
     .catch(function(){
       error.style.display='block';
-    })
-    .finally(function(){
       btn.disabled=false;
       btn.textContent='Kostenlose Ersteinschätzung anfordern';
     });
