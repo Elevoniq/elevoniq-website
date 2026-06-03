@@ -701,6 +701,7 @@ p { line-height: 1.7; }
 .problem-card h4 {
   font-size: 15px;
   margin-bottom: 0.4rem;
+  color: var(--color-navy);
 }
 .problem-card p {
   font-size: 13px;
