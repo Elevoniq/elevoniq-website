@@ -1,7 +1,7 @@
-<!-- ElevonIQ – Web-Entwicklung | index.html | 2026-05-28 | Design Direction A — Einspaltig -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <!-- ElevonIQ – Web-Entwicklung | 2026-05-26 | Variante A: Institutionell & Autorität -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aufzugsverwaltung &amp; Aufzugsberatung — herstellerneutral | ElevonIQ</title>
@@ -47,27 +47,189 @@
     ]
   }
   </script>
+  <!-- Google Fonts: Work Sans — TODO: self-host for production -->
+  
+  
   <link rel="stylesheet" href="assets/fonts/work-sans.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Page-specific overrides -->
+  <style>
+    /* 5-stat trust bar */
+    .trust-numbers-grid { grid-template-columns: repeat(5, 1fr); }
+    @media (max-width: 900px) { .trust-numbers-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px) { .trust-numbers-grid { grid-template-columns: repeat(2, 1fr); } }
+    /* 4-col problem matrix */
+    @media (max-width: 900px) { .problem-matrix { grid-template-columns: repeat(2, 1fr) !important; } }
+    @media (max-width: 600px) { .problem-matrix { grid-template-columns: 1fr !important; } }
+
+    /* ── Hero rotating question ──────────────────────────────── */
+    .hero-question-box {
+      position: relative;
+      border-left: 3px solid var(--color-coral-dark);
+      padding: 18px 24px;
+      background: rgba(232, 71, 74, 0.04);
+      border-radius: 0 6px 6px 0;
+      max-width: 600px;
+      margin-bottom: 28px;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+    }
+    .hero-question-text {
+      font-size: clamp(16px, 2vw, 21px);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--color-dark);
+      line-height: 1.45;
+      letter-spacing: -0.2px;
+      margin: 0;
+    }
+    .hero-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 0.9em;
+      background: var(--color-coral-dark);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: hero-blink 0.85s step-end infinite;
+    }
+    @keyframes hero-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+  </style>
+  <!-- Dashboard Mockup Styles -->
+  <style>
+    .dashboard-frame {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px -12px rgba(30,39,97,0.22), 0 4px 16px rgba(0,0,0,0.06);
+      transform: perspective(1200px) rotateY(-3deg) rotateX(1.5deg);
+      transition: transform 0.5s ease;
+    }
+    .dashboard-frame:hover {
+      transform: perspective(1200px) rotateY(-1deg) rotateX(0.5deg);
+    }
+    .db-chrome {
+      background: #f2f2f2;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .db-dots { display: flex; gap: 5px; }
+    .db-dots span {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #d0d0d0;
+    }
+    .db-dots span:nth-child(1) { background: #ff5f57; }
+    .db-dots span:nth-child(2) { background: #febc2e; }
+    .db-dots span:nth-child(3) { background: #28c840; }
+    .db-url {
+      flex: 1;
+      background: #e8e8e8;
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-size: 11px;
+      color: #777;
+      font-family: monospace;
+    }
+    .db-body { padding: 16px; background: #fafbfc; }
+    .db-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .db-topbar-brand {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #1E2761;
+    }
+    .db-topbar-date {
+      font-size: 11px;
+      color: #999;
+    }
+    .db-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .db-kpi {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .db-kpi-num {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .db-kpi-label {
+      font-size: 10px;
+      color: #888;
+      margin-top: 3px;
+    }
+    .db-kpi.ok   .db-kpi-num { color: #1D8348; }
+    .db-kpi.warn .db-kpi-num { color: #C8873A; }
+    .db-kpi.crit .db-kpi-num { color: #E8474A; }
+    .db-table { background: #fff; border: 1px solid rgba(0,0,0,0.07); border-radius: 8px; overflow: hidden; }
+    .db-table-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4px;
+      padding: 7px 12px;
+      font-size: 11px;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      align-items: center;
+    }
+    .db-table-row:last-child { border-bottom: none; }
+    .db-table-row.head {
+      background: #f5f6f8;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    .db-status {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .db-status.ok   { background: rgba(29,131,72,0.1); color: #1D8348; }
+    .db-status.warn { background: rgba(200,135,58,0.12); color: #C8873A; }
+    .db-status.crit { background: rgba(232,71,74,0.1); color: #E8474A; }
+  </style>
 </head>
 <body>
 
 <!-- Mobile Nav Overlay -->
 <div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
   <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">✕</button>
-  <a href="/" class="nav-logo mobile-nav-logo">
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;">
     <img src="assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager">
   </a>
   <span class="mobile-nav-section-label">Leistungen</span>
-  <span class="mobile-nav-sublabel">Einzelleistungen</span>
+  <span class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Einzelleistungen</span>
   <a href="/einzelleistungen/" class="mobile-nav-link">Alle Einzelleistungen</a>
-  <a href="/einzelleistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small class="mobile-nav-badge">kostenlos</small></a>
+  <a href="/einzelleistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
   <a href="/einzelleistungen/angebotspruefung/" class="mobile-nav-link">Angebotsprüfung</a>
   <a href="/einzelleistungen/vertragscheck/" class="mobile-nav-link">Vertragscheck</a>
   <a href="/einzelleistungen/zustandsbericht/" class="mobile-nav-link">Zustandsbericht</a>
   <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="mobile-nav-link">Wartungsvertrag ausschreiben</a>
   <a href="/einzelleistungen/modernisierung/" class="mobile-nav-link">Modernisierung begleiten</a>
-  <span class="mobile-nav-sublabel">Laufende Betreuung</span>
+  <span class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Laufende Betreuung</span>
   <a href="/laufende-betreuung/" class="mobile-nav-link">Alle Laufenden Leistungen</a>
   <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">All-inclusive-Paket</a>
   <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link">ELEVATOR HUB</a>
@@ -157,7 +319,7 @@
       <a href="/ueber-uns/" role="listitem">Über uns</a>
     </div>
     <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
-       target="_blank" rel="noopener" class="btn-primary nav-cta-hidden" id="nav-cta-desktop">
+       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
       Erstgespräch buchen
     </a>
     <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
@@ -170,59 +332,194 @@
 
 <!-- ── HERO ───────────────────────────────────────────────────── -->
 <section class="hero-section" aria-label="Intro">
-  <div class="container hero-single">
-    <span class="hero-eyebrow">DIE EXTERNE AUFZUGSABTEILUNG · HERSTELLERNEUTRAL</span>
-    <div class="hero-question-box">
-      <p class="hero-question-text">"<span id="heroQuestionText">Zahle ich für meine Aufzugs-Wartung eigentlich zu viel?</span><span class="hero-cursor"></span>"</p>
+  <div class="container hero-grid">
+    <!-- Text Column -->
+    <div class="hero-text">
+      <span class="hero-eyebrow">DIE EXTERNE AUFZUGSABTEILUNG · HERSTELLERNEUTRAL</span>
+      <div class="hero-question-box">
+        <p class="hero-question-text">"<span id="heroQuestionText">Zahle ich für meine Aufzugs-Wartung eigentlich zu viel?</span><span class="hero-cursor"></span>"</p>
+      </div>
+      <h1 class="hero-headline">
+        Die richtige Entscheidung treffen,<br>
+        weil Sie die <span class="accent">Fakten kennen.</span>
+      </h1>
+      <p class="hero-subline">
+        Prüfberichte verstehen. Kosten hinterfragen. Entscheidungen treffen. Für jeden, der professionelle Unterstützung und technische Expertise wünscht — genau dann, wenn Sie sie benötigen.
+      </p>
+      <div class="hero-cta-row">
+        <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+           target="_blank" rel="noopener" class="btn-primary">
+          Kostenloses Erstgespräch buchen
+        </a>
+        <a href="/laufende-betreuung/" class="btn-secondary">
+          Leistungen ansehen
+        </a>
+      </div>
+      <div class="hero-trust-row">
+        <span class="trust-badge">8.000+ Aufzüge analysiert</span>
+        <span class="trust-badge">Herstellerneutral</span>
+        <span class="trust-badge">DSGVO-konform, DE-Hosting</span>
+        <span class="trust-badge">Einschätzung in 48 Stunden — oder keine Kosten für diesen Auftrag</span>
+      </div>
     </div>
-    <h1 class="hero-headline">
-      Elevoniq <span class="accent">beantwortet das.</span><br>Technisch. Kaufmännisch. Unabhängig.
-    </h1>
-    <p class="hero-subline">
-      Prüfberichte verstehen. Kosten hinterfragen. Entscheidungen treffen. Für jeden, der professionelle Unterstützung und technische Expertise wünscht — genau dann, wenn Sie sie benötigen.
-    </p>
-    <div class="hero-cta-row">
-      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
-         target="_blank" rel="noopener" class="btn-primary">
-        Kostenloses Erstgespräch buchen
-      </a>
-      <a href="/laufende-betreuung/" class="btn-secondary">
-        Leistungen ansehen
-      </a>
-    </div>
-    <div class="hero-trust-row">
-      <span class="trust-badge">8.000+ Aufzüge analysiert</span>
-      <span class="trust-badge">Herstellerneutral</span>
-      <span class="trust-badge">DSGVO-konform, DE-Hosting</span>
+    <!-- Dashboard Mockup -->
+    <div aria-hidden="true">
+      <div class="dashboard-frame">
+        <div class="db-chrome">
+          <div class="db-dots"><span></span><span></span><span></span></div>
+          <div class="db-url">customer.elevoniq.de/hub</div>
+        </div>
+        <div class="db-body">
+          <div class="db-topbar">
+            <span class="db-topbar-brand">ELEVATOR HUB</span>
+            <span class="db-topbar-date">Mai 2026</span>
+          </div>
+          <div class="db-kpi-row">
+            <div class="db-kpi ok">
+              <div class="db-kpi-num">48</div>
+              <div class="db-kpi-label">Anlagen aktiv</div>
+            </div>
+            <div class="db-kpi warn">
+              <div class="db-kpi-num">3</div>
+              <div class="db-kpi-label">Prüfungen fällig</div>
+            </div>
+            <div class="db-kpi crit">
+              <div class="db-kpi-num">1</div>
+              <div class="db-kpi-label">Mängel offen</div>
+            </div>
+          </div>
+          <div class="db-table">
+            <div class="db-table-row head">
+              <span>Adresse</span><span>Status</span><span>Nächste Prüfung</span>
+            </div>
+            <div class="db-table-row">
+              <span>Musterstr. 12, Berlin</span>
+              <span><span class="db-status ok">OK</span></span>
+              <span>15.09.2026</span>
+            </div>
+            <div class="db-table-row">
+              <span>Lindenweg 7, Hamburg</span>
+              <span><span class="db-status warn">Fällig</span></span>
+              <span>01.07.2026</span>
+            </div>
+            <div class="db-table-row">
+              <span>Parkalle 33, München</span>
+              <span><span class="db-status ok">OK</span></span>
+              <span>22.11.2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ── TRUST NUMBERS ──────────────────────────────────────────── -->
 <section class="trust-numbers" aria-label="Kennzahlen">
-  <div class="container trust-numbers-grid trust-numbers-grid--5">
-    <div>
-      <div class="trust-number-value">15</div>
-      <div class="trust-number-label">Jahre Erfahrung in der Aufzugsdigitalisierung</div>
-    </div>
-    <div>
-      <div class="trust-number-value">40</div>
-      <div class="trust-number-label">Jahre Branchenerfahrung unserer Experten</div>
-    </div>
-    <div>
-      <div class="trust-number-value">8.000</div>
-      <div class="trust-number-label">Aufzüge digital erfasst</div>
-    </div>
-    <div>
-      <div class="trust-number-value">&gt; € 1 Mio.</div>
-      <div class="trust-number-label">Für unsere Kunden eingespart</div>
-    </div>
-    <div>
-      <div class="trust-number-value">~500</div>
-      <div class="trust-number-label">Datenpunkte pro Aufzug</div>
+  <div class="container">
+    <div class="trust-numbers-grid" style="grid-template-columns: repeat(4, 1fr);">
+
+      <div class="reveal">
+        <div class="trust-number-value">100.000+</div>
+        <p class="trust-number-label">
+          Prüfberichte &amp; Angebote ausgewertet —<br>
+          damit Sie keine versteckten Kosten übersehen.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <div class="trust-number-value">8.000+</div>
+        <p class="trust-number-label">
+          Gefährdungsbeurteilungen erstellt —<br>
+          für sichere Betreiberverantwortung.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <div class="trust-number-value">40 Jahre</div>
+        <p class="trust-number-label">
+          Branchenerfahrung im Team —<br>
+          keine Überraschungen, die wir nicht kennen.
+        </p>
+      </div>
+
+      <div class="reveal">
+        <div class="trust-number-label" style="font-size:17px;font-weight:700;color:var(--color-white);margin-bottom:6px;">Höchste Referenzen</div>
+        <p class="trust-number-label">
+          Millennium Tower Wien<br>
+          Main Tower Frankfurt —<br>
+          erfasst und dokumentiert.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
+
+<!-- ─── VERGLEICH: HEUTE vs. MIT ELEVONIQ ────────────────────── -->
+<section class="section section-subtle">
+  <div class="container">
+
+    <div class="section-header centered">
+      <span class="section-eyebrow">Der Unterschied im Alltag</span>
+      <h2 class="section-title">So läuft es heute — so läuft es mit ElevonIQ</h2>
+      <p class="section-lead">Konkret. Ohne Versprechen, die sich nicht messen lassen.</p>
+    </div>
+
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-family:'Work Sans',sans-serif;font-size:15px;background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+        <thead>
+          <tr style="border-bottom:2px solid var(--color-dark);">
+            <th style="text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-dark);width:30%;">Thema</th>
+            <th style="text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Heute — ohne ElevonIQ</th>
+            <th style="text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-teal-dark);">Mit ElevonIQ</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr style="border-bottom:1px solid #F0F0F0;">
+            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Prüfbericht-Nachverfolgung</td>
+            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Berichte kommen per Post oder E-Mail. Ablage manuell. Mängel werden erst beim nächsten Termin wieder sichtbar.</td>
+            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Jeder Bericht wird digital erfasst, Mängel sofort klassifiziert, Frist automatisch gesetzt. Nichts geht unter.</td>
+          </tr>
+
+          <tr style="border-bottom:1px solid #F0F0F0;background:var(--color-bg-subtle);">
+            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Kostentransparenz</td>
+            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Angebote vom Aufzugsunternehmen werden selten hinterfragt. Marktpreise sind schwer zu vergleichen.</td>
+            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Jedes Angebot wird gegen Marktdaten aus 100.000+ analysierten Fällen geprüft. Überhöhte Preise werden sofort erkannt.</td>
+          </tr>
+
+          <tr style="border-bottom:1px solid #F0F0F0;">
+            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Fristen-Management</td>
+            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Prüffristen (ZÜS, TÜV), Vertragsfristen, Laufzeiten und Aufzugswärtertermine werden manuell gepflegt — oder vergessen. Mahnungen kommen meist zu spät.</td>
+            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Alle Fristen im Überblick: Prüftermine, Vertragsläufe, Aufzugswärtertermine. Sie werden rechtzeitig informiert — nicht erst wenn die Frist abgelaufen ist.</td>
+          </tr>
+
+          <tr style="border-bottom:1px solid #F0F0F0;background:var(--color-bg-subtle);">
+            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Reaktionszeit bei Störungen</td>
+            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Stillstand gemeldet. Rückfrage beim Techniker. Warten auf Rückmeldung. Mieter beschweren sich.</td>
+            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Störung gemeldet, ElevonIQ koordiniert direkt. Herstellerneutrale Einschätzung — Vertragskonditionen werden geprüft.</td>
+          </tr>
+
+          <tr style="border-bottom:1px solid #F0F0F0;">
+            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Dokumentation für WEG und Eigentümer</td>
+            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Aufwändige Aufbereitung vor jeder Versammlung. Unterlagen aus verschiedenen Quellen zusammensuchen.</td>
+            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Vollständige Aufzugsakte jederzeit abrufbar. Berichte, Kosten und Fristen an einem Ort.</td>
+          </tr>
+
+          <tr>
+            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Anbieterneutralität</td>
+            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Empfehlung kommt meist vom bisherigen Aufzugsunternehmen — mit eigenem Interesse an der Auftragsvergabe.</td>
+            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">ElevonIQ verkauft keine Reparaturen, keine Wartungsverträge. Die Empfehlung ist immer im Interesse des Eigentümers.</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+<!-- ─── END VERGLEICH ────────────────────────────────────────── -->
 
 <!-- ── PROBLEM MATRIX ─────────────────────────────────────────── -->
 <section class="section" aria-labelledby="problem-heading">
@@ -232,53 +529,53 @@
       <h2 class="section-title" id="problem-heading">Was beschäftigt Sie gerade?</h2>
       <p class="section-lead">Wählen Sie Ihre Situation — wir zeigen Ihnen den direkten Weg zur Lösung.</p>
     </div>
-    <div class="problem-matrix problem-matrix--4col">
+    <div class="problem-matrix" style="grid-template-columns:repeat(4,1fr);">
       <a href="/einzelleistungen/pruefbericht-check/" class="card card-link problem-card">
         <h4>TÜV-Prüfbericht mit Mängeln erhalten?</h4>
         <p>Wir analysieren kostenlos, was wirklich dringend ist und was warten kann. Ergebnis in 48 Stunden.</p>
-        <span class="problem-card-cta">Kostenloser Prüfbericht-Check →</span>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Kostenloser Prüfbericht-Check →</span>
       </a>
       <a href="/einzelleistungen/angebotspruefung/" class="card card-link problem-card">
         <h4>Wartungsvertrag zu teuer?</h4>
         <p>Wir prüfen ob der Preis marktgerecht ist und verhandeln für Sie. Sie zahlen nur bei nachgewiesener Ersparnis.</p>
-        <span class="problem-card-cta">Angebotsprüfung starten →</span>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Angebotsprüfung starten →</span>
       </a>
       <a href="/betreiberpflichten/" class="card card-link problem-card">
         <h4>Betreiberpflichten unklar?</h4>
         <p>BetrSichV, TRBS, ZÜS-Fristen: Wir verschaffen Ihnen Klarheit und übernehmen die laufende Überwachung.</p>
-        <span class="problem-card-cta">Betreiberpflichten verstehen →</span>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Betreiberpflichten verstehen →</span>
       </a>
       <a href="/laufende-betreuung/" class="card card-link problem-card">
         <h4>Gesamtpaket für Ihr Portfolio gesucht?</h4>
         <p>Laufende Betreuung ab 69 €/Aufzug/Monat. Vollständig umlagefähig nach §2 BetrKV.</p>
-        <span class="problem-card-cta">Laufende Betreuung entdecken →</span>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Laufende Betreuung entdecken →</span>
       </a>
       <a href="/einzelleistungen/zustandsbericht/" class="card card-link problem-card">
         <h4>Gibt es noch Ersatzteile? Die Wartungsfirma sagt "nein"!</h4>
         <p>Stimmt das wirklich? Viele Aufzüge sind älter als 30 Jahre. Fällt die Anlage aus, wird es teuer und langwierig. Wir prüfen den Versorgungsstatus Ihrer Anlagen — und finden Alternativen und auch Ersatzteile.</p>
-        <span class="problem-card-cta">Zustandsbericht anfragen →</span>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Zustandsbericht anfragen →</span>
       </a>
       <a href="/betreiberpflichten/" class="card card-link problem-card">
         <h4>Abschaltung 2G — bin ich betroffen?</h4>
         <p>Ab 2028 schalten große Netzbetreiber das 2G-Netz ab. Ältere Notrufanlagen in Aufzügen funken dann ins Leere — kein Alarm, kein Notfall-Kontakt. Drei Punkte zu prüfen: Notrufgerät, Gateway und SIM-Karte jeweils VoLTE-fähig? Wir helfen sofort.</p>
-        <span class="problem-card-cta">Betreiberpflichten prüfen →</span>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Betreiberpflichten prüfen →</span>
       </a>
       <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="card card-link problem-card">
         <h4>Cybersecurity &amp; TRBS 1115-1 — muss ich handeln?</h4>
         <p>Seit 2023 gilt die TRBS 1115-1: Vernetzte Aufzüge unterliegen verbindlichen Cybersecurity-Anforderungen. Als Betreiber tragen Sie die Verantwortung. Wir klären, ob und wo Sie konkret handeln müssen.</p>
-        <span class="problem-card-cta">Gefährdungsbeurteilung →</span>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Gefährdungsbeurteilung →</span>
       </a>
       <a href="/laufende-betreuung/betriebskontrolle/" class="card card-link problem-card">
         <h4>Aufzugswärter — handeln wir gesetzeskonform?</h4>
-        <p>Die wöchentliche Betriebskontrolle durch eine befähigte Person ist gesetzlich vorgeschrieben. Aber wer darf das? Was muss dokumentiert werden? Wir prüfen Ihre aktuelle Praxis und schließen Lücken, bevor es eine Behörde tut.</p>
-        <span class="problem-card-cta">Betriebskontrolle ansehen →</span>
+        <p style="color:var(--color-gray);">Die wöchentliche Betriebskontrolle durch eine befähigte Person ist gesetzlich vorgeschrieben. Aber wer darf das? Was muss dokumentiert werden? Wir prüfen Ihre aktuelle Praxis und schließen Lücken, bevor es eine Behörde tut.</p>
+        <span style="font-size:13px;font-weight:700;color:var(--color-coral-dark);">Betriebskontrolle ansehen →</span>
       </a>
     </div>
   </div>
 </section>
 
 <!-- ── LEISTUNGSÜBERSICHT ──────────────────────────────────────── -->
-<section class="section section-subtle" aria-labelledby="leistungen-heading">
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="leistungen-heading">
   <div class="container">
     <div class="section-header centered">
       <span class="section-eyebrow">Das Angebot</span>
@@ -287,11 +584,11 @@
     </div>
     <div class="grid-2">
       <!-- Einzelleistungen -->
-      <div class="card card--coral-top">
-        <span class="badge badge-coral badge--mb">Einzelleistungen</span>
-        <h3 class="card-heading">Genau das, was Sie jetzt brauchen.</h3>
-        <p class="card-description">Ohne Vertragsbindung. Ohne Laufzeit. Beauftragen Sie einen Service und fertig.</p>
-        <ul class="feature-list feature-list--mb">
+      <div class="card" style="border-top:3px solid var(--color-coral-dark);">
+        <span class="badge badge-coral" style="margin-bottom:1.25rem;">Einzelleistungen</span>
+        <h3 style="margin-bottom:0.75rem;">Genau das, was Sie jetzt brauchen.</h3>
+        <p style="font-size:14px;color:var(--color-gray);margin-bottom:1.5rem;">Ohne Vertragsbindung. Ohne Laufzeit. Beauftragen Sie einen Service und fertig.</p>
+        <ul class="feature-list" style="margin-bottom:1.75rem;">
           <li class="feature-item">
             <span class="feature-check">✓</span>
             <span class="feature-item-text"><strong>Prüfbericht-Check</strong> Kostenlos, Ergebnis in 48 h</span>
@@ -324,11 +621,11 @@
         <a href="/einzelleistungen/" class="btn-secondary">Alle Einzelleistungen</a>
       </div>
       <!-- Laufende Betreuung -->
-      <div class="card card--teal-top">
-        <span class="badge badge-teal badge--mb">Laufende Betreuung</span>
-        <h3 class="card-heading">Ihre externe Aufzugsabteilung.</h3>
-        <p class="card-description">Ab 69 €/Aufzug/Monat. Monatlich kündbar. Vollständig umlagefähig nach §2 BetrKV.</p>
-        <ul class="feature-list feature-list--mb">
+      <div class="card" style="border-top:3px solid var(--color-teal);">
+        <span class="badge badge-teal" style="margin-bottom:1.25rem;">Laufende Betreuung</span>
+        <h3 style="margin-bottom:0.75rem;">Ihre externe Aufzugsabteilung.</h3>
+        <p style="font-size:14px;color:var(--color-gray);margin-bottom:1.5rem;">Ab 69 €/Aufzug/Monat. Monatlich kündbar. Vollständig umlagefähig nach §2 BetrKV.</p>
+        <ul class="feature-list" style="margin-bottom:1.75rem;">
           <li class="feature-item">
             <span class="feature-check">✓</span>
             <span class="feature-item-text"><strong>ELEVATOR HUB</strong> Digitales Cockpit für Ihr Portfolio</span>
@@ -361,86 +658,86 @@
 </section>
 
 <!-- ── KOSTENTABELLE ──────────────────────────────────────────── -->
-<section class="section section-subtle" aria-labelledby="kostentabelle-heading">
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="kostentabelle-heading">
   <div class="container">
     <div class="section-header centered">
       <span class="section-eyebrow">Beispielrechnung</span>
       <h2 class="section-title" id="kostentabelle-heading">Was kostet Sie der Status quo?</h2>
       <p class="section-lead">Verwaltung mit 8 Aufzügen — konservativ gerechnet, reale Hebel.</p>
     </div>
-    <div class="kostentabelle-wrap">
-      <table class="kostentabelle">
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-family:'Work Sans',sans-serif;font-size:15px;background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
         <thead>
-          <tr>
-            <th>Beispielposten<span>Verwaltung mit 8 Aufzügen</span></th>
-            <th class="col-elevoniq">Bsp. ElevonIQ<span>Preis</span></th>
-            <th class="col-istkost">Ist-Kosten<span>beim Kunden</span></th>
-            <th class="col-hebel">Hebel mit ElevonIQ</th>
+          <tr style="border-bottom:2px solid var(--color-dark);">
+            <th style="text-align:left;padding:18px 24px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-dark);width:36%;">Beispielposten<br><span style="font-weight:400;color:var(--color-gray);">Verwaltung mit 8 Aufzügen</span></th>
+            <th style="text-align:right;padding:18px 16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-teal-dark);width:20%;">Bsp. ElevonIQ<br><span style="font-weight:400;color:var(--color-gray);">Preis</span></th>
+            <th style="text-align:right;padding:18px 16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);width:20%;">Ist-Kosten<br><span style="font-weight:400;">beim Kunden</span></th>
+            <th style="text-align:right;padding:18px 24px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);width:24%;">Hebel mit ElevonIQ</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div class="cell-main">Wartungsvertrag (3 Aufzüge)</div>
-              <div class="cell-sub">nach Marktvergleich</div>
+          <tr style="border-bottom:1px solid #F0F0F0;">
+            <td style="padding:20px 24px;">
+              <div style="font-weight:700;color:var(--color-dark);">Wartungsvertrag (3 Aufzüge)</div>
+              <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">nach Marktvergleich</div>
             </td>
-            <td><span class="val-elevoniq">3.870 €/a</span></td>
-            <td><span class="val-ist">4.920 €/a</span></td>
-            <td><span class="val-hebel">–1.050 €/a</span></td>
+            <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">3.870 €/a</td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">4.920 €/a</td>
+            <td style="padding:20px 24px;text-align:right;font-weight:700;color:var(--color-savings);">–1.050 €/a</td>
           </tr>
-          <tr>
-            <td>
-              <div class="cell-main">Modernisierung Steuerung</div>
-              <div class="cell-sub">nach Ausschreibung</div>
+          <tr style="border-bottom:1px solid #F0F0F0;background:var(--color-bg-subtle);">
+            <td style="padding:20px 24px;">
+              <div style="font-weight:700;color:var(--color-dark);">Modernisierung Steuerung</div>
+              <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">nach Ausschreibung</div>
             </td>
-            <td><span class="val-elevoniq">42.000 €</span></td>
-            <td><span class="val-ist">63.000 €</span></td>
-            <td><span class="val-hebel">–21.000 €</span></td>
+            <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">42.000 €</td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">63.000 €</td>
+            <td style="padding:20px 24px;text-align:right;font-weight:700;color:var(--color-savings);">–21.000 €</td>
           </tr>
-          <tr>
-            <td>
-              <div class="cell-main">Frequenzumrichter defekt</div>
-              <div class="cell-sub">Aufzug steht · Ersatzteilbeschaffung</div>
+          <tr style="border-bottom:1px solid #F0F0F0;">
+            <td style="padding:20px 24px;">
+              <div style="font-weight:700;color:var(--color-dark);">Frequenzumrichter defekt</div>
+              <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">Aufzug steht · Ersatzteilbeschaffung</div>
             </td>
-            <td><span class="val-elevoniq">9.800 €<span class="val-sub">7 Tage</span></span></td>
-            <td><span class="val-ist">13.750 €<span class="val-sub">21 Tage</span></span></td>
-            <td><span class="val-hebel">–3.950 €<span class="val-sub">–14 Tage</span></span></td>
+            <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);line-height:1.6;">9.800 €<br><span style="font-size:12px;font-weight:400;">7 Tage</span></td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);line-height:1.6;">13.750 €<br><span style="font-size:12px;">21 Tage</span></td>
+            <td style="padding:20px 24px;text-align:right;font-weight:700;color:var(--color-savings);line-height:1.6;">–3.950 €<br><span style="font-size:12px;">–14 Tage</span></td>
           </tr>
-          <tr>
-            <td>
-              <div class="cell-main">Notruf 2G-Umrüstung</div>
-              <div class="cell-sub">gemeinsam ausgeschrieben</div>
+          <tr style="border-bottom:1px solid #F0F0F0;background:var(--color-bg-subtle);">
+            <td style="padding:20px 24px;">
+              <div style="font-weight:700;color:var(--color-dark);">Notruf 2G-Umrüstung</div>
+              <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">gemeinsam ausgeschrieben</div>
             </td>
-            <td><span class="val-elevoniq">1.890 €</span></td>
-            <td><span class="val-ist">2.640 €</span></td>
-            <td><span class="val-hebel">–750 €</span></td>
+            <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">1.890 €</td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">2.640 €</td>
+            <td style="padding:20px 24px;text-align:right;font-weight:700;color:var(--color-savings);">–750 €</td>
           </tr>
-          <tr>
-            <td>
-              <div class="cell-main">Smart Flap<sup>&reg;</sup> (Heizenergie)</div>
-              <div class="cell-sub">pro Anlage</div>
+          <tr style="border-bottom:2px solid var(--color-dark);">
+            <td style="padding:20px 24px;">
+              <div style="font-weight:700;color:var(--color-dark);">Smart Flap<sup>&reg;</sup> (Heizenergie)</div>
+              <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">pro Anlage</div>
             </td>
-            <td><span class="val-elevoniq">–</span></td>
-            <td><span class="val-ist">2.400 €<span class="val-sub">9.500 kWh/a</span></span></td>
-            <td><span class="val-hebel">–2.400 €<span class="val-sub">–9.500 kWh/a</span></span></td>
+            <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">–</td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);line-height:1.6;">2.400 €<br><span style="font-size:12px;">9.500 kWh/a</span></td>
+            <td style="padding:20px 24px;text-align:right;font-weight:700;color:var(--color-savings);line-height:1.6;">–2.400 €<br><span style="font-size:12px;">–9.500 kWh/a</span></td>
           </tr>
-          <tr class="total-row">
-            <td>
-              <div class="total-label">Jährliche Wirkung · Konservativ</div>
+          <tr style="background:#F0FAF4;border-top:2px solid var(--color-savings);">
+            <td style="padding:20px 24px;">
+              <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);">Jährliche Wirkung · Konservativ</div>
             </td>
-            <td><span class="val-ist">–</span></td>
-            <td><span class="val-ist">–</span></td>
-            <td><span class="val-hebel-total">≈ –29.150 € / Jahr</span></td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">–</td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">–</td>
+            <td style="padding:20px 24px;text-align:right;font-size:20px;font-weight:700;color:var(--color-savings);">≈ –29.150 € / Jahr</td>
           </tr>
         </tbody>
       </table>
-      <p class="kostentabelle-note">Anonymisiertes Beispiel aus dem Bestand 2024. Reale Hebel je Anlage hängen von Vertragslaufzeit, Hersteller und Alter ab.</p>
+      <p style="font-size:12px;color:var(--color-gray);margin-top:12px;font-style:italic;">Anonymisiertes Beispiel aus dem Bestand 2024. Reale Hebel je Anlage hängen von Vertragslaufzeit, Hersteller und Alter ab.</p>
     </div>
-    <div class="cta-center">
+    <div style="text-align:center;margin-top:40px;">
       <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
          target="_blank" rel="noopener" class="btn-primary">
         Jetzt eigene Einsparung berechnen
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14" height="14" class="btn-icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14" height="14" style="vertical-align:-2px;margin-left:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
       </a>
     </div>
   </div>
@@ -449,47 +746,47 @@
 <!-- ── ELEVATOR HUB FEATURE SECTION ─────────────────────────── -->
 <section class="section-navy" aria-labelledby="hub-heading">
   <div class="container">
-    <div class="grid-2 grid-2--align-center grid-2--gap-lg">
+    <div class="grid-2" style="align-items:center;gap:4rem;">
       <div>
         <span class="section-eyebrow">ELEVATOR HUB</span>
         <h2 class="section-title" id="hub-heading">Ihr digitales Aufzugscockpit.</h2>
-        <p class="section-lead section-lead--navy">Alle Aufzüge, Dokumente, Fristen und Kosten auf einer Plattform. Herstellerneutral. DSGVO-konform. In Deutschland gehostet.</p>
-        <ul class="feature-list feature-list--mb">
+        <p class="section-lead" style="margin-bottom:2rem;">Alle Aufzüge, Dokumente, Fristen und Kosten auf einer Plattform. Herstellerneutral. DSGVO-konform. In Deutschland gehostet.</p>
+        <ul class="feature-list">
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">
+            <span class="feature-item-text">
               <strong>360°-Dokumentation</strong>
               Vollständige Anlageninformationen analog Google Street View
             </span>
           </li>
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">
+            <span class="feature-item-text">
               <strong>Automatisches Fristenmanagement</strong>
               TÜV-Termine, ZÜS-Prüfungen, Wartungsintervalle — nichts geht verloren
             </span>
           </li>
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">
+            <span class="feature-item-text">
               <strong>Kostenanalyse &amp; Benchmarking</strong>
               Vergleichen Sie Ihre Kosten mit 8.000+ Anlagen in unserer Datenbank
             </span>
           </li>
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">
+            <span class="feature-item-text">
               <strong>Prüfberichte automatisch verstehen</strong>
               KI-gestützte Analyse, klare Handlungsempfehlungen
             </span>
           </li>
         </ul>
-        <div class="feature-list--cta">
-          <a href="/laufende-betreuung/elevator-hub/" class="btn-secondary">ELEVATOR HUB entdecken</a>
+        <div style="margin-top:2rem;">
+          <a href="/laufende-betreuung/elevator-hub/" class="btn-primary">ELEVATOR HUB entdecken</a>
         </div>
       </div>
       <div aria-hidden="true">
-        <div class="dashboard-frame dashboard-frame--flat">
+        <div class="dashboard-frame" style="transform:none;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
           <div class="db-chrome">
             <div class="db-dots"><span></span><span></span><span></span></div>
             <div class="db-url">ELEVATOR HUB — Portfolio-Übersicht</div>
@@ -504,17 +801,17 @@
               <div class="db-kpi warn"><div class="db-kpi-num">3</div><div class="db-kpi-label">Fällig in 60 Tagen</div></div>
               <div class="db-kpi crit"><div class="db-kpi-num">1</div><div class="db-kpi-label">Überfällig</div></div>
             </div>
-            <div class="db-chart-block">
-              <div class="db-chart-label">Kostenentwicklung</div>
-              <div class="db-chart-bars" aria-hidden="true">
-                <div class="db-bar db-bar--teal" style="height:60%;"></div>
-                <div class="db-bar db-bar--teal" style="height:70%;"></div>
-                <div class="db-bar db-bar--teal" style="height:55%;"></div>
-                <div class="db-bar db-bar--teal" style="height:80%;"></div>
-                <div class="db-bar db-bar--coral" style="height:100%;"></div>
-                <div class="db-bar db-bar--savings" style="height:65%;"></div>
+            <div style="background:#f5f7fa;border-radius:6px;padding:8px 12px;font-size:11px;color:#555;margin-top:8px;">
+              <div style="font-weight:700;margin-bottom:4px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#999;">Kostenentwicklung</div>
+              <div style="display:flex;gap:4px;align-items:flex-end;height:36px;">
+                <div style="width:14%;background:#69B0AB;opacity:.4;border-radius:2px 2px 0 0;height:60%;"></div>
+                <div style="width:14%;background:#69B0AB;opacity:.5;border-radius:2px 2px 0 0;height:70%;"></div>
+                <div style="width:14%;background:#69B0AB;opacity:.6;border-radius:2px 2px 0 0;height:55%;"></div>
+                <div style="width:14%;background:#69B0AB;opacity:.7;border-radius:2px 2px 0 0;height:80%;"></div>
+                <div style="width:14%;background:#E8474A;opacity:.5;border-radius:2px 2px 0 0;height:100%;"></div>
+                <div style="width:14%;background:#1D8348;opacity:.8;border-radius:2px 2px 0 0;height:65%;"></div>
               </div>
-              <div class="db-chart-months">
+              <div style="display:flex;justify-content:space-between;font-size:9px;color:#aaa;margin-top:3px;">
                 <span>Jan</span><span>Feb</span><span>Mär</span><span>Apr</span><span>Mai</span><span>Jun</span>
               </div>
             </div>
@@ -556,275 +853,276 @@
 </section>
 
 <!-- ── PRAXISFÄLLE ────────────────────────────────────────────── -->
-<section class="section section-subtle" aria-labelledby="praxisfaelle-heading">
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="praxisfaelle-heading">
   <div class="container">
     <div class="section-header centered">
       <span class="section-eyebrow">Praxisfälle</span>
       <h2 class="section-title" id="praxisfaelle-heading">Was wir konkret bewirken.</h2>
       <p class="section-lead">Anonymisierte Fälle aus der Praxis — reale Probleme, reale Ergebnisse.</p>
     </div>
-
-    <div class="praxisfaelle-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
 
       <!-- Fall 1 -->
-      <div class="case-card">
-        <div class="case-card-header">
-          <div class="case-card-label">Praxisfall 01</div>
-          <div class="case-card-title">Angebotsbewertung</div>
-          <div class="case-card-sub">Nur bei nachgewiesener Einsparung</div>
+      <div style="background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);display:flex;flex-direction:column;">
+        <div style="background:var(--color-bg-subtle);padding:20px 24px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-coral-dark);margin-bottom:4px;">Praxisfall 01</div>
+          <div style="font-size:17px;font-weight:700;color:var(--color-dark);">Angebotsbewertung</div>
+          <div style="font-size:12px;color:var(--color-gray);margin-top:4px;">Nur bei nachgewiesener Einsparung</div>
         </div>
-        <div class="case-card-body">
+        <div style="padding:20px 24px;flex:1;display:flex;flex-direction:column;gap:16px;">
           <div>
-            <div class="case-card-section-label">
-              <svg width="14" height="14" fill="var(--color-amber)" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              Problem
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <svg width="14" height="14" fill="var(--color-coral-dark)" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Problem</span>
             </div>
-            <p class="case-card-text case-card-text--dark">Angebot für neue Seile (10.200 €) — Bedarf und Preis nicht einschätzbar für Eigentümer.</p>
+            <p style="font-size:14px;color:var(--color-dark);line-height:1.6;margin:0;">Angebot für neue Seile (10.200 €) — Bedarf und Preis nicht einschätzbar für Eigentümer.</p>
           </div>
           <div>
-            <div class="case-card-section-label">
-              <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              Lösung
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Lösung</span>
             </div>
-            <p class="case-card-text case-card-text--gray">Marktvergleich mehrerer Hersteller — technisch und kaufmännisch bewertet.</p>
+            <p style="font-size:14px;color:var(--color-gray);line-height:1.6;margin:0;">Marktvergleich mehrerer Hersteller — technisch und kaufmännisch bewertet.</p>
           </div>
-          <div class="case-card-result">
-            <div class="case-card-result-label">Ergebnis</div>
-            <div class="case-card-result-number">–4.000 €</div>
-            <div class="case-card-result-note">Seile in besserer Qualität für 6.200 € beschafft</div>
+          <div style="margin-top:auto;background:#EEF7F0;border-radius:6px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);margin-bottom:4px;">Ergebnis</div>
+            <div style="font-size:20px;font-weight:700;color:var(--color-savings);">–4.000 €</div>
+            <div style="font-size:13px;color:var(--color-gray);margin-top:2px;">Seile in besserer Qualität für 6.200 € beschafft</div>
           </div>
         </div>
       </div>
 
       <!-- Fall 2 -->
-      <div class="case-card">
-        <div class="case-card-header">
-          <div class="case-card-label">Praxisfall 02</div>
-          <div class="case-card-title">Ausschreibungen</div>
-          <div class="case-card-sub">Wartungsverträge · 5 Anlagen</div>
+      <div style="background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);display:flex;flex-direction:column;">
+        <div style="background:var(--color-bg-subtle);padding:20px 24px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-coral-dark);margin-bottom:4px;">Praxisfall 02</div>
+          <div style="font-size:17px;font-weight:700;color:var(--color-dark);">Ausschreibungen</div>
+          <div style="font-size:12px;color:var(--color-gray);margin-top:4px;">Wartungsverträge · 5 Anlagen</div>
         </div>
-        <div class="case-card-body">
+        <div style="padding:20px 24px;flex:1;display:flex;flex-direction:column;gap:16px;">
           <div>
-            <div class="case-card-section-label">
-              <svg width="14" height="14" fill="var(--color-amber)" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              Problem
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <svg width="14" height="14" fill="var(--color-coral-dark)" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Problem</span>
             </div>
-            <p class="case-card-text case-card-text--dark">Wartungsverträge für 5 Aufzugsanlagen einer Mehrhausanlage müssen neu ausgeschrieben werden.</p>
+            <p style="font-size:14px;color:var(--color-dark);line-height:1.6;margin:0;">Wartungsverträge für 5 Aufzugsanlagen einer Mehrhausanlage müssen neu ausgeschrieben werden.</p>
           </div>
           <div>
-            <div class="case-card-section-label">
-              <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              Lösung
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Lösung</span>
             </div>
-            <p class="case-card-text case-card-text--gray">360°-Zustandsberichte für alle Anlagen, darauf basierend Verträge gestaltet und beste Wartungsfirmen ausgewählt.</p>
+            <p style="font-size:14px;color:var(--color-gray);line-height:1.6;margin:0;">360°-Zustandsberichte für alle Anlagen, darauf basierend Verträge gestaltet und beste Wartungsfirmen ausgewählt.</p>
           </div>
-          <div class="case-card-result">
-            <div class="case-card-result-label">Ergebnis</div>
-            <div class="case-card-result-number">–2.500 € p.a.</div>
-            <div class="case-card-result-note">Bessere Konditionen + höhere Anlagenverfügbarkeit</div>
+          <div style="margin-top:auto;background:#EEF7F0;border-radius:6px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);margin-bottom:4px;">Ergebnis</div>
+            <div style="font-size:20px;font-weight:700;color:var(--color-savings);">–2.500 € p.a.</div>
+            <div style="font-size:13px;color:var(--color-gray);margin-top:2px;">Bessere Konditionen + höhere Anlagenverfügbarkeit</div>
           </div>
         </div>
       </div>
 
       <!-- Fall 3 -->
-      <div class="case-card">
-        <div class="case-card-header">
-          <div class="case-card-label">Praxisfall 03</div>
-          <div class="case-card-title">Modernisierung</div>
-          <div class="case-card-sub">6 Anlagen · Baujahr 1970er</div>
+      <div style="background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);display:flex;flex-direction:column;">
+        <div style="background:var(--color-bg-subtle);padding:20px 24px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-coral-dark);margin-bottom:4px;">Praxisfall 03</div>
+          <div style="font-size:17px;font-weight:700;color:var(--color-dark);">Modernisierung</div>
+          <div style="font-size:12px;color:var(--color-gray);margin-top:4px;">6 Anlagen · Baujahr 1970er</div>
         </div>
-        <div class="case-card-body">
+        <div style="padding:20px 24px;flex:1;display:flex;flex-direction:column;gap:16px;">
           <div>
-            <div class="case-card-section-label">
-              <svg width="14" height="14" fill="var(--color-amber)" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-              Problem
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <svg width="14" height="14" fill="var(--color-coral-dark)" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Problem</span>
             </div>
-            <p class="case-card-text case-card-text--dark">Hersteller-Angebot für Modernisierung liegt vor — Preis und Umfang nicht einschätzbar.</p>
+            <p style="font-size:14px;color:var(--color-dark);line-height:1.6;margin:0;">Hersteller-Angebot für Modernisierung liegt vor — Preis und Umfang nicht einschätzbar.</p>
           </div>
           <div>
-            <div class="case-card-section-label">
-              <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-              Lösung
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+              <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Lösung</span>
             </div>
-            <p class="case-card-text case-card-text--gray">Neutrale Bewertung aller Anlagen, 5-Jahres-Budgetierungs- und Modernisierungsplan, Ausschreibung.</p>
+            <p style="font-size:14px;color:var(--color-gray);line-height:1.6;margin:0;">Neutrale Bewertung aller Anlagen, 5-Jahres-Budgetierungs- und Modernisierungsplan, Ausschreibung.</p>
           </div>
-          <div class="case-card-result">
-            <div class="case-card-result-label">Ergebnis</div>
-            <div class="case-card-result-number">–33 %</div>
-            <div class="case-card-result-note">21.000 € unter Herstellerangebot · 8 Monate früher</div>
+          <div style="margin-top:auto;background:#EEF7F0;border-radius:6px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);margin-bottom:4px;">Ergebnis</div>
+            <div style="font-size:20px;font-weight:700;color:var(--color-savings);">–33 %</div>
+            <div style="font-size:13px;color:var(--color-gray);margin-top:2px;">21.000 € unter Herstellerangebot · 8 Monate früher</div>
           </div>
         </div>
       </div>
 
     </div><!-- /row 1 -->
 
-    <div class="praxisfaelle-grid-2">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:20px;">
 
       <!-- Fall 4 -->
-      <div class="case-card">
-        <div class="case-card-header">
-          <div class="case-card-label">Praxisfall 04</div>
-          <div class="case-card-title">Betreiberpflichten</div>
-          <div class="case-card-sub">Objektübernahme ohne Unterlagen</div>
+      <div style="background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);display:flex;flex-direction:column;">
+        <div style="background:var(--color-bg-subtle);padding:20px 24px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-coral-dark);margin-bottom:4px;">Praxisfall 04</div>
+          <div style="font-size:17px;font-weight:700;color:var(--color-dark);">Betreiberpflichten</div>
+          <div style="font-size:12px;color:var(--color-gray);margin-top:4px;">Objektübernahme ohne Unterlagen</div>
         </div>
-        <div class="case-card-body">
-          <div class="case-card-cols">
+        <div style="padding:20px 24px;flex:1;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;">
             <div>
-              <div class="case-card-section-label">
-                <svg width="14" height="14" fill="var(--color-amber)" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                Problem
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <svg width="14" height="14" fill="var(--color-coral-dark)" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Problem</span>
               </div>
-              <p class="case-card-text case-card-text--dark">Nach Objektübernahme fehlten alle relevanten Aufzugsunterlagen und Betreiberpflichten-Dokumentation.</p>
+              <p style="font-size:14px;color:var(--color-dark);line-height:1.6;margin:0;">Nach Objektübernahme fehlten alle relevanten Aufzugsunterlagen und Betreiberpflichten-Dokumentation.</p>
             </div>
             <div>
-              <div class="case-card-section-label">
-                <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                Lösung
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Lösung</span>
               </div>
-              <p class="case-card-text case-card-text--gray">Vollständige Digitalisierung aller Dokumente, GBU erstellt, Betreiberpflichten lückenlos abgebildet.</p>
+              <p style="font-size:14px;color:var(--color-gray);line-height:1.6;margin:0;">Vollständige Digitalisierung aller Dokumente, GBU erstellt, Betreiberpflichten lückenlos abgebildet.</p>
             </div>
           </div>
-          <div class="case-card-result">
-            <div class="case-card-result-label">Ergebnis</div>
-            <div class="case-card-result-number case-card-result-number--sm">Haftungsrisiken minimiert</div>
-            <div class="case-card-result-note">Alle Dokumente aktuell, jederzeit verfügbar — Team entlastet</div>
+          <div style="background:#EEF7F0;border-radius:6px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);margin-bottom:4px;">Ergebnis</div>
+            <div style="font-size:17px;font-weight:700;color:var(--color-savings);">Haftungsrisiken minimiert</div>
+            <div style="font-size:13px;color:var(--color-gray);margin-top:2px;">Alle Dokumente aktuell, jederzeit verfügbar — Team entlastet</div>
           </div>
         </div>
       </div>
 
       <!-- Fall 5 -->
-      <div class="case-card">
-        <div class="case-card-header">
-          <div class="case-card-label">Praxisfall 05</div>
-          <div class="case-card-title">Arbeitsbelastung</div>
-          <div class="case-card-sub">Aufzugsmanagement komplett übernommen</div>
+      <div style="background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);display:flex;flex-direction:column;">
+        <div style="background:var(--color-bg-subtle);padding:20px 24px;border-bottom:1px solid rgba(0,0,0,0.08);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-coral-dark);margin-bottom:4px;">Praxisfall 05</div>
+          <div style="font-size:17px;font-weight:700;color:var(--color-dark);">Arbeitsbelastung</div>
+          <div style="font-size:12px;color:var(--color-gray);margin-top:4px;">Aufzugsmanagement komplett übernommen</div>
         </div>
-        <div class="case-card-body">
-          <div class="case-card-cols">
+        <div style="padding:20px 24px;flex:1;display:flex;flex-direction:column;gap:16px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;">
             <div>
-              <div class="case-card-section-label">
-                <svg width="14" height="14" fill="var(--color-amber)" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                Problem
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <svg width="14" height="14" fill="var(--color-coral-dark)" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Problem</span>
               </div>
-              <p class="case-card-text case-card-text--dark">Mitarbeiter überlastet, Störungen wiederholen sich — keine Kapazität für fachgerechte Aufzugsverwaltung.</p>
+              <p style="font-size:14px;color:var(--color-dark);line-height:1.6;margin:0;">Mitarbeiter überlastet, Störungen wiederholen sich — keine Kapazität für fachgerechte Aufzugsverwaltung.</p>
             </div>
             <div>
-              <div class="case-card-section-label">
-                <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                Lösung
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+                <svg width="14" height="14" fill="none" stroke="var(--color-teal-dark)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Lösung</span>
               </div>
-              <p class="case-card-text case-card-text--gray">ElevonIQ übernimmt die komplette Aufzugsverwaltung — alle Prozesse über die digitale Plattform.</p>
+              <p style="font-size:14px;color:var(--color-gray);line-height:1.6;margin:0;">ElevonIQ übernimmt die komplette Aufzugsverwaltung — alle Prozesse über die digitale Plattform.</p>
             </div>
           </div>
-          <div class="case-card-result">
-            <div class="case-card-result-label">Ergebnis</div>
-            <div class="case-card-result-number">ca. 440 € / Aufzug / Jahr</div>
-            <div class="case-card-result-note">Arbeitskosten gespart · Team widmet sich Kernaufgaben</div>
+          <div style="background:#EEF7F0;border-radius:6px;padding:14px 16px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);margin-bottom:4px;">Ergebnis</div>
+            <div style="font-size:20px;font-weight:700;color:var(--color-savings);">ca. 440 € / Aufzug / Jahr</div>
+            <div style="font-size:13px;color:var(--color-gray);margin-top:2px;">Arbeitskosten gespart · Team widmet sich Kernaufgaben</div>
           </div>
         </div>
       </div>
 
     </div><!-- /row 2 -->
 
-    <div class="cta-center">
+    <div style="text-align:center;margin-top:40px;">
       <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
          target="_blank" rel="noopener" class="btn-primary">
         Erstgespräch buchen — kostenlos
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14" height="14" class="btn-icon" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="14" height="14" style="vertical-align:-2px;margin-left:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
       </a>
     </div>
   </div>
 </section>
 
 <!-- ── SEGMENT CARDS ──────────────────────────────────────────── -->
-<section class="section section-subtle" aria-labelledby="segments-heading">
+<section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="segments-heading">
   <div class="container">
     <div class="section-header centered">
       <span class="section-eyebrow">Zielgruppen</span>
       <h2 class="section-title" id="segments-heading">Für wen ist ElevonIQ?</h2>
     </div>
     <div class="grid-4">
-      <div class="card segment-card">
-        <div class="segment-bar segment-bar--coral"></div>
-        <h4 class="segment-heading">Hausverwaltungen</h4>
-        <p class="segment-text">Betreiberpflichten erfüllen, Kosten senken, Fristen überwachen — ohne internes Fachwissen.</p>
-        <a href="/fuer-hausverwaltungen/" class="segment-link">Mehr erfahren →</a>
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-coral-dark);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">Hausverwaltungen</h4>
+        <p style="font-size:13px;color:var(--color-gray);">Betreiberpflichten erfüllen, Kosten senken, Fristen überwachen — ohne internes Fachwissen.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
       </div>
-      <div class="card segment-card">
-        <div class="segment-bar segment-bar--teal"></div>
-        <h4 class="segment-heading">WEG-Verwalter</h4>
-        <p class="segment-text">Klare Dokumentation für die Eigentümerversammlung. Rechtssichere Abrechnungen.</p>
-        <a href="/fuer-hausverwaltungen/" class="segment-link">Mehr erfahren →</a>
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-teal);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">WEG-Verwalter</h4>
+        <p style="font-size:13px;color:var(--color-gray);">Klare Dokumentation für die Eigentümerversammlung. Rechtssichere Abrechnungen.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
       </div>
-      <div class="card segment-card">
-        <div class="segment-bar segment-bar--navy"></div>
-        <h4 class="segment-heading">Genossenschaften</h4>
-        <p class="segment-text">ESG-Reporting, Portfolio-Analyse, Koordination mit technischem Vorstand.</p>
-        <a href="/fuer-hausverwaltungen/" class="segment-link">Mehr erfahren →</a>
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-teal);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">Genossenschaften</h4>
+        <p style="font-size:13px;color:var(--color-gray);">ESG-Reporting, Portfolio-Analyse, Koordination mit technischem Vorstand.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
       </div>
-      <div class="card segment-card">
-        <div class="segment-bar segment-bar--amber"></div>
-        <h4 class="segment-heading">Gebäudeeigentümer</h4>
-        <p class="segment-text">Kostenbenchmarking über das Portfolio. Compliance at Scale. Budgetsicherheit.</p>
-        <a href="/fuer-hausverwaltungen/" class="segment-link">Mehr erfahren →</a>
+      <div class="card" style="text-align:center;padding:2rem 1.5rem;">
+        <div style="width:40px;height:4px;background:var(--color-amber);border-radius:2px;margin:0 auto 1rem;"></div>
+        <h4 style="margin-bottom:0.75rem;">Gebäudeeigentümer</h4>
+        <p style="font-size:13px;color:var(--color-gray);">Kostenbenchmarking über das Portfolio. Compliance at Scale. Budgetsicherheit.</p>
+        <a href="/fuer-hausverwaltungen/" style="display:block;margin-top:1rem;font-size:13px;font-weight:700;color:var(--color-coral-dark);">Mehr erfahren →</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ── 360° TOUR ──────────────────────────────────────────────── -->
-<section class="section-navy section-teal-light" style="background:#EEF3F2; color:#1A1A1A; border-top: 4px solid #69B0AB;" aria-labelledby="tour360-heading">
+<section class="section-navy" aria-labelledby="tour360-heading">
   <div class="container">
-    <div class="grid-2 grid-2--align-center grid-2--gap-lg">
+    <div class="grid-2" style="align-items:center;gap:4rem;">
       <div>
         <span class="section-eyebrow">360°-Digitalisierung</span>
         <h2 class="section-title" id="tour360-heading">Sehen Sie Ihren Aufzug, wie Sie ihn noch nie gesehen haben.</h2>
-        <p class="section-lead section-lead--navy">Jede Gefährdungsbeurteilung und jeder Zustandsbericht von ElevonIQ enthält eine vollständige 360°-Begehung Ihrer Anlage — interaktiv, dauerhaft abrufbar, rechtssicher dokumentiert.</p>
+        <p class="section-lead" style="margin-bottom:2rem;">Jede Gefährdungsbeurteilung und jeder Zustandsbericht von ElevonIQ enthält eine vollständige 360°-Begehung Ihrer Anlage — interaktiv, dauerhaft abrufbar, rechtssicher dokumentiert.</p>
         <ul class="feature-list">
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">Maschinenraum, Schacht und Kabine vollständig erfasst</span>
+            <span class="feature-item-text">Maschinenraum, Schacht und Kabine vollständig erfasst</span>
           </li>
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">Interaktiv navigierbar — wie Google Street View</span>
+            <span class="feature-item-text">Interaktiv navigierbar — wie Google Street View</span>
           </li>
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">Rechtssichere Grundlage für Behördenanfragen und Prüfer</span>
+            <span class="feature-item-text">Rechtssichere Grundlage für Behördenanfragen und Prüfer</span>
           </li>
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">Techniker können die Anlage remote einsehen — ohne Vor-Ort-Termin</span>
+            <span class="feature-item-text">Techniker können die Anlage remote einsehen — ohne Vor-Ort-Termin</span>
           </li>
           <li class="feature-item">
             <span class="feature-check">✓</span>
-            <span class="feature-item-text feature-item-text--navy">Einzigartig in der deutschen Aufzugsbranche</span>
+            <span class="feature-item-text">Einzigartig in der deutschen Aufzugsbranche</span>
           </li>
         </ul>
       </div>
       <div>
-        <div class="tour360-frame">
-          <div class="tour360-chrome">
-            <div class="tour360-dots">
-              <span class="dot dot--red"></span>
-              <span class="dot dot--yellow"></span>
-              <span class="dot dot--green"></span>
+        <div style="border-radius:8px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.10);background:#F0F4F8;border:1px solid #E5E5E5;">
+          <div style="background:#E8EDEF;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #D0D5DD;">
+            <div style="display:flex;gap:5px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#FF5F57;display:block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#FEBC2E;display:block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#28C840;display:block;"></span>
             </div>
-            <div class="tour360-url">360tour.elevoniq.de/?token=eyJhbGci... · Demo-Anlage</div>
+            <div style="flex:1;background:rgba(0,0,0,0.06);border-radius:3px;padding:3px 8px;font-size:10px;color:#6B7280;font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">360tour.elevoniq.de/?token=eyJhbGci... · Demo-Anlage</div>
           </div>
           <iframe
             src="https://360tour.elevoniq.de/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbGV2YXRvcklkIjoiYTBPMXYwMDAwMGh4MnM2RUFBIiwid29ya09yZGVySWQiOiJhMFMxdjAwMDAwSnZqV09FQVoifQ.-xgMu9kXzmQDEwuBeuS77RdH8o2YzUI2341bvof1g6U"
             allow="fullscreen; xr-spatial-tracking"
             loading="lazy"
             title="ElevonIQ 360° Tour Demo"
-            class="tour360-iframe">
+            style="display:block;width:100%;height:320px;border:none;">
           </iframe>
         </div>
-        <div class="tour360-meta">
+        <div style="margin-top:12px;">
           <a href="https://360tour.elevoniq.de/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbGV2YXRvcklkIjoiYTBPMXYwMDAwMGh4MnM2RUFBIiwid29ya09yZGVySWQiOiJhMFMxdjAwMDAwSnZqV09FQVoifQ.-xgMu9kXzmQDEwuBeuS77RdH8o2YzUI2341bvof1g6U"
-             target="_blank" rel="noopener" class="tour360-open-link">
-            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+             target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#E8474A;text-decoration:none;transition:color 0.2s;"
+             onmouseover="this.style.color='#FF5B5C'" onmouseout="this.style.color='#E8474A'">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
             Interaktive Demo-Tour öffnen
           </a>
         </div>
@@ -835,14 +1133,14 @@
 
 <!-- ── FAQ ────────────────────────────────────────────────────── -->
 <section class="section" aria-labelledby="faq-heading">
-  <div class="container faq-container">
+  <div class="container" style="max-width:800px;">
     <div class="section-header centered">
       <span class="section-eyebrow">FAQ</span>
       <h2 class="section-title" id="faq-heading">Häufige Fragen.</h2>
     </div>
     <div class="faq-list">
 
-      <h3 class="faq-category-label">Einstieg &amp; Kosten</h3>
+      <h3 class="section-eyebrow" style="margin:2rem 0 1rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-teal-dark);">Einstieg &amp; Kosten</h3>
 
       <details class="faq-item">
         <summary>Was kostet eine erste Einschätzung?</summary>
@@ -885,7 +1183,7 @@
         <div class="faq-answer">Projektleistungen sind ohne Vertrag und ohne Laufzeit buchbar. Die Mindestlaufzeit für die laufende Aufzugsbetreuung beträgt 24 Monate.</div>
       </details>
 
-      <h3 class="faq-category-label">Unabhängigkeit &amp; Abgrenzung</h3>
+      <h3 class="section-eyebrow" style="margin:2rem 0 1rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-teal-dark);">Unabhängigkeit &amp; Abgrenzung</h3>
 
       <details class="faq-item">
         <summary>Was ist der Unterschied zwischen ElevonIQ und meiner Wartungsfirma?</summary>
@@ -908,7 +1206,7 @@
         <div class="faq-answer">Durch eine regelmäßige Betreuung Ihrer Aufzüge kann das ElevonIQ-Team dafür sorgen, dass keine Probleme dauerhaft entstehen — Vorsorge ist immer nachhaltiger als akute Störungsbehebung unter Stress. ElevonIQ prüft alle eingehenden Rechnungen, Berichte und Angebote und sorgt damit für einen optimalen Betrieb und ein gutes Preis-Leistungs-Verhältnis Ihrer Aufzüge.</div>
       </details>
 
-      <h3 class="faq-category-label">Rechtliches &amp; Haftung</h3>
+      <h3 class="section-eyebrow" style="margin:2rem 0 1rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-teal-dark);">Rechtliches &amp; Haftung</h3>
 
       <details class="faq-item">
         <summary>Sind die Kosten umlagefähig?</summary>
@@ -923,7 +1221,7 @@
         </div>
       </details>
 
-      <h3 class="faq-category-label">Technik &amp; ELEVATOR HUB<sup>&reg;</sup></h3>
+      <h3 class="section-eyebrow" style="margin:2rem 0 1rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-teal-dark);">Technik &amp; ELEVATOR HUB<sup>&reg;</sup></h3>
 
       <details class="faq-item">
         <summary>Welche Aufzüge und Hersteller werden unterstützt?</summary>
@@ -946,14 +1244,14 @@
         <div class="faq-answer">Genau das ist ein perfekter Anwendungsfall für den ELEVATOR HUB<sup>&reg;</sup> und das ElevonIQ-Team. Alle Aufzüge aller Objekte an einem Ort — mit konsolidiertem Reporting, automatischem Fristenmanagement und einem Ansprechpartner für alle Fragen.</div>
       </details>
 
-      <h3 class="faq-category-label">Aktuelles</h3>
+      <h3 class="section-eyebrow" style="margin:2rem 0 1rem;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-teal-dark);">Aktuelles</h3>
 
       <details class="faq-item">
         <summary>Was hat es mit der 2G-Abschaltung auf sich — bin ich betroffen?</summary>
         <div class="faq-answer">
           <p>Ab 2028 schalten große Netzbetreiber wie die Telekom das 2G-Netz ab. Das kann Ihren Aufzug direkt betreffen: Notrufgeräte, die noch über 2G funken, sind danach nicht mehr erreichbar — ein Sicherheitsmangel, der zur Stilllegung führen kann.</p>
           <p>Wir empfehlen, so schnell wie möglich drei Punkte prüfen zu lassen:</p>
-          <ol class="faq-list-ol">
+          <ol style="margin:10px 0 12px 18px;display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--color-gray);">
             <li>Ist das verbaute Notrufgerät 4G (VoLTE)-fähig?</li>
             <li>Ist das Notruf-Gateway VoLTE-fähig?</li>
             <li>Ist die verbaute SIM-Karte VoLTE-fähig?</li>
@@ -973,7 +1271,7 @@
 <!-- ── CTA ────────────────────────────────────────────────────── -->
 <section class="cta-section" aria-labelledby="cta-heading">
   <div class="container">
-    <p class="section-eyebrow cta-eyebrow">Jetzt starten</p>
+    <p class="section-eyebrow" style="color:var(--color-teal-dark);margin-bottom:1rem;">Jetzt starten</p>
     <h2 id="cta-heading">Bereit für Klarheit über Ihre Aufzugskosten?</h2>
     <p>15 Minuten reichen. Kein Druck. Kein Verkaufsgespräch. Nur Fakten.</p>
     <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
@@ -1020,7 +1318,7 @@
         <a href="/betreiberpflichten/" class="footer-link">Betreiberpflichten</a>
         <a href="/ueber-uns/" class="footer-link">Über uns</a>
         <a href="/kontakt/" class="footer-link">Kontakt</a>
-        <div class="footer-col-label footer-col-label--mt">Rechtliches</div>
+        <div style="margin-top:1.5rem;" class="footer-col-label">Rechtliches</div>
         <a href="/impressum/" class="footer-link">Impressum</a>
         <a href="/datenschutz/" class="footer-link">Datenschutz</a>
         <a href="/agb/" class="footer-link">AGB</a>
