@@ -400,6 +400,70 @@
 </section>
 
 
+<!-- 2-Pager Lead Magnet -->
+<section class="section" style="background:var(--color-navy);">
+  <div class="container" style="max-width:640px;text-align:center;">
+    <span class="section-eyebrow" style="color:var(--color-teal);">KOSTENLOSER DOWNLOAD</span>
+    <h2 class="section-title" style="color:#FFFFFF;margin-bottom:1rem;">
+      SMART FLAP® 2-Pager — alle Zahlen auf zwei Seiten
+    </h2>
+    <p style="color:rgba(255,255,255,0.85);margin-bottom:2rem;font-size:1.05rem;">
+      Wirtschaftlichkeitsberechnung, Studiennachweis, ESG-Daten und Produktdetails — kompakt für Ihre interne Entscheidung.
+    </p>
+    <form id="smartflap-download-form" style="display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto;"
+      onsubmit="handleSmartFlapDownload(event)">
+      <input type="text" name="name" placeholder="Ihr Name" required
+        style="padding:13px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:#fff;font-size:15px;font-family:inherit;"
+        onfocus="this.style.borderColor='rgba(105,176,171,0.8)'" onblur="this.style.borderColor='rgba(255,255,255,0.3)'">
+      <input type="email" name="email" placeholder="Ihre E-Mail-Adresse *" required
+        style="padding:13px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:#fff;font-size:15px;font-family:inherit;"
+        onfocus="this.style.borderColor='rgba(105,176,171,0.8)'" onblur="this.style.borderColor='rgba(255,255,255,0.3)'">
+      <input type="text" name="aufzuege" placeholder="Anzahl Aufzüge im Portfolio (optional)"
+        style="padding:13px 16px;border-radius:6px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.08);color:#fff;font-size:15px;font-family:inherit;"
+        onfocus="this.style.borderColor='rgba(105,176,171,0.8)'" onblur="this.style.borderColor='rgba(255,255,255,0.3)'">
+      <button type="submit" class="btn-primary" style="width:100%;font-size:16px;padding:15px;">
+        2-Pager jetzt herunterladen →
+      </button>
+      <p style="font-size:12px;color:rgba(255,255,255,0.5);margin:0;">
+        Alle Preise zzgl. gesetzlicher MwSt. Nur für Unternehmer (§ 14 BGB). Kein Angebot an Verbraucher.
+      </p>
+    </form>
+  </div>
+</section>
+
+<script>
+function handleSmartFlapDownload(e) {
+  e.preventDefault();
+  var form = e.target;
+  var btn = form.querySelector('button[type="submit"]');
+  btn.textContent = 'Wird verarbeitet...';
+  btn.disabled = true;
+
+  var name = form.querySelector('[name="name"]').value;
+  var email = form.querySelector('[name="email"]').value;
+  var aufzuege = form.querySelector('[name="aufzuege"]').value;
+
+  // Send lead info via email
+  var mailto = 'mailto:info@elevoniq.de'
+    + '?subject=SMART+FLAP+2-Pager+Download+Anfrage'
+    + '&body=Name:+' + encodeURIComponent(name)
+    + '%0AEmail:+' + encodeURIComponent(email)
+    + '%0AAnzahl+Aufzüge:+' + encodeURIComponent(aufzuege || 'nicht angegeben');
+
+  // Start download
+  var a = document.createElement('a');
+  a.href = '/assets/downloads/smartflap-2pager.pdf';
+  a.download = 'ElevonIQ-SMART-FLAP-2Pager.pdf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  // Show success
+  form.innerHTML = '<p style="color:var(--color-teal);font-size:1.1rem;font-weight:600;">✓ Download startet gleich — vielen Dank!</p><p style="color:rgba(255,255,255,0.7);margin-top:8px;">Wir melden uns bei Ihnen mit einer individuellen Wirtschaftlichkeitsrechnung.</p>';
+}
+</script>
+
+
 <!-- 8. FAQ -->
 <section class="section" aria-labelledby="faq-heading">
   <div class="container" style="max-width:800px;">
