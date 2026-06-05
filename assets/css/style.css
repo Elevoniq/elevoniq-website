@@ -1904,3 +1904,11 @@ details.faq-item .faq-answer {
 .section-teal-light .section-lead--navy { color: #4B5563; }
 .section-teal-light .feature-item-text--navy { color: #374151; }
 .section-teal-light .feature-item-text--navy strong { color: #1A1A1A; }
+
+/* ─── B2B PREISHINWEIS §14 BGB ──────────────────── */
+.price-legal-notice {
+  font-size: 13px;
+  color: var(--color-gray);
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
