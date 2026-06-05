@@ -210,6 +210,33 @@
     .db-status.ok   { background: rgba(29,131,72,0.1); color: #1D8348; }
     .db-status.warn { background: rgba(200,135,58,0.12); color: #C8873A; }
     .db-status.crit { background: rgba(232,71,74,0.1); color: #E8474A; }
+  /* Hero Headline Rotator */
+  .hero-headline-rotator {
+    position: relative;
+    min-height: 4.4em; /* verhindert Layout-Sprung beim Wechsel */
+  }
+  .hero-headline-rotator .hero-headline {
+    transition: opacity 1s ease, transform 1s ease;
+    margin: 0;
+  }
+  .hero-headline-rotator .hero-headline--active {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+  }
+  .hero-headline-rotator .hero-headline--next {
+    opacity: 0;
+    transform: translateY(8px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-headline-rotator .hero-headline {
+      transition: none;
+    }
+  }
   </style>
 </head>
 <body>
@@ -339,10 +366,16 @@
       <div class="hero-question-box">
         <p class="hero-question-text">"<span id="heroQuestionText">Zahle ich für meine Aufzugs-Wartung eigentlich zu viel?</span><span class="hero-cursor"></span>"</p>
       </div>
-      <h1 class="hero-headline">
-        Die richtige Entscheidung treffen,<br>
-        weil Sie die <span class="accent">Fakten kennen.</span>
-      </h1>
+      <div class="hero-headline-rotator">
+        <h1 class="hero-headline hero-headline--active">
+          Die richtige Entscheidung treffen,<br>
+          weil Sie die <span class="accent">Fakten kennen.</span>
+        </h1>
+        <h1 class="hero-headline hero-headline--next">
+          Elevoniq beantwortet das.<br>
+          Technisch. Kaufmännisch. <span class="accent">Unabhängig.</span>
+        </h1>
+      </div>
       <p class="hero-subline">
         Prüfberichte verstehen. Kosten hinterfragen. Entscheidungen treffen. Für jeden, der professionelle Unterstützung und technische Expertise wünscht — genau dann, wenn Sie sie benötigen.
       </p>
@@ -1411,6 +1444,20 @@
   if (window.elevoniqConsent) {
     window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
   }
+})();
+</script>
+<script>
+(function() {
+  var headlines = document.querySelectorAll('.hero-headline-rotator .hero-headline');
+  if (!headlines.length) return;
+  var current = 0;
+  setInterval(function() {
+    headlines[current].classList.remove('hero-headline--active');
+    headlines[current].classList.add('hero-headline--next');
+    current = (current + 1) % headlines.length;
+    headlines[current].classList.remove('hero-headline--next');
+    headlines[current].classList.add('hero-headline--active');
+  }, 4500);
 })();
 </script>
 </body>
