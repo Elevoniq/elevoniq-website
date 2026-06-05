@@ -26,14 +26,11 @@
   <link rel="stylesheet" href="../../assets/fonts/work-sans.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
   <style>
-    .page-hero { background:#FAF8F3; border-top:4px solid #69B0AB; padding:72px 0 64px; }
     .badge-row { display:flex; align-items:center; gap:12px; margin-bottom:24px; flex-wrap:wrap; }
     .badge-category { background:#69B0AB; color:#fff; padding:5px 14px; border-radius:20px; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
     .badge-sub { color:#6B7280; font-size:13px; }
-    .page-hero h1 { font-size:clamp(26px,4.5vw,42px); font-weight:800; color:#1A1A1A; line-height:1.15; margin-bottom:20px; max-width:680px; }
-    .page-hero .lead { font-size:17px; color:#6B7280; line-height:1.7; margin-bottom:32px; max-width:600px; }
     .cta-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-    .price-pill { background:rgba(105,176,171,0.12); color:#3D7E79; padding:8px 18px; border-radius:20px; font-size:13px; font-weight:500; }
+    .price-pill { background:rgba(105,176,171,0.12); color:var(--color-teal-dark); padding:8px 18px; border-radius:20px; font-size:13px; font-weight:500; }
     .situation-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
     .situation-card { padding:28px 24px; background:#F4F7F6; border-radius:8px; border-left:3px solid #69B0AB; }
     .situation-card-title { font-weight:700; font-size:15px; color:#1A1A1A; margin-bottom:10px; }
@@ -41,11 +38,11 @@
     .feature-checklist { max-width:700px; }
     .feature-check-row { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05); }
     .feature-check-row:last-child { border-bottom:none; }
-    .check-circle { width:22px; height:22px; border-radius:50%; background:#3D7E79; color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; margin-top:1px; }
+    .check-circle { width:22px; height:22px; border-radius:50%; background:var(--color-teal-dark); color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; margin-top:1px; }
     .feature-check-text { color:#1A1A1A; font-size:15px; line-height:1.5; }
     .process-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; }
     .process-step { text-align:center; padding:28px 20px; }
-    .process-number { width:48px; height:48px; border-radius:50%; background:#3D7E79; color:#fff; font-size:18px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+    .process-number { width:48px; height:48px; border-radius:50%; background:var(--color-teal-dark); color:#fff; font-size:18px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
     .process-title { font-weight:700; font-size:15px; color:#1A1A1A; margin-bottom:8px; }
     .process-text { font-size:14px; color:#6B7280; line-height:1.5; }
     .pricing-block { border-left:4px solid #69B0AB; padding:28px 32px; background:#EDF7F6; border-radius:0 8px 8px 0; max-width:560px; }
@@ -56,16 +53,10 @@
     .pricing-row-label { font-size:14px; color:#374151; }
     .pricing-row-value { font-size:14px; font-weight:700; color:#1A1A1A; }
     .faq-list { display:flex; flex-direction:column; gap:10px; }
-    details.faq-item { border:1px solid rgba(0,0,0,0.08); border-radius:8px; overflow:hidden; }
-    details.faq-item summary { padding:18px 24px; font-weight:600; font-size:15px; color:#1A1A1A; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; background:#fff; }
-    details.faq-item summary::-webkit-details-marker { display:none; }
-    details.faq-item summary::after { content:'+'; color:#3D7E79; font-size:20px; flex-shrink:0; margin-left:16px; }
-    details.faq-item[open] summary::after { content:'−'; }
-    .faq-answer { padding:0 24px 20px; color:#374151; font-size:15px; line-height:1.7; background:#fff; border-top:1px solid rgba(0,0,0,0.06); }
     /* App mockup */
     .app-mockup { width:220px; background:#E8EDEF; border-radius:36px; padding:12px; box-shadow:0 24px 64px rgba(0,0,0,0.10); border:1px solid #D0D5DD; }
     .app-screen { background:#F4F7F6; border-radius:26px; overflow:hidden; aspect-ratio:9/19; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; padding:24px; }
-    .app-icon { width:48px; height:48px; background:#3D7E79; border-radius:14px; display:flex; align-items:center; justify-content:center; }
+    .app-icon { width:48px; height:48px; background:var(--color-teal-dark); border-radius:14px; display:flex; align-items:center; justify-content:center; }
     .app-icon-letter { color:#fff; font-size:22px; font-weight:800; }
     .app-name { font-size:13px; font-weight:700; color:#1A1A1A; text-align:center; }
     .app-label { font-size:11px; color:#6B7280; text-align:center; line-height:1.5; }
@@ -161,31 +152,6 @@
   </div>
 </section>
 
-<!-- App Screenshots -->
-<section class="section section-subtle">
-  <div class="container">
-    <div class="section-header centered" style="margin-bottom:2rem;">
-      <span class="section-eyebrow">ElevonIQ2Go App</span>
-      <h2 class="section-title">Die Betriebskontrolle in Ihrer Hand</h2>
-      <p class="section-lead">Geführte digitale Checkliste, rechtssichere Dokumentation — direkt vor Ort per App.</p>
-    </div>
-    <div style="display:flex;gap:1.5rem;justify-content:center;align-items:flex-start;flex-wrap:wrap;">
-      <div style="max-width:200px;text-align:center;">
-        <img src="../../assets/images/app-screens/app-login.png" alt="ElevonIQ2Go App Login" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);">
-        <p style="margin-top:8px;font-size:12px;color:var(--color-gray);">Anmeldung</p>
-      </div>
-      <div style="max-width:200px;text-align:center;">
-        <img src="../../assets/images/app-screens/app-betriebskontrolle.png" alt="Betriebskontrolle Kontrollpunkte" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);">
-        <p style="margin-top:8px;font-size:12px;color:var(--color-gray);">Kontrollpunkte</p>
-      </div>
-      <div style="max-width:200px;text-align:center;">
-        <img src="../../assets/images/app-screens/app-schaltplan.png" alt="Dokumentenprüfung Schaltplan" style="width:100%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.15);">
-        <p style="margin-top:8px;font-size:12px;color:var(--color-gray);">Dokumentenprüfung</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Für wen -->
 <section class="section" aria-labelledby="situation-heading">
   <div class="container">
@@ -209,7 +175,7 @@
 </section>
 
 <!-- Was Sie bekommen -->
-<section class="section" style="background:#F4F7F6;" aria-labelledby="leistungen-heading">
+<section class="section section-subtle" aria-labelledby="leistungen-heading">
   <div class="container">
     <h2 class="section-title" id="leistungen-heading">Was Sie bekommen</h2>
     <div class="feature-checklist">
@@ -249,7 +215,7 @@
 </section>
 
 <!-- ElevonIQ2Go App -->
-<section class="section" style="background:#F4F7F6;" aria-labelledby="app-heading">
+<section class="section section-subtle" aria-labelledby="app-heading">
   <div class="container">
     <div class="grid-2" style="align-items:center;">
       <div>
@@ -283,7 +249,7 @@
 </section>
 
 <!-- Preis -->
-<section class="section" style="background:#F4F7F6;" aria-labelledby="preis-heading">
+<section class="section section-subtle" aria-labelledby="preis-heading">
   <div class="container">
     <h2 class="section-title" id="preis-heading">Preis &amp; Transparenz</h2>
     <div class="pricing-block">
@@ -340,7 +306,7 @@
     <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
       <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
          target="_blank" rel="noopener" class="btn-primary">Kostenloses Erstgespräch buchen</a>
-      <a href="mailto:support@elevoniq.de" class="btn-secondary">Frage per E-Mail</a>
+      <a href="mailto:support@elevoniq.de" class="btn-white-outline">Frage per E-Mail</a>
     </div>
   </div>
 </section>
