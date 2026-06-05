@@ -47,33 +47,33 @@
        Schriftgröße 72pt → cap-height ≈ 52 px → Baseline bei ca. 20+52=72
        Optisch zentriert zum Symbol: baseline y=110
   ============================================= -->
-  <!-- ELEVATOR — dünn (300) -->
+  <!-- ELEVATOR — regular (400) -->
   <text
     x="152"
     y="110"
     font-family="'Work Sans', Arial, Helvetica, sans-serif"
-    font-weight="300"
-    font-size="72"
+    font-weight="400"
+    font-size="64"
     letter-spacing="1"
     class="navy">ELEVATOR </text>
 
-  <!-- HUB — fett (800) -->
+  <!-- HUB — bold (700) -->
   <text
-    x="560"
+    x="545"
     y="110"
     font-family="'Work Sans', Arial, Helvetica, sans-serif"
-    font-weight="800"
-    font-size="72"
+    font-weight="700"
+    font-size="64"
     letter-spacing="1"
     class="navy">HUB</text>
 
   <!-- ® hochgestellt -->
   <text
-    x="743"
-    y="72"
+    x="725"
+    y="74"
     font-family="'Work Sans', Arial, Helvetica, sans-serif"
     font-weight="400"
-    font-size="24"
+    font-size="22"
     class="navy">&#174;</text>
 
   <!-- =============================================

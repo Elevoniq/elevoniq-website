@@ -37,22 +37,33 @@
   <!-- =============================================
        HAUPTTEXT: ELEVATOR HUB — Weiß
   ============================================= -->
+  <!-- ELEVATOR — regular (400) -->
   <text
     x="152"
     y="110"
     font-family="'Work Sans', Arial, Helvetica, sans-serif"
-    font-weight="700"
-    font-size="72"
+    font-weight="400"
+    font-size="64"
     letter-spacing="1"
-    class="white-i">ELEVATOR HUB</text>
+    class="white-i">ELEVATOR </text>
+
+  <!-- HUB — bold (700) -->
+  <text
+    x="545"
+    y="110"
+    font-family="'Work Sans', Arial, Helvetica, sans-serif"
+    font-weight="700"
+    font-size="64"
+    letter-spacing="1"
+    class="white-i">HUB</text>
 
   <!-- ® hochgestellt — Weiß -->
   <text
-    x="743"
-    y="72"
+    x="725"
+    y="74"
     font-family="'Work Sans', Arial, Helvetica, sans-serif"
     font-weight="400"
-    font-size="24"
+    font-size="22"
     class="white-i">&#174;</text>
 
   <!-- =============================================
