@@ -20,6 +20,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Dropdown hover-intent (200ms close delay — prevents snap-close during mouse travel)
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    var timer;
+
+    function openDropdown() {
+      clearTimeout(timer);
+      dropdown.classList.add('is-open');
+    }
+
+    function closeDropdown() {
+      timer = setTimeout(function() {
+        dropdown.classList.remove('is-open');
+      }, 200);
+    }
+
+    dropdown.addEventListener('mouseenter', openDropdown);
+    dropdown.addEventListener('mouseleave', closeDropdown);
+
+    // If mouse enters the panel itself: cancel the close timer
+    var menu = dropdown.querySelector('.nav-dropdown-menu');
+    if (menu) {
+      menu.addEventListener('mouseenter', openDropdown);
+      menu.addEventListener('mouseleave', closeDropdown);
+    }
+  });
+
   // Transparent nav (Variant C)
   var nav = document.querySelector('nav.nav-transparent');
   if (nav) {

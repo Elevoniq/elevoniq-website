@@ -334,13 +334,15 @@ p { line-height: 1.7; }
   height: 12px;
   transition: transform var(--transition-base);
 }
-.nav-dropdown:hover .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown.is-open .nav-dropdown-toggle svg { transform: rotate(180deg); }
 .nav-dropdown-menu {
-  display: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2rem;
   position: absolute;
   top: calc(100% + 12px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-6px);
   background: var(--color-white);
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: var(--border-radius-lg);
@@ -348,9 +350,10 @@ p { line-height: 1.7; }
   padding: 1.5rem;
   z-index: 300;
   width: 640px;
-  display: none;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
+  pointer-events: none;
 }
 /* Invisible bridge covers the 12px gap so the dropdown stays open during mouse travel */
 .nav-dropdown-menu::before {
@@ -361,8 +364,11 @@ p { line-height: 1.7; }
   right: 0;
   height: 14px;
 }
-.nav-dropdown:hover .nav-dropdown-menu {
-  display: grid;
+.nav-dropdown.is-open .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
 }
 .dropdown-col-label {
   font-size: 10px;
