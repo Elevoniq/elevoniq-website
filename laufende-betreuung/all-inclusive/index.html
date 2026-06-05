@@ -209,6 +209,61 @@
       font-weight: 700;
       color: #1A1A1A;
     }
+    /* Leistungstabelle */
+    .leistungs-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .leistungs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .leistungs-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: #1A1A1A;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .leistungs-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      color: #1A1A1A;
+      vertical-align: middle;
+    }
+    .leistungs-table tr:last-child td {
+      border-bottom: none;
+    }
+    .leistungs-table tr:nth-child(even) td {
+      background: #F9FBFA;
+    }
+    .leistungs-table .check-cell {
+      text-align: center;
+      width: 80px;
+    }
+    .check-green {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #3D7E79;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .leistungs-legend {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #6B7280;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
     /* FAQ */
     .faq-list {
       display: flex;
@@ -430,6 +485,67 @@
         <span class="feature-check-text">Schnittstelle zu Wartungsfirmen und ZÜS — Sie müssen nichts koordinieren</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Vereinbarte Leistungen und Konditionen -->
+<section class="section" aria-labelledby="leistungstabelle-heading">
+  <div class="container">
+    <span class="section-eyebrow">Ihr Paket auf einen Blick</span>
+    <h2 class="section-title" id="leistungstabelle-heading">Vereinbarte Leistungen und Konditionen</h2>
+    <div class="leistungs-table-wrap">
+      <table class="leistungs-table">
+        <thead>
+          <tr>
+            <th>Leistung</th>
+            <th class="check-cell">Enthalten</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Essentials Aufzugsmanagement</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>ELEVATOR HUB<sup>®</sup> — Digitales Aufzugscockpit</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>ELEVATOR LIVE — IoT-Echtzeit-Überwachung</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>SMART FLAP<sup>®</sup> — Wartung energetischer Klappen</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>Fristenmanagement (TÜV, Wartung, GBU)</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>Zustandsbericht im ersten Jahr (Wert 989 €)</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>Jährlicher Performance-Report</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>Angebotsprüfung und Vertragsverhandlungen</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>360°-Visualisierung aller Anlagen</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+          <tr>
+            <td>Direkter Ansprechpartner für Mieter und Störungen</td>
+            <td class="check-cell"><span class="check-green">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="leistungs-legend"><span class="check-green" style="flex-shrink:0;">✓</span> Im Leistungspaket enthalten</p>
   </div>
 </section>
 
