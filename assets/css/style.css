@@ -352,6 +352,15 @@ p { line-height: 1.7; }
   grid-template-columns: 1fr 1fr;
   gap: 0 2rem;
 }
+/* Invisible bridge covers the 12px gap so the dropdown stays open during mouse travel */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
 .nav-dropdown:hover .nav-dropdown-menu {
   display: grid;
 }
@@ -365,6 +374,15 @@ p { line-height: 1.7; }
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(0,0,0,0.06);
   grid-column: span 1;
+}
+.dropdown-col-link {
+  color: inherit;
+  text-decoration: none;
+}
+.dropdown-col-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--color-teal);
 }
 .dropdown-item {
   display: block;
