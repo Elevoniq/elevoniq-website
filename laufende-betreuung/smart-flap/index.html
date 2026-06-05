@@ -228,14 +228,21 @@
   <div class="container">
     <span class="section-eyebrow">Die Lösung</span>
     <h2 id="loesung-heading">SMART FLAP® in Aktion</h2>
-    <div class="video-placeholder" role="img" aria-label="Video-Platzhalter SMART FLAP">
-      <div class="video-placeholder-inner">
-        <div class="video-play-icon" aria-hidden="true">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5l11 7-11 7V5z" fill="#9CA3AF"/></svg>
-        </div>
-        <p>Video wird eingefügt — Freigabe ausstehend</p>
+    <div style="position:relative;border-radius:8px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.15);">
+      <video controls style="width:100%;display:block;background:#000;" preload="metadata">
+        <source src="../../assets/videos/smartflap-demo.mp4" type="video/mp4">
+        Ihr Browser unterstützt kein HTML5-Video.
+      </video>
+      <!-- Logo-Overlay oben links: ElevonIQ -->
+      <div style="position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.55);border-radius:6px;padding:6px 10px;display:flex;align-items:center;gap:8px;pointer-events:none;">
+        <img src="../../assets/images/elevon-iq-inverted.svg" alt="ElevonIQ" style="height:22px;display:block;">
+      </div>
+      <!-- Logo-Overlay oben rechts: SMART FLAP -->
+      <div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.55);border-radius:6px;padding:6px 10px;pointer-events:none;">
+        <span style="color:#fff;font-family:'Work Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.05em;">SMART FLAP<sup style="font-size:9px;">®</sup></span>
       </div>
     </div>
+    <p style="font-size:12px;color:var(--color-gray);margin-top:8px;text-align:center;">Demonstration der energetischen Schachtverschlusslösung</p>
     <div class="process-grid">
       <div class="process-step">
         <div class="process-number" aria-hidden="true">1</div>
