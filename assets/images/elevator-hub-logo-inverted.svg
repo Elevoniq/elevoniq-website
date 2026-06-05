@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ELEVATOR HUB® Logo (Invertiert — für dunkle Hintergründe) -->
+<!-- ElevonIQ – Visuelle Kommunikation -->
+<!--
+  Identische Geometrie wie elevator-hub-logo.svg.
+  Farbänderungen:
+    - Symbol: Teal #69B0AB bleibt (guter Kontrast auf dunklem Hintergrund)
+    - Haupttext "ELEVATOR HUB": Weiß #FFFFFF (statt Navy)
+    - ® : Weiß #FFFFFF
+    - Claim-Zeile: Teal #69B0AB (wie Symbol, lesbar auf dunkel)
+-->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 762 190" xml:space="preserve">
+  <defs>
+    <style>
+      .sym-i   { fill: #69B0AB; }
+      .white-i { fill: #FFFFFF; }
+      .teal-i  { fill: #69B0AB; }
+    </style>
+  </defs>
+
+  <!-- =============================================
+       TEAL-SYMBOL (abstrahierter Aufzug)
+       Identisch mit elevator-hub-logo.svg
+  ============================================= -->
+
+  <!-- Dreieck links -->
+  <polygon class="sym-i"
+    points="20.2,117.0 49.3,117.0 34.7,94.9"/>
+
+  <!-- Vertikale Linie -->
+  <rect class="sym-i" x="68.5" y="20" width="4.8" height="130" rx="2.4" ry="2.4"/>
+
+  <!-- Dreieck rechts -->
+  <polygon class="sym-i"
+    points="107.2,95.2 121.9,72.9 92.5,72.9"/>
+
+  <!-- =============================================
+       HAUPTTEXT: ELEVATOR HUB — Weiß
+  ============================================= -->
+  <text
+    x="152"
+    y="110"
+    font-family="'Work Sans', Arial, Helvetica, sans-serif"
+    font-weight="700"
+    font-size="72"
+    letter-spacing="1"
+    class="white-i">ELEVATOR HUB</text>
+
+  <!-- ® hochgestellt — Weiß -->
+  <text
+    x="743"
+    y="72"
+    font-family="'Work Sans', Arial, Helvetica, sans-serif"
+    font-weight="400"
+    font-size="24"
+    class="white-i">&#174;</text>
+
+  <!-- =============================================
+       CLAIM-ZEILE — Teal (sichtbar auf dunklem Hintergrund)
+  ============================================= -->
+  <text
+    x="152"
+    y="143"
+    font-family="'Work Sans', Arial, Helvetica, sans-serif"
+    font-weight="400"
+    font-size="17"
+    letter-spacing="3.5"
+    class="teal-i">AUFZUGSMANAGEMENT &#183; DIGITAL</text>
+
+</svg>
