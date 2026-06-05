@@ -355,15 +355,6 @@ p { line-height: 1.7; }
   transition: opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease;
   pointer-events: none;
 }
-/* Invisible bridge covers the 12px gap so the dropdown stays open during mouse travel */
-.nav-dropdown-menu::before {
-  content: '';
-  position: absolute;
-  top: -14px;
-  left: 0;
-  right: 0;
-  height: 14px;
-}
 .nav-dropdown.is-open .nav-dropdown-menu {
   opacity: 1;
   visibility: visible;

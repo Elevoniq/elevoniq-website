@@ -20,30 +20,30 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Dropdown hover-intent (200ms close delay — prevents snap-close during mouse travel)
+  // Click-to-open Dropdown
   document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
-    var timer;
 
-    function openDropdown() {
-      clearTimeout(timer);
-      dropdown.classList.add('is-open');
-    }
+    // Toggle beim Klick auf den Button
+    dropdown.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = dropdown.classList.contains('is-open');
 
-    function closeDropdown() {
-      timer = setTimeout(function() {
-        dropdown.classList.remove('is-open');
-      }, 200);
-    }
+      // Alle anderen Dropdowns schliessen
+      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d) {
+        d.classList.remove('is-open');
+      });
 
-    dropdown.addEventListener('mouseenter', openDropdown);
-    dropdown.addEventListener('mouseleave', closeDropdown);
+      if (!isOpen) {
+        dropdown.classList.add('is-open');
+      }
+    });
+  });
 
-    // If mouse enters the panel itself: cancel the close timer
-    var menu = dropdown.querySelector('.nav-dropdown-menu');
-    if (menu) {
-      menu.addEventListener('mouseenter', openDropdown);
-      menu.addEventListener('mouseleave', closeDropdown);
-    }
+  // Klick ausserhalb schliesst alle Dropdowns
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d) {
+      d.classList.remove('is-open');
+    });
   });
 
   // Transparent nav (Variant C)
