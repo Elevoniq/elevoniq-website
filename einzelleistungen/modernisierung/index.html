@@ -26,6 +26,16 @@
   
   <link rel="stylesheet" href="../../assets/fonts/work-sans.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    /* Steps */
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;position:relative;}
+    .steps-grid::before{content:'';position:absolute;top:34px;left:calc(16.66% + 17px);right:calc(16.66% + 17px);height:2px;background:#DDE6E5;z-index:0;}
+    .step-item{text-align:center;padding:0 20px;position:relative;z-index:1;}
+    .step-item__num{width:52px;height:52px;border-radius:50%;background:var(--color-coral-dark);color:#fff;font-weight:800;font-size:1.1rem;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,91,92,.30);margin-bottom:18px;}
+    .step-item h3{font-size:1rem;font-weight:800;margin:0 0 10px;}
+    .step-item p{font-size:.92rem;color:var(--color-gray);line-height:1.6;margin:0;}
+    @media(max-width:720px){.steps-grid{grid-template-columns:1fr;}.steps-grid::before{display:none;}}
+  </style>
 </head>
 <body>
 
@@ -192,7 +202,7 @@
   <section class="section">
     <div class="container">
       <h2>So läuft es ab</h2>
-      <div class="grid-3">
+      <div class="steps-grid">
         <div class="step-item"><div class="step-item__num">1</div><h3>Bestandsaufnahme &amp; Planung</h3><p>Wir erfassen die Ist-Situation und definieren die Anforderungen für die neue Anlage.</p></div>
         <div class="step-item"><div class="step-item__num">2</div><h3>Ausschreibung &amp; Auswahl</h3><p>Leistungsbeschreibung, Angebotseinholung und unabhängige Bewertung aller Angebote.</p></div>
         <div class="step-item"><div class="step-item__num">3</div><h3>Umsetzung &amp; Abnahme</h3><p>Begleitung der Umsetzung und rechtssichere Abnahme der fertigen Anlage.</p></div>
