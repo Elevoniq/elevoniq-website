@@ -32,6 +32,11 @@
     .hero-badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
     .hero-badge { background:rgba(105,176,171,0.12); color:#3D7E79; border:1px solid rgba(105,176,171,0.35); padding:7px 16px; border-radius:20px; font-size:13px; font-weight:600; white-space:nowrap; }
     .cta-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:28px; }
+    /* Hero split: text left, photo right */
+    .hero-split { display:grid; grid-template-columns:1fr 420px; gap:3rem; align-items:center; }
+    .hero-photo { border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.18); }
+    .hero-photo img { width:100%; height:100%; object-fit:cover; display:block; max-height:420px; }
+    @media (max-width:900px) { .hero-split { grid-template-columns:1fr; } .hero-photo { max-width:480px; } }
 
     /* ---- Key Facts Navy ---- */
     .key-facts-section { background:#1E2761; padding:72px 0; }
@@ -180,21 +185,30 @@
 <!-- 1. Hero -->
 <section class="page-hero" aria-label="SMART FLAP Intro">
   <div class="container">
-    <div class="badge-row">
-      <span class="badge-category">Laufende Betreuung</span>
-      <span class="badge-sub">Energiesparlösung · ESG-Reporting · BEG-Förderung</span>
-    </div>
-    <h1>Jeder Aufzugsschacht in Ihrem Gebäude ist ein offenes Fenster im Dachgeschoss. Wir schließen es.</h1>
-    <p class="lead">SMART FLAP® verschließt die gesetzlich vorgeschriebene Schachtöffnung automatisch — und liefert jeden Monat einen dokumentierten CO2-Nachweis.</p>
-    <div class="hero-badges" aria-label="Kennzahlen">
-      <span class="hero-badge">30–40 t CO2 gespart</span>
-      <span class="hero-badge">7,5 % Energieverbrauch</span>
-      <span class="hero-badge">ab 7.900 €</span>
-      <span class="hero-badge">ESG-Reporting inklusive</span>
-    </div>
-    <div class="cta-row">
-      <a href="mailto:info@elevoniq.de?subject=Kostenlose%20Wirtschaftlichkeitsrechnung%20SMART%20FLAP" class="btn-primary">Kostenlose Wirtschaftlichkeitsrechnung</a>
-      <a href="../index.html" class="btn-secondary">Zur Übersicht</a>
+    <div class="hero-split">
+      <div>
+        <div class="badge-row">
+          <span class="badge-category">Laufende Betreuung</span>
+          <span class="badge-sub">Energiesparlösung · ESG-Reporting · BEG-Förderung</span>
+        </div>
+        <h1>Jeder Aufzugsschacht in Ihrem Gebäude ist ein offenes Fenster im Dachgeschoss. Wir schließen es.</h1>
+        <p class="lead">SMART FLAP® verschließt die gesetzlich vorgeschriebene Schachtöffnung automatisch — und liefert jeden Monat einen dokumentierten CO2-Nachweis.</p>
+        <div class="hero-badges" aria-label="Kennzahlen">
+          <span class="hero-badge">30–40 t CO2 gespart</span>
+          <span class="hero-badge">7,5 % Energieverbrauch</span>
+          <span class="hero-badge">ab 7.900 €</span>
+          <span class="hero-badge">ESG-Reporting inklusive</span>
+        </div>
+        <div class="cta-row">
+          <a href="mailto:info@elevoniq.de?subject=Kostenlose%20Wirtschaftlichkeitsrechnung%20SMART%20FLAP" class="btn-primary">Kostenlose Wirtschaftlichkeitsrechnung</a>
+          <a href="../index.html" class="btn-secondary">Zur Übersicht</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="../../assets/images/smartflap/karl-theodor-referenz.jpg"
+             alt="SMART FLAP® Montage — Karl-Theodor-Str. 55, München"
+             width="420" height="420" loading="eager">
+      </div>
     </div>
   </div>
 </section>
