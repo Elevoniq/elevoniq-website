@@ -26,6 +26,170 @@
   
   <link rel="stylesheet" href="../../assets/fonts/work-sans.css">
   <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    /* === GBU-Seite: Visuelle Aufwertungen === */
+
+    /* 1. Hero Risiko-Callout */
+    .hero-risk-callout {
+      background: rgba(30, 39, 97, 0.88);
+      border-left: 4px solid #E8474A;
+      border-radius: 6px;
+      padding: 1.1rem 1.4rem;
+      margin-top: 1.75rem;
+      color: #fff;
+      max-width: 540px;
+    }
+    .hero-risk-callout__label {
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #E8474A;
+      font-weight: 700;
+      margin-bottom: .45rem;
+    }
+    .hero-risk-callout__text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255,255,255,.92);
+      margin: 0;
+    }
+
+    /* 2. Für-wen Karten mit Icon und farbigem Rand */
+    .card--accent {
+      border-top: 4px solid var(--card-accent-color, #1E2761);
+      padding-top: 1.5rem;
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: .9rem;
+      display: block;
+    }
+
+    /* 3. Feature-Grid — 2-Spalten mit Badge-Haken */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .85rem 2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .feature-grid__item {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .feature-grid__badge {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #69B0AB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: .05rem;
+    }
+    .feature-grid__badge svg {
+      width: 13px;
+      height: 13px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    @media (max-width: 640px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 4. Navy-Risiko-Sektion */
+    .risk-row {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+      margin-top: 1.5rem;
+    }
+    .risk-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      color: rgba(255,255,255,.90);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .risk-item__icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      background: rgba(232,71,74,.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .risk-item__icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: #E8474A;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .risk-item__accent {
+      color: #E8474A;
+      font-weight: 700;
+    }
+
+    /* 5. Preis-Sektion Verbesserungen */
+    .price-hero-amount {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #E8474A;
+      line-height: 1.1;
+      margin-bottom: .25rem;
+    }
+    .price-badge {
+      display: inline-block;
+      background: rgba(105,176,171,.18);
+      border: 1px solid #69B0AB;
+      color: #3D7E79;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      border-radius: 4px;
+      padding: .3rem .75rem;
+      margin-bottom: 1.25rem;
+    }
+    .price-box__table {
+      border-top: 1px solid rgba(0,0,0,.08);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      padding: .5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      font-size: 14px;
+    }
+    .price-row:last-child {
+      border-bottom: none;
+    }
+    .price-row__label {
+      color: var(--color-text-secondary, #555);
+    }
+    .price-row__value {
+      font-weight: 600;
+      color: var(--color-text, #1a1a1a);
+    }
+  </style>
 </head>
 <body>
 
@@ -119,6 +283,10 @@
         <span class="hero-badge hero-badge--coral">ab 649 &#x20AC; zzgl. MwSt.</span>
         <span class="hero-badge hero-badge--outline">Betreiberpflicht nach BetrSichV &#183; TRBS 1115-1</span>
       </div>
+      <div class="hero-risk-callout">
+        <p class="hero-risk-callout__label">Rechtliche Konsequenzen ohne gültige GBU</p>
+        <p class="hero-risk-callout__text">Bußgeld bis 30.000 &#x20AC;, Betriebsuntersagung, persönliche Haftung des Betreibers.</p>
+      </div>
       <div class="hero-cta-row">
         <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
            target="_blank" rel="noopener" class="btn-primary">
@@ -161,15 +329,35 @@
       <p class="section-eyebrow">Ihre Situation</p>
       <h2>Für wen ist das?</h2>
       <div class="grid-3">
-        <div class="card">
+        <div class="card card--accent" style="--card-accent-color:#E8474A;">
+          <svg class="card-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <path d="M22 6L4 38h36L22 6z" fill="rgba(232,71,74,.12)" stroke="#E8474A" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="22" y1="18" x2="22" y2="27" stroke="#E8474A" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="22" cy="32" r="1.4" fill="#E8474A"/>
+          </svg>
           <h3 class="card-title">GBU fehlt oder veraltet</h3>
           <p class="card-body">Sie haben noch keine gültige Gefährdungsbeurteilung oder sie wurde seit Jahren nicht aktualisiert.</p>
         </div>
-        <div class="card">
+        <div class="card card--accent" style="--card-accent-color:#69B0AB;">
+          <svg class="card-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <circle cx="22" cy="22" r="4" fill="rgba(105,176,171,.15)" stroke="#69B0AB" stroke-width="2"/>
+            <path d="M16 22a6 6 0 0112 0" stroke="#69B0AB" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M10 22a12 12 0 0124 0" stroke="#69B0AB" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M4 22a18 18 0 0136 0" stroke="#69B0AB" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
           <h3 class="card-title">Vernetzter Aufzug</h3>
           <p class="card-body">Ihr Aufzug verfügt über Ferndiagnose, IoT oder digitale Schnittstellen. Der Cybersecurity-Check ist seit 2023 Pflicht.</p>
         </div>
-        <div class="card">
+        <div class="card card--accent" style="--card-accent-color:#1E2761;">
+          <svg class="card-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+            <rect x="6" y="8" width="32" height="28" rx="3" fill="rgba(30,39,97,.10)" stroke="#1E2761" stroke-width="2"/>
+            <line x1="6" y1="16" x2="38" y2="16" stroke="#1E2761" stroke-width="2"/>
+            <line x1="14" y1="8" x2="14" y2="16" stroke="#1E2761" stroke-width="2" stroke-linecap="round"/>
+            <line x1="30" y1="8" x2="30" y2="16" stroke="#1E2761" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="22" cy="27" r="4" fill="rgba(30,39,97,.12)" stroke="#1E2761" stroke-width="1.5"/>
+            <line x1="22" y1="25" x2="22" y2="27.5" stroke="#1E2761" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="22" y1="27.5" x2="24" y2="29.5" stroke="#1E2761" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
           <h3 class="card-title">Prüfung steht an</h3>
           <p class="card-body">Eine ZÜS-Prüfung steht an und Sie möchten sicherstellen, dass alle Dokumente vollständig und korrekt vorliegen.</p>
         </div>
@@ -181,33 +369,47 @@
   <section class="section" style="background:var(--color-bg-subtle);">
     <div class="container">
       <h2>Was Sie bekommen</h2>
-      <ul class="feature-list">
-        <li class="feature-list__item">
-          <span class="feature-list__check" aria-hidden="true">&#x2713;</span>
+      <ul class="feature-grid">
+        <li class="feature-grid__item">
+          <span class="feature-grid__badge" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><polyline points="2,7 5,10 11,3"/></svg>
+          </span>
           <span>Technische Gefährdungsbeurteilung nach BetrSichV &#167;3</span>
         </li>
-        <li class="feature-list__item">
-          <span class="feature-list__check" aria-hidden="true">&#x2713;</span>
+        <li class="feature-grid__item">
+          <span class="feature-grid__badge" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><polyline points="2,7 5,10 11,3"/></svg>
+          </span>
           <span>Dokumentation aller Gefährdungsquellen und Schutzmaßnahmen</span>
         </li>
-        <li class="feature-list__item">
-          <span class="feature-list__check" aria-hidden="true">&#x2713;</span>
+        <li class="feature-grid__item">
+          <span class="feature-grid__badge" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><polyline points="2,7 5,10 11,3"/></svg>
+          </span>
           <span>Cybersecurity-Check nach TRBS 1115-1 für vernetzte Aufzüge</span>
         </li>
-        <li class="feature-list__item">
-          <span class="feature-list__check" aria-hidden="true">&#x2713;</span>
+        <li class="feature-grid__item">
+          <span class="feature-grid__badge" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><polyline points="2,7 5,10 11,3"/></svg>
+          </span>
           <span>Prüffähige Dokumentation für ZÜS-Prüfung und Behörden</span>
         </li>
-        <li class="feature-list__item">
-          <span class="feature-list__check" aria-hidden="true">&#x2713;</span>
+        <li class="feature-grid__item">
+          <span class="feature-grid__badge" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><polyline points="2,7 5,10 11,3"/></svg>
+          </span>
           <span>Empfehlungen zur Risikominimierung mit Prioritäten</span>
         </li>
-        <li class="feature-list__item">
-          <span class="feature-list__check" aria-hidden="true">&#x2713;</span>
+        <li class="feature-grid__item">
+          <span class="feature-grid__badge" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><polyline points="2,7 5,10 11,3"/></svg>
+          </span>
           <span>Digitale Ablage im ELEVATOR HUB<sup>®</sup> (optional)</span>
         </li>
-        <li class="feature-list__item">
-          <span class="feature-list__check" aria-hidden="true">&#x2713;</span>
+        <li class="feature-grid__item">
+          <span class="feature-grid__badge" aria-hidden="true">
+            <svg viewBox="0 0 13 13"><polyline points="2,7 5,10 11,3"/></svg>
+          </span>
           <span>Leicht verständlich und visuell aufbereitet</span>
         </li>
       </ul>
@@ -230,6 +432,40 @@
           <li class="feature-list__item"><span class="feature-list__check" aria-hidden="true">&#x2713;</span><span>Ingenieurbüros können auf Basis der GBU-Daten Ausschreibungsunterlagen erstellen — vollständig und normgerecht, ohne eigene Bestandsaufnahme.</span></li>
           <li class="feature-list__item"><span class="feature-list__check" aria-hidden="true">&#x2713;</span><span>Öffentliche Auftraggeber erhalten eine transparente, prüffähige Dokumentationsgrundlage, die Vergabeverfahren nachvollziehbar macht und behördliche Anforderungen erfüllt.</span></li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RISIKO-SEKTION: WAS PASSIERT OHNE GBU -->
+  <section class="section-navy">
+    <div class="container">
+      <p class="section-eyebrow" style="color:rgba(255,255,255,.55);">Rechtliche Konsequenzen</p>
+      <h2 style="color:#fff;">Was passiert ohne GBU?</h2>
+      <div class="risk-row">
+        <div class="risk-item">
+          <div class="risk-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><line x1="9" y1="5.5" x2="9" y2="10"/><circle cx="9" cy="12.5" r=".8" fill="#E8474A" stroke="none"/></svg>
+          </div>
+          <span><span class="risk-item__accent">Bußgeld bis 30.000 &#x20AC;</span> nach &#167;25 BetrSichV bei fehlender oder veralteter Gefährdungsbeurteilung.</span>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 18 18"><rect x="3" y="8" width="12" height="9" rx="1.5"/><path d="M6 8V5.5a3 3 0 016 0V8" stroke-linecap="round"/></svg>
+          </div>
+          <span><span class="risk-item__accent">Betriebsuntersagung</span> durch die zuständige Behörde bis zur Vorlage vollständiger Unterlagen.</span>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 18 18"><path d="M9 2l1.8 5.5H17l-4.9 3.6 1.9 5.5L9 13.2l-5 3.4 1.9-5.5L1 7.5h6.2z"/></svg>
+          </div>
+          <span><span class="risk-item__accent">Persönliche Haftung des Betreibers</span> bei Unfällen, wenn keine aktuelle Gefährdungsbeurteilung vorliegt.</span>
+        </div>
+        <div class="risk-item">
+          <div class="risk-item__icon" aria-hidden="true">
+            <svg viewBox="0 0 18 18"><path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7z"/><path d="M6 6l6 6M12 6l-6 6" stroke-linecap="round"/></svg>
+          </div>
+          <span><span class="risk-item__accent">Kein Versicherungsschutz</span> bei fehlender Dokumentation nach einem Schadensfall.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -263,8 +499,9 @@
     <div class="container">
       <h2>Preis &amp; Transparenz</h2>
       <div class="price-box price-box--coral">
-        <div class="price-box__amount">ab 649 &#x20AC;</div>
-        <div class="price-box__note">zzgl. MwSt. pro Aufzug. Kombinationsangebote (GBU + Cybersecurity + Zustandsbericht) auf Anfrage.</div>
+        <div class="price-hero-amount">ab 649 &#x20AC;</div>
+        <div class="price-box__note" style="margin-bottom:.85rem;">zzgl. MwSt. pro Aufzug. Kombinationsangebote (GBU + Cybersecurity + Zustandsbericht) auf Anfrage.</div>
+        <span class="price-badge">inkl. Cybersecurity-Check nach TRBS 1115-1</span>
         <div class="price-box__table">
           <div class="price-row">
             <span class="price-row__label">Gef&#228;hrdungsbeurteilung</span>
