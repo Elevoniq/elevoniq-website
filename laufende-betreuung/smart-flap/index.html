@@ -83,7 +83,10 @@
     .highlight-box strong { color:#69B0AB; }
 
     /* ---- Pricing ---- */
-    .pricing-block { border-left:4px solid #69B0AB; padding:28px 32px; background:#EDF7F6; border-radius:0 8px 8px 0; max-width:600px; }
+    .pricing-block { border-left:4px solid #69B0AB; padding:28px 32px; background:#EDF7F6; border-radius:0 8px 8px 0; }
+    /* ---- Pricing Pair ---- */
+    .pricing-pair { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:32px; align-items:start; }
+    @media (max-width:768px) { .pricing-pair { grid-template-columns:1fr; } }
     .pricing-headline { font-size:32px; font-weight:800; color:#1A1A1A; margin-bottom:6px; }
     .pricing-sub { font-size:14px; color:#6B7280; margin-bottom:16px; }
     .pricing-row { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; padding:12px 0; border-bottom:1px solid rgba(0,0,0,0.06); }
@@ -405,53 +408,58 @@
     <span class="section-eyebrow">Preis &amp; Förderung</span>
     <h2 id="preis-heading">Investition und Förderung</h2>
 
-    <!-- Entry: Machbarkeitsstudie -->
-    <div style="background:#EDF7F6;border-radius:10px;padding:28px 32px;margin-bottom:32px;border-left:4px solid #69B0AB;max-width:680px;">
-      <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3D7E79;margin:0 0 8px;">Einstieg</p>
-      <div style="font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:6px;">1.499 € <span style="font-size:16px;font-weight:400;color:#6B7280;">zzgl. MwSt.</span></div>
-      <p style="font-size:15px;font-weight:600;color:#1A1A1A;margin:0 0 12px;">Machbarkeitsstudie mit Einsparberechnung</p>
-      <p style="font-size:14px;color:#374151;line-height:1.65;margin:0 0 14px;">Wir analysieren Ihre Anlage und berechnen die individuelle Energieeinsparung, CO2-Reduktion und den wirtschaftlichen Nutzen einer SMART FLAP®-Installation — belastbar, dokumentiert und direkt verwertbar für Investitions- und Förderentscheidungen.</p>
-      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
-        <div style="display:flex;gap:10px;align-items:center;">
-          <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
-          <span style="font-size:13px;color:#374151;">Technische Machbarkeitsprüfung der Installation</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center;">
-          <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
-          <span style="font-size:13px;color:#374151;">Potenzielle Einsparberechnung (Energie, CO2, Euro)</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center;">
-          <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
-          <span style="font-size:13px;color:#374151;">360°-Visualisierung des Aufzugsschachts</span>
-        </div>
-        <div style="display:flex;gap:10px;align-items:center;">
-          <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
-          <span style="font-size:13px;color:#374151;">Technischer Zustandsbericht der Anlage</span>
-        </div>
-      </div>
-      <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Machbarkeitsstudie%20SMART%20FLAP%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0AStandort%20der%20Anlage(n)%3A%20%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0AAnsprechpartner%20%2B%20E-Mail%3A%20" class="btn-primary" style="display:inline-block;">Machbarkeitsstudie beauftragen</a>
-    </div>
+    <div class="pricing-pair">
 
-    <div class="pricing-block">
-      <div class="pricing-headline">ab 7.900 €</div>
-      <div class="pricing-sub">Installationskosten zzgl. MwSt. — 20 % BEG-Förderung möglich.</div>
-      <div class="pricing-row">
-        <span class="pricing-row-label">Installation SMART FLAP®</span>
-        <span class="pricing-row-value">ab 7.900 € zzgl. MwSt.</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label">Jahreswartung</span>
-        <span class="pricing-row-value">ab 399 €/Jahr/Aufzug zzgl. MwSt.</span>
-      </div>
-      <div class="pricing-row">
-        <span class="pricing-row-label">CO2-Monitoring-Report</span>
-        <span class="pricing-row-value">im Wartungspaket enthalten</span>
+      <!-- Entry: Machbarkeitsstudie -->
+      <div style="background:#EDF7F6;border-radius:10px;padding:28px 32px;border-left:4px solid #69B0AB;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3D7E79;margin:0 0 8px;">Einstieg</p>
+        <div style="font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:6px;">1.499 € <span style="font-size:16px;font-weight:400;color:#6B7280;">zzgl. MwSt.</span></div>
+        <p style="font-size:15px;font-weight:600;color:#1A1A1A;margin:0 0 12px;">Machbarkeitsstudie mit Einsparberechnung</p>
+        <p style="font-size:14px;color:#374151;line-height:1.65;margin:0 0 14px;">Wir analysieren Ihre Anlage und berechnen die individuelle Energieeinsparung, CO2-Reduktion und den wirtschaftlichen Nutzen einer SMART FLAP®-Installation — belastbar, dokumentiert und direkt verwertbar für Investitions- und Förderentscheidungen.</p>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
+            <span style="font-size:13px;color:#374151;">Technische Machbarkeitsprüfung der Installation</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
+            <span style="font-size:13px;color:#374151;">Potenzielle Einsparberechnung (Energie, CO2, Euro)</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
+            <span style="font-size:13px;color:#374151;">360°-Visualisierung des Aufzugsschachts</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;">
+            <span style="width:7px;height:7px;background:#69B0AB;border-radius:50%;flex-shrink:0;display:inline-block;"></span>
+            <span style="font-size:13px;color:#374151;">Technischer Zustandsbericht der Anlage</span>
+          </div>
+        </div>
+        <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Machbarkeitsstudie%20SMART%20FLAP%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0AStandort%20der%20Anlage(n)%3A%20%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0AAnsprechpartner%20%2B%20E-Mail%3A%20" class="btn-primary" style="display:inline-block;">Machbarkeitsstudie beauftragen</a>
       </div>
 
-      <div class="pricing-row">
-        <span class="pricing-row-label">BEG-Zuschuss (BAFA)</span>
-        <span class="pricing-row-value">bis zu 20 % — effektive Investition ab ca. 6.300 €</span>
+      <!-- Installation pricing -->
+      <div class="pricing-block">
+        <div class="pricing-headline">ab 7.900 €</div>
+        <div class="pricing-sub">Installationskosten zzgl. MwSt. — 20 % BEG-Förderung möglich.</div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Installation SMART FLAP®</span>
+          <span class="pricing-row-value">ab 7.900 € zzgl. MwSt.</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">Jahreswartung</span>
+          <span class="pricing-row-value">ab 399 €/Jahr/Aufzug zzgl. MwSt.</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">CO2-Monitoring-Report</span>
+          <span class="pricing-row-value">im Wartungspaket enthalten</span>
+        </div>
+        <div class="pricing-row">
+          <span class="pricing-row-label">BEG-Zuschuss (BAFA)</span>
+          <span class="pricing-row-value">bis zu 20 % — effektive Investition ab ca. 6.300 €</span>
+        </div>
+        <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20SMART%20FLAP%C2%AE%20Installation%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0AStandort%20der%20Anlage(n)%3A%20%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0AAnsprechpartner%20%2B%20E-Mail%3A%20" class="btn-primary" style="display:inline-block;margin-top:16px;">Installation anfragen</a>
       </div>
+
     </div>
     <div style="margin-top:20px;background:#F4F7F6;border-radius:8px;padding:22px 24px;">
       <p style="font-size:13px;font-weight:700;color:#1A1A1A;margin:0 0 14px;">Mögliche Förderung &amp; finanzielle Vorteile</p>
@@ -484,12 +492,6 @@
     <p style="font-size:15px;color:#374151;line-height:1.7;">Die Einsparung von 7,5 % des gesamten Gebäudeenergiebedarfs ist kein Schätzwert — sie ist das Ergebnis einer kontrollierten Feldstudie.</p>
     <div class="study-source">
       <strong style="color:#1A1A1A;">Quelle:</strong> Gemeinsame Studie GWH + Simplifa + EBZ Business School, 2023. Ergebnis: 7,5 % Reduktion des Gesamtenergiebedarfs, messbar und reproduzierbar.
-    </div>
-    <div class="pull-quote" style="margin-top:24px;">
-      <blockquote>
-        [Platzhalter: GWH-Zitat wird nachgereicht — Freigabe ausstehend]
-      </blockquote>
-      <cite>Bernd Albrecht, Bereichsleiter Technik, GWH</cite>
     </div>
   </div>
 </section>
