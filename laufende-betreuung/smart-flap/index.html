@@ -32,11 +32,13 @@
     .hero-badges { display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
     .hero-badge { background:rgba(105,176,171,0.12); color:#3D7E79; border:1px solid rgba(105,176,171,0.35); padding:7px 16px; border-radius:20px; font-size:13px; font-weight:600; white-space:nowrap; }
     .cta-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:28px; }
-    /* Hero split: text left, photo right */
-    .hero-split { display:grid; grid-template-columns:1fr 520px; gap:3rem; align-items:center; }
-    .hero-photo { border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.18); }
-    .hero-photo img { width:100%; height:100%; object-fit:cover; display:block; max-height:520px; }
-    @media (max-width:900px) { .hero-split { grid-template-columns:1fr; } .hero-photo { max-width:540px; } }
+    /* Hero split: text left, photos right */
+    .hero-split { display:grid; grid-template-columns:1fr 560px; gap:3rem; align-items:center; }
+    .hero-photo-pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .hero-photo-pair-item { border-radius:12px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,0.18); }
+    .hero-photo-pair-item img { width:100%; display:block; object-fit:cover; aspect-ratio:3/4; }
+    .hero-photo-pair-label { margin-top:6px; font-size:11px; font-weight:700; text-align:center; text-transform:uppercase; letter-spacing:.07em; }
+    @media (max-width:900px) { .hero-split { grid-template-columns:1fr; } .hero-photo-pair { max-width:480px; } }
 
     /* ---- Key Facts Navy ---- */
     .key-facts-section { background:#1E2761; padding:72px 0; }
@@ -204,10 +206,23 @@
           <a href="../index.html" class="btn-secondary">Zur Übersicht</a>
         </div>
       </div>
-      <div class="hero-photo">
-        <img src="../../assets/images/smartflap/karl-theodor-referenz.jpg"
-             alt="SMART FLAP® Montage — Karl-Theodor-Str. 55, München"
-             width="390" height="520" loading="eager">
+      <div class="hero-photo-pair">
+        <div>
+          <div class="hero-photo-pair-item">
+            <img src="../../assets/images/smartflap/karl-theodor-referenz.jpg"
+                 alt="Vorher: Offene Schachtkopföffnung — Karl-Theodor-Str. 55, München"
+                 loading="eager">
+          </div>
+          <p class="hero-photo-pair-label" style="color:#9CA3AF;">Vorher</p>
+        </div>
+        <div>
+          <div class="hero-photo-pair-item">
+            <img src="../../assets/images/smartflap/karl-theodor-nachher.jpg"
+                 alt="Nachher: SMART FLAP® montiert — Karl-Theodor-Str. 55, München"
+                 loading="eager">
+          </div>
+          <p class="hero-photo-pair-label" style="color:#3D7E79;">Nachher</p>
+        </div>
       </div>
     </div>
   </div>
