@@ -33,10 +33,10 @@
     .hero-badge { background:rgba(105,176,171,0.12); color:#3D7E79; border:1px solid rgba(105,176,171,0.35); padding:7px 16px; border-radius:20px; font-size:13px; font-weight:600; white-space:nowrap; }
     .cta-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:28px; }
     /* Hero split: text left, photo right */
-    .hero-split { display:grid; grid-template-columns:1fr 420px; gap:3rem; align-items:center; }
+    .hero-split { display:grid; grid-template-columns:1fr 520px; gap:3rem; align-items:center; }
     .hero-photo { border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.18); }
-    .hero-photo img { width:100%; height:100%; object-fit:cover; display:block; max-height:420px; }
-    @media (max-width:900px) { .hero-split { grid-template-columns:1fr; } .hero-photo { max-width:480px; } }
+    .hero-photo img { width:100%; height:100%; object-fit:cover; display:block; max-height:520px; }
+    @media (max-width:900px) { .hero-split { grid-template-columns:1fr; } .hero-photo { max-width:540px; } }
 
     /* ---- Key Facts Navy ---- */
     .key-facts-section { background:#1E2761; padding:72px 0; }
@@ -207,43 +207,7 @@
       <div class="hero-photo">
         <img src="../../assets/images/smartflap/karl-theodor-referenz.jpg"
              alt="SMART FLAP® Montage — Karl-Theodor-Str. 55, München"
-             width="420" height="420" loading="eager">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Vorher / Nachher -->
-<section class="section section-subtle" aria-labelledby="vorher-nachher-heading">
-  <div class="container">
-    <p class="section-eyebrow">Referenz Karl-Theodor-Str. 55, München</p>
-    <h2 class="section-title" id="vorher-nachher-heading">Vorher / Nachher</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:960px;">
-      <div>
-        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
-          <video controls preload="metadata"
-                 style="width:100%;display:block;max-height:340px;background:#111;"
-                 aria-label="Vorher: Schachtkopföffnung Karl-Theodor-Str. 55">
-            <source src="../../assets/videos/smartflap-vorher.mov" type="video/quicktime">
-            <img src="../../assets/images/smartflap/karl-theodor-referenz.jpg"
-                 alt="Vorher: Schachtkopföffnung Karl-Theodor-Str. 55"
-                 style="width:100%;display:block;object-fit:cover;max-height:340px;">
-          </video>
-        </div>
-        <p style="margin-top:.75rem;font-size:13px;font-weight:600;color:var(--color-gray);text-align:center;text-transform:uppercase;letter-spacing:.06em;">Vorher</p>
-      </div>
-      <div>
-        <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
-          <video controls preload="metadata"
-                 style="width:100%;display:block;max-height:340px;background:#111;"
-                 aria-label="Nachher: SMART FLAP® montiert Karl-Theodor-Str. 55">
-            <source src="../../assets/videos/smartflap-nachher.mov" type="video/quicktime">
-            <img src="../../assets/images/smartflap/karl-theodor-nachher.jpg"
-                 alt="Nachher: SMART FLAP® montiert Karl-Theodor-Str. 55"
-                 style="width:100%;display:block;object-fit:cover;max-height:340px;">
-          </video>
-        </div>
-        <p style="margin-top:.75rem;font-size:13px;font-weight:600;color:var(--color-teal-dark);text-align:center;text-transform:uppercase;letter-spacing:.06em;">Nachher</p>
+             width="520" height="520" loading="eager">
       </div>
     </div>
   </div>
@@ -264,8 +228,34 @@
         </div>
       </div>
       <div>
-        <div class="problem-graphic-placeholder" role="img" aria-label="Kamineffekt-Schema Aufzugsschacht">
-          <p>[GRAFIK: Kamineffekt-Schema aus 2-Pager — wird nachgereicht]</p>
+        <p class="section-eyebrow" style="margin-bottom:1rem;">Referenz Karl-Theodor-Str. 55, München</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+          <div>
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
+              <video controls preload="metadata"
+                     style="width:100%;display:block;background:#111;"
+                     aria-label="Vorher: Schachtkopföffnung Karl-Theodor-Str. 55">
+                <source src="../../assets/videos/smartflap-vorher.mov" type="video/quicktime">
+                <img src="../../assets/images/smartflap/karl-theodor-referenz.jpg"
+                     alt="Vorher: Schachtkopföffnung Karl-Theodor-Str. 55"
+                     style="width:100%;display:block;object-fit:cover;">
+              </video>
+            </div>
+            <p style="margin-top:.6rem;font-size:12px;font-weight:700;color:#9CA3AF;text-align:center;text-transform:uppercase;letter-spacing:.07em;">Vorher</p>
+          </div>
+          <div>
+            <div style="border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
+              <video controls preload="metadata"
+                     style="width:100%;display:block;background:#111;"
+                     aria-label="Nachher: SMART FLAP® montiert Karl-Theodor-Str. 55">
+                <source src="../../assets/videos/smartflap-nachher.mov" type="video/quicktime">
+                <img src="../../assets/images/smartflap/karl-theodor-nachher.jpg"
+                     alt="Nachher: SMART FLAP® montiert Karl-Theodor-Str. 55"
+                     style="width:100%;display:block;object-fit:cover;">
+              </video>
+            </div>
+            <p style="margin-top:.6rem;font-size:12px;font-weight:700;color:#3D7E79;text-align:center;text-transform:uppercase;letter-spacing:.07em;">Nachher</p>
+          </div>
         </div>
       </div>
     </div>
