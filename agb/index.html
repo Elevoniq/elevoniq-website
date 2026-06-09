@@ -118,6 +118,7 @@
   <a href="/wissen/" class="mobile-nav-link">Wissen</a>
   <a href="/ueber-uns/" class="mobile-nav-link">Über uns</a>
   <div class="mobile-nav-cta">
+    <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:14px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:12px 20px;border-radius:6px;margin-bottom:10px;">Kundenportal</a>
     <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
        target="_blank" rel="noopener" class="btn-primary btn-full">
       Erstgespräch buchen
@@ -164,6 +165,7 @@
       <a href="/wissen/" role="listitem">Wissen</a>
       <a href="/ueber-uns/" role="listitem">Über uns</a>
     </div>
+    <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:none;font-size:13px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:7px 16px;border-radius:6px;white-space:nowrap;transition:background 0.2s,color 0.2s;" id="nav-portal-desktop" onmouseover="this.style.background='#3D7E79';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#3D7E79'">Kundenportal</a>
     <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
        target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
       Erstgespräch buchen
@@ -396,6 +398,8 @@
   document.addEventListener('DOMContentLoaded', function() {
     var cta = document.getElementById('nav-cta-desktop');
     if (cta) cta.style.display = 'inline-block';
+    var portal = document.getElementById('nav-portal-desktop');
+    if (portal) portal.style.display = 'inline-block';
   });
 </script>
 <script src="../assets/js/nav.js" defer></script>
