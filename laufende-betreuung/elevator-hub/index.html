@@ -450,36 +450,40 @@
       <p class="section-lead" style="max-width:640px;">Alle Anlagen, Fristen und Dokumente auf einer Oberfläche. Herstellerneutral, browserbasiert, ohne App-Installation.</p>
     </div>
 
-    <!-- Main: Portfolio map -->
+    <!-- Main: 360° view (high-res) -->
     <div style="margin-bottom:24px;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);">
       <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;">
         <span style="width:11px;height:11px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
         <span style="width:11px;height:11px;border-radius:50%;background:#FEBC2E;display:inline-block;"></span>
         <span style="width:11px;height:11px;border-radius:50%;background:#28C840;display:inline-block;"></span>
-        <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">app.elevoniq.de — Portfolio-Übersicht</div>
+        <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">360°-Begehung — Maschinenraum</div>
       </div>
-      <img src="../../assets/images/hub-screenshots/hub-portfolio-map.png" alt="ELEVATOR HUB Portfolioübersicht mit Kartenansicht Deutschland" style="display:block;width:100%;height:auto;" loading="lazy">
+      <img src="../../assets/images/hub-screenshots/hub-360-view.png" alt="360°-Ansicht des Aufzug-Maschinenraums im ELEVATOR HUB" style="display:block;width:100%;height:auto;" loading="lazy" fetchpriority="high">
     </div>
 
-    <!-- Secondary: 360° + Analytics -->
+    <!-- Secondary: Portfolio map + Analytics (natural size, centered) -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-      <div style="border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);">
-        <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;">
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);display:flex;flex-direction:column;">
+        <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;flex-shrink:0;">
           <span style="width:11px;height:11px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
           <span style="width:11px;height:11px;border-radius:50%;background:#FEBC2E;display:inline-block;"></span>
           <span style="width:11px;height:11px;border-radius:50%;background:#28C840;display:inline-block;"></span>
-          <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">360°-Begehung — Maschinenraum</div>
+          <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">app.elevoniq.de — Portfolio-Übersicht</div>
         </div>
-        <img src="../../assets/images/hub-screenshots/hub-360-view.png" alt="360°-Ansicht des Aufzug-Maschinenraums im ELEVATOR HUB" style="display:block;width:100%;height:auto;" loading="lazy">
+        <div style="background:#f8f9fa;flex:1;display:flex;align-items:center;justify-content:center;padding:16px;">
+          <img src="../../assets/images/hub-screenshots/hub-portfolio-map.png" alt="ELEVATOR HUB Portfolioübersicht mit Kartenansicht Deutschland" style="display:block;width:100%;max-width:446px;height:auto;border-radius:4px;" loading="lazy">
+        </div>
       </div>
-      <div style="border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);">
-        <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;">
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);display:flex;flex-direction:column;">
+        <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;flex-shrink:0;">
           <span style="width:11px;height:11px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
           <span style="width:11px;height:11px;border-radius:50%;background:#FEBC2E;display:inline-block;"></span>
           <span style="width:11px;height:11px;border-radius:50%;background:#28C840;display:inline-block;"></span>
           <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">Portfolio-Auswertung &amp; Reports</div>
         </div>
-        <img src="../../assets/images/hub-screenshots/hub-analytics-dashboard.png" alt="ELEVATOR HUB Analytics-Dashboard mit Portfolio-Auswertung" style="display:block;width:100%;height:auto;" loading="lazy">
+        <div style="background:#f8f9fa;flex:1;display:flex;align-items:center;justify-content:center;padding:16px;">
+          <img src="../../assets/images/hub-screenshots/hub-analytics-dashboard.png" alt="ELEVATOR HUB Analytics-Dashboard mit Portfolio-Auswertung" style="display:block;width:100%;max-width:448px;height:auto;border-radius:4px;" loading="lazy">
+        </div>
       </div>
     </div>
 
