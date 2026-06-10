@@ -115,6 +115,48 @@
       line-height: 1.6;
       margin-top: 2.5rem;
     }
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 1.25rem 0;
+      background-color: #F8F9FC;
+    }
+    .legal-table thead tr {
+      background-color: #1E2761;
+      color: #ffffff;
+    }
+    .legal-table th {
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .legal-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid #dde1ef;
+      vertical-align: top;
+      color: #1a1a2e;
+    }
+    .legal-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .legal-table tbody tr:nth-child(even) {
+      background-color: #eef0f8;
+    }
+    .legal-table a {
+      color: #1E2761;
+      text-decoration: underline;
+    }
+    .legal-placeholder {
+      font-size: 0.85rem;
+      color: #7a3a00;
+      background-color: #fff8e6;
+      border-left: 3px solid #e8a000;
+      padding: 0.5rem 0.85rem;
+      margin: 0.75rem 0;
+      border-radius: 0 4px 4px 0;
+    }
   </style>
 </head>
 <body>
@@ -258,10 +300,60 @@
         Vollständige Auflistung wird vor Go-Live ergänzt.
       </div>
 
-      <!-- LAWI: §5 Kontakt Datenschutzbeauftragter -->
-      <h2>§ 5 Datenschutzbeauftragter</h2>
+      <!-- LAWI: §5 Empfänger, Dienstleister und Auftragsverarbeiter -->
+      <h2>§ 5 Empfänger, Dienstleister und Auftragsverarbeiter</h2>
       <div class="legal-placeholder-section">
-        <!-- LAWI: §5 Kontakt Datenschutzbeauftragter -->
+
+        <p>Zur Bereitstellung und zum Betrieb unserer Dienste setzen wir externe Dienstleister ein. Soweit diese Dienstleister personenbezogene Daten ausschließlich nach unserer Weisung verarbeiten, handeln sie als Auftragsverarbeiter im Sinne von Art. 28 DSGVO. Einige Dienstleister verarbeiten Daten jedoch auch zu eigenen Zwecken und sind insoweit eigenverantwortlich tätig; dies ist in der nachstehenden Übersicht gesondert ausgewiesen.</p>
+
+        <p>Für die technische Verarbeitung von Dokumenten-Uploads (Prüfberichte, Angebote, Verträge) betreiben wir unter <strong>hub-backend.elevoniq.de</strong> eine eigene API-Infrastruktur. Diese Infrastruktur unterliegt unserer alleinigen Kontrolle; eine Weitergabe der dort verarbeiteten Daten an Dritte erfolgt nur im Rahmen der nachstehend aufgeführten Auftragsverarbeiter.</p>
+
+        <p>Mehrere der nachfolgend genannten Dienstleister haben ihren Sitz in den USA oder einem sonstigen Drittland außerhalb des Europäischen Wirtschaftsraums (EWR). Die Übermittlung personenbezogener Daten in diese Drittländer erfolgt auf Grundlage von Standardvertragsklauseln gemäß Art. 46 Abs. 2 lit. c DSGVO sowie — soweit der jeweilige Anbieter zertifiziert ist — zusätzlich auf Grundlage des EU-US-Datenschutzrahmens (EU-U.S. Data Privacy Framework, DPF). Eine Kopie der maßgeblichen Standardvertragsklauseln wird Ihnen auf Anfrage zur Verfügung gestellt.</p>
+
+        <h3>A. Notwendige Dienste</h3>
+        <p>Die nachstehenden Dienstleister werden auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) und Art. 6 Abs. 1 lit. f DSGVO (berechtigte Interessen an einem sicheren und zuverlässigen Betrieb unserer Dienste) eingesetzt.</p>
+
+        <table class="legal-table">
+          <thead>
+            <tr><th>Dienstleister</th><th>Funktion</th><th>Sitz / Drittland</th><th>Rolle</th><th>Garantie / Transfergrundlage</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Vercel Inc.</td><td>Hosting, Edge-Netzwerk, CDN</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert</td></tr>
+            <tr><td>GitHub Inc. (Microsoft-Konzern)</td><td>Code-Repository, Versionsverwaltung</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert (Microsoft)</td></tr>
+            <tr><td>Salesforce Inc.</td><td>CRM, Verwaltung von Kundendaten</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert</td></tr>
+            <tr><td>Google Cloud Platform (Google LLC)</td><td>Datenspeicherung, Cloud-Infrastruktur</td><td>EU / USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert. Bei ausschließlicher EU-Region: kein Drittlandtransfer.</td></tr>
+            <tr><td>Telekom Cloud (Deutsche Telekom AG)</td><td>Datenspeicherung, Cloud-Infrastruktur</td><td>Deutschland (EU)</td><td>Auftragsverarbeiter</td><td>Kein Drittlandtransfer</td></tr>
+            <tr><td>Microsoft Corporation (365 / Outlook / Bookings)</td><td>E-Mail-Kommunikation, Terminbuchung</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert</td></tr>
+          </tbody>
+        </table>
+
+        <p class="legal-placeholder">[PRÜFEN: Salesforce Einstein AI aktiv? Falls ja: eigenverantwortliche Verarbeitung durch Salesforce für KI-Funktionen ergänzen.]</p>
+        <p class="legal-placeholder">[PRÜFEN: GCP-Region. Falls Daten ausschließlich in EU-Region gespeichert werden, entfällt Drittlandtransfer für GCP.]</p>
+
+        <h3>B. Optionale Dienste (nur mit Einwilligung)</h3>
+        <p>Die nachstehenden Dienste werden ausschließlich dann aktiviert, wenn Sie zuvor Ihre ausdrückliche Einwilligung gem. Art. 6 Abs. 1 lit. a DSGVO erteilt haben. Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+        <p>Ihre Einwilligung können Sie jederzeit über den Link <strong>Cookie-Einstellungen</strong> in der Fußzeile dieser Website widerrufen.</p>
+
+        <table class="legal-table">
+          <thead>
+            <tr><th>Dienstleister</th><th>Funktion</th><th>Sitz / Drittland</th><th>Rolle</th><th>Garantie / Transfergrundlage</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Google LLC (Google Analytics 4)</td><td>Nutzungsstatistik, Reichweitenmessung</td><td>USA</td><td>Eigenverantwortlich (Google verarbeitet Daten auch zu eigenen Zwecken)</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert. Datenschutzerklärung Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></td></tr>
+          </tbody>
+        </table>
+
+        <h3>Drittlandtransfers — ergänzende Hinweise</h3>
+        <p>Soweit personenbezogene Daten in die USA übermittelt werden, stützen wir die Übermittlung vorrangig auf Standardvertragsklauseln gemäß Art. 46 Abs. 2 lit. c DSGVO, die wir mit den jeweiligen Empfängern abgeschlossen haben. Für Anbieter, die unter dem EU-U.S. Data Privacy Framework (DPF) zertifiziert sind, besteht zusätzlich ein Angemessenheitsbeschluss der Europäischen Kommission vom 10. Juli 2023 (Art. 45 DSGVO). Die DPF-Zertifizierung der jeweiligen Anbieter können Sie unter <a href="https://www.dataprivacyframework.gov" target="_blank" rel="noopener noreferrer">www.dataprivacyframework.gov</a> einsehen. Eine Kopie der abgeschlossenen Standardvertragsklauseln stellen wir Ihnen auf Anfrage zur Verfügung. Der DPF-Angemessenheitsbeschluss kann vom EuGH überprüft werden; für diesen Fall dienen die abgeschlossenen Standardvertragsklauseln als eigenständige Rückfallebene.</p>
+
+        <p class="legal-placeholder">[PRÜFEN: AVV-Status. Auftragsverarbeitungsverträge gemäß Art. 28 DSGVO müssen mit folgenden Dienstleistern vor Veröffentlichung unterzeichnet vorliegen: Vercel Inc., GitHub Inc. / Microsoft, Salesforce Inc., Google LLC (GCP), Deutsche Telekom AG (Telekom Cloud), Microsoft Corporation (M365 / Outlook / Bookings). Ohne unterzeichnete AVVs darf diese Erklärung nicht veröffentlicht werden.]</p>
+
+      </div>
+
+      <!-- LAWI: §6 Kontakt Datenschutzbeauftragter -->
+      <h2>§ 6 Datenschutzbeauftragter</h2>
+      <div class="legal-placeholder-section">
+        <!-- LAWI: §6 Kontakt Datenschutzbeauftragter -->
         Kontaktangaben des Datenschutzbeauftragten (sofern benannt) werden vor Go-Live eingetragen.
       </div>
 
