@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lifecycle eines Aufzugs — ELEVATOR HUB® | ElevonIQ</title>
+<meta name="description" content="365 Tage im ELEVATOR HUB®: Ereignisse rund um den Aufzug, eingeordnet in vier Leistungscluster — animierte Jahresuhr." />
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://elevoniq.de/laufende-betreuung/elevator-hub/lifecycle/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../../assets/fonts/work-sans.css" />
+<style>
+  :root {
+    --navy:#1E2761;
+    --coral:#FF5B5C;
+    --coral-dark:#E8474A;
+    --teal:#69B0AB;
+    --teal-dark:#3D7E79;
+    --bg-0:#0e1030;
+    --bg-1:#14163a;
+    --bg-2:#0b0d24;
+    --txt:#eef0fb;
+    --txt-dim:rgba(238,240,251,0.62);
+    --txt-faint:rgba(238,240,251,0.36);
+    --c1:#FF5B5C;
+    --c2:#69B0AB;
+    --c3:#e0a64a;
+    --c4:#7c80e0;
+  }
+  *, *::before, *::after { box-sizing:border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family:'Work Sans','Inter',system-ui,sans-serif;
+    background: radial-gradient(130% 120% at 50% 22%, #1d2150 0%, var(--bg-1) 52%, var(--bg-2) 100%);
+    color:var(--txt);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+
+  /* ── Top bar ──────────────────────────────────────────── */
+  .topbar {
+    background:rgba(14,16,48,0.85);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    position:sticky;
+    top:0;
+    z-index:100;
+  }
+  .topbar-inner {
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .back-link {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--txt-dim);
+    text-decoration:none;
+    font-size:13px;
+    font-weight:500;
+    transition:color .2s;
+  }
+  .back-link:hover { color:var(--txt); }
+  .back-link svg { flex-shrink:0; }
+  .topbar-brand {
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--txt-dim);
+  }
+  .topbar-brand .accent { color:var(--coral); }
+
+  /* ── Main layout ──────────────────────────────────────── */
+  .wrap { max-width:1180px; margin:0 auto; padding:36px 40px 56px; }
+
+  .page-head { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .brand { display:flex; align-items:center; gap:11px; }
+  .brand .logo-dot {
+    width:28px; height:28px; border-radius:8px;
+    background:var(--coral);
+    display:grid; place-items:center;
+    color:#fff; font-weight:800; font-size:15px;
+    font-family:'Poppins',sans-serif;
+    box-shadow:0 6px 16px -6px rgba(255,91,92,0.6);
+  }
+  .brand .wordmark {
+    font-family:'Poppins',sans-serif;
+    font-weight:700; font-size:15px;
+    letter-spacing:0.2em; text-transform:uppercase;
+  }
+  .brand .wordmark sup { font-size:0.5em; color:var(--txt-faint); }
+
+  .play-btn {
+    display:flex; align-items:center; gap:9px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    color:var(--txt-dim);
+    border-radius:999px;
+    padding:8px 16px;
+    font-size:12px; font-weight:600;
+    cursor:pointer;
+    font-family:'Work Sans',sans-serif;
+    transition:color .2s, border-color .2s;
+  }
+  .play-btn:hover { color:var(--txt); border-color:rgba(255,255,255,0.25); }
+  .play-btn svg { width:9px; height:9px; flex-shrink:0; }
+
+  .eyebrow {
+    margin:24px 0 6px;
+    color:var(--teal);
+    font-weight:700;
+    letter-spacing:0.18em;
+    font-size:12px;
+    text-transform:uppercase;
+  }
+  h1.title {
+    font-family:'Poppins',sans-serif;
+    font-weight:700; font-size:30px;
+    line-height:1.1; letter-spacing:-0.015em;
+    margin:0;
+  }
+  h1.title .accent { color:var(--coral); }
+  .sub {
+    margin:10px 0 0;
+    color:var(--txt-dim);
+    font-size:14px;
+    max-width:660px;
+    line-height:1.55;
+  }
+
+  /* ── Ring legend ─────────────────────────────────────── */
+  .ring-leg { display:flex; gap:22px; margin-top:6px; flex-wrap:wrap; }
+  .ring-leg .it { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--txt-dim); }
+  .ring-leg .ring {
+    width:16px; height:16px; border-radius:999px;
+    border:2px solid var(--txt-faint);
+    flex-shrink:0;
+  }
+  .ring-leg .ring.inn { border-style:dashed; }
+
+  /* ── SVG dial ────────────────────────────────────────── */
+  .clock { width:100%; margin-top:8px; }
+  svg.dial { display:block; width:100%; height:auto; overflow:visible; }
+  .ev-label { font-family:'Work Sans','Inter',sans-serif; font-weight:600; font-size:10.8px; }
+  .q-roman { font-family:'Poppins',sans-serif; font-weight:700; font-size:24px; fill:rgba(255,255,255,0.09); }
+  .center-hub { font-family:'Poppins',sans-serif; font-weight:800; font-size:20px; fill:#fff; }
+  .center-sub { font-family:'Work Sans',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.22em; fill:var(--teal); text-transform:uppercase; }
+
+  /* ── Bottom legends ──────────────────────────────────── */
+  .legend-head {
+    font-size:10px; font-weight:700;
+    letter-spacing:0.2em; text-transform:uppercase;
+    color:var(--txt-faint);
+    margin:26px 0 9px;
+  }
+  .provs { display:flex; flex-wrap:wrap; gap:9px; }
+  .prov {
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.10);
+    border-radius:999px;
+    padding:7px 14px;
+    font-size:12px; font-weight:600;
+    color:var(--txt-dim);
+    transition:background .25s, border-color .25s, color .2s, transform .2s;
+    cursor:default;
+  }
+  .prov .dot { width:8px; height:8px; border-radius:999px; background:#9aa3d6; flex-shrink:0; }
+  .prov .cnt { color:var(--txt-faint); font-weight:700; }
+  .prov.active {
+    background:rgba(255,255,255,0.10);
+    border-color:#9fa8e6;
+    color:var(--txt);
+    transform:translateY(-2px);
+  }
+  .prov.active .dot { box-shadow:0 0 8px #9fa8e6; }
+
+  .clusters { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:9px; }
+  @media (max-width:780px){ .clusters{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:480px){ .clusters{ grid-template-columns:1fr; } }
+
+  .cluster {
+    position:relative;
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.10);
+    border-radius:12px;
+    padding:12px 14px 12px 16px;
+    transition:background .25s, border-color .25s, transform .2s;
+  }
+  .cluster::before {
+    content:""; position:absolute;
+    left:0; top:11px; bottom:11px;
+    width:4px; border-radius:0 4px 4px 0;
+    background:var(--cc);
+  }
+  .cluster .k {
+    font-size:9.5px; font-weight:700;
+    letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--cc);
+    display:flex; gap:7px;
+  }
+  .cluster .k .cnt { margin-left:auto; color:var(--txt-faint); }
+  .cluster h4 {
+    font-family:'Poppins',sans-serif;
+    font-weight:700; font-size:13px;
+    margin:6px 0 2px; line-height:1.2;
+  }
+  .cluster p { margin:0; font-size:10.5px; line-height:1.4; color:var(--txt-dim); }
+  .cluster.active {
+    background:rgba(255,255,255,0.10);
+    border-color:var(--cc);
+    transform:translateY(-2px);
+  }
+
+  @media (max-width:600px) {
+    .wrap { padding:24px 20px 40px; }
+    .topbar-inner { padding:0 20px; }
+    h1.title { font-size:22px; }
+    .ring-leg { gap:14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top navigation bar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="../" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 12L6 8l4-4"/>
+      </svg>
+      Zurück zum ELEVATOR HUB®
+    </a>
+    <div class="topbar-brand">ElevonIQ<span class="accent">®</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="page-head">
+    <div class="brand">
+      <div class="logo-dot">E</div>
+      <div class="wordmark">Elevator Hub<sup>®</sup></div>
+    </div>
+    <button class="play-btn" id="playBtn">
+      <svg id="playIc" viewBox="0 0 12 12" fill="currentColor">
+        <rect x="1" y="1" width="3.5" height="10" rx="1"/>
+        <rect x="7.5" y="1" width="3.5" height="10" rx="1"/>
+      </svg>
+      <span id="playTx">Pause</span>
+    </button>
+  </div>
+
+  <div class="eyebrow">Lifecycle eines Aufzugs</div>
+  <h1 class="title">Ereignisse &amp; Messpunkte &mdash; <span class="accent">365 Tage im ELEVATOR HUB&reg;</span></h1>
+  <p class="sub">Außen die Ereignisse rund um den Aufzug, innen die Leistungen von ElevonIQ &mdash; eingeordnet in vier Cluster. Der Zeiger läuft durchs Jahr; jeder Messpunkt wird hervorgehoben, wenn er an der Reihe ist.</p>
+
+  <div class="ring-leg">
+    <div class="it"><span class="ring out"></span>Außenring &middot; Ereignisse der Beteiligten</div>
+    <div class="it"><span class="ring inn"></span>Innenring &middot; Leistungen von ElevonIQ</div>
+  </div>
+
+  <div class="clock">
+    <svg class="dial" id="dial" viewBox="0 0 1180 1040" aria-hidden="true"></svg>
+  </div>
+
+  <div class="legend-head">Dienstleister</div>
+  <div class="provs" id="provs">
+    <div class="prov" data-k="wart"><span class="dot"></span>Wartungsfirma <span class="cnt" id="pv-wart"></span></div>
+    <div class="prov" data-k="zues"><span class="dot"></span>ZÜS / TÜV <span class="cnt" id="pv-zues"></span></div>
+    <div class="prov" data-k="notruf"><span class="dot"></span>Notrufdienst <span class="cnt" id="pv-notruf"></span></div>
+    <div class="prov" data-k="ing"><span class="dot"></span>Ingenieurbüro <span class="cnt" id="pv-ing"></span></div>
+  </div>
+
+  <div class="legend-head">Leistungen</div>
+  <div class="clusters" id="clusters">
+    <div class="cluster" data-c="1" style="--cc:var(--c1)">
+      <div class="k">Cluster 1 <span class="cnt" id="cnt1"></span></div>
+      <h4>Kaufmännisches Immobilien-Management</h4>
+      <p>Budget · Kostenvergleich · Angebots- &amp; RE-Prüfung</p>
+    </div>
+    <div class="cluster" data-c="2" style="--cc:var(--c2)">
+      <div class="k">Cluster 2 <span class="cnt" id="cnt2"></span></div>
+      <h4>Technisches Immobilien-Management</h4>
+      <p>Entstörung · Reparatur · Personenbefreiung</p>
+    </div>
+    <div class="cluster" data-c="3" style="--cc:var(--c3)">
+      <div class="k">Cluster 3 <span class="cnt" id="cnt3"></span></div>
+      <h4>Betreiberpflichten · Normen · Gesetze</h4>
+      <p>GBU · NBA · AZW · ZÜS-Prüfungen &amp; Fristen</p>
+    </div>
+    <div class="cluster" data-c="4" style="--cc:var(--c4)">
+      <div class="k">Cluster 4 <span class="cnt" id="cnt4"></span></div>
+      <h4>Reporting &amp; Transparenz</h4>
+      <p>Portfolio · AdHoc · Incident-Reports</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const SVGNS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs) {
+  const e = document.createElementNS(SVGNS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  return e;
+}
+
+const cx = 590, cy = 500;
+const COL = { 1:'#FF5B5C', 2:'#69B0AB', 3:'#e0a64a', 4:'#7c80e0' };
+
+const EVENTS = [
+  { a:8,   c:1, ring:'out', k:null,     t:'Vertrag unterschrieben' },
+  { a:24,  c:4, ring:'in',  k:null,     t:'Digitalisierung Unterlagen' },
+  { a:44,  c:2, ring:'in',  k:null,     t:'Störungshotline' },
+  { a:60,  c:1, ring:'out', k:null,     t:'Rechnung' },
+  { a:72,  c:4, ring:'in',  k:null,     t:'Leistungskontrolling' },
+  { a:78,  c:3, ring:'out', k:'zues',   t:'ZÜS-Prüfung terminiert' },
+  { a:96,  c:3, ring:'out', k:'zues',   t:'ZÜS-Prüfung' },
+  { a:114, c:4, ring:'in',  k:null,     t:'Kostenbericht Status quo' },
+  { a:132, c:3, ring:'out', k:'zues',   t:'ZÜS-Prüfbericht' },
+  { a:150, c:1, ring:'out', k:'wart',   t:'Angebot auf Basis ZÜS-PB' },
+  { a:170, c:2, ring:'out', k:'wart',   t:'Wiederholte Störung' },
+  { a:182, c:2, ring:'in',  k:null,     t:'Störungsmanagement' },
+  { a:190, c:1, ring:'out', k:null,     t:'Abschluss neuer Verträge' },
+  { a:208, c:3, ring:'in',  k:'ing',    t:'Mängelverfolgung' },
+  { a:226, c:2, ring:'in',  k:'wart',   t:'DL De-Eskalation' },
+  { a:242, c:1, ring:'in',  k:null,     t:'Ausschreibung Wartung' },
+  { a:246, c:1, ring:'out', k:null,     t:'Rechnung' },
+  { a:266, c:2, ring:'out', k:'notruf', t:'Störung' },
+  { a:288, c:4, ring:'in',  k:null,     t:'Jährliches DL-Gespräch' },
+  { a:300, c:1, ring:'in',  k:null,     t:'Angebotsprüfung' },
+  { a:326, c:3, ring:'in',  k:'ing',    t:'Gefährdungsbeurteilung' },
+  { a:344, c:3, ring:'in',  k:'notruf', t:'Notfallbefreiung' },
+  { a:350, c:2, ring:'out', k:'notruf', t:'Wiederholte Störung' },
+];
+
+const svg = document.getElementById('dial');
+
+// Gradient for sweep trail
+const defs = el('defs', {});
+const grad = el('linearGradient', { id:'sweepGrad', x1:'0', y1:'0', x2:'1', y2:'0' });
+[['0','#69B0AB','0'], ['1','#69B0AB','0.18']].forEach(([o,c,op]) => {
+  const s = el('stop', { offset:o, 'stop-color':c, 'stop-opacity':op });
+  grad.appendChild(s);
+});
+defs.appendChild(grad);
+svg.appendChild(defs);
+
+const R_OUT = 300, R_IN = 205, R_HUB = 150;
+const R_LABEL_OUT = 323, R_LABEL_IN = 240;
+
+function pt(r, deg) {
+  const a = (deg - 90) * Math.PI / 180;
+  return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+}
+
+// Rings
+svg.appendChild(el('circle', { cx, cy, r:R_OUT, fill:'rgba(255,255,255,0.022)', stroke:'rgba(255,255,255,0.08)', 'stroke-width':'1' }));
+svg.appendChild(el('circle', { cx, cy, r:R_IN, fill:'rgba(105,176,171,0.04)', stroke:'rgba(255,255,255,0.07)', 'stroke-width':'1', 'stroke-dasharray':'3 7' }));
+svg.appendChild(el('circle', { cx, cy, r:R_HUB, fill:'rgba(11,13,36,0.6)', stroke:'rgba(255,255,255,0.08)', 'stroke-width':'1' }));
+
+// Month ticks (12 segments)
+for (let i = 0; i < 12; i++) {
+  const a = i * 30;
+  const [x1, y1] = pt(R_OUT - 6, a);
+  const [x2, y2] = pt(R_OUT + 6, a);
+  svg.appendChild(el('line', { x1, y1, x2, y2, stroke:'rgba(255,255,255,0.18)', 'stroke-width':'1' }));
+  // Month label
+  const months = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+  const [mx, my] = pt(R_OUT + 22, a);
+  const mt = el('text', { x:mx, y:my + 4, 'text-anchor':'middle', fill:'rgba(238,240,251,0.35)', 'font-family':"'Work Sans',sans-serif", 'font-size':'9', 'font-weight':'500' });
+  mt.textContent = months[i];
+  svg.appendChild(mt);
+}
+
+// Quadrant dividers + Q labels
+[0, 90, 180, 270].forEach(d => {
+  const [x1, y1] = pt(R_HUB, d);
+  const [x2, y2] = pt(R_OUT, d);
+  svg.appendChild(el('line', { x1, y1, x2, y2, stroke:'rgba(255,255,255,0.06)', 'stroke-width':'1', 'stroke-dasharray':'2 7' }));
+});
+[{ m:45, r:'I' }, { m:135, r:'II' }, { m:225, r:'III' }, { m:315, r:'IV' }].forEach(q => {
+  const [x, y] = pt((R_IN + R_OUT) / 2, q.m);
+  const t = el('text', { x, y: y + 8, 'text-anchor':'middle', class:'q-roman' });
+  t.textContent = q.r;
+  svg.appendChild(t);
+});
+
+// Sweep group
+const sweepG = el('g', { id:'sweepG' });
+function trailPath(r, span) {
+  const [xs, ys] = pt(r, -span);
+  const [xe, ye] = pt(r, 0);
+  return `M ${cx} ${cy} L ${xs} ${ys} A ${r} ${r} 0 0 1 ${xe} ${ye} Z`;
+}
+sweepG.appendChild(el('path', { d: trailPath(R_OUT, 34), fill:'url(#sweepGrad)' }));
+sweepG.appendChild(el('line', {
+  x1:cx, y1:cy, x2:pt(R_OUT, 0)[0], y2:pt(R_OUT, 0)[1],
+  stroke:'#69B0AB', 'stroke-width':'1.5', 'stroke-linecap':'round', opacity:'0.75'
+}));
+svg.appendChild(sweepG);
+
+// Event nodes
+const evNodes = EVENTS.map(ev => {
+  const R = ev.ring === 'out' ? R_OUT : R_IN;
+  const [x, y] = pt(R, ev.a);
+  const col = COL[ev.c];
+
+  const halo = el('circle', { cx:x, cy:y, r:'5.5', fill:col, opacity:'0.18' });
+  const dot  = el('circle', { cx:x, cy:y, r:'4',   fill:col, stroke:'#0e1030', 'stroke-width':'1.4' });
+  svg.appendChild(halo);
+  svg.appendChild(dot);
+
+  const LR = ev.ring === 'out' ? R_LABEL_OUT : R_LABEL_IN;
+  const [lx, ly] = pt(LR, ev.a);
+  const hx = Math.cos((ev.a - 90) * Math.PI / 180);
+  const anchor = hx > 0.14 ? 'start' : (hx < -0.14 ? 'end' : 'middle');
+
+  const [tx, ty] = pt((ev.ring === 'out' ? R_OUT : R_IN) + 9, ev.a);
+  const tick = el('line', { x1:x, y1:y, x2:tx, y2:ty, stroke:col, 'stroke-width':'1', opacity:'0.45' });
+  svg.appendChild(tick);
+
+  const txt = el('text', { x:lx, y:ly + 3.5, 'text-anchor':anchor, class:'ev-label', fill:'rgba(238,240,251,0.62)' });
+  txt.textContent = ev.t;
+  svg.appendChild(txt);
+
+  return { ev, dot, halo, txt, col, lit:0, fired:false };
+});
+
+// Centre — lift glyph
+const liftG = el('g', {
+  transform:'translate(0 -14)',
+  stroke:'#fff', 'stroke-width':'2.2', fill:'none',
+  'stroke-linecap':'round', 'stroke-linejoin':'round'
+});
+liftG.appendChild(el('rect',     { x:cx-20, y:cy-56, width:40, height:50, rx:7 }));
+liftG.appendChild(el('polyline', { points:`${cx-7},${cy-40} ${cx-3},${cy-46} ${cx+1},${cy-40}` }));
+liftG.appendChild(el('polyline', { points:`${cx-7},${cy-28} ${cx-3},${cy-22} ${cx+1},${cy-28}` }));
+liftG.appendChild(el('line',     { x1:cx+10, y1:cy-43, x2:cx+10, y2:cy-21 }));
+svg.appendChild(liftG);
+
+const h1 = el('text', { x:cx, y:cy+8, 'text-anchor':'middle', class:'center-hub' });
+h1.textContent = 'ELEVATOR HUB';
+const reg = el('tspan', { 'baseline-shift':'super', 'font-size':'10' });
+reg.textContent = '®';
+h1.appendChild(reg);
+svg.appendChild(h1);
+
+const h2 = el('text', { x:cx, y:cy+30, 'text-anchor':'middle', class:'center-sub' });
+h2.textContent = '365 TAGE RUNDUMBLICK';
+svg.appendChild(h2);
+
+// Badge counts
+[1,2,3,4].forEach(c => {
+  document.getElementById('cnt'+c).textContent = EVENTS.filter(e => e.c === c).length;
+});
+['wart','zues','notruf','ing'].forEach(k => {
+  const el2 = document.getElementById('pv-'+k);
+  if (el2) el2.textContent = EVENTS.filter(x => x.k === k).length;
+});
+
+// Provider highlights
+const provEls = [...document.querySelectorAll('.prov')];
+const provTimers = {};
+function hiProv(k) {
+  const el2 = provEls.find(x => x.dataset.k === k);
+  if (!el2) return;
+  el2.classList.add('active');
+  clearTimeout(provTimers[k]);
+  provTimers[k] = setTimeout(() => el2.classList.remove('active'), 1000);
+}
+
+// Cluster highlights
+const clusterEls = [...document.querySelectorAll('.cluster')];
+const clusterTimers = {};
+function hiCluster(c) {
+  const card = clusterEls.find(x => x.dataset.c == c);
+  if (!card) return;
+  card.classList.add('active');
+  clearTimeout(clusterTimers[c]);
+  clusterTimers[c] = setTimeout(() => card.classList.remove('active'), 1000);
+}
+
+// Animation loop
+let angle = 0, lastTime = performance.now(), playing = true;
+const SPEED = 360 / 20000; // full rotation in 20 s
+
+function frame(now) {
+  const dt = now - lastTime;
+  lastTime = now;
+  if (playing) angle = (angle + SPEED * dt) % 360;
+  sweepG.setAttribute('transform', `rotate(${angle} ${cx} ${cy})`);
+
+  evNodes.forEach(n => {
+    const diff = ((angle - n.ev.a) % 360 + 360) % 360;
+    if (diff < 6 && !n.fired) {
+      n.fired = true; n.lit = 1;
+      hiCluster(n.ev.c);
+      if (n.ev.k) hiProv(n.ev.k);
+    }
+    if (diff > 20) n.fired = false;
+    if (n.lit > 0) {
+      n.lit = Math.max(0, n.lit - dt / 1500);
+      const k = n.lit;
+      n.dot.setAttribute('r', (4 + 2.5 * k).toFixed(2));
+      n.halo.setAttribute('opacity', (0.18 + 0.4 * k).toFixed(2));
+      n.halo.setAttribute('r', (5.5 + 8 * k).toFixed(2));
+      n.txt.setAttribute('fill', `rgba(238,240,251,${(0.6 + 0.4 * k).toFixed(2)})`);
+      n.txt.setAttribute('font-weight', k > 0.4 ? '700' : '600');
+    }
+  });
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// Play/pause
+const playBtn = document.getElementById('playBtn');
+const playIc  = document.getElementById('playIc');
+const playTx  = document.getElementById('playTx');
+playBtn.addEventListener('click', () => {
+  playing = !playing;
+  playTx.textContent = playing ? 'Pause' : 'Abspielen';
+  playIc.innerHTML = playing
+    ? '<rect x="1" y="1" width="3.5" height="10" rx="1"/><rect x="7.5" y="1" width="3.5" height="10" rx="1"/>'
+    : '<path d="M2 1l9 5-9 5z"/>';
+});
+</script>
+</body>
+</html>
