@@ -36,6 +36,13 @@
     }
     .form-input:focus, .form-select:focus { outline: none; border-color: var(--color-navy); }
     .form-input::placeholder { color: #9CA3AF; }
+    .ev-fieldset{background:var(--color-bg-subtle);border:1px solid #DDE6E5;border-radius:10px;padding:14px;margin-bottom:8px;font-size:.88rem;color:var(--color-gray);}
+    .ev-fieldset legend{font-size:.8rem;font-weight:700;color:var(--color-dark);padding:0 4px;}
+    .ev-radio-opt{display:flex;align-items:center;gap:8px;padding:6px 0;cursor:pointer;font-size:.88rem;}
+    .ev-radio-opt input{accent-color:var(--color-coral-dark);}
+    .ev-checkbox-label{display:flex;align-items:flex-start;gap:8px;font-size:.84rem;color:var(--color-gray);line-height:1.5;margin-bottom:8px;}
+    .ev-checkbox-label input{accent-color:var(--color-coral-dark);margin-top:2px;flex-shrink:0;}
+    .ev-checkbox-label a{color:var(--color-teal);}
     .form-file {
       width: 100%; padding: 11px 14px; border: 1.5px dashed #D1D5DB; border-radius: 4px;
       font-family: 'Work Sans', sans-serif; font-size: 14px; color: #6B7280;
@@ -986,12 +993,30 @@
           <div class="form-hint">z. B. Danfoss, Yaskawa, Siemens, Vacon</div>
         </div>
 
-        <div class="form-group" style="margin-top:4px;">
-          <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
-            <input type="checkbox" name="dsgvo" required style="width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--color-navy);">
-            <span style="font-size:13px;color:#374151;line-height:1.6;">Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. Keine Weitergabe an Dritte. <a href="/datenschutz/" style="color:var(--color-navy);text-decoration:underline;">Datenschutzerklärung</a></span>
+        <fieldset class="ev-fieldset">
+          <legend>Ich bestelle als: *</legend>
+          <label class="ev-radio-opt">
+            <input type="radio" name="sf_besteller_typ" value="unternehmer" required> Unternehmer (gewerblich)
           </label>
-        </div>
+          <label class="ev-radio-opt">
+            <input type="radio" name="sf_besteller_typ" value="verbraucher"> Verbraucher (privat)
+          </label>
+        </fieldset>
+        <label class="ev-checkbox-label">
+          <input type="checkbox" name="sf_agb" required>
+          Ich akzeptiere die <a href="/agb/">AGB der ElevonIQ GmbH</a> *
+        </label>
+        <label class="ev-checkbox-label" id="widerruf-label" style="display:none;background:#fff3e0;border:1px solid #f59e0b;border-radius:8px;padding:10px 12px;">
+          <input type="checkbox" name="sf_widerruf" id="sf_widerruf">
+          Ich möchte, dass ElevonIQ sofort mit der Leistungserbringung beginnt. Mir ist bekannt, dass ich mit vollständiger Leistungserbringung mein Widerrufsrecht verliere.
+        </label>
+        <label class="form-checkbox-label" style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;">
+          <input type="checkbox" name="widerrufsverzicht" required style="margin-top:4px;flex-shrink:0;">
+          <span style="font-size:14px;color:#6B7280;line-height:1.5;">
+            Ich stimme zu, dass ElevonIQ vor Ablauf der Widerrufsfrist mit der Ausführung der beauftragten Dienstleistung beginnt. Mir ist bekannt, dass ich mein Widerrufsrecht verliere, sobald die Dienstleistung vollständig erbracht ist.
+            (<a href="/widerrufsrecht/" style="color:var(--color-teal-dark);text-decoration:underline;">Widerrufsrecht</a>)
+          </span>
+        </label>
 
         <div style="margin-top:28px;">
           <button type="submit" class="btn-primary" style="width:100%;font-size:16px;padding:16px 28px;text-align:center;border:none;cursor:pointer;">
@@ -1124,6 +1149,25 @@
     var portal = document.getElementById('nav-portal-desktop');
     if (portal) portal.style.display = 'inline-block';
   });
+</script>
+<script>
+/* Widerrufsrecht toggle */
+(function(){
+  var radios=document.querySelectorAll('input[name="sf_besteller_typ"]');
+  var label=document.getElementById('widerruf-label');
+  var checkbox=document.getElementById('sf_widerruf');
+  if(!label||!radios.length)return;
+  radios.forEach(function(r){
+    r.addEventListener('change',function(){
+      if(r.value==='verbraucher'&&r.checked){
+        label.style.display='flex';
+      } else if(r.value==='unternehmer'&&r.checked){
+        label.style.display='none';
+        if(checkbox)checkbox.checked=false;
+      }
+    });
+  });
+}());
 </script>
 <script src="../../assets/js/nav.js" defer></script>
 <script src="../../assets/js/cookie-consent.js" defer></script>

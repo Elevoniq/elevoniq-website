@@ -186,6 +186,10 @@
     .ev-checkbox-label{display:flex;align-items:flex-start;gap:8px;font-size:.84rem;color:var(--color-gray);line-height:1.5;margin-bottom:8px;}
     .ev-checkbox-label input{accent-color:var(--color-coral-dark);margin-top:2px;flex-shrink:0;}
     .ev-checkbox-label a{color:var(--color-teal);}
+    .ev-fieldset{background:var(--color-bg-subtle);border:1px solid #DDE6E5;border-radius:10px;padding:14px;margin-bottom:8px;font-size:.88rem;color:var(--color-gray);}
+    .ev-fieldset legend{font-size:.8rem;font-weight:700;color:var(--color-dark);padding:0 4px;}
+    .ev-radio-opt{display:flex;align-items:center;gap:8px;padding:6px 0;cursor:pointer;font-size:.88rem;}
+    .ev-radio-opt input{accent-color:var(--color-coral-dark);}
     .ev-form-msg{display:none;padding:14px 18px;border-radius:10px;font-size:.9rem;margin-top:12px;}
     .ev-form-msg--success{background:#dcfce7;color:#16a34a;border:1px solid rgba(22,163,74,.2);}
     .ev-form-msg--error{background:#fee2e2;color:#dc2626;border:1px solid rgba(220,38,38,.2);}
@@ -871,9 +875,22 @@
           </div>
           <input type="text" name="sf_firma" class="ev-field" placeholder="Firma / Verwaltung">
           <input type="email" name="sf_email" class="ev-field" placeholder="E-Mail-Adresse *" required>
+          <fieldset class="ev-fieldset">
+            <legend>Ich bestelle als: *</legend>
+            <label class="ev-radio-opt">
+              <input type="radio" name="sf_besteller_typ" value="unternehmer" required> Unternehmer (gewerblich)
+            </label>
+            <label class="ev-radio-opt">
+              <input type="radio" name="sf_besteller_typ" value="verbraucher"> Verbraucher (privat)
+            </label>
+          </fieldset>
           <label class="ev-checkbox-label">
-            <input type="checkbox" name="sf_datenschutz" required>
-            Ich stimme der <a href="/datenschutz/">Datenschutzerklärung</a> zu *
+            <input type="checkbox" name="sf_agb" required>
+            Ich akzeptiere die <a href="/agb/">AGB der ElevonIQ GmbH</a> *
+          </label>
+          <label class="ev-checkbox-label" id="widerruf-label" style="display:none;background:#fff3e0;border:1px solid #f59e0b;border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" name="sf_widerruf" id="sf_widerruf">
+            Ich möchte, dass ElevonIQ sofort mit der Leistungserbringung beginnt. Mir ist bekannt, dass ich mit vollständiger Leistungserbringung mein Widerrufsrecht verliere.
           </label>
           <label class="form-checkbox-label" style="display:flex;align-items:flex-start;gap:10px;margin-bottom:16px;">
             <input type="checkbox" name="widerrufsverzicht" required style="margin-top:4px;flex-shrink:0;">
@@ -1060,6 +1077,25 @@ document.getElementById('pruefbericht-form').addEventListener('submit',function(
     var portal = document.getElementById('nav-portal-desktop');
     if (portal) portal.style.display = 'inline-block';
   });
+</script>
+<script>
+/* Widerrufsrecht toggle */
+(function(){
+  var radios=document.querySelectorAll('input[name="sf_besteller_typ"]');
+  var label=document.getElementById('widerruf-label');
+  var checkbox=document.getElementById('sf_widerruf');
+  if(!label||!radios.length)return;
+  radios.forEach(function(r){
+    r.addEventListener('change',function(){
+      if(r.value==='verbraucher'&&r.checked){
+        label.style.display='flex';
+      } else if(r.value==='unternehmer'&&r.checked){
+        label.style.display='none';
+        if(checkbox)checkbox.checked=false;
+      }
+    });
+  });
+}());
 </script>
 <script src="../../assets/js/nav.js" defer></script>
 <script src="../../assets/js/cookie-consent.js" defer></script>
