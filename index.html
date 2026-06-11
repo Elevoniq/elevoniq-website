@@ -238,6 +238,216 @@
     }
   }
   </style>
+
+  <!-- Verständnis-Engine Visual -->
+  <style>
+    /* ── Verständnis-Engine ─────────────────────────────────────── */
+    .ve-panel {
+      background: #0d1225;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      display: grid;
+      grid-template-columns: 1fr 0.9fr 1fr;
+      gap: 20px;
+      padding: 24px 20px;
+      font-family: 'Work Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Column headers */
+    .ve-col-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .ve-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .ve-dot--input  { background: #e8474a; }
+    .ve-dot--output { background: #3fb6a0; }
+    .ve-col-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(238,240,251,0.5);
+      font-weight: 500;
+    }
+
+    /* Cards */
+    .ve-cards { display: flex; flex-direction: column; gap: 8px; }
+    .ve-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 9px;
+      padding: 10px 12px;
+      position: relative;
+    }
+    .ve-card-row1 {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+    .ve-card-icon {
+      font-size: 14px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .ve-card-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #eef0fb;
+      flex: 1;
+      line-height: 1.3;
+    }
+    .ve-card-time {
+      font-size: 10px;
+      color: rgba(238,240,251,0.4);
+      flex-shrink: 0;
+      margin-left: 4px;
+    }
+    .ve-card-sub {
+      font-size: 10px;
+      color: rgba(238,240,251,0.55);
+      line-height: 1.4;
+      padding-left: 20px;
+      padding-right: 18px;
+    }
+    .ve-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .ve-badge--q {
+      background: #e8474a;
+      color: #fff;
+    }
+    .ve-badge--check {
+      background: #3fb6a0;
+      color: #fff;
+    }
+
+    /* Output cards */
+    .ve-out-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #eef0fb;
+      margin-bottom: 3px;
+      padding-right: 20px;
+    }
+    .ve-out-desc {
+      font-size: 10px;
+      color: rgba(238,240,251,0.55);
+      line-height: 1.4;
+      margin-bottom: 5px;
+      padding-right: 20px;
+    }
+    .ve-out-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 600;
+      color: rgba(238,240,251,0.6);
+      background: rgba(255,255,255,0.07);
+      border-radius: 4px;
+      padding: 2px 6px;
+      letter-spacing: 0.03em;
+    }
+
+    /* Center engine column */
+    .ve-engine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 2px;
+    }
+    .ve-engine-brand {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #e8474a;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .ve-orb {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+    .ve-engine-heading {
+      font-size: 12px;
+      font-weight: 700;
+      color: #e8474a;
+      text-align: center;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+    .ve-engine-sub {
+      font-size: 9.5px;
+      color: rgba(238,240,251,0.5);
+      text-align: center;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .ve-steps { width: 100%; display: flex; flex-direction: column; gap: 7px; }
+    .ve-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ve-step-num {
+      font-size: 9px;
+      font-weight: 700;
+      color: rgba(238,240,251,0.35);
+      width: 16px;
+      flex-shrink: 0;
+    }
+    .ve-step-name {
+      font-size: 10px;
+      font-weight: 600;
+      color: #eef0fb;
+      flex: 1;
+    }
+    .ve-step-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+    .ve-tag {
+      font-size: 8.5px;
+      font-weight: 500;
+      color: rgba(238,240,251,0.75);
+      background: rgba(255,255,255,0.09);
+      border-radius: 3px;
+      padding: 1px 5px;
+    }
+    .ve-engine-footer {
+      margin-top: 14px;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(238,240,251,0.25);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* Responsive: hide on mobile */
+    @media (max-width: 900px) {
+      .ve-panel { display: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -799,6 +1009,175 @@
           <a href="/laufende-betreuung/elevator-hub/" class="btn-primary">ELEVATOR HUB<sup>®</sup> entdecken</a>
         </div>
       </div>
+
+      <!-- Verständnis-Engine Visual -->
+      <div aria-hidden="true">
+        <div class="ve-panel">
+
+          <!-- Left: Input column -->
+          <div class="ve-col">
+            <div class="ve-col-header">
+              <span class="ve-dot ve-dot--input"></span>
+              <span class="ve-col-label">Input · Fragen &amp; Dokumente</span>
+            </div>
+            <div class="ve-cards">
+
+              <div class="ve-card">
+                <div class="ve-card-row1">
+                  <span class="ve-card-icon">🏢</span>
+                  <span class="ve-card-title">WEG Ritterstr. 14</span>
+                  <span class="ve-card-time">09:14</span>
+                </div>
+                <div class="ve-card-sub">Was bedeutet die Mängelrüge vom TÜV?</div>
+                <span class="ve-badge ve-badge--q">?</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-card-row1">
+                  <span class="ve-card-icon">📄</span>
+                  <span class="ve-card-title">Hausverwaltung Krause</span>
+                  <span class="ve-card-time">10:02</span>
+                </div>
+                <div class="ve-card-sub">Angebot Modernisierung.pdf</div>
+                <span class="ve-badge ve-badge--q">?</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-card-row1">
+                  <span class="ve-card-icon">💬</span>
+                  <span class="ve-card-title">Eigentümer Fischer</span>
+                  <span class="ve-card-time">11:30</span>
+                </div>
+                <div class="ve-card-sub">Ist der Preis angemessen?</div>
+                <span class="ve-badge ve-badge--q">?</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-card-row1">
+                  <span class="ve-card-icon">📋</span>
+                  <span class="ve-card-title">Beirat Gartenstr. 9</span>
+                  <span class="ve-card-time">13:45</span>
+                </div>
+                <div class="ve-card-sub">Welche Fristen gelten nach BetrSichV?</div>
+                <span class="ve-badge ve-badge--q">?</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-card-row1">
+                  <span class="ve-card-icon">📁</span>
+                  <span class="ve-card-title">Verwaltung Oranienplatz</span>
+                  <span class="ve-card-time">14:10</span>
+                </div>
+                <div class="ve-card-sub">Prüfbericht ZÜS 2024.pdf</div>
+                <span class="ve-badge ve-badge--q">?</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Center: Engine -->
+          <div class="ve-engine">
+            <div class="ve-engine-brand">ElevonIQ</div>
+
+            <!-- Orb SVG -->
+            <svg class="ve-orb" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <radialGradient id="ve-glow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#3fb6a0" stop-opacity="1"/>
+                  <stop offset="60%" stop-color="#3fb6a0" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#3fb6a0" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <!-- Outer ring: coral -->
+              <circle cx="44" cy="44" r="42" fill="none" stroke="#e8474a" stroke-width="1.5" opacity="0.3"/>
+              <!-- Mid ring: teal -->
+              <circle cx="44" cy="44" r="32" fill="none" stroke="#3fb6a0" stroke-width="1.5" opacity="0.5"/>
+              <!-- Inner ring: teal -->
+              <circle cx="44" cy="44" r="22" fill="none" stroke="#3fb6a0" stroke-width="1" opacity="0.7"/>
+              <!-- Glow core -->
+              <circle cx="44" cy="44" r="16" fill="url(#ve-glow)"/>
+              <!-- Center dot -->
+              <circle cx="44" cy="44" r="5" fill="#3fb6a0" opacity="0.9"/>
+            </svg>
+
+            <div class="ve-engine-heading">Die Verständnis-Engine</div>
+            <div class="ve-engine-sub">Jede Frage durchläuft denselben<br>prüfbaren Prozess.</div>
+
+            <div class="ve-steps">
+              <div class="ve-step">
+                <span class="ve-step-num">01</span>
+                <span class="ve-step-name">Erfassen</span>
+                <span class="ve-step-tags"><span class="ve-tag">OCR</span><span class="ve-tag">API</span></span>
+              </div>
+              <div class="ve-step">
+                <span class="ve-step-num">02</span>
+                <span class="ve-step-name">Verstehen</span>
+                <span class="ve-step-tags"><span class="ve-tag">Kontext</span></span>
+              </div>
+              <div class="ve-step">
+                <span class="ve-step-num">03</span>
+                <span class="ve-step-name">Bewerten</span>
+                <span class="ve-step-tags"><span class="ve-tag">Norm</span><span class="ve-tag">Markt</span></span>
+              </div>
+              <div class="ve-step">
+                <span class="ve-step-num">04</span>
+                <span class="ve-step-name">Strukturieren</span>
+                <span class="ve-step-tags"><span class="ve-tag">Report</span></span>
+              </div>
+            </div>
+
+            <div class="ve-engine-footer">Herstellerneutral · EU Data Act</div>
+          </div>
+
+          <!-- Right: Output column -->
+          <div class="ve-col">
+            <div class="ve-col-header">
+              <span class="ve-dot ve-dot--output"></span>
+              <span class="ve-col-label">Output · Strukturierte Reports</span>
+            </div>
+            <div class="ve-cards">
+
+              <div class="ve-card">
+                <div class="ve-out-title">Wartungskosten-Analyse</div>
+                <div class="ve-out-desc">Vergleich 3 Anbieter · Einsparpotenzial 18%</div>
+                <span class="ve-out-tag">PDF · 8 S.</span>
+                <span class="ve-badge ve-badge--check">✓</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-out-title">Prüfbericht ausgewertet</div>
+                <div class="ve-out-desc">2 Mängel klassifiziert · Handlungsbedarf</div>
+                <span class="ve-out-tag">PDF · 4 S.</span>
+                <span class="ve-badge ve-badge--check">✓</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-out-title">Angebotsvergleich</div>
+                <div class="ve-out-desc">Modernisierung · Marktpreisbewertung</div>
+                <span class="ve-out-tag">Dashboard</span>
+                <span class="ve-badge ve-badge--check">✓</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-out-title">Modernisierungs-Konzept</div>
+                <div class="ve-out-desc">Stufenplan 2025–2027 · Kostenschätzung</div>
+                <span class="ve-out-tag">PDF · 12 S.</span>
+                <span class="ve-badge ve-badge--check">✓</span>
+              </div>
+
+              <div class="ve-card">
+                <div class="ve-out-title">Fristen &amp; Pflichten</div>
+                <div class="ve-out-desc">BetrSichV · alle Anlagen · aktuell</div>
+                <span class="ve-out-tag">Dashboard</span>
+                <span class="ve-badge ve-badge--check">✓</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div><!-- /.ve-panel -->
+      </div><!-- /aria-hidden -->
+
     </div>
   </div>
 </section>
