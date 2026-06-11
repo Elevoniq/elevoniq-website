@@ -506,55 +506,147 @@
       <p class="section-lead">Konkret. Ohne Versprechen, die sich nicht messen lassen.</p>
     </div>
 
-    <div style="overflow-x:auto;">
-      <table style="width:100%;border-collapse:collapse;font-family:'Work Sans',sans-serif;font-size:15px;background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-        <thead>
-          <tr style="border-bottom:2px solid var(--color-dark);">
-            <th style="text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-dark);width:30%;">Thema</th>
-            <th style="text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);">Heute — ohne ElevonIQ</th>
-            <th style="text-align:left;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-teal-dark);">Mit ElevonIQ</th>
-          </tr>
-        </thead>
-        <tbody>
+    <style>
+      .cmp-stack { display: flex; flex-direction: column; gap: 12px; }
+      .cmp-card {
+        background: #fff;
+        border: 1px solid #E8E8E8;
+        border-radius: 14px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        overflow: hidden;
+      }
+      .cmp-card-topic {
+        padding: 10px 20px 9px;
+        border-bottom: 1px solid #E8E8E8;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-navy, #1E2761);
+      }
+      .cmp-card-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .cmp-col {
+        padding: 18px 22px;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+      .cmp-col-ohne {
+        background: #F9F5F0;
+        color: var(--color-gray, #6B7280);
+        border-right: 1px solid #E8E8E8;
+      }
+      .cmp-col-mit {
+        background: rgba(105,176,171,0.10);
+        color: var(--color-dark, #1A1A1A);
+        font-weight: 600;
+      }
+      .cmp-col-label {
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+      }
+      .cmp-col-ohne .cmp-col-label { color: #A0524E; }
+      .cmp-col-mit  .cmp-col-label { color: var(--color-teal-dark, #2A7A75); }
+      .cmp-col-ohne .cmp-marker { color: #C0776D; margin-right: 4px; font-weight: 400; }
+      .cmp-col-mit  .cmp-marker { color: var(--color-teal-dark, #2A7A75); margin-right: 4px; }
+      @media (max-width: 720px) {
+        .cmp-card-body { grid-template-columns: 1fr; }
+        .cmp-col-ohne { border-right: none; border-bottom: 1px solid #E8E8E8; }
+      }
+    </style>
 
-          <tr style="border-bottom:1px solid #F0F0F0;">
-            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Prüfbericht-Nachverfolgung</td>
-            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Berichte kommen per Post oder E-Mail. Ablage manuell. Mängel werden erst beim nächsten Termin wieder sichtbar.</td>
-            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Jeder Bericht wird digital erfasst, Mängel sofort klassifiziert, Frist automatisch gesetzt. Nichts geht unter.</td>
-          </tr>
+    <div class="cmp-stack">
 
-          <tr style="border-bottom:1px solid #F0F0F0;background:var(--color-bg-subtle);">
-            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Kostentransparenz</td>
-            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Angebote vom Aufzugsunternehmen werden selten hinterfragt. Marktpreise sind schwer zu vergleichen.</td>
-            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Jedes Angebot wird gegen Marktdaten aus 100.000+ analysierten Fällen geprüft. Überhöhte Preise werden sofort erkannt.</td>
-          </tr>
+      <div class="cmp-card">
+        <div class="cmp-card-topic">Prüfbericht-Nachverfolgung</div>
+        <div class="cmp-card-body">
+          <div class="cmp-col cmp-col-ohne">
+            <span class="cmp-col-label"><span class="cmp-marker">✕</span>Ohne ElevonIQ</span>
+            Berichte kommen per Post oder E-Mail. Ablage manuell. Mängel werden erst beim nächsten Termin wieder sichtbar.
+          </div>
+          <div class="cmp-col cmp-col-mit">
+            <span class="cmp-col-label"><span class="cmp-marker">✓</span>Mit ElevonIQ</span>
+            Jeder Bericht wird digital erfasst, Mängel sofort klassifiziert, Frist automatisch gesetzt. Nichts geht unter.
+          </div>
+        </div>
+      </div>
 
-          <tr style="border-bottom:1px solid #F0F0F0;">
-            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Fristen-Management</td>
-            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Prüffristen (ZÜS, TÜV), Vertragsfristen, Laufzeiten und Aufzugswärtertermine werden manuell gepflegt — oder vergessen. Mahnungen kommen meist zu spät.</td>
-            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Alle Fristen im Überblick: Prüftermine, Vertragsläufe, Aufzugswärtertermine. Sie werden rechtzeitig informiert — nicht erst wenn die Frist abgelaufen ist.</td>
-          </tr>
+      <div class="cmp-card">
+        <div class="cmp-card-topic">Kostentransparenz</div>
+        <div class="cmp-card-body">
+          <div class="cmp-col cmp-col-ohne">
+            <span class="cmp-col-label"><span class="cmp-marker">✕</span>Ohne ElevonIQ</span>
+            Angebote vom Aufzugsunternehmen werden selten hinterfragt. Marktpreise sind schwer zu vergleichen.
+          </div>
+          <div class="cmp-col cmp-col-mit">
+            <span class="cmp-col-label"><span class="cmp-marker">✓</span>Mit ElevonIQ</span>
+            Jedes Angebot wird gegen Marktdaten aus 100.000+ analysierten Fällen geprüft. Überhöhte Preise werden sofort erkannt.
+          </div>
+        </div>
+      </div>
 
-          <tr style="border-bottom:1px solid #F0F0F0;background:var(--color-bg-subtle);">
-            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Reaktionszeit bei Störungen</td>
-            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Stillstand gemeldet. Rückfrage beim Techniker. Warten auf Rückmeldung. Mieter beschweren sich.</td>
-            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Störung gemeldet, ElevonIQ koordiniert direkt. Herstellerneutrale Einschätzung — Vertragskonditionen werden geprüft.</td>
-          </tr>
+      <div class="cmp-card">
+        <div class="cmp-card-topic">Fristen-Management</div>
+        <div class="cmp-card-body">
+          <div class="cmp-col cmp-col-ohne">
+            <span class="cmp-col-label"><span class="cmp-marker">✕</span>Ohne ElevonIQ</span>
+            Prüffristen (ZÜS, TÜV), Vertragsfristen, Laufzeiten und Aufzugswärtertermine werden manuell gepflegt — oder vergessen. Mahnungen kommen meist zu spät.
+          </div>
+          <div class="cmp-col cmp-col-mit">
+            <span class="cmp-col-label"><span class="cmp-marker">✓</span>Mit ElevonIQ</span>
+            Alle Fristen im Überblick: Prüftermine, Vertragsläufe, Aufzugswärtertermine. Sie werden rechtzeitig informiert — nicht erst wenn die Frist abgelaufen ist.
+          </div>
+        </div>
+      </div>
 
-          <tr style="border-bottom:1px solid #F0F0F0;">
-            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Dokumentation für WEG und Eigentümer</td>
-            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Aufwändige Aufbereitung vor jeder Versammlung. Unterlagen aus verschiedenen Quellen zusammensuchen.</td>
-            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">Vollständige Aufzugsakte jederzeit abrufbar. Berichte, Kosten und Fristen an einem Ort.</td>
-          </tr>
+      <div class="cmp-card">
+        <div class="cmp-card-topic">Reaktionszeit bei Störungen</div>
+        <div class="cmp-card-body">
+          <div class="cmp-col cmp-col-ohne">
+            <span class="cmp-col-label"><span class="cmp-marker">✕</span>Ohne ElevonIQ</span>
+            Stillstand gemeldet. Rückfrage beim Techniker. Warten auf Rückmeldung. Mieter beschweren sich.
+          </div>
+          <div class="cmp-col cmp-col-mit">
+            <span class="cmp-col-label"><span class="cmp-marker">✓</span>Mit ElevonIQ</span>
+            Störung gemeldet, ElevonIQ koordiniert direkt. Herstellerneutrale Einschätzung — Vertragskonditionen werden geprüft.
+          </div>
+        </div>
+      </div>
 
-          <tr>
-            <td style="padding:18px 20px;font-weight:700;color:var(--color-dark);">Anbieterneutralität</td>
-            <td style="padding:18px 20px;color:var(--color-gray);line-height:1.6;">Empfehlung kommt meist vom bisherigen Aufzugsunternehmen — mit eigenem Interesse an der Auftragsvergabe.</td>
-            <td style="padding:18px 20px;color:var(--color-dark);font-weight:500;line-height:1.6;">ElevonIQ verkauft keine Reparaturen, keine Wartungsverträge. Die Empfehlung ist immer im Interesse des Eigentümers.</td>
-          </tr>
+      <div class="cmp-card">
+        <div class="cmp-card-topic">Dokumentation für WEG und Eigentümer</div>
+        <div class="cmp-card-body">
+          <div class="cmp-col cmp-col-ohne">
+            <span class="cmp-col-label"><span class="cmp-marker">✕</span>Ohne ElevonIQ</span>
+            Aufwändige Aufbereitung vor jeder Versammlung. Unterlagen aus verschiedenen Quellen zusammensuchen.
+          </div>
+          <div class="cmp-col cmp-col-mit">
+            <span class="cmp-col-label"><span class="cmp-marker">✓</span>Mit ElevonIQ</span>
+            Vollständige Aufzugsakte jederzeit abrufbar. Berichte, Kosten und Fristen an einem Ort.
+          </div>
+        </div>
+      </div>
 
-        </tbody>
-      </table>
+      <div class="cmp-card">
+        <div class="cmp-card-topic">Anbieterneutralität</div>
+        <div class="cmp-card-body">
+          <div class="cmp-col cmp-col-ohne">
+            <span class="cmp-col-label"><span class="cmp-marker">✕</span>Ohne ElevonIQ</span>
+            Empfehlung kommt meist vom bisherigen Aufzugsunternehmen — mit eigenem Interesse an der Auftragsvergabe.
+          </div>
+          <div class="cmp-col cmp-col-mit">
+            <span class="cmp-col-label"><span class="cmp-marker">✓</span>Mit ElevonIQ</span>
+            ElevonIQ verkauft keine Reparaturen, keine Wartungsverträge. Die Empfehlung ist immer im Interesse des Eigentümers.
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div>
