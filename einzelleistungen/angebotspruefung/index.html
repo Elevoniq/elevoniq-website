@@ -491,7 +491,7 @@
       <div class="step-item">
         <div class="step-item__num">1</div>
         <h3>Angebot hochladen</h3>
-        <p>PDF, Foto oder Word-Datei. Mehr braucht es für den Start nicht.</p>
+        <p>PDF, JPG oder PNG · max. 9 MB. Mehr braucht es für den Start nicht.</p>
       </div>
       <div class="step-item">
         <div class="step-item__num">2</div>
@@ -765,7 +765,7 @@
         <h3 style="font-size:1.06rem;font-weight:800;line-height:1.3;margin:0 0 8px;">Was wir für den Einstieg brauchen</h3>
         <p style="font-size:.95rem;line-height:1.74;color:var(--color-gray);margin:0;">Das Angebot als Datei und Ihre Kontaktdaten.</p>
         <ul class="form-checklist">
-          <li>Angebot als PDF, Foto oder Word-Datei</li>
+          <li>Angebot als PDF, JPG oder PNG · max. 9 MB</li>
           <li>Vorname, Nachname, Firma</li>
           <li>Ihre E-Mail-Adresse</li>
           <li>Optional: Freigabefrist oder konkrete Frage</li>
@@ -777,8 +777,8 @@
           <div class="ev-form-notice">Ihre Unterlagen werden vertraulich behandelt und nach Projektabschluss gelöscht. Keine Weitergabe an Dritte.</div>
           <label class="ev-field-upload" for="ap-file-input">
             <span>Angebot hochladen</span>
-            <small>PDF, Word oder Foto · max. 10 MB</small>
-            <input type="file" id="ap-file-input" name="sf_angebot_datei" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" required>
+            <small>PDF, JPG oder PNG · max. 9 MB</small>
+            <input type="file" id="ap-file-input" name="sf_angebot_datei" accept=".pdf,.jpg,.jpeg,.png" required>
           </label>
           <div class="ev-field-row">
             <input type="text" name="sf_vorname" class="ev-field" placeholder="Vorname" required>
@@ -811,6 +811,7 @@
               (<a href="/widerrufsrecht/" style="color:var(--color-teal-dark);text-decoration:underline;">Widerrufsrecht</a>)
             </span>
           </label>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADixn7Q7EKPg70t5" style="margin-bottom:12px;"></div>
           <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border-radius:12px;border:none;cursor:pointer;margin-top:8px;">Kostenfreie Ersteinschätzung anfordern</button>
           <div class="ev-form-msg ev-form-msg--success" id="ap-success">Wir haben Ihre Anfrage erhalten. Sie hören in 48 Stunden von uns.</div>
           <div class="ev-form-msg ev-form-msg--error" id="ap-error">Fehler beim Senden – bitte senden Sie uns eine E-Mail an <a href="mailto:documents@elevoniq.de">documents@elevoniq.de</a>.</div>
@@ -1027,5 +1028,6 @@ document.getElementById('angebotspruefung-form').addEventListener('submit',funct
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

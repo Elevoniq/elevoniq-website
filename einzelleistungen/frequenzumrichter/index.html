@@ -957,7 +957,7 @@
         <div class="form-group">
           <label class="form-label" for="files">Fotos / Dokumente <span class="opt">(optional)</span></label>
           <input class="form-file" type="file" id="files" name="files" accept=".pdf,.jpg,.jpeg,.png" multiple>
-          <div class="form-hint">PDF, JPG oder PNG &middot; max. 20 MB &middot; Störungsmeldung, Typenschild oder vorhandenes Angebot</div>
+          <div class="form-hint">PDF, JPG oder PNG &middot; max. 9 MB &middot; Störungsmeldung, Typenschild oder vorhandenes Angebot</div>
         </div>
 
         <div class="form-grid">
@@ -1019,6 +1019,7 @@
         </label>
 
         <div style="margin-top:28px;">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADixn7Q7EKPg70t5" style="margin-bottom:12px;"></div>
           <button type="submit" class="btn-primary" style="width:100%;font-size:16px;padding:16px 28px;text-align:center;border:none;cursor:pointer;">
             Anfrage absenden — kostenlos &amp; unverbindlich
           </button>
@@ -1242,5 +1243,6 @@ document.getElementById('frequenzumrichter-form').addEventListener('submit', asy
   }
 });
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

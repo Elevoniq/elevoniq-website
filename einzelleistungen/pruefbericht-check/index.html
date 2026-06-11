@@ -860,7 +860,7 @@
         <form id="pruefbericht-form" enctype="multipart/form-data" novalidate>
           <label class="ev-field-upload" for="pb-file-input">
             <span>Prüfbericht hochladen</span>
-            <small>PDF oder Foto · Einzelbericht oder Sammelupload · max. 20 MB</small>
+            <small>PDF, JPG oder PNG · Einzelbericht oder Sammelupload · max. 9 MB</small>
             <input type="file" id="pb-file-input" name="sf_pruefbericht_datei" accept=".pdf,.jpg,.jpeg,.png" required>
           </label>
           <select name="sf_anliegen" class="ev-field" required>
@@ -899,6 +899,7 @@
               (<a href="/widerrufsrecht/" style="color:var(--color-teal-dark);text-decoration:underline;">Widerrufsrecht</a>)
             </span>
           </label>
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADixn7Q7EKPg70t5" style="margin-bottom:12px;"></div>
           <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border-radius:12px;border:none;cursor:pointer;margin-top:4px;">Kostenlose Ersteinschätzung anfordern</button>
           <div class="ev-form-msg ev-form-msg--success" id="pb-success">Wir haben Ihre Anfrage erhalten. Sie hören in 48 Stunden von uns.</div>
           <div class="ev-form-msg ev-form-msg--error" id="pb-error">Fehler beim Senden – bitte senden Sie uns eine E-Mail an <a href="mailto:documents@elevoniq.de">documents@elevoniq.de</a>.</div>
@@ -1119,5 +1120,6 @@ document.getElementById('pruefbericht-form').addEventListener('submit',function(
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
