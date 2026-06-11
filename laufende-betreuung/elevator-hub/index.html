@@ -377,11 +377,14 @@
 
     /* Feature grid */
     .feature-grid-4 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 24px;
     }
     .feature-card {
+      flex: 0 1 calc(25% - 18px);
+      min-width: 240px;
       background: #fff;
       border: 1px solid rgba(0,0,0,0.08);
       border-top: 3px solid #69B0AB;
