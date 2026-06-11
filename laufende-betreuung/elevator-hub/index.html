@@ -913,7 +913,7 @@
   </div>
 </section>
 
-<!-- Lifecycle Jahresuhr -->
+<!-- ElevonIQ-Radar -->
 <section class="jhr-scope" style="background: radial-gradient(130% 120% at 50% 22%, #1d2150 0%, #14163a 52%, #0b0d24 100%); padding: 0;" aria-labelledby="jhr-heading">
   <style>
     .jhr-scope { display: block; }
@@ -1097,9 +1097,9 @@
           <span id="jhr-playTx">Pause</span>
         </button>
       </div>
-      <div class="jhr-eyebrow">Lifecycle eines Aufzugs</div>
-      <h2 class="jhr-title" id="jhr-heading">Ereignisse &amp; Messpunkte &mdash; <span class="jhr-accent">365 Tage im ELEVATOR HUB&reg;</span></h2>
-      <p class="jhr-sub">Außen die Ereignisse rund um den Aufzug, innen die Leistungen von Elevoniq &mdash; in vier Cluster. Der Zeiger läuft durchs Jahr und hebt jeden Messpunkt hervor.</p>
+      <div class="jhr-eyebrow">ElevonIQ-Radar</div>
+      <h2 class="jhr-title" id="jhr-heading">Alle Ereignisse rund um den Aufzug &mdash; <span class="jhr-accent">auf einen Blick im ELEVATOR HUB&reg;</span></h2>
+      <p class="jhr-sub">Außen die Ereignisse der Beteiligten, innen die Leistungen von ElevonIQ &mdash; in vier Cluster. Der Radar dreht sich durch alle Messpunkte des Jahres und hebt jeden hervor.</p>
       <div class="jhr-ring-leg">
         <div class="jhr-it"><span class="jhr-ring-el"></span> Außenring &middot; Ereignisse der Beteiligten</div>
         <div class="jhr-it"><span class="jhr-ring-el jhr-inn"></span> Innenring &middot; Leistungen von Elevoniq</div>
@@ -1198,7 +1198,7 @@
   svg.appendChild(lift);
   const h1=el('text',{x:cx,y:cy+8,'text-anchor':'middle',class:'jhr-center-hub'});h1.textContent='ELEVATOR HUB';
   const reg=el('tspan',{'baseline-shift':'super','font-size':'10'});reg.textContent='®';h1.appendChild(reg);svg.appendChild(h1);
-  const h2t=el('text',{x:cx,y:cy+30,'text-anchor':'middle',class:'jhr-center-sub'});h2t.textContent='365 TAGE RUNDUMBLICK';svg.appendChild(h2t);
+  const h2t=el('text',{x:cx,y:cy+30,'text-anchor':'middle',class:'jhr-center-sub'});h2t.textContent='ELEVONIQ-RADAR';svg.appendChild(h2t);
   [1,2,3,4].forEach(c=>{ const e=document.getElementById('jhr-cnt'+c); if(e) e.textContent=EVENTS.filter(ev=>ev.c===c).length; });
   ['wart','zues','notruf','ing'].forEach(k=>{ const e=document.getElementById('jhr-pv-'+k); if(e) e.textContent=EVENTS.filter(x=>x.k===k).length; });
   const provEls=[...document.querySelectorAll('#jhr-provs .jhr-prov')]; let pT={};
