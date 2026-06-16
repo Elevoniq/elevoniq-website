@@ -428,7 +428,7 @@
     .situation-card-title { font-weight: 700; font-size: 15px; color: #1A1A1A; margin-bottom: 10px; }
     .situation-card-text { font-size: 14px; color: #374151; line-height: 1.65; }
     /* Feature list */
-    .feature-checklist { max-width: 700px; }
+    .feature-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
     .feature-check-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
     .feature-check-row:last-child { border-bottom: none; }
     .check-circle { width: 22px; height: 22px; border-radius: 50%; background: #3D7E79; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
@@ -580,7 +580,7 @@
           <a href="../index.html" class="btn-secondary">
             Zur Übersicht
           </a>
-          <span class="price-pill">Im Paket enthalten · Standalone auf Anfrage</span>
+          <span class="price-pill">Im Paket enthalten · kostenlos starten</span>
         </div>
       </div>
       <div class="hub-hero-mockup" aria-hidden="true">
@@ -1296,7 +1296,7 @@
     <span class="section-eyebrow">Zusammenarbeit</span>
     <h2 class="section-title" id="zugang-heading">Ein Hub für alle Beteiligten</h2>
     <p class="section-lead" style="max-width:680px;">Der ELEVATOR HUB<sup>®</sup> ist nicht nur Ihr persönliches Cockpit — er ist die gemeinsame Arbeitsgrundlage für alle, die an Ihren Aufzügen beteiligt sind. Jeder Dienstleister erhält genau den Zugang, den er für seine Arbeit braucht. Nicht mehr, nicht weniger.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-top:2rem;max-width:900px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem;">
       <div class="card" style="padding:1.5rem;">
         <h4 style="margin-bottom:0.5rem;color:var(--color-navy);">Prüfgesellschaften (ZÜS)</h4>
         <p style="font-size:14px;color:var(--color-gray);margin:0;">Werden direkt eingeladen. Haben Zugriff auf alle prüfrelevanten Dokumente — Prüfberichte, GBU, Fristen. Keine Papierstapel, kein Mailverkehr vor der Prüfung.</p>
@@ -1323,15 +1323,15 @@
   <div class="container">
     <h2 class="section-title" id="preis-heading">Preis &amp; Transparenz</h2>
     <div class="pricing-block">
-      <div class="pricing-headline">Im Paket enthalten</div>
-      <div class="pricing-sub">Der ELEVATOR HUB<sup>®</sup> ist in der Laufenden Betreuung All-inclusive enthalten. Als eigenständige Plattform: Preis auf Anfrage.</div>
+      <div class="pricing-headline">Kostenlos starten. Im Paket enthalten.</div>
+      <div class="pricing-sub">Der ELEVATOR HUB<sup>®</sup> ist kostenlos — einfach online anmelden, Aufzüge erfassen, loslegen. Kein Vertrag, keine Mindestlaufzeit. Wer ElevonIQ als Betreuer beauftragt, hat den HUB automatisch inklusive.</div>
       <div class="pricing-row">
-        <span class="pricing-row-label">In Laufende Betreuung All-inclusive</span>
+        <span class="pricing-row-label">In ElevonIQ-Paket enthalten</span>
         <span class="pricing-row-value">Enthalten</span>
       </div>
       <div class="pricing-row">
-        <span class="pricing-row-label">Standalone (ohne weitere Leistungen)</span>
-        <span class="pricing-row-value">Auf Anfrage</span>
+        <span class="pricing-row-label">Standalone / Direktanmeldung</span>
+        <span class="pricing-row-value">Kostenlos</span>
       </div>
     </div>
     <p class="price-legal-notice">Alle Preise in Euro, zzgl. gesetzlicher Umsatzsteuer. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB. Eine Nutzung durch Verbraucher ist ausgeschlossen.</p>
@@ -1345,7 +1345,7 @@
     <div class="faq-list">
       <details class="faq-item">
         <summary>Muss ich dafür ElevonIQ als Dienstleister beauftragen?</summary>
-        <div class="faq-answer">Nein. Der ELEVATOR HUB<sup>®</sup> ist auch als eigenständige Plattform verfügbar.</div>
+        <div class="faq-answer">Nein. Der ELEVATOR HUB<sup>®</sup> ist als eigenständige Plattform kostenlos verfügbar. Einfach online anmelden — ohne Beauftragung von ElevonIQ.</div>
       </details>
       <details class="faq-item">
         <summary>Welche Hersteller werden unterstützt?</summary>
