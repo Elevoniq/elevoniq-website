@@ -1,4 +1,4 @@
-export const config = { runtime: 'nodejs' };
+export const config = { runtime: 'edge' };
 
 const ALLOWED_ORIGINS = [
   'https://elevoniq.de',
