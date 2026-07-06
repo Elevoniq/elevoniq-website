@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ELEVATOR HUB<sup>®</sup> — Alle Aufzüge, alle Fristen, auf einen Blick | ElevonIQ</title>
+  <meta name="description" content="Alle Aufzüge, Dokumente, Fristen und Kosten auf einer Plattform. Der ELEVATOR HUB ist Ihr herstellerübergreifendes Aufzugsmanagement. DSGVO-konform, deutsches Hosting.">
+  <link rel="canonical" href="https://elevoniq.de/laufende-betreuung/elevator-hub/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ELEVATOR HUB — Digitales Aufzugscockpit | ElevonIQ">
+  <meta property="og:description" content="Alle Aufzüge, Dokumente, Fristen und Kosten auf einer Plattform. Herstellerneutral. DSGVO-konform. Deutsches Hosting.">
+  <meta property="og:url" content="https://elevoniq.de/laufende-betreuung/elevator-hub/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="ElevonIQ">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ELEVATOR HUB | ElevonIQ">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ElevonIQ","item":"https://elevoniq.de/"},
+    {"@type":"ListItem","position":2,"name":"Laufende Betreuung","item":"https://elevoniq.de/laufende-betreuung/"},
+    {"@type":"ListItem","position":3,"name":"ELEVATOR HUB","item":"https://elevoniq.de/laufende-betreuung/elevator-hub/"}
+  ]}
+  </script>
+  
+  
+  <link rel="stylesheet" href="../../assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    /* ELEVATOR HUB hero — deep teal premium treatment */
+    .hub-hero {
+      background: #1E2761;
+      border-top: 4px solid #69B0AB;
+      padding: 80px 0 72px;
+    }
+    .hub-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hub-hero .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .badge-category {
+      background: #69B0AB;
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge-sub {
+      color: rgba(255,255,255,0.85);
+      font-size: 13px;
+    }
+    .hub-hero h1 {
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hub-hero .lead {
+      font-size: 17px;
+      color: rgba(255,255,255,0.80);
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+    .hub-hero .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .price-pill {
+      background: rgba(105,176,171,0.12);
+      color: #3D7E79;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    /* Dashboard mockup */
+    .dashboard-frame {
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+    .db-chrome {
+      background: #f2f2f2;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .db-dots { display: flex; gap: 5px; }
+    .db-dots span { width: 10px; height: 10px; border-radius: 50%; background: #d0d0d0; }
+    .db-dots span:nth-child(1) { background: #ff5f57; }
+    .db-dots span:nth-child(2) { background: #febc2e; }
+    .db-dots span:nth-child(3) { background: #28c840; }
+    .db-url { flex: 1; background: #e8e8e8; border-radius: 5px; padding: 4px 10px; font-size: 11px; color: #777; font-family: monospace; }
+    /* NEW dark dashboard mockup */
+    .db-body {
+      padding: 0;
+      background: #0d1225;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 30px 30px;
+      display: grid;
+      grid-template-columns: 1fr 1.05fr 1fr;
+      min-height: 340px;
+    }
+    /* Column shared */
+    .dbd-col {
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .dbd-col-left  { border-right: 1px solid rgba(255,255,255,0.06); }
+    .dbd-col-right { border-left: 1px solid rgba(255,255,255,0.06); }
+    .dbd-col-center { align-items: center; justify-content: center; padding: 20px 14px; }
+    /* Column header */
+    .dbd-col-header {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+    .dbd-col-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dbd-col-dot.coral { background: #FF5B5C; box-shadow: 0 0 4px rgba(255,91,92,0.6); }
+    .dbd-col-dot.teal  { background: #69B0AB; box-shadow: 0 0 4px rgba(105,176,171,0.6); }
+    .dbd-col-label {
+      font-size: 8.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .dbd-col-label.coral { color: #FF5B5C; }
+    .dbd-col-label.teal  { color: #69B0AB; }
+    /* Message / Report cards */
+    .dbd-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 7px;
+      padding: 8px 9px;
+      display: flex;
+      align-items: flex-start;
+      gap: 7px;
+      position: relative;
+      transition: border-color 0.15s;
+    }
+    .dbd-card:hover { border-color: rgba(105,176,171,0.3); }
+    .dbd-card-icon {
+      width: 26px; height: 26px;
+      border-radius: 5px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+    }
+    .dbd-card-body { flex: 1; min-width: 0; }
+    .dbd-card-sender {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dbd-card-preview {
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.42);
+      margin-top: 2px;
+      line-height: 1.35;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dbd-card-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .dbd-card-time {
+      font-size: 8.5px;
+      color: rgba(255,255,255,0.3);
+    }
+    .dbd-card-badge {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      font-size: 8px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dbd-card-badge.question {
+      background: rgba(255,91,92,0.18);
+      color: #FF5B5C;
+      border: 1px solid rgba(255,91,92,0.3);
+    }
+    .dbd-card-badge.check {
+      background: rgba(105,176,171,0.18);
+      color: #69B0AB;
+      border: 1px solid rgba(105,176,171,0.3);
+    }
+    /* Center column elements */
+    .dbd-wordmark {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: #69B0AB;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .dbd-orb-wrap {
+      position: relative;
+      width: 88px; height: 88px;
+      flex-shrink: 0;
+      margin-bottom: 16px;
+    }
+    .dbd-orb-glow {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(105,176,171,0.22) 0%, transparent 70%);
+    }
+    .dbd-orb-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid;
+    }
+    .dbd-orb-ring-1 {
+      inset: 0;
+      border-color: rgba(105,176,171,0.55);
+    }
+    .dbd-orb-ring-2 {
+      inset: 10px;
+      border-color: rgba(255,91,92,0.4);
+    }
+    .dbd-orb-ring-3 {
+      inset: 20px;
+      border-color: rgba(105,176,171,0.7);
+      background: rgba(105,176,171,0.08);
+    }
+    .dbd-orb-core {
+      position: absolute;
+      inset: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 35%, rgba(105,176,171,0.9), #3D7E79 60%, #1e4a47);
+      box-shadow: 0 0 16px rgba(105,176,171,0.5), inset 0 1px 2px rgba(255,255,255,0.25);
+    }
+    .dbd-engine-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      text-align: center;
+      line-height: 1.25;
+      margin-bottom: 5px;
+    }
+    .dbd-engine-title span { color: #FF5B5C; }
+    .dbd-engine-sub {
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.38);
+      text-align: center;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .dbd-steps {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .dbd-step {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+    }
+    .dbd-step-num {
+      font-size: 8.5px;
+      color: rgba(255,255,255,0.25);
+      font-weight: 600;
+      width: 16px;
+      flex-shrink: 0;
+    }
+    .dbd-step-name {
+      color: rgba(255,255,255,0.75);
+      flex: 1;
+      font-weight: 500;
+    }
+    .dbd-step-tag {
+      font-size: 8px;
+      font-weight: 600;
+      color: #69B0AB;
+      background: rgba(105,176,171,0.1);
+      padding: 2px 6px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+    .dbd-center-footer {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .dbd-center-footer span {
+      font-size: 7.5px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+    /* Report card (right col) */
+    .dbd-report-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 7px;
+      padding: 8px 9px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      transition: border-color 0.15s;
+    }
+    .dbd-report-card:hover { border-color: rgba(105,176,171,0.3); }
+    .dbd-report-body { flex: 1; min-width: 0; }
+    .dbd-report-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.88);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .dbd-report-sub {
+      font-size: 9px;
+      color: rgba(255,255,255,0.38);
+      margin-top: 2px;
+    }
+    .dbd-report-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+    .dbd-report-type {
+      font-size: 8px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.06);
+      padding: 2px 5px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    /* Feature grid */
+    .feature-grid-4 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+    }
+    .feature-card {
+      flex: 0 1 calc(25% - 18px);
+      min-width: 240px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-top: 3px solid #69B0AB;
+      border-radius: 8px;
+      padding: 28px 24px;
+    }
+    .feature-card-icon {
+      width: 40px;
+      height: 40px;
+      background: #EDF7F6;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 18px;
+    }
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: #374151;
+      line-height: 1.6;
+    }
+    /* Situation cards */
+    .situation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .situation-card {
+      padding: 28px 24px;
+      background: #F4F7F6;
+      border-radius: 8px;
+      border-left: 3px solid #69B0AB;
+    }
+    .situation-card-title { font-weight: 700; font-size: 15px; color: #1A1A1A; margin-bottom: 10px; }
+    .situation-card-text { font-size: 14px; color: #374151; line-height: 1.65; }
+    /* Feature list */
+    .feature-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
+    .feature-check-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .feature-check-row:last-child { border-bottom: none; }
+    .check-circle { width: 22px; height: 22px; border-radius: 50%; background: #3D7E79; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .feature-check-text { color: #1A1A1A; font-size: 15px; line-height: 1.5; }
+    /* Pricing */
+    .pricing-block { border-left: 4px solid #69B0AB; padding: 28px 32px; background: #EDF7F6; border-radius: 0 8px 8px 0; max-width: 560px; }
+    .pricing-headline { font-size: 28px; font-weight: 800; color: #1A1A1A; margin-bottom: 6px; }
+    .pricing-sub { font-size: 14px; color: #6B7280; margin-bottom: 16px; }
+    .pricing-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .pricing-row:last-child { border-bottom: none; }
+    .pricing-row-label { font-size: 14px; color: #374151; }
+    .pricing-row-value { font-size: 14px; font-weight: 700; color: #1A1A1A; }
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    details.faq-item { border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; overflow: hidden; }
+    details.faq-item summary { padding: 18px 24px; font-weight: 600; font-size: 15px; color: #1A1A1A; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after { content: '+'; color: #3D7E79; font-size: 20px; flex-shrink: 0; margin-left: 16px; }
+    details.faq-item[open] summary::after { content: '−'; }
+    .faq-answer { padding: 0 24px 20px; color: #374151; font-size: 15px; line-height: 1.7; background: #fff; border-top: 1px solid rgba(0,0,0,0.06); }
+
+    @media (max-width: 900px) {
+      .hub-hero-inner { grid-template-columns: 1fr; }
+      .hub-hero-mockup { display: none; }
+      .lifecycle-teaser-grid { grid-template-columns: 1fr !important; }
+      .lifecycle-teaser-grid svg { max-width:200px !important; margin-top:1.5rem; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Mobile Nav Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">✕</button>
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;">
+    <img src="../../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager">
+  </a>
+  <span class="mobile-nav-section-label">Die Plattform</span>
+  <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link" style="font-weight:700;">ELEVATOR HUB<sup>®</sup></a>
+  <span class="mobile-nav-section-label">Leistungen</span>
+  <a href="/einzelleistungen/" class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Einzelleistungen</a>
+  <a href="/einzelleistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
+  <a href="/einzelleistungen/angebotspruefung/" class="mobile-nav-link">Angebotsprüfung</a>
+  <a href="../index.html" class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Laufende Betreuung</a>
+  <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">Essentials Aufzugsmanagement</a>
+  <a href="index.html" class="mobile-nav-link">ELEVATOR HUB<sup>®</sup></a>
+  <a href="/laufende-betreuung/betriebskontrolle/" class="mobile-nav-link">Betriebskontrolle / Aufzugswärter</a>
+  <a href="/laufende-betreuung/iot-monitoring/" class="mobile-nav-link">ELEVATOR LIVE</a>
+  <span class="mobile-nav-section-label">Informationen</span>
+  <a href="/betreiberpflichten/" class="mobile-nav-link">Betreiberpflichten</a>
+  <a href="/faq/" class="mobile-nav-link">FAQ</a>
+  <div class="mobile-nav-cta">
+    <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:14px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:12px 20px;border-radius:6px;margin-bottom:10px;">Kundenportal</a>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary btn-full">
+      Erstgespräch buchen
+    </a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite">
+      <img src="../../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager">
+    </a>
+    <div class="nav-links" role="list">
+      <a href="/laufende-betreuung/elevator-hub/" role="listitem" style="font-weight:700;color:#1E2761;">ELEVATOR HUB<sup>®</sup></a>
+      <div class="nav-dropdown" role="listitem">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Leistungen
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div>
+            <div class="dropdown-col-label"><a href="/einzelleistungen/" class="dropdown-col-link">EINZELLEISTUNGEN</a></div>
+            <a href="/einzelleistungen/pruefbericht-check/" class="dropdown-item" role="menuitem">
+              Prüfbericht-Check
+              <span class="item-price">Kostenlos, Ergebnis in 48 h</span>
+            </a>
+            <a href="/einzelleistungen/angebotspruefung/" class="dropdown-item" role="menuitem">
+              Angebotsprüfung
+              <span class="item-price">Kostenlos, 48 h</span>
+            </a>
+            <a href="/einzelleistungen/vertragscheck/" class="dropdown-item" role="menuitem">
+              Vertragscheck
+              <span class="item-price">Kostenlos</span>
+            </a>
+            <a href="/einzelleistungen/zustandsbericht/" class="dropdown-item" role="menuitem">Zustandsbericht &amp; Budgetplanung</a>
+            <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="dropdown-item" role="menuitem">Wartungsvertrag ausschreiben</a>
+            <a href="/einzelleistungen/modernisierung/" class="dropdown-item" role="menuitem">Modernisierung begleiten</a>
+            <a href="/einzelleistungen/frequenzumrichter/" class="dropdown-item" role="menuitem">Frequenzumrichter-Reparatur</a>
+            <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="dropdown-item" role="menuitem">Gef&#228;hrdungsbeurteilung</a>
+          </div>
+          <div>
+            <div class="dropdown-col-label"><a href="../index.html" class="dropdown-col-link">LAUFENDE BETREUUNG</a></div>
+            <a href="/laufende-betreuung/all-inclusive/" class="dropdown-item" role="menuitem">
+              Essentials Aufzugsmanagement
+            </a>
+            <a href="index.html" class="dropdown-item" role="menuitem">
+              ELEVATOR HUB<sup>®</sup>
+              <span class="item-price">Digitales Aufzugscockpit</span>
+            </a>
+            <a href="/laufende-betreuung/betriebskontrolle/" class="dropdown-item" role="menuitem">Betriebskontrolle / Aufzugswärter</a>
+            <a href="/laufende-betreuung/iot-monitoring/" class="dropdown-item" role="menuitem">ELEVATOR LIVE</a>
+            <a href="/laufende-betreuung/smart-flap/" class="dropdown-item" role="menuitem">SMART FLAP<sup>®</sup></a>
+            <a href="/laufende-betreuung/wartung-klappen/" class="dropdown-item" role="menuitem">Wartung energetische Klappen</a>
+          </div>
+        </div>
+      </div>
+      <a href="/betreiberpflichten/" role="listitem">Betreiberpflichten</a>
+      <a href="/wissen/" role="listitem">Wissen</a>
+      <a href="/ueber-uns/" role="listitem">Über uns</a>
+      <a href="/faq/" role="listitem">FAQ</a>
+    </div>
+    <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:none;font-size:13px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:7px 16px;border-radius:6px;white-space:nowrap;transition:background 0.2s,color 0.2s;" id="nav-portal-desktop" onmouseover="this.style.background='#3D7E79';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#3D7E79'">Kundenportal</a>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+      Erstgespräch buchen
+    </a>
+    <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- Hero — Navy with dashboard mockup -->
+<section class="hub-hero" aria-label="ELEVATOR HUB Intro">
+  <div class="container">
+    <div class="hub-hero-inner">
+      <div>
+        <div class="badge-row">
+          <span class="badge-category">Laufende Betreuung</span>
+          <span class="badge-sub">Digitales Aufzugscockpit · DSGVO-konform</span>
+        </div>
+        <h1>Alle Aufzüge. Alle Dokumente. Alle Fristen. Auf einen Blick.</h1>
+        
+        <p class="lead">Der ELEVATOR HUB<sup>®</sup> ist Ihre herstellerübergreifende, autarke Plattform für professionelles Aufzugsmanagement. Keine Abhängigkeit vom Wartungsunternehmen. Ihre Daten gehören Ihnen.</p>
+        <div class="cta-row">
+          <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+             target="_blank" rel="noopener" class="btn-primary">
+            Erstgespräch buchen
+          </a>
+          <a href="../index.html" class="btn-secondary">
+            Zur Übersicht
+          </a>
+          <span class="price-pill">Im Paket enthalten · kostenlos starten</span>
+        </div>
+      </div>
+      <div class="hub-hero-mockup" aria-hidden="true">
+        <div class="dashboard-frame">
+          <div class="db-chrome">
+            <div class="db-dots"><span></span><span></span><span></span></div>
+            <div class="db-url">customer.elevoniq.de/hub</div>
+          </div>
+          <div class="db-body">
+
+            <!-- LEFT COLUMN: INPUT -->
+            <div class="dbd-col dbd-col-left">
+              <div class="dbd-col-header">
+                <span class="dbd-col-dot coral"></span>
+                <span class="dbd-col-label coral">Input &middot; Fragen &amp; Dokumente</span>
+              </div>
+
+              <div class="dbd-card">
+                <div class="dbd-card-icon" style="background:rgba(255,91,92,0.12);">&#9993;</div>
+                <div class="dbd-card-body">
+                  <div class="dbd-card-sender">WEG Ritterstr. 14</div>
+                  <div class="dbd-card-preview">Was bedeutet die Mängelrüge vom TÜV?</div>
+                </div>
+                <div class="dbd-card-meta">
+                  <span class="dbd-card-time">09:14</span>
+                  <span class="dbd-card-badge question">?</span>
+                </div>
+              </div>
+
+              <div class="dbd-card">
+                <div class="dbd-card-icon" style="background:rgba(105,176,171,0.1);">&#128196;</div>
+                <div class="dbd-card-body">
+                  <div class="dbd-card-sender">Hausverwaltung Krause</div>
+                  <div class="dbd-card-preview">Angebot Modernisierung.pdf</div>
+                </div>
+                <div class="dbd-card-meta">
+                  <span class="dbd-card-time">10:02</span>
+                  <span class="dbd-card-badge question">?</span>
+                </div>
+              </div>
+
+              <div class="dbd-card">
+                <div class="dbd-card-icon" style="background:rgba(255,193,7,0.1);">&#128172;</div>
+                <div class="dbd-card-body">
+                  <div class="dbd-card-sender">Eigentümer Fischer</div>
+                  <div class="dbd-card-preview">Ist der Preis angemessen?</div>
+                </div>
+                <div class="dbd-card-meta">
+                  <span class="dbd-card-time">11:30</span>
+                  <span class="dbd-card-badge question">?</span>
+                </div>
+              </div>
+
+              <div class="dbd-card">
+                <div class="dbd-card-icon" style="background:rgba(150,120,200,0.12);">&#128222;</div>
+                <div class="dbd-card-body">
+                  <div class="dbd-card-sender">Beirat Gartenstr. 9</div>
+                  <div class="dbd-card-preview">Welche Fristen gelten nach BetrSichV?</div>
+                </div>
+                <div class="dbd-card-meta">
+                  <span class="dbd-card-time">13:45</span>
+                  <span class="dbd-card-badge question">?</span>
+                </div>
+              </div>
+
+              <div class="dbd-card">
+                <div class="dbd-card-icon" style="background:rgba(255,91,92,0.1);">&#128203;</div>
+                <div class="dbd-card-body">
+                  <div class="dbd-card-sender">Verwaltung Oranienplatz</div>
+                  <div class="dbd-card-preview">Prüfbericht ZÜS 2024.pdf</div>
+                </div>
+                <div class="dbd-card-meta">
+                  <span class="dbd-card-time">14:10</span>
+                  <span class="dbd-card-badge question">?</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CENTER COLUMN: ENGINE -->
+            <div class="dbd-col dbd-col-center">
+              <div class="dbd-wordmark">ElevonIQ</div>
+
+              <div class="dbd-orb-wrap">
+                <div class="dbd-orb-glow"></div>
+                <div class="dbd-orb-ring dbd-orb-ring-1"></div>
+                <div class="dbd-orb-ring dbd-orb-ring-2"></div>
+                <div class="dbd-orb-ring dbd-orb-ring-3"></div>
+                <div class="dbd-orb-core"></div>
+              </div>
+
+              <div class="dbd-engine-title">Die<br><span>Verständnis-Engine</span></div>
+              <div class="dbd-engine-sub">Jede Frage durchläuft<br>denselben prüfbaren Prozess.</div>
+
+              <div class="dbd-steps">
+                <div class="dbd-step">
+                  <span class="dbd-step-num">01</span>
+                  <span class="dbd-step-name">Erfassen</span>
+                  <span class="dbd-step-tag">OCR &middot; API</span>
+                </div>
+                <div class="dbd-step">
+                  <span class="dbd-step-num">02</span>
+                  <span class="dbd-step-name">Verstehen</span>
+                  <span class="dbd-step-tag">Kontext</span>
+                </div>
+                <div class="dbd-step">
+                  <span class="dbd-step-num">03</span>
+                  <span class="dbd-step-name">Bewerten</span>
+                  <span class="dbd-step-tag">Norm &middot; Markt</span>
+                </div>
+                <div class="dbd-step">
+                  <span class="dbd-step-num">04</span>
+                  <span class="dbd-step-name">Strukturieren</span>
+                  <span class="dbd-step-tag">Report</span>
+                </div>
+              </div>
+
+              <div class="dbd-center-footer">
+                <span>Herstellerneutral</span>
+                <span>EU Data Act</span>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN: OUTPUT -->
+            <div class="dbd-col dbd-col-right">
+              <div class="dbd-col-header">
+                <span class="dbd-col-dot teal"></span>
+                <span class="dbd-col-label teal">Output &middot; Strukturierte Reports</span>
+              </div>
+
+              <div class="dbd-report-card">
+                <div class="dbd-report-body">
+                  <div class="dbd-report-title">Wartungskosten-Analyse</div>
+                  <div class="dbd-report-sub">Vergleich 3 Anbieter &middot; Einsparpotenzial 18%</div>
+                </div>
+                <div class="dbd-report-meta">
+                  <span class="dbd-card-badge check">&#10003;</span>
+                  <span class="dbd-report-type">PDF &middot; 8 S.</span>
+                </div>
+              </div>
+
+              <div class="dbd-report-card">
+                <div class="dbd-report-body">
+                  <div class="dbd-report-title">Prüfbericht ausgewertet</div>
+                  <div class="dbd-report-sub">2 Mängel klassifiziert &middot; Handlungsbedarf</div>
+                </div>
+                <div class="dbd-report-meta">
+                  <span class="dbd-card-badge check">&#10003;</span>
+                  <span class="dbd-report-type">PDF &middot; 4 S.</span>
+                </div>
+              </div>
+
+              <div class="dbd-report-card">
+                <div class="dbd-report-body">
+                  <div class="dbd-report-title">Angebotsvergleich</div>
+                  <div class="dbd-report-sub">Modernisierung &middot; Marktpreisbewertung</div>
+                </div>
+                <div class="dbd-report-meta">
+                  <span class="dbd-card-badge check">&#10003;</span>
+                  <span class="dbd-report-type">Dashboard</span>
+                </div>
+              </div>
+
+              <div class="dbd-report-card">
+                <div class="dbd-report-body">
+                  <div class="dbd-report-title">Modernisierungs-Konzept</div>
+                  <div class="dbd-report-sub">Stufenplan 2025–2027 &middot; Kostenschätzung</div>
+                </div>
+                <div class="dbd-report-meta">
+                  <span class="dbd-card-badge check">&#10003;</span>
+                  <span class="dbd-report-type">PDF &middot; 12 S.</span>
+                </div>
+              </div>
+
+              <div class="dbd-report-card">
+                <div class="dbd-report-body">
+                  <div class="dbd-report-title">Fristen &amp; Pflichten</div>
+                  <div class="dbd-report-sub">BetrSichV &middot; alle Anlagen &middot; aktuell</div>
+                </div>
+                <div class="dbd-report-meta">
+                  <span class="dbd-card-badge check">&#10003;</span>
+                  <span class="dbd-report-type">Dashboard</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 360° Tour Live-Demo -->
+<section class="content-section reveal" style="background:#f4f7f6;">
+  <div class="content-inner" style="max-width:1100px;margin:0 auto;padding:64px 24px;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:32px;">
+      <div style="background:#fff;border-radius:10px;padding:20px;border:1px solid #eaeaea;">
+        <p style="font-weight:700;margin:0 0 6px;color:#1A1A1A;">360°-Maschinenraum</p>
+        <p style="font-size:0.85rem;color:#5a5a6e;margin:0;">Vollständige Begehung — keine Überraschungen bei der nächsten Prüfung.</p>
+      </div>
+      <div style="background:#fff;border-radius:10px;padding:20px;border:1px solid #eaeaea;">
+        <p style="font-weight:700;margin:0 0 6px;color:#1A1A1A;">Zeitgestempelt & rechtssicher</p>
+        <p style="font-size:0.85rem;color:#5a5a6e;margin:0;">Jede Aufnahme mit Datum, Uhrzeit und Anlageninformation verknüpft.</p>
+      </div>
+      <div style="background:#fff;border-radius:10px;padding:20px;border:1px solid #eaeaea;">
+        <p style="font-weight:700;margin:0 0 6px;color:#1A1A1A;">Einmalig im Markt</p>
+        <p style="font-size:0.85rem;color:#5a5a6e;margin:0;">Kein Wartungsunternehmen bietet diese Transparenz — nur ElevonIQ.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Feature Grid -->
+<section class="section" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Sechs Kernfunktionen</span>
+      <h2 class="section-title" id="features-heading">Was der ELEVATOR HUB<sup>®</sup> leistet</h2>
+    </div>
+    <div class="feature-grid-4">
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D7E79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Digitale Akte</h3>
+        <p>Alle Prüfberichte, Wartungsprotokolle, Verträge und Fotos für jede Anlage — zentral, geordnet, jederzeit abrufbar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D7E79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Fristen-Management</h3>
+        <p>TÜV-Termine, ZÜS-Prüfungen, Wartungsintervalle und GBU-Fristen werden automatisch überwacht und rechtzeitig gemeldet.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D7E79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Kommunikation</h3>
+        <p>Direkte Kommunikation mit ElevonIQ, Wartungsfirmen und Behörden — alles dokumentiert, nichts geht verloren.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D7E79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Dokumente &amp; Reports</h3>
+        <p>Automatische Berichte für Eigentümerversammlungen, Kostenabrechnungen und ESG-Nachweise mit einem Klick exportierbar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D7E79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Vollständige Betreiberpflichten-Dokumentation</h3>
+        <p>Alle gesetzlichen Nachweise rechtssicher hinterlegt und abrufbar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3D7E79" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Alle Dokumente an einem Ort</h3>
+        <p>Verträge, Rechnungen, Angebote und Nachweise zentral gespeichert.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ElevonIQ-Radar -->
+<section class="jhr-scope" style="background: radial-gradient(130% 120% at 50% 22%, #1d2150 0%, #14163a 52%, #0b0d24 100%); padding: 0;" aria-labelledby="jhr-heading">
+  <style>
+    .jhr-scope { display: block; }
+    .jhr-scope .jhr-wrap {
+      height: min(620px, 80vh);
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 18px 36px;
+      display: grid;
+      grid-template-columns: minmax(360px, 0.78fr) 1.22fr;
+      column-gap: 30px;
+      align-items: stretch;
+      box-sizing: border-box;
+    }
+    .jhr-scope .jhr-info {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .jhr-scope .jhr-clock-col {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+    .jhr-scope .jhr-clock { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .jhr-scope .jhr-clock svg { max-height: 100%; width: 100%; }
+    .jhr-scope .jhr-play {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(238,240,251,0.62);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: "Inter", system-ui, sans-serif;
+      margin-left: auto;
+    }
+    .jhr-scope .jhr-eyebrow {
+      margin: 14px 0 6px;
+      color: #6fe6d2;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    .jhr-scope .jhr-title {
+      font-family: "Poppins", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 23px;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      margin: 0;
+      color: #eef0fb;
+    }
+    .jhr-scope .jhr-title .jhr-accent { color: #ff8a7e; }
+    .jhr-scope .jhr-sub {
+      margin: 7px 0 0;
+      color: rgba(238,240,251,0.62);
+      font-size: 12.5px;
+      max-width: 540px;
+      line-height: 1.45;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    .jhr-scope .jhr-ring-leg { display: flex; flex-direction: column; gap: 6px; margin-top: 11px; }
+    .jhr-scope .jhr-ring-leg .jhr-it {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: rgba(238,240,251,0.62);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    .jhr-scope .jhr-ring-el {
+      width: 16px; height: 16px;
+      border-radius: 999px;
+      border: 2px solid rgba(238,240,251,0.36);
+      flex-shrink: 0;
+    }
+    .jhr-scope .jhr-ring-el.jhr-inn { border-style: dashed; }
+    .jhr-scope .jhr-legend-head {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(238,240,251,0.36);
+      margin: 14px 0 7px;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    .jhr-scope .jhr-provs { display: flex; flex-wrap: wrap; gap: 8px; }
+    .jhr-scope .jhr-prov {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(238,240,251,0.62);
+      transition: background .25s, border-color .25s, color .2s, transform .2s;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    .jhr-scope .jhr-prov .jhr-d { width: 8px; height: 8px; border-radius: 999px; background: #9aa3d6; flex-shrink: 0; }
+    .jhr-scope .jhr-prov .jhr-cnt { color: rgba(238,240,251,0.36); font-weight: 700; }
+    .jhr-scope .jhr-prov.active { background: rgba(255,255,255,0.10); border-color: #9fa8e6; color: #eef0fb; transform: translateY(-2px); }
+    .jhr-scope .jhr-prov.active .jhr-d { box-shadow: 0 0 8px #9fa8e6; }
+    .jhr-scope .jhr-clusters { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 7px; }
+    .jhr-scope .jhr-cluster {
+      position: relative;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 12px;
+      padding: 9px 12px 9px 15px;
+      transition: background .25s, border-color .25s, transform .2s;
+    }
+    .jhr-scope .jhr-cluster::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 9px; bottom: 9px;
+      width: 4px;
+      border-radius: 0 4px 4px 0;
+      background: var(--jhr-cc);
+    }
+    .jhr-scope .jhr-cluster .jhr-k {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--jhr-cc);
+      display: flex;
+      gap: 7px;
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    .jhr-scope .jhr-cluster .jhr-k .jhr-cnt { margin-left: auto; color: rgba(238,240,251,0.36); }
+    .jhr-scope .jhr-cluster h4 {
+      font-family: "Poppins", system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 12.5px;
+      margin: 4px 0 2px;
+      line-height: 1.15;
+      color: #eef0fb;
+    }
+    .jhr-scope .jhr-cluster p {
+      margin: 0;
+      font-size: 10px;
+      line-height: 1.35;
+      color: rgba(238,240,251,0.62);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    .jhr-scope .jhr-cluster.active { background: rgba(255,255,255,0.10); border-color: var(--jhr-cc); transform: translateY(-2px); }
+    .jhr-scope .jhr-ev-label { font-family: "Inter", system-ui, sans-serif; font-weight: 600; font-size: 10.8px; }
+    .jhr-scope .jhr-q-roman { font-family: "Poppins", system-ui, sans-serif; font-weight: 700; font-size: 24px; fill: rgba(255,255,255,0.09); }
+    .jhr-scope .jhr-center-hub { font-family: "Poppins", system-ui, sans-serif; font-weight: 800; font-size: 21px; fill: #fff; }
+    .jhr-scope .jhr-center-sub { font-family: "Inter", system-ui, sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.22em; fill: #6fe6d2; text-transform: uppercase; }
+    @media (max-width: 900px) {
+      .jhr-scope .jhr-wrap {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 24px 20px;
+      }
+      .jhr-scope .jhr-clock-col { min-height: 340px; }
+    }
+  </style>
+
+  <div class="jhr-wrap">
+    <div class="jhr-info">
+      <div style="display:flex;align-items:center;justify-content:flex-end;margin-bottom:2px;">
+        <button class="jhr-play" id="jhr-play">
+          <svg id="jhr-playIc" viewBox="0 0 12 12" fill="currentColor" width="9" height="9">
+            <rect x="1" y="1" width="3.5" height="10" rx="1"/>
+            <rect x="7.5" y="1" width="3.5" height="10" rx="1"/>
+          </svg>
+          <span id="jhr-playTx">Pause</span>
+        </button>
+      </div>
+      <div class="jhr-eyebrow">ElevonIQ-Radar</div>
+      <h2 class="jhr-title" id="jhr-heading">Alle Ereignisse rund um den Aufzug &mdash; <span class="jhr-accent">auf einen Blick im ELEVATOR HUB&reg;</span></h2>
+      <p class="jhr-sub">Außen die Ereignisse der Beteiligten, innen die Leistungen von ElevonIQ &mdash; in vier Cluster. Der Radar dreht sich durch alle Messpunkte des Jahres und hebt jeden hervor.</p>
+      <div class="jhr-ring-leg">
+        <div class="jhr-it"><span class="jhr-ring-el"></span> Außenring &middot; Ereignisse der Beteiligten</div>
+        <div class="jhr-it"><span class="jhr-ring-el jhr-inn"></span> Innenring &middot; Leistungen von Elevoniq</div>
+      </div>
+      <div class="jhr-legend-head">Dienstleister</div>
+      <div class="jhr-provs" id="jhr-provs">
+        <div class="jhr-prov" data-k="wart"><span class="jhr-d"></span>Wartungsfirma <span class="jhr-cnt" id="jhr-pv-wart"></span></div>
+        <div class="jhr-prov" data-k="zues"><span class="jhr-d"></span>ZÜS / TÜV <span class="jhr-cnt" id="jhr-pv-zues"></span></div>
+        <div class="jhr-prov" data-k="notruf"><span class="jhr-d"></span>Notrufdienst <span class="jhr-cnt" id="jhr-pv-notruf"></span></div>
+        <div class="jhr-prov" data-k="ing"><span class="jhr-d"></span>Ingenieurbüro <span class="jhr-cnt" id="jhr-pv-ing"></span></div>
+      </div>
+      <div class="jhr-legend-head">Leistungen</div>
+      <div class="jhr-clusters" id="jhr-clusters">
+        <div class="jhr-cluster" data-c="1" style="--jhr-cc:#ee5648"><div class="jhr-k">Cluster 1 <span class="jhr-cnt" id="jhr-cnt1"></span></div><h4>Kaufmännisches Immobilien-Management</h4><p>Budget &middot; Kostenvergleich &middot; Angebots- &amp; RE-Prüfung</p></div>
+        <div class="jhr-cluster" data-c="2" style="--jhr-cc:#3fb6a0"><div class="jhr-k">Cluster 2 <span class="jhr-cnt" id="jhr-cnt2"></span></div><h4>Technisches Immobilien-Management</h4><p>Entstörung &middot; Reparatur &middot; Personenbefreiung</p></div>
+        <div class="jhr-cluster" data-c="3" style="--jhr-cc:#e0a64a"><div class="jhr-k">Cluster 3 <span class="jhr-cnt" id="jhr-cnt3"></span></div><h4>Betreiberpflichten &middot; Normen &middot; Gesetze</h4><p>GBU &middot; NBA &middot; AZW &middot; ZÜS-Prüfungen &amp; Fristen</p></div>
+        <div class="jhr-cluster" data-c="4" style="--jhr-cc:#7c80e0"><div class="jhr-k">Cluster 4 <span class="jhr-cnt" id="jhr-cnt4"></span></div><h4>Reporting &amp; Transparenz</h4><p>Portfolio &middot; AdHoc &middot; Incident-Reports</p></div>
+      </div>
+    </div>
+    <div class="jhr-clock-col">
+      <div class="jhr-clock"><svg class="jhr-dial" id="jhr-dial" viewBox="0 0 1180 1040" aria-hidden="true"></svg></div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+  const SVGNS='http://www.w3.org/2000/svg';
+  function el(n,a){const e=document.createElementNS(SVGNS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+  const cx=590, cy=500;
+  const COL={1:'#ee5648',2:'#3fb6a0',3:'#e0a64a',4:'#7c80e0'};
+  const EVENTS=[
+    { a:8,  c:1, ring:'out', k:null,    t:'Vertrag unterschrieben' },
+    { a:24, c:4, ring:'in',  k:null,    t:'Digitalisierung Unterlagen' },
+    { a:44, c:2, ring:'in',  k:null,    t:'Störungshotline' },
+    { a:60, c:1, ring:'out', k:null,    t:'Rechnung' },
+    { a:72, c:4, ring:'in',  k:null,    t:'Leistungskontrolling' },
+    { a:78, c:3, ring:'out', k:'zues',  t:'ZÜS-Prüfung terminiert' },
+    { a:96, c:3, ring:'out', k:'zues',  t:'ZÜS-Prüfung' },
+    { a:114,c:4, ring:'in',  k:null,    t:'Kostenbericht Status quo' },
+    { a:132,c:3, ring:'out', k:'zues',  t:'ZÜS-Prüfbericht' },
+    { a:150,c:1, ring:'out', k:'wart',  t:'Angebot auf Basis ZÜS-PB' },
+    { a:170,c:2, ring:'out', k:'wart',  t:'Wiederholte Störung' },
+    { a:182,c:2, ring:'in',  k:null,    t:'Störungsmanagement' },
+    { a:190,c:1, ring:'out', k:null,    t:'Abschluss neuer Verträge' },
+    { a:208,c:3, ring:'in',  k:'ing',   t:'Mängelverfolgung' },
+    { a:226,c:2, ring:'in',  k:'wart',  t:'DL De-Eskalation' },
+    { a:246,c:1, ring:'out', k:null,    t:'Rechnung' },
+    { a:266,c:2, ring:'out', k:'notruf',t:'Störung' },
+    { a:288,c:4, ring:'in',  k:null,    t:'Jährliches DL-Gespräch' },
+    { a:300,c:1, ring:'in',  k:null,    t:'Angebotsprüfung' },
+    { a:242,c:1, ring:'in',  k:null,    t:'Ausschreibung Wartung' },
+    { a:326,c:3, ring:'in',  k:'ing',   t:'Gefährdungsbeurteilung' },
+    { a:344,c:3, ring:'in',  k:'notruf',t:'Notfallbefreiung' },
+    { a:350,c:2, ring:'out', k:'notruf',t:'Wiederholte Störung' },
+  ];
+  const svg=document.getElementById('jhr-dial');
+  const defs=el('defs',{});
+  const sg=el('linearGradient',{id:'jhr-sweep',x1:'0',y1:'0',x2:'1',y2:'0'});
+  [['0','#6fe6d2','0'],['1','#6fe6d2','0.16']].forEach(([o,c,op])=>sg.appendChild(el('stop',{offset:o,'stop-color':c,'stop-opacity':op})));
+  defs.appendChild(sg); svg.appendChild(defs);
+  const R_OUT=300, R_IN=205, R_HUB=150;
+  const R_LABEL_OUT=322, R_LABEL_IN=240;
+  function pt(r,deg){ const a=(deg-90)*Math.PI/180; return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; }
+  svg.appendChild(el('circle',{cx,cy,r:R_OUT,fill:'rgba(255,255,255,0.022)',stroke:'rgba(255,255,255,0.08)','stroke-width':'1'}));
+  svg.appendChild(el('circle',{cx,cy,r:R_IN,fill:'rgba(124,128,224,0.04)',stroke:'rgba(255,255,255,0.07)','stroke-width':'1','stroke-dasharray':'3 7'}));
+  svg.appendChild(el('circle',{cx,cy,r:R_HUB,fill:'rgba(11,13,36,0.6)',stroke:'rgba(255,255,255,0.08)','stroke-width':'1'}));
+  [0,90,180,270].forEach(d=>{const[x1,y1]=pt(R_HUB,d),[x2,y2]=pt(R_OUT,d);svg.appendChild(el('line',{x1,y1,x2,y2,stroke:'rgba(255,255,255,0.06)','stroke-width':'1','stroke-dasharray':'2 7'}));});
+  [{m:45,r:'I'},{m:135,r:'II'},{m:225,r:'III'},{m:315,r:'IV'}].forEach(q=>{const[x,y]=pt((R_IN+R_OUT)/2,q.m);const t=el('text',{x,y:y+8,'text-anchor':'middle',class:'jhr-q-roman'});t.textContent=q.r;svg.appendChild(t);});
+  const sweepG=el('g',{id:'jhr-sweepG'});
+  function trail(r,span){const[xs,ys]=pt(r,-span),[xe,ye]=pt(r,0);return `M ${cx} ${cy} L ${xs} ${ys} A ${r} ${r} 0 0 1 ${xe} ${ye} Z`;}
+  sweepG.appendChild(el('path',{d:trail(R_OUT,34),fill:'url(#jhr-sweep)'}));
+  sweepG.appendChild(el('line',{x1:cx,y1:cy,x2:pt(R_OUT,0)[0],y2:pt(R_OUT,0)[1],stroke:'#6fe6d2','stroke-width':'1.5','stroke-linecap':'round',opacity:'0.7'}));
+  svg.appendChild(sweepG);
+  const evNodes=EVENTS.map(ev=>{
+    const R = ev.ring==='out' ? R_OUT : R_IN;
+    const [x,y]=pt(R,ev.a); const col=COL[ev.c];
+    const halo=el('circle',{cx:x,cy:y,r:'5.5',fill:col,opacity:'0.18'});
+    const dot=el('circle',{cx:x,cy:y,r:'4',fill:col,stroke:'#0e1030','stroke-width':'1.4'});
+    svg.appendChild(halo); svg.appendChild(dot);
+    const LR = ev.ring==='out' ? R_LABEL_OUT : R_LABEL_IN;
+    const [lx,ly]=pt(LR,ev.a);
+    const hx=Math.cos((ev.a-90)*Math.PI/180);
+    const anchor = hx>0.14?'start':(hx<-0.14?'end':'middle');
+    const [tx,ty]=pt((ev.ring==='out'?R_OUT:R_IN)+9, ev.a);
+    const tick=el('line',{x1:x,y1:y,x2:tx,y2:ty,stroke:col,'stroke-width':'1',opacity:'0.45'});
+    svg.appendChild(tick);
+    const txt=el('text',{x:lx,y:ly+3.5,'text-anchor':anchor,class:'jhr-ev-label',fill:'rgba(238,240,251,0.62)'});
+    txt.textContent=ev.t; svg.appendChild(txt);
+    return { ev, dot, halo, txt, col, lit:0, fired:false };
+  });
+  const lift=el('g',{transform:`translate(0 -14)`,stroke:'#fff','stroke-width':'2.2',fill:'none','stroke-linecap':'round','stroke-linejoin':'round'});
+  lift.appendChild(el('rect',{x:cx-20,y:cy-56,width:40,height:50,rx:7}));
+  lift.appendChild(el('polyline',{points:`${cx-7},${cy-40} ${cx-3},${cy-46} ${cx+1},${cy-40}`}));
+  lift.appendChild(el('polyline',{points:`${cx-7},${cy-28} ${cx-3},${cy-22} ${cx+1},${cy-28}`}));
+  lift.appendChild(el('line',{x1:cx+10,y1:cy-43,x2:cx+10,y2:cy-21}));
+  svg.appendChild(lift);
+  const h1=el('text',{x:cx,y:cy+8,'text-anchor':'middle',class:'jhr-center-hub'});h1.textContent='ELEVATOR HUB';
+  const reg=el('tspan',{'baseline-shift':'super','font-size':'10'});reg.textContent='®';h1.appendChild(reg);svg.appendChild(h1);
+  const h2t=el('text',{x:cx,y:cy+30,'text-anchor':'middle',class:'jhr-center-sub'});h2t.textContent='ELEVONIQ-RADAR';svg.appendChild(h2t);
+  [1,2,3,4].forEach(c=>{ const e=document.getElementById('jhr-cnt'+c); if(e) e.textContent=EVENTS.filter(ev=>ev.c===c).length; });
+  ['wart','zues','notruf','ing'].forEach(k=>{ const e=document.getElementById('jhr-pv-'+k); if(e) e.textContent=EVENTS.filter(x=>x.k===k).length; });
+  const provEls=[...document.querySelectorAll('#jhr-provs .jhr-prov')]; let pT={};
+  function hiProv(k){const el2=provEls.find(x=>x.dataset.k===k); if(!el2) return; el2.classList.add('active'); clearTimeout(pT[k]); pT[k]=setTimeout(()=>el2.classList.remove('active'),1000);}
+  const clusterEls=[...document.querySelectorAll('#jhr-clusters .jhr-cluster')];
+  let angle=0,last=performance.now(),playing=true; const SPEED=360/20000; let cT={};
+  function frame(now){
+    const dt=now-last; last=now;
+    if(playing) angle=(angle+SPEED*dt)%360;
+    sweepG.setAttribute('transform',`rotate(${angle} ${cx} ${cy})`);
+    evNodes.forEach(n=>{
+      let diff=((angle-n.ev.a)%360+360)%360;
+      if(diff<6 && !n.fired){ n.fired=true; n.lit=1; hiCluster(n.ev.c); if(n.ev.k) hiProv(n.ev.k); }
+      if(diff>20) n.fired=false;
+      if(n.lit>0){ n.lit=Math.max(0,n.lit-dt/1500); const k=n.lit;
+        n.dot.setAttribute('r',(4+2.5*k).toFixed(2));
+        n.halo.setAttribute('opacity',(0.18+0.4*k).toFixed(2)); n.halo.setAttribute('r',(5.5+8*k).toFixed(2));
+        n.txt.setAttribute('fill',`rgba(238,240,251,${(0.6+0.4*k).toFixed(2)})`);
+        n.txt.setAttribute('font-weight', k>0.4?'700':'600');
+      }
+    });
+    requestAnimationFrame(frame);
+  }
+  function hiCluster(c){const card=clusterEls.find(x=>x.dataset.c==c);if(!card)return;card.classList.add('active');clearTimeout(cT[c]);cT[c]=setTimeout(()=>card.classList.remove('active'),1000);}
+  requestAnimationFrame(frame);
+  const playBtn=document.getElementById('jhr-play');
+  if(playBtn){
+    const playIc=document.getElementById('jhr-playIc'), playTx=document.getElementById('jhr-playTx');
+    playBtn.addEventListener('click',()=>{playing=!playing; if(playTx) playTx.textContent=playing?'Pause':'Abspielen';
+      if(playIc) playIc.innerHTML=playing?'<rect x="1" y="1" width="3.5" height="10" rx="1"/><rect x="7.5" y="1" width="3.5" height="10" rx="1"/>':'<path d="M2 1l9 5-9 5z"/>';});
+  }
+  })();
+  </script>
+</section>
+
+<!-- Product Screenshots -->
+<section class="section" aria-labelledby="screenshots-heading">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-eyebrow">Einblick</span>
+      <h2 class="section-title" id="screenshots-heading">So sieht der ELEVATOR HUB<sup>®</sup> aus</h2>
+      <p class="section-lead" style="max-width:640px;">Alle Anlagen, Fristen und Dokumente auf einer Oberfläche. Herstellerneutral, browserbasiert, ohne App-Installation.</p>
+    </div>
+
+    <!-- Main: 360° view (high-res) -->
+    <div style="margin-bottom:24px;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);">
+      <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;">
+        <span style="width:11px;height:11px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#FEBC2E;display:inline-block;"></span>
+        <span style="width:11px;height:11px;border-radius:50%;background:#28C840;display:inline-block;"></span>
+        <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">360°-Begehung — Maschinenraum</div>
+      </div>
+      <img src="../../assets/images/hub-screenshots/hub-360-view.png" alt="360°-Ansicht des Aufzug-Maschinenraums im ELEVATOR HUB" style="display:block;width:100%;height:auto;max-height:360px;object-fit:cover;object-position:center;" loading="lazy" fetchpriority="high">
+    </div>
+
+    <!-- Secondary: Portfolio map + Analytics (natural size, centered) -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);display:flex;flex-direction:column;">
+        <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span style="width:11px;height:11px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#FEBC2E;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#28C840;display:inline-block;"></span>
+          <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">app.elevoniq.de — Portfolio-Übersicht</div>
+        </div>
+        <div style="background:#f8f9fa;flex:1;display:flex;align-items:center;justify-content:center;padding:16px;">
+          <img src="../../assets/images/hub-screenshots/hub-portfolio-map.png" alt="ELEVATOR HUB Portfolioübersicht mit Kartenansicht Deutschland" style="display:block;width:100%;max-width:446px;height:auto;border-radius:4px;" loading="lazy">
+        </div>
+      </div>
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(30,39,97,0.13);display:flex;flex-direction:column;">
+        <div style="background:#E8EAF0;padding:10px 16px;display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <span style="width:11px;height:11px;border-radius:50%;background:#FF5F57;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#FEBC2E;display:inline-block;"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#28C840;display:inline-block;"></span>
+          <div style="flex:1;background:#fff;border-radius:4px;padding:4px 10px;margin-left:8px;font-size:11px;color:#888;font-family:inherit;">Portfolio-Auswertung &amp; Reports</div>
+        </div>
+        <div style="background:#f8f9fa;flex:1;display:flex;align-items:center;justify-content:center;padding:16px;">
+          <img src="../../assets/images/hub-screenshots/hub-analytics-dashboard.png" alt="ELEVATOR HUB Analytics-Dashboard mit Portfolio-Auswertung" style="display:block;width:100%;max-width:448px;height:auto;border-radius:4px;" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Responsive: stack on mobile -->
+    <style>
+      @media (max-width: 640px) {
+        #screenshots-heading ~ * > div[style*="grid-template-columns:1fr 1fr"] {
+          grid-template-columns: 1fr !important;
+        }
+      }
+    </style>
+  </div>
+</section>
+
+<!-- Für wen ist das? -->
+<section class="section" style="background:#F4F7F6;" aria-labelledby="situation-heading">
+  <div class="container">
+    <span class="section-eyebrow">Ihre Situation</span>
+    <h2 class="section-title" id="situation-heading">Für wen ist das?</h2>
+    <div class="situation-grid">
+      <div class="situation-card">
+        <div class="situation-card-title">Überblick fehlt</div>
+        <div class="situation-card-text">Sie verwalten mehrere Aufzüge an verschiedenen Standorten und verlieren den Überblick über Fristen, Dokumente und Kosten.</div>
+      </div>
+      <div class="situation-card">
+        <div class="situation-card-title">Dokumentationspflicht</div>
+        <div class="situation-card-text">Als WEG-Verwalter müssen Sie Eigentümern bei der Jahresversammlung lückenlose Nachweise vorlegen — digital und strukturiert.</div>
+      </div>
+      <div class="situation-card">
+        <div class="situation-card-title">Datenhoheit sichern</div>
+        <div class="situation-card-text">Ihr Wartungsunternehmen hat alle Betriebsdaten — Sie möchten Unabhängigkeit und eigene Kontrolle über Ihre Aufzugsdaten.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Was Sie bekommen -->
+<section class="section" aria-labelledby="leistungen-heading">
+  <div class="container">
+    <h2 class="section-title" id="leistungen-heading">Was Sie bekommen</h2>
+    <div class="feature-checklist">
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">Portfolio-Dashboard: alle Aufzüge auf einer Übersicht</span>
+      </div>
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">Fristenmanagement: TÜV, Wartung, GBU automatisch im Kalender</span>
+      </div>
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">Dokumentenablage: Prüfberichte, Protokolle, Verträge digital</span>
+      </div>
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">Kostenübersicht: was kostet welcher Aufzug pro Jahr</span>
+      </div>
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">Automatische Berichte für Eigentümerversammlung oder Vorstand</span>
+      </div>
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">Zugang für Ihr Team und Ihre Dienstleister (Rechteverwaltung)</span>
+      </div>
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">Herstellerneutral: alle Fabrikate kompatibel</span>
+      </div>
+      <div class="feature-check-row">
+        <span class="check-circle">✓</span>
+        <span class="feature-check-text">DSGVO-konform, in Deutschland gehostet</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZUGANG FÜR DIENSTLEISTER -->
+<section class="section" style="background:#F4F7F6;" aria-labelledby="zugang-heading">
+  <div class="container">
+    <span class="section-eyebrow">Zusammenarbeit</span>
+    <h2 class="section-title" id="zugang-heading">Ein Hub für alle Beteiligten</h2>
+    <p class="section-lead" style="max-width:680px;">Der ELEVATOR HUB<sup>®</sup> ist nicht nur Ihr persönliches Cockpit — er ist die gemeinsame Arbeitsgrundlage für alle, die an Ihren Aufzügen beteiligt sind. Jeder Dienstleister erhält genau den Zugang, den er für seine Arbeit braucht. Nicht mehr, nicht weniger.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem;">
+      <div class="card" style="padding:1.5rem;">
+        <h4 style="margin-bottom:0.5rem;color:var(--color-navy);">Prüfgesellschaften (ZÜS)</h4>
+        <p style="font-size:14px;color:var(--color-gray);margin:0;">Werden direkt eingeladen. Haben Zugriff auf alle prüfrelevanten Dokumente — Prüfberichte, GBU, Fristen. Keine Papierstapel, kein Mailverkehr vor der Prüfung.</p>
+      </div>
+      <div class="card" style="padding:1.5rem;">
+        <h4 style="margin-bottom:0.5rem;color:var(--color-navy);">Wartungsunternehmen</h4>
+        <p style="font-size:14px;color:var(--color-gray);margin:0;">Erhalten Zugang zu Anlageninformationen, Wartungshistorie und offenen Mängeln. Angebote und Protokolle werden direkt im Hub abgelegt — für alle Beteiligten sichtbar.</p>
+      </div>
+      <div class="card" style="padding:1.5rem;">
+        <h4 style="margin-bottom:0.5rem;color:var(--color-navy);">Ingenieurbüros</h4>
+        <p style="font-size:14px;color:var(--color-gray);margin:0;">Greifen auf strukturierte Anlagendaten, Zustandsberichte und GBU-Ergebnisse zu. Ausschreibungen entstehen auf Basis derselben Daten, die der Eigentümer sieht.</p>
+      </div>
+      <div class="card" style="padding:1.5rem;">
+        <h4 style="margin-bottom:0.5rem;color:var(--color-navy);">Ihr Team</h4>
+        <p style="font-size:14px;color:var(--color-gray);margin:0;">Hausverwalter, Techniker, Assistenz — jeder mit den Rechten, die seiner Rolle entsprechen. Kein gemeinsamer Login, keine unkontrollierten Weiterleitungen.</p>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--color-gray);margin-top:1.5rem;max-width:680px;">Sie bestimmen, wer was sehen und bearbeiten darf. Zugänge lassen sich jederzeit erteilen und entziehen.</p>
+  </div>
+</section>
+
+<!-- Preis -->
+<section class="section" aria-labelledby="preis-heading">
+  <div class="container">
+    <h2 class="section-title" id="preis-heading">Preis &amp; Transparenz</h2>
+    <div class="pricing-block">
+      <div class="pricing-headline">Kostenlos starten. Im Paket enthalten.</div>
+      <div class="pricing-sub">Der ELEVATOR HUB<sup>®</sup> ist kostenlos — einfach online anmelden, Aufzüge erfassen, loslegen. Kein Vertrag, keine Mindestlaufzeit. Wer ElevonIQ als Betreuer beauftragt, hat den HUB automatisch inklusive.</div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">In ElevonIQ-Paket enthalten</span>
+        <span class="pricing-row-value">Enthalten</span>
+      </div>
+      <div class="pricing-row">
+        <span class="pricing-row-label">Standalone / Direktanmeldung</span>
+        <span class="pricing-row-value">Kostenlos</span>
+      </div>
+    </div>
+    <p class="price-legal-notice">Alle Preise in Euro, zzgl. gesetzlicher Umsatzsteuer. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB. Eine Nutzung durch Verbraucher ist ausgeschlossen.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:800px;">
+    <h2 class="section-title" id="faq-heading">Häufige Fragen</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Muss ich dafür ElevonIQ als Dienstleister beauftragen?</summary>
+        <div class="faq-answer">Nein. Der ELEVATOR HUB<sup>®</sup> ist als eigenständige Plattform kostenlos verfügbar. Einfach online anmelden — ohne Beauftragung von ElevonIQ.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Welche Hersteller werden unterstützt?</summary>
+        <div class="faq-answer">Alle gängigen Hersteller: OTIS, Kone, Schindler, ThyssenKrupp, Mitsubishi, Orona und weitere.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Wer hat Zugriff auf meine Daten?</summary>
+        <div class="faq-answer">Nur die Personen, die Sie explizit freischalten. Alle Daten liegen auf deutschen Servern.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Können wir Sensordaten von OTIS oder Kone integrieren?</summary>
+        <div class="faq-answer">Ja. Der EU Data Act gibt Ihnen das Recht auf Ihre Sensordaten. Wir holen die Daten ab und integrieren sie in den HUB.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-navy" aria-labelledby="cta-hub-heading">
+  <div class="container" style="text-align:center;max-width:640px;">
+    <p class="section-eyebrow" style="color:#69B0AB;margin-bottom:1rem;">Jetzt starten</p>
+    <h2 id="cta-hub-heading" style="color:#FFFFFF;margin-bottom:1rem;">Bereit für den nächsten Schritt?</h2>
+    <p style="color:rgba(255,255,255,0.85);margin-bottom:2rem;">Kostenloses Erstgespräch — 15 Minuten, kein Druck, keine Verpflichtung.</p>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+         target="_blank" rel="noopener" class="btn-primary">
+        Kostenloses Erstgespräch buchen
+      </a>
+      <a href="mailto:info@elevoniq.de" class="btn-secondary">
+        <a href="mailto:support@elevoniq.de" class="btn-secondary">Frage per E-Mail</a>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">
+          <img src="../../assets/images/elevon-iq-inverted.svg" alt="ElevonIQ" class="footer-logo-img" width="120" height="34" loading="lazy">
+        </a>
+        <p class="footer-tagline">Die externe Aufzugsabteilung.<br>Herstellerneutral. Bundesweit.</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:0.01em;">We take the lift in Berlin.</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Einzelleistungen</div>
+        <a href="/einzelleistungen/" class="footer-link">Übersicht</a>
+        <a href="/einzelleistungen/pruefbericht-check/" class="footer-link">Prüfbericht-Check</a>
+        <a href="/einzelleistungen/angebotspruefung/" class="footer-link">Angebotsprüfung</a>
+        <a href="/einzelleistungen/vertragscheck/" class="footer-link">Vertragscheck</a>
+        <a href="/einzelleistungen/zustandsbericht/" class="footer-link">Zustandsbericht</a>
+        <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="footer-link">Wartungsvertrag ausschreiben</a>
+        <a href="/einzelleistungen/modernisierung/" class="footer-link">Modernisierung</a>
+        <a href="/einzelleistungen/frequenzumrichter/" class="footer-link">Frequenzumrichter-Reparatur</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Laufende Betreuung</div>
+        <a href="../index.html" class="footer-link">Übersicht</a>
+        <a href="/laufende-betreuung/all-inclusive/" class="footer-link">Essentials Aufzugsmanagement</a>
+        <a href="index.html" class="footer-link">ELEVATOR HUB<sup>®</sup></a>
+        <a href="/laufende-betreuung/betriebskontrolle/" class="footer-link">Betriebskontrolle / Aufzugswärter</a>
+        <a href="/laufende-betreuung/iot-monitoring/" class="footer-link">ELEVATOR LIVE</a>
+        <a href="/laufende-betreuung/smart-flap/" class="footer-link">SMART FLAP<sup>®</sup></a>
+        <a href="/laufende-betreuung/wartung-klappen/" class="footer-link">Wartung energetische Klappen</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Wissen &amp; Unternehmen</div>
+        <a href="/betreiberpflichten/" class="footer-link">Betreiberpflichten</a>
+        <a href="/ueber-uns/" class="footer-link">Über uns</a>
+        <a href="/kontakt/" class="footer-link">Kontakt</a>
+        <div style="margin-top:1.5rem;" class="footer-col-label">Rechtliches</div>
+        <a href="/impressum/" class="footer-link">Impressum</a>
+        <a href="/datenschutz/" class="footer-link">Datenschutz</a>
+        <a href="/agb/" class="footer-link">AGB</a>
+        <a href="/widerrufsrecht/" class="footer-link">Widerrufsrecht</a>
+        <a href="https://ec.europa.eu/consumers/odr/" class="footer-link" target="_blank" rel="noopener">OS-Streitbeilegung</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ElevonIQ GmbH, Berlin</span>
+      <div class="footer-legal-links">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      
+        <a href="/widerrufsrecht/">Widerrufsrecht</a>
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">OS-Streitbeilegung</a>
+        <a href="#" onclick="localStorage.removeItem('elevoniq_consent');location.reload();return false;">Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cta = document.getElementById('nav-cta-desktop');
+    if (cta) cta.style.display = 'inline-block';
+    var portal = document.getElementById('nav-portal-desktop');
+    if (portal) portal.style.display = 'inline-block';
+  });
+</script>
+<script src="../../assets/js/nav.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+<!-- GA4 — nur nach Analytics-Consent -->
+<script>
+(function() {
+  function loadGA4() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPSDHVCT33';
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RPSDHVCT33');
+  }
+  if (window.elevoniqConsent) {
+    window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+  }
+})();
+</script>
+</body>
+</html>

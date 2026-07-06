@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SMART FLAP® Logo — identisch mit ELEVATOR HUB Logo Stil -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 150" xml:space="preserve">
+  <!-- Teal-Symbol (identisch mit ElevonIQ + ELEVATOR HUB) -->
+  <polygon fill="#69B0AB" points="20.2,97.0 49.3,97.0 34.7,74.9"/>
+  <rect fill="#69B0AB" x="68.5" y="10" width="4.8" height="130" rx="2.4"/>
+  <polygon fill="#69B0AB" points="107.2,95.2 121.9,72.9 92.5,72.9"/>
+
+  <!-- SMART — dünn (400), wie ELEVATOR -->
+  <text x="152" y="95" font-family="'Work Sans', Arial, sans-serif" font-weight="400" font-size="64" letter-spacing="1" fill="#1E2761">SMART </text>
+
+  <!-- FLAP — fett (700), wie HUB -->
+  <text x="445" y="95" font-family="'Work Sans', Arial, sans-serif" font-weight="700" font-size="64" letter-spacing="1" fill="#1E2761">FLAP<tspan dy="-20" font-size="22" font-weight="400">®</tspan></text>
+</svg>

@@ -610,7 +610,7 @@
         </h1>
       </div>
       <p class="hero-subline">
-        Alle Aufzugsdaten, Fristen und Dokumente laufen im <strong>ELEVATOR HUB<sup>®</sup></strong> zusammen. ELEVATOR LIVE<sup>®</sup>, SMART FLAP<sup>®</sup> und Ihr ERP docken an. Herstellerneutral, browserbasiert, für jede Portfoliogröße.
+        Prüfberichte verstehen. Kosten hinterfragen. Entscheidungen treffen. Für jeden, der professionelle Unterstützung und technische Expertise wünscht — genau dann, wenn Sie sie benötigen.
       </p>
       <div class="hero-cta-row">
         <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
@@ -674,21 +674,26 @@
   const R_OUT=300, R_IN=205, R_HUB=150;
   const R_LABEL_OUT=322, R_LABEL_IN=240;
   function pt(r,deg){ const a=(deg-90)*Math.PI/180; return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; }
+  // Rings — light background colors
   svg.appendChild(el('circle',{cx,cy,r:R_OUT,fill:'rgba(0,0,0,0.025)',stroke:'rgba(0,0,0,0.09)','stroke-width':'1'}));
   svg.appendChild(el('circle',{cx,cy,r:R_IN,fill:'rgba(124,128,224,0.05)',stroke:'rgba(0,0,0,0.08)','stroke-width':'1','stroke-dasharray':'3 7'}));
   svg.appendChild(el('circle',{cx,cy,r:R_HUB,fill:'#FAF8F3',stroke:'rgba(0,0,0,0.09)','stroke-width':'1'}));
+  // Quarter dividers
   [0,90,180,270].forEach(d=>{const[x1,y1]=pt(R_HUB,d),[x2,y2]=pt(R_OUT,d);svg.appendChild(el('line',{x1,y1,x2,y2,stroke:'rgba(0,0,0,0.07)','stroke-width':'1','stroke-dasharray':'2 7'}));});
+  // Quarter roman numerals
   [{m:45,r:'I'},{m:135,r:'II'},{m:225,r:'III'},{m:315,r:'IV'}].forEach(q=>{
     const[x,y]=pt((R_IN+R_OUT)/2,q.m);
     const t=el('text',{x,y:y+8,'text-anchor':'middle',fill:'rgba(0,0,0,0.07)',
       style:'font-family:"Poppins",system-ui,sans-serif;font-weight:700;font-size:24px;'});
     t.textContent=q.r; svg.appendChild(t);
   });
+  // Sweep group
   const sweepG=el('g',{id:'jhr-hero-sweepG'});
   function trail(r,span){const[xs,ys]=pt(r,-span),[xe,ye]=pt(r,0);return `M ${cx} ${cy} L ${xs} ${ys} A ${r} ${r} 0 0 1 ${xe} ${ye} Z`;}
   sweepG.appendChild(el('path',{d:trail(R_OUT,34),fill:'url(#jhr-hero-sweep)'}));
   sweepG.appendChild(el('line',{x1:cx,y1:cy,x2:pt(R_OUT,0)[0],y2:pt(R_OUT,0)[1],stroke:'#3fb6a0','stroke-width':'1.5','stroke-linecap':'round',opacity:'0.8'}));
   svg.appendChild(sweepG);
+  // Event dots + labels
   const evNodes=EVENTS.map(ev=>{
     const R = ev.ring==='out' ? R_OUT : R_IN;
     const [x,y]=pt(R,ev.a); const col=COL[ev.c];
@@ -706,12 +711,14 @@
     txt.textContent=ev.t; svg.appendChild(txt);
     return { ev, dot, halo, txt, col, lit:0, fired:false };
   });
+  // Lift icon in center
   const lift=el('g',{transform:'translate(0 -14)',stroke:'#1E2761','stroke-width':'2.2',fill:'none','stroke-linecap':'round','stroke-linejoin':'round'});
   lift.appendChild(el('rect',{x:cx-20,y:cy-56,width:40,height:50,rx:7}));
   lift.appendChild(el('polyline',{points:`${cx-7},${cy-40} ${cx-3},${cy-46} ${cx+1},${cy-40}`}));
   lift.appendChild(el('polyline',{points:`${cx-7},${cy-28} ${cx-3},${cy-22} ${cx+1},${cy-28}`}));
   lift.appendChild(el('line',{x1:cx+10,y1:cy-43,x2:cx+10,y2:cy-21}));
   svg.appendChild(lift);
+  // Center labels
   const h1=el('text',{x:cx,y:cy+8,'text-anchor':'middle',fill:'#1E2761',
     style:'font-family:"Poppins",system-ui,sans-serif;font-weight:800;font-size:21px;'});
   h1.textContent='ELEVATOR HUB';
@@ -719,6 +726,7 @@
   const h2=el('text',{x:cx,y:cy+30,'text-anchor':'middle',fill:'#3D7E79',
     style:'font-family:"Work Sans",system-ui,sans-serif;font-weight:700;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;'});
   h2.textContent='ELEVONIQ-RADAR'; svg.appendChild(h2);
+  // Animation
   let angle=0, last=performance.now(); const SPEED=360/20000;
   function frame(now){
     const dt=now-last; last=now;
@@ -1555,7 +1563,8 @@
 <!-- ── 360° TOUR ──────────────────────────────────────────────── -->
 <section class="section-navy" aria-labelledby="tour360-heading">
   <div class="container">
-    <div style="max-width:720px;">
+    <div class="grid-2" style="align-items:center;gap:4rem;">
+      <div>
         <span class="section-eyebrow">360°-Digitalisierung</span>
         <h2 class="section-title" id="tour360-heading">Sehen Sie Ihren Aufzug, wie Sie ihn noch nie gesehen haben.</h2>
         <p class="section-lead" style="margin-bottom:2rem;">Jede Gefährdungsbeurteilung und jeder Zustandsbericht von ElevonIQ enthält eine vollständige 360°-Begehung Ihrer Anlage — interaktiv, dauerhaft abrufbar, rechtssicher dokumentiert.</p>
@@ -1581,10 +1590,35 @@
             <span class="feature-item-text">Einzigartig in der deutschen Aufzugsbranche</span>
           </li>
         </ul>
-    </div>
-    <!-- Loom Video -->
-    <div style="position:relative;padding-bottom:62.5%;height:0;overflow:hidden;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,0.10);margin-top:48px;">
-      <iframe src="https://www.loom.com/embed/b1cb336c3cce4b829e8d93be551960f0?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="autoplay; fullscreen" loading="lazy" title="ElevonIQ — 360°-Digitalisierung" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:10px;"></iframe>
+      </div>
+      <div>
+        <div style="border-radius:8px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,0.10);background:#F0F4F8;border:1px solid #E5E5E5;">
+          <div style="background:#E8EDEF;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #D0D5DD;">
+            <div style="display:flex;gap:5px;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#FF5F57;display:block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#FEBC2E;display:block;"></span>
+              <span style="width:8px;height:8px;border-radius:50%;background:#28C840;display:block;"></span>
+            </div>
+            <div style="flex:1;background:rgba(0,0,0,0.06);border-radius:3px;padding:3px 8px;font-size:10px;color:#6B7280;font-family:monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">360tour.elevoniq.de/?token=eyJhbGci... · Demo-Anlage</div>
+          </div>
+          <iframe
+            src="https://360tour.elevoniq.de/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbGV2YXRvcklkIjoiYTBPMXYwMDAwMGh4MnM2RUFBIiwid29ya09yZGVySWQiOiJhMFMxdjAwMDAwSnZqV09FQVoifQ.-xgMu9kXzmQDEwuBeuS77RdH8o2YzUI2341bvof1g6U"
+            allow="fullscreen; xr-spatial-tracking"
+            loading="lazy"
+            title="ElevonIQ 360° Tour Demo"
+            style="display:block;width:100%;height:320px;border:none;">
+          </iframe>
+        </div>
+        <div style="margin-top:12px;">
+          <a href="https://360tour.elevoniq.de/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbGV2YXRvcklkIjoiYTBPMXYwMDAwMGh4MnM2RUFBIiwid29ya09yZGVySWQiOiJhMFMxdjAwMDAwSnZqV09FQVoifQ.-xgMu9kXzmQDEwuBeuS77RdH8o2YzUI2341bvof1g6U"
+             target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#E8474A;text-decoration:none;transition:color 0.2s;"
+             onmouseover="this.style.color='#FF5B5C'" onmouseout="this.style.color='#E8474A'">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            Interaktive Demo-Tour öffnen
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ELEVATOR LIVE — Ihr Aufzug meldet sich, bevor ein Techniker muss | ElevonIQ</title>
+  <meta name="description" content="Permanente Fernüberwachung Ihrer Aufzüge mit automatischer Alarmierung bei Störung. Reparaturkosten senken durch frühe Fehlererkennung. Herstellerunabhängig nachrüstbar.">
+  <link rel="canonical" href="https://elevoniq.de/laufende-betreuung/iot-monitoring/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ELEVATOR LIVE — 24/7 Aufzugsüberwachung | ElevonIQ">
+  <meta property="og:description" content="Permanente Fernüberwachung mit automatischer Alarmierung. Für alle Aufzugstypen nachrüstbar. Störungen erkennen, bevor Mieter sich beschweren.">
+  <meta property="og:url" content="https://elevoniq.de/laufende-betreuung/iot-monitoring/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="ElevonIQ">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ELEVATOR LIVE | ElevonIQ">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+    {"@type":"ListItem","position":1,"name":"ElevonIQ","item":"https://elevoniq.de/"},
+    {"@type":"ListItem","position":2,"name":"Laufende Betreuung","item":"https://elevoniq.de/laufende-betreuung/"},
+    {"@type":"ListItem","position":3,"name":"ELEVATOR LIVE","item":"https://elevoniq.de/laufende-betreuung/iot-monitoring/"}
+  ]}
+  </script>
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <style>
+    .page-hero{background:#FAF8F3;border-top:4px solid #69B0AB;padding:72px 0 64px;}
+    .badge-row{display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+    .badge-category{background:#69B0AB;color:#fff;padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+    .badge-sub{color:#6B7280;font-size:13px;}
+    .page-hero h1{font-size:clamp(26px,4.5vw,42px);font-weight:800;color:#1A1A1A;line-height:1.15;margin-bottom:20px;max-width:680px;}
+    .page-hero .lead{font-size:17px;color:#6B7280;line-height:1.7;margin-bottom:32px;max-width:600px;}
+    .cta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+    .price-pill{background:rgba(105,176,171,0.12);color:#3D7E79;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:500;}
+    .situation-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+    .situation-card{padding:28px 24px;background:#F4F7F6;border-radius:8px;border-left:3px solid #69B0AB;}
+    .situation-card-title{font-weight:700;font-size:15px;color:#1A1A1A;margin-bottom:10px;}
+    .situation-card-text{font-size:14px;color:#374151;line-height:1.65;}
+    .feature-checklist{max-width:700px;}
+    .feature-check-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,0.05);}
+    .feature-check-row:last-child{border-bottom:none;}
+    .check-circle{width:22px;height:22px;border-radius:50%;background:#3D7E79;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px;}
+    .feature-check-text{color:#1A1A1A;font-size:15px;line-height:1.5;}
+    .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;}
+    .process-step{text-align:center;padding:2rem 1.5rem;background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,0.07);}
+    .process-number{width:48px;height:48px;border-radius:50%;background:var(--color-coral-dark);color:#fff;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+    .process-title{font-weight:700;font-size:15px;color:#1A1A1A;margin-bottom:8px;}
+    .process-text{font-size:14px;color:#6B7280;line-height:1.5;}
+    .pricing-block{border-left:4px solid #69B0AB;padding:28px 32px;background:#EDF7F6;border-radius:0 8px 8px 0;max-width:560px;}
+    .pricing-headline{font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:6px;}
+    .pricing-sub{font-size:14px;color:#6B7280;}
+    .faq-list{display:flex;flex-direction:column;gap:10px;}
+    details.faq-item{border:1px solid rgba(0,0,0,0.08);border-radius:8px;overflow:hidden;}
+    details.faq-item summary{padding:18px 24px;font-weight:600;font-size:15px;color:#1A1A1A;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;background:#fff;}
+    details.faq-item summary::-webkit-details-marker{display:none;}
+    details.faq-item summary::after{content:'+';color:#3D7E79;font-size:20px;flex-shrink:0;margin-left:16px;}
+    details.faq-item[open] summary::after{content:'−';}
+    .faq-answer{padding:0 24px 20px;color:#374151;font-size:15px;line-height:1.7;background:#fff;border-top:1px solid rgba(0,0,0,0.06);}
+    .elive-prow{transition:border-color .2s,background .2s;}
+    .elive-prow:hover{border-color:#CDBFA6;background:#FFFDF9;}
+  </style>
+</head>
+<body>
+
+<div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">✕</button>
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;"><img src="../../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager"></a>
+  <span class="mobile-nav-section-label">Die Plattform</span>
+  <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link" style="font-weight:700;">ELEVATOR HUB<sup>®</sup></a>
+  <span class="mobile-nav-section-label">Leistungen</span>
+  <a href="../index.html" class="mobile-nav-link">Alle Laufenden Leistungen</a>
+  <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">Essentials Aufzugsmanagement</a>
+  <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link">ELEVATOR HUB<sup>®</sup></a>
+  <a href="/laufende-betreuung/betriebskontrolle/" class="mobile-nav-link">Betriebskontrolle / Aufzugswärter</a>
+  <a href="index.html" class="mobile-nav-link">ELEVATOR LIVE</a>
+  <a href="/laufende-betreuung/smart-flap/" class="mobile-nav-link">SMART FLAP<sup>®</sup></a>  <a href="/faq/" class="mobile-nav-link">FAQ</a>
+
+  <div class="mobile-nav-cta">
+    <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:14px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:12px 20px;border-radius:6px;margin-bottom:10px;">Kundenportal</a>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" target="_blank" rel="noopener" class="btn-primary btn-full">Erstgespräch buchen</a>
+  </div>
+</div>
+
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite"><img src="../../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager"></a>
+    <div class="nav-links" role="list">
+      <a href="/laufende-betreuung/elevator-hub/" role="listitem" style="font-weight:700;color:#1E2761;">ELEVATOR HUB<sup>®</sup></a>
+      <div class="nav-dropdown" role="listitem">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Leistungen<svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div>
+            <div class="dropdown-col-label"><a href="/einzelleistungen/" class="dropdown-col-link">EINZELLEISTUNGEN</a></div>
+            <a href="/einzelleistungen/pruefbericht-check/" class="dropdown-item" role="menuitem">Prüfbericht-Check<span class="item-price">Kostenlos, Ergebnis in 48 h</span></a>
+            <a href="/einzelleistungen/angebotspruefung/" class="dropdown-item" role="menuitem">Angebotsprüfung<span class="item-price">Kostenlos, 48 h</span></a>
+            <a href="/einzelleistungen/vertragscheck/" class="dropdown-item" role="menuitem">Vertragscheck<span class="item-price">Kostenlos</span></a>
+            <a href="/einzelleistungen/zustandsbericht/" class="dropdown-item" role="menuitem">Zustandsbericht &amp; Budgetplanung</a>
+            <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="dropdown-item" role="menuitem">Wartungsvertrag ausschreiben</a>
+            <a href="/einzelleistungen/modernisierung/" class="dropdown-item" role="menuitem">Modernisierung begleiten</a>
+            <a href="/einzelleistungen/frequenzumrichter/" class="dropdown-item" role="menuitem">Frequenzumrichter-Reparatur</a>
+            <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="dropdown-item" role="menuitem">Gef&#228;hrdungsbeurteilung</a>
+          </div>
+          <div>
+            <div class="dropdown-col-label"><a href="../index.html" class="dropdown-col-link">LAUFENDE BETREUUNG</a></div>
+            <a href="/laufende-betreuung/all-inclusive/" class="dropdown-item" role="menuitem">Essentials Aufzugsmanagement</a>
+            <a href="/laufende-betreuung/elevator-hub/" class="dropdown-item" role="menuitem">ELEVATOR HUB<sup>®</sup><span class="item-price">Digitales Aufzugscockpit</span></a>
+            <a href="/laufende-betreuung/betriebskontrolle/" class="dropdown-item" role="menuitem">Betriebskontrolle / Aufzugswärter</a>
+            <a href="index.html" class="dropdown-item" role="menuitem">ELEVATOR LIVE</a>
+            <a href="/laufende-betreuung/smart-flap/" class="dropdown-item" role="menuitem">SMART FLAP<sup>®</sup></a>
+            <a href="/laufende-betreuung/wartung-klappen/" class="dropdown-item" role="menuitem">Wartung energetische Klappen</a>
+          </div>
+        </div>
+      </div>
+      <a href="/betreiberpflichten/" role="listitem">Betreiberpflichten</a>
+      <a href="/wissen/" role="listitem">Wissen</a>
+      <a href="/ueber-uns/" role="listitem">Über uns</a>
+      <a href="/faq/" role="listitem">FAQ</a>
+    </div>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">Erstgespräch buchen</a>
+    <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+
+<section class="page-hero" aria-label="IoT-Monitoring Intro">
+  <div class="container">
+    <div class="badge-row">
+      <span class="badge-category">Laufende Betreuung</span>
+      <span class="badge-sub">Fernüberwachung · 24/7</span>
+    </div>
+    <h1>ELEVATOR LIVE</h1>
+    <p class="lead">Permanente Echtzeit-Überwachung aller Betriebsdaten — direkt in Ihrem ELEVATOR HUB®. Nachrüstbar auf alle Fabrikate: OTIS, Kone, Schindler, TK Elevator und ältere Anlagen. Bereits aufgeschaltete Geräte anderer Anbieter werden nahtlos übernommen.</p>
+    <div class="cta-row">
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" target="_blank" rel="noopener" class="btn-primary">Erstgespräch buchen</a>
+      <a href="../index.html" class="btn-secondary">Zur Übersicht</a>
+      <span class="price-pill">Auf Anfrage</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="situation-heading">
+  <div class="container">
+    <span class="section-eyebrow">Ihre Situation</span>
+    <h2 class="section-title" id="situation-heading">Für wen ist das?</h2>
+    <div class="situation-grid">
+      <div class="situation-card">
+        <div class="situation-card-title">Häufige Störungen</div>
+        <div class="situation-card-text">Ihr Aufzug fällt regelmäßig aus und Sie erfahren es erst, wenn Mieter oder Eigentümer sich beschweren.</div>
+      </div>
+      <div class="situation-card">
+        <div class="situation-card-title">Betriebsdaten fehlen</div>
+        <div class="situation-card-text">Sie haben keinen Überblick über den tatsächlichen Betriebszustand Ihrer Anlagen und möchten datenbasiert entscheiden.</div>
+      </div>
+      <div class="situation-card">
+        <div class="situation-card-title">Großes Portfolio</div>
+        <div class="situation-card-text">Sie verwalten Aufzüge an mehreren Standorten und wollen den Status aller Anlagen zentral im Blick behalten.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#F4F7F6;" aria-labelledby="leistungen-heading">
+  <div class="container">
+    <h2 class="section-title" id="leistungen-heading">Was Sie bekommen</h2>
+    <div class="feature-checklist">
+      <div class="feature-check-row"><span class="check-circle">✓</span><span class="feature-check-text">Permanente Überwachung von Fahrbetrieb und Betriebsparametern</span></div>
+      <div class="feature-check-row"><span class="check-circle">✓</span><span class="feature-check-text">Automatische Alarmierung bei Störung per SMS und E-Mail</span></div>
+      <div class="feature-check-row"><span class="check-circle">✓</span><span class="feature-check-text">Türüberwachung: Öffnungs- und Schließzeiten</span></div>
+      <div class="feature-check-row"><span class="check-circle">✓</span><span class="feature-check-text">Temperaturmonitoring im Maschinenraum</span></div>
+      <div class="feature-check-row"><span class="check-circle">✓</span><span class="feature-check-text">Alle Daten im ELEVATOR HUB<sup>®</sup> — auf jedem Gerät abrufbar</span></div>
+      <div class="feature-check-row"><span class="check-circle">✓</span><span class="feature-check-text">Nachrüstbar für jeden Aufzug — unabhängig von Hersteller</span></div>
+      <div class="feature-check-row"><span class="check-circle">✓</span><span class="feature-check-text">EU Data Act: Ihre Sensordaten gehören Ihnen</span></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="oekosystem-schaubild-heading" style="background:#F4F0E8;padding:52px 0 60px">
+  <div class="container">
+    <!-- meta row -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid #DED7C8;margin-bottom:34px">
+      <div style="display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:1.5px;color:#15303F">
+        <span style="width:7px;height:7px;border-radius:50%;background:#1FB6A6;display:inline-block;flex-shrink:0"></span>ELEVATOR&nbsp;LIVE
+      </div>
+      <div style="font-size:12.5px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;color:#9A8F7C">Ökosystem-Schaubild</div>
+    </div>
+    <!-- hero text -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:48px;margin-bottom:36px;flex-wrap:wrap">
+      <h2 id="oekosystem-schaubild-heading" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,44px);line-height:1.08;letter-spacing:-1px;color:#15303F;max-width:620px;margin:0">Ein Live-Bild aus vielen Systemen.</h2>
+      <p style="font-family:'Manrope',sans-serif;font-size:16px;line-height:1.62;color:#5A6870;max-width:420px;padding-bottom:6px;margin:0">ELEVATOR&nbsp;LIVE bindet Hardware und Software führender Drittanbieter herstellerunabhängig an — und führt alle Signale in Ihrem ELEVATOR&nbsp;HUB® zusammen.</p>
+    </div>
+    <!-- schematic panel -->
+    <div style="background:#fff;border:1px solid #E4DED2;border-radius:16px;padding:24px;box-shadow:0 1px 0 #FBF9F4,0 18px 40px rgba(60,52,36,.07);overflow-x:auto;-webkit-overflow-scrolling:touch">
+      <div style="position:relative;width:1040px;height:470px;margin:0 auto">
+
+        <!-- column headers -->
+        <div style="position:absolute;top:0;left:0;width:320px;font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#9A8F7C">Angebundene Drittsysteme</div>
+        <div style="position:absolute;top:0;left:430px;width:220px;text-align:center;font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#9A8F7C">Integrations-Layer</div>
+        <div style="position:absolute;top:0;left:752px;width:288px;font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#9A8F7C">Ihr Cockpit</div>
+
+        <!-- SVG connectors -->
+        <svg viewBox="0 0 1040 470" style="position:absolute;inset:0;width:100%;height:100%;z-index:1" fill="none">
+          <defs>
+            <marker id="elive-arrowhd" markerWidth="9" markerHeight="9" refX="6.5" refY="4" orient="auto">
+              <path d="M0.5 0.5 L7 4 L0.5 7.5" stroke="#15303F" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+          <line x1="320" y1="65" x2="356" y2="65" stroke="#D8D0BF" stroke-width="1.4"/>
+          <line x1="320" y1="131" x2="356" y2="131" stroke="#D8D0BF" stroke-width="1.4"/>
+          <line x1="320" y1="197" x2="356" y2="197" stroke="#D8D0BF" stroke-width="1.4"/>
+          <line x1="320" y1="263" x2="356" y2="263" stroke="#D8D0BF" stroke-width="1.4"/>
+          <line x1="320" y1="329" x2="356" y2="329" stroke="#D8D0BF" stroke-width="1.4"/>
+          <line x1="320" y1="395" x2="356" y2="395" stroke="#D8D0BF" stroke-width="1.4"/>
+          <line x1="356" y1="65" x2="356" y2="395" stroke="#D8D0BF" stroke-width="1.4"/>
+          <line x1="356" y1="230" x2="430" y2="230" stroke="#C6BCA6" stroke-width="1.4"/>
+          <line x1="650" y1="230" x2="748" y2="230" stroke="#15303F" stroke-width="1.6" marker-end="url(#elive-arrowhd)"/>
+          <circle cx="320" cy="65" r="3.4" fill="#1FB6A6"/>
+          <circle cx="320" cy="131" r="3.4" fill="#1FB6A6"/>
+          <circle cx="320" cy="197" r="3.4" fill="#1FB6A6"/>
+          <circle cx="320" cy="263" r="3.4" fill="#1FB6A6"/>
+          <circle cx="320" cy="329" r="3.4" fill="#3E5A8C"/>
+          <circle cx="320" cy="395" r="3.4" fill="#9AA0A6"/>
+          <circle cx="356" cy="230" r="3.4" fill="#C6BCA6"/>
+        </svg>
+
+        <!-- Partner: SafeLine (Hardware) -->
+        <div class="elive-prow" style="position:absolute;left:0;top:39px;width:320px;height:52px;z-index:3;display:flex;align-items:center;gap:13px;background:#FCFAF5;border:1px solid #E7E1D4;border-radius:11px;padding:0 14px 0 13px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:#15303F;line-height:1.1;flex:1">SafeLine</div>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.3px;color:#7C8890"><span style="width:7px;height:7px;border-radius:2px;background:#1FB6A6;display:inline-block;flex-shrink:0"></span>Hardware</span>
+        </div>
+
+        <!-- Partner: ROCOM (Hardware, Logo) -->
+        <div class="elive-prow" style="position:absolute;left:0;top:105px;width:320px;height:52px;z-index:3;display:flex;align-items:center;gap:13px;background:#FCFAF5;border:1px solid #E7E1D4;border-radius:11px;padding:0 14px 0 13px">
+          <img src="../../assets/images/partners/rocom.png" alt="ROCOM" style="width:78px;height:30px;flex:none;object-fit:contain;border-radius:5px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:#15303F;line-height:1.1;flex:1">ROCOM</div>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.3px;color:#7C8890"><span style="width:7px;height:7px;border-radius:2px;background:#1FB6A6;display:inline-block;flex-shrink:0"></span>Hardware</span>
+        </div>
+
+        <!-- Partner: eleon (Hardware) -->
+        <div class="elive-prow" style="position:absolute;left:0;top:171px;width:320px;height:52px;z-index:3;display:flex;align-items:center;gap:13px;background:#FCFAF5;border:1px solid #E7E1D4;border-radius:11px;padding:0 14px 0 13px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:#15303F;line-height:1.1;flex:1">eleon</div>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.3px;color:#7C8890"><span style="width:7px;height:7px;border-radius:2px;background:#1FB6A6;display:inline-block;flex-shrink:0"></span>Hardware</span>
+        </div>
+
+        <!-- Partner: Telegärtner (Hardware) -->
+        <div class="elive-prow" style="position:absolute;left:0;top:237px;width:320px;height:52px;z-index:3;display:flex;align-items:center;gap:13px;background:#FCFAF5;border:1px solid #E7E1D4;border-radius:11px;padding:0 14px 0 13px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:#15303F;line-height:1.1;flex:1">Telegärtner</div>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.3px;color:#7C8890"><span style="width:7px;height:7px;border-radius:2px;background:#1FB6A6;display:inline-block;flex-shrink:0"></span>Hardware</span>
+        </div>
+
+        <!-- Partner: facilioo (Software, Logo) -->
+        <div class="elive-prow" style="position:absolute;left:0;top:303px;width:320px;height:52px;z-index:3;display:flex;align-items:center;gap:13px;background:#FCFAF5;border:1px solid #E7E1D4;border-radius:11px;padding:0 14px 0 13px">
+          <img src="../../assets/images/partners/facilioo.svg" alt="facilioo" style="width:78px;height:30px;flex:none;object-fit:contain;border-radius:5px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:#15303F;line-height:1.1;flex:1">facilioo</div>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.3px;color:#7C8890"><span style="width:7px;height:7px;border-radius:2px;background:#3E5A8C;display:inline-block;flex-shrink:0"></span>Software</span>
+        </div>
+
+        <!-- Partner: Weiterer Partner -->
+        <div class="elive-prow" style="position:absolute;left:0;top:369px;width:320px;height:52px;z-index:3;display:flex;align-items:center;gap:13px;background:#FCFAF5;border:1px solid #E7E1D4;border-radius:11px;padding:0 14px 0 13px;opacity:0.65">
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;color:#15303F;line-height:1.1;flex:1">Weiterer Partner</div>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.3px;color:#7C8890"><span style="width:7px;height:7px;border-radius:2px;background:#9AA0A6;display:inline-block;flex-shrink:0"></span>Hardware / Software</span>
+        </div>
+
+        <!-- ELEVATOR LIVE integration panel -->
+        <div style="position:absolute;left:430px;top:95px;width:220px;height:270px;z-index:3;background:#15303F;border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:26px 24px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:2.2px;text-transform:uppercase;color:#1FB6A6;margin-bottom:14px">Live · 24/7</div>
+          <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:26px;letter-spacing:-.5px;color:#fff;line-height:1.05">ELEVATOR<br>LIVE</div>
+          <div style="width:26px;height:2px;background:#1FB6A6;margin:16px 0"></div>
+          <div style="font-family:'Manrope',sans-serif;font-size:13px;line-height:1.5;color:#A6BAC2">Normalisiert alle Signale zu einem einheitlichen Live-Bild.</div>
+        </div>
+
+        <!-- ELEVATOR HUB cockpit card -->
+        <div style="position:absolute;left:752px;top:140px;width:288px;height:180px;z-index:3;background:#FCFAF5;border:1px solid #E4DED2;border-radius:14px;padding:22px 22px 18px;display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.3px;color:#15303F">ELEVATOR&nbsp;HUB®</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:13.5px;line-height:1.55;color:#5A6870;margin-top:8px">Ein Dashboard für alle Aufzüge — Status, Störungen und Historie in Echtzeit.</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px">
+            <span style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:600;color:#7C8890;padding:5px 10px;border:1px solid #E4DED2;border-radius:6px;background:#fff">Herstellerunabhängig</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:600;color:#7C8890;padding:5px 10px;border:1px solid #E4DED2;border-radius:6px;background:#fff">Nachrüstbar</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:600;color:#7C8890;padding:5px 10px;border:1px solid #E4DED2;border-radius:6px;background:#fff">EU Data Act</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="process-heading">
+  <div class="container">
+    <h2 class="section-title" id="process-heading">So funktioniert es</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-number">1</div>
+        <div class="process-title">Anlagenerfassung</div>
+        <div class="process-text">Wir prüfen welche Sensoren für Ihre Aufzüge geeignet sind.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-number">2</div>
+        <div class="process-title">Installation</div>
+        <div class="process-text">Ein zertifizierter Techniker installiert den Sensor — in der Regel in 2–4 Stunden pro Aufzug.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-number">3</div>
+        <div class="process-title">Live-Monitoring</div>
+        <div class="process-text">Ab sofort überwachen wir Ihre Anlagen rund um die Uhr. Sie sehen alles im ELEVATOR HUB<sup>®</sup>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#F4F7F6;" aria-labelledby="preis-heading">
+  <div class="container">
+    <h2 class="section-title" id="preis-heading">Preis &amp; Transparenz</h2>
+    <div class="pricing-block">
+      <div class="pricing-headline">Auf Anfrage</div>
+      <div class="pricing-sub">Abhängig von Portfoliogröße und Sensortyp. Im All-inclusive-Paket enthalten. Einzelbuchung möglich.</div>
+    </div>
+    <p class="price-legal-notice">Alle Preise in Euro, zzgl. gesetzlicher Umsatzsteuer. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB. Eine Nutzung durch Verbraucher ist ausgeschlossen.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:800px;">
+    <h2 class="section-title" id="faq-heading">Häufige Fragen</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Kann ich die Daten selbst einsehen?</summary>
+        <div class="faq-answer">Ja. Alle Betriebsdaten sind im ELEVATOR HUB<sup>®</sup> jederzeit abrufbar — auf Desktop und Mobilgerät.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Was passiert wenn nachts ein Alarm kommt?</summary>
+        <div class="faq-answer">Die Alarmierung geht an alle von Ihnen hinterlegten Empfänger. Auf Wunsch richten wir Eskalationsstufen und eine Rufbereitschaft ein.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Funktioniert das auch bei älteren Aufzügen ohne digitale Steuerung?</summary>
+        <div class="faq-answer">Ja. Unsere Sensoren sind für nahezu alle Aufzugstypen und Steuerungsgenerationen verfügbar.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section-navy" aria-labelledby="cta-iot-heading">
+  <div class="container" style="text-align:center;max-width:640px;">
+    <p class="section-eyebrow" style="color:#69B0AB;margin-bottom:1rem;">Jetzt starten</p>
+    <h2 id="cta-iot-heading" style="color:#FFFFFF;margin-bottom:1rem;">Bereit für den nächsten Schritt?</h2>
+    <p style="color:rgba(255,255,255,0.85);margin-bottom:2rem;">Kostenloses Erstgespräch — 15 Minuten, kein Druck, keine Verpflichtung.</p>
+    <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" target="_blank" rel="noopener" class="btn-primary">Kostenloses Erstgespräch buchen</a>
+      <a href="mailto:support@elevoniq.de" class="btn-secondary">Frage per E-Mail</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo"><img src="../../assets/images/elevon-iq-inverted.svg" alt="ElevonIQ" class="footer-logo-img" width="120" height="34" loading="lazy"></a>
+        <p class="footer-tagline">Die externe Aufzugsabteilung.<br>Herstellerneutral. Bundesweit.</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:0.01em;">We take the lift in Berlin.</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Einzelleistungen</div>
+        <a href="/einzelleistungen/" class="footer-link">Übersicht</a>
+        <a href="/einzelleistungen/pruefbericht-check/" class="footer-link">Prüfbericht-Check</a>
+        <a href="/einzelleistungen/angebotspruefung/" class="footer-link">Angebotsprüfung</a>
+        <a href="/einzelleistungen/vertragscheck/" class="footer-link">Vertragscheck</a>
+        <a href="/einzelleistungen/zustandsbericht/" class="footer-link">Zustandsbericht</a>
+        <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="footer-link">Wartungsvertrag ausschreiben</a>
+        <a href="/einzelleistungen/modernisierung/" class="footer-link">Modernisierung</a>
+        <a href="/einzelleistungen/frequenzumrichter/" class="footer-link">Frequenzumrichter-Reparatur</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Laufende Betreuung</div>
+        <a href="../index.html" class="footer-link">Übersicht</a>
+        <a href="/laufende-betreuung/all-inclusive/" class="footer-link">Essentials Aufzugsmanagement</a>
+        <a href="/laufende-betreuung/elevator-hub/" class="footer-link">ELEVATOR HUB<sup>®</sup></a>
+        <a href="/laufende-betreuung/betriebskontrolle/" class="footer-link">Betriebskontrolle / Aufzugswärter</a>
+        <a href="index.html" class="footer-link">ELEVATOR LIVE</a>
+        <a href="/laufende-betreuung/smart-flap/" class="footer-link">SMART FLAP<sup>®</sup></a>
+        <a href="/laufende-betreuung/wartung-klappen/" class="footer-link">Wartung energetische Klappen</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Wissen &amp; Unternehmen</div>
+        <a href="/betreiberpflichten/" class="footer-link">Betreiberpflichten</a>
+        <a href="/ueber-uns/" class="footer-link">Über uns</a>
+        <a href="/kontakt/" class="footer-link">Kontakt</a>
+        <div style="margin-top:1.5rem;" class="footer-col-label">Rechtliches</div>
+        <a href="/impressum/" class="footer-link">Impressum</a>
+        <a href="/datenschutz/" class="footer-link">Datenschutz</a>
+        <a href="/agb/" class="footer-link">AGB</a>
+        <a href="/widerrufsrecht/" class="footer-link">Widerrufsrecht</a>
+        <a href="https://ec.europa.eu/consumers/odr/" class="footer-link" target="_blank" rel="noopener">OS-Streitbeilegung</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ElevonIQ GmbH, Berlin</span>
+      <div class="footer-legal-links">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+      
+        <a href="/widerrufsrecht/">Widerrufsrecht</a>
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">OS-Streitbeilegung</a>
+        <a href="#" onclick="localStorage.removeItem('elevoniq_consent');location.reload();return false;">Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var cta = document.getElementById('nav-cta-desktop');
+    if (cta) cta.style.display = 'inline-block';
+    var portal = document.getElementById('nav-portal-desktop');
+    if (portal) portal.style.display = 'inline-block';
+  });
+</script>
+<script src="../../assets/js/nav.js" defer></script>
+<script src="../../assets/js/cookie-consent.js" defer></script>
+<!-- GA4 — nur nach Analytics-Consent -->
+<script>
+(function() {
+  function loadGA4() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPSDHVCT33';
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-RPSDHVCT33');
+  }
+  if (window.elevoniqConsent) {
+    window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+  }
+})();
+</script>
+</body>
+</html>

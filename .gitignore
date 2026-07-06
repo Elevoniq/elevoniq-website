@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+.superpowers/
+vergleich.html
+.env.local
+.env
+assets/videos/smartflap-demo.mp4
+assets/videos/smartflap-elevoniq.mp4
