@@ -178,7 +178,7 @@ export default async function handler(request) {
   let upstream;
   try {
     upstream = await fetch(
-      `https://hub-backend.elevoniq.de/api/v1/documents/upload/${queueType}`,
+      `https://hub-backend.elevoniq.de/api/v1/landing-page-documents/upload/${queueType}`,
       {
         method: 'POST',
         headers: { 'x-api-key': apiKey },
