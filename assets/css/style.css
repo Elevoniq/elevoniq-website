@@ -39,6 +39,7 @@
 }
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height); /* offset for sticky nav (68px) */
   -webkit-text-size-adjust: 100%;
 }
 body {
