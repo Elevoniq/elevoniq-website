@@ -26,7 +26,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.loom.com https://360tour.elevoniq.de https://outlook.office.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https:; frame-src https://www.loom.com https://player.vimeo.com https://360tour.elevoniq.de https://outlook.office.com https://challenges.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;"
         },
         {
           "key": "X-XSS-Protection",
