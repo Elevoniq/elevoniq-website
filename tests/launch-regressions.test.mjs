@@ -104,3 +104,41 @@ test("Kontakt form no longer fakes a successful empty submission", () => {
     "Kontakt form should no longer mark empty submissions as sent",
   );
 });
+
+test("Vertragscheck uses explicit mail fallback instead of backend placeholder submit", () => {
+  const html = read("einzelleistungen/vertragscheck/index.html");
+
+  assert.ok(
+    html.includes('id="vertragscheck-form"'),
+    "Expected vertragscheck form to have a concrete JS hook id",
+  );
+  assert.ok(
+    html.includes("mailto:info@elevoniq.de"),
+    "Expected vertragscheck form to open a mail fallback",
+  );
+  assert.ok(
+    html.includes("Bitte hängen Sie den Wartungsvertrag und weitere Unterlagen in Ihrer E-Mail an"),
+    "Expected vertragscheck form to explain the attachment fallback",
+  );
+  assert.ok(
+    !html.includes('onsubmit="return false;"'),
+    "Vertragscheck form should no longer rely on a dead placeholder submit",
+  );
+});
+
+test("Ueber uns no longer shows fake testimonial placeholders", () => {
+  const html = read("ueber-uns/index.html");
+
+  assert.ok(
+    !html.includes("Kundenlogo einsetzen"),
+    "Expected ueber-uns to remove visible customer-logo placeholder copy",
+  );
+  assert.ok(
+    !html.includes("„Beispiel:"),
+    "Expected ueber-uns to remove fake example quote wording",
+  );
+  assert.ok(
+    html.includes("Anonymisierter Projektfall aus dem Bestand von ElevonIQ"),
+    "Expected ueber-uns to use anonymized case references instead",
+  );
+});

@@ -45,6 +45,9 @@
     .form-file{width:100%;padding:11px 14px;border:1.5px dashed #D1D5DB;border-radius:4px;font-family:'Work Sans',sans-serif;font-size:14px;color:#6B7280;background:#F9FAFB;cursor:pointer;transition:border-color 0.15s;}
     .form-file:hover{border-color:var(--color-navy);background:#f0f4ff;}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .form-message{display:none;margin-top:14px;padding:12px 14px;border-radius:8px;font-size:14px;line-height:1.6;}
+    .form-message--info{background:#EDF7F6;border:1px solid rgba(105,176,171,0.35);color:#23403E;}
+    .form-message--error{background:#FFF3F3;border:1px solid rgba(232,71,74,0.25);color:#8F2729;}
     @media(max-width:768px){.form-grid{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -68,7 +71,6 @@
   <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="mobile-nav-link">Wartungsvertrag ausschreiben</a>
   <a href="/einzelleistungen/modernisierung/" class="mobile-nav-link">Modernisierung begleiten</a>
   <a href="/einzelleistungen/frequenzumrichter/" class="mobile-nav-link">Frequenzumrichter-Reparatur</a>
-  <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="mobile-nav-link">Gef&#228;hrdungsbeurteilung</a>
   <a href="/laufende-betreuung/" class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Laufende Betreuung</a>
   <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">Essentials Aufzugsmanagement</a>
   <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link">ELEVATOR HUB<sup>®</sup></a>
@@ -318,8 +320,7 @@
       <h2 class="section-title" id="formular-heading">Unterlagen einreichen</h2>
       <p style="font-size:15px;color:var(--color-gray);margin-bottom:2rem;">Befund in 48 h — kostenlos, unverbindlich</p>
 
-      <!-- TODO: Backend-Integration ausstehend — action="#" Platzhalter, kein Server-Handler vorhanden. onsubmit="return false;" verhindert unerwartetes Page-Reload bis Endpunkt konfiguriert ist. -->
-      <form action="#" method="post" enctype="multipart/form-data" onsubmit="return false;" style="background:#fff;border-radius:8px;padding:40px;border:1px solid rgba(0,0,0,0.07);">
+      <form id="vertragscheck-form" action="#" method="post" enctype="multipart/form-data" style="background:#fff;border-radius:8px;padding:40px;border:1px solid rgba(0,0,0,0.07);">
 
         <div class="form-grid">
           <div class="form-group">
@@ -413,8 +414,14 @@
 
         <div style="margin-top:28px;">
           <button type="submit" class="btn-primary" style="width:100%;font-size:16px;padding:16px 28px;text-align:center;border:none;cursor:pointer;">
-            Befund anfordern — kostenlos &amp; unverbindlich
+            E-Mail zum Vertragscheck vorbereiten
           </button>
+          <div class="form-message form-message--info" id="vertragscheck-success" role="status" aria-live="polite">
+            Ihr E-Mail-Programm wird geöffnet. Bitte hängen Sie den Wartungsvertrag und weitere Unterlagen in Ihrer E-Mail an, bevor Sie senden.
+          </div>
+          <div class="form-message form-message--error" id="vertragscheck-error" role="alert">
+            Bitte füllen Sie alle Pflichtfelder aus. Die ausgewählten Unterlagen müssen Sie im nächsten Schritt Ihrer E-Mail anhängen.
+          </div>
         </div>
 
       </form>
@@ -545,6 +552,92 @@
     });
   });
 }());
+</script>
+<script>
+function getFirstInvalidVertragscheckField(form){
+  var requiredFields=form.querySelectorAll('[required]');
+  var radioGroupsChecked={};
+  for(var i=0;i<requiredFields.length;i++){
+    var field=requiredFields[i];
+    var type=(field.getAttribute('type')||'').toLowerCase();
+    if(type==='radio'){
+      var name=field.getAttribute('name')||'';
+      if(radioGroupsChecked[name]) continue;
+      radioGroupsChecked[name]=true;
+      if(!form.querySelector('input[type="radio"][name="'+name+'"]:checked')) return field;
+      continue;
+    }
+    if(type==='checkbox'){
+      if(!field.checked) return field;
+      continue;
+    }
+    if(type==='file'){
+      if(!field.files||!field.files.length) return field;
+      continue;
+    }
+    if(!String(field.value||'').trim()) return field;
+  }
+  return null;
+}
+
+document.getElementById('vertragscheck-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var form=this;
+  var success=document.getElementById('vertragscheck-success');
+  var error=document.getElementById('vertragscheck-error');
+  var submitBtn=form.querySelector('button[type="submit"]');
+  var firstInvalid=getFirstInvalidVertragscheckField(form);
+  if(firstInvalid){
+    success.style.display='none';
+    error.style.display='block';
+    if(typeof firstInvalid.focus==='function') firstInvalid.focus();
+    if(typeof firstInvalid.scrollIntoView==='function'){
+      firstInvalid.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+    return;
+  }
+
+  error.style.display='none';
+  success.style.display='block';
+
+  var attachmentLines = [
+    'Bitte haengen Sie diese Unterlagen an:',
+    '- Wartungsvertrag: ' + ((form.querySelector('#wartungsvertrag').files[0] && form.querySelector('#wartungsvertrag').files[0].name) || 'ausgewaehlt'),
+    '- Letzte Wartungsrechnung: ' + ((form.querySelector('#rechnung').files[0] && form.querySelector('#rechnung').files[0].name) || 'optional, nicht ausgewaehlt'),
+    '- Letzter ZUES-Pruefbericht: ' + ((form.querySelector('#zusbericht').files[0] && form.querySelector('#zusbericht').files[0].name) || 'optional, nicht ausgewaehlt')
+  ];
+  var body = [
+    'Hallo ElevonIQ,',
+    '',
+    'ich moechte einen kostenlosen Vertragscheck anfordern.',
+    '',
+    'Kontaktdaten:',
+    '- Vorname: ' + form.querySelector('#vorname').value.trim(),
+    '- Nachname: ' + form.querySelector('#nachname').value.trim(),
+    '- Unternehmen / Organisation: ' + form.querySelector('#unternehmen').value.trim(),
+    '- E-Mail: ' + form.querySelector('#email').value.trim(),
+    '- Telefon: ' + (form.querySelector('#telefon').value.trim() || 'nicht angegeben'),
+    '- Anzahl Aufzuege: ' + form.querySelector('#anzahl').value,
+    '- Besteller-Typ: ' + (form.querySelector('input[name=\"sf_besteller_typ\"]:checked') ? form.querySelector('input[name=\"sf_besteller_typ\"]:checked').value : ''),
+    '',
+    'Anmerkungen:',
+    form.querySelector('#anmerkung').value.trim() || 'Keine Anmerkungen',
+    '',
+    attachmentLines.join('\\n'),
+    '',
+    'Vielen Dank.'
+  ].join('\\n');
+
+  submitBtn.textContent='E-Mail-Programm wird geoeffnet...';
+  window.location.href =
+    'mailto:info@elevoniq.de'
+    + '?subject=' + encodeURIComponent('Vertragscheck anfragen ueber elevoniq.de')
+    + '&body=' + encodeURIComponent(body);
+
+  window.setTimeout(function(){
+    submitBtn.textContent='E-Mail zum Vertragscheck vorbereiten';
+  }, 1200);
+});
 </script>
 <script src="../../assets/js/nav.js" defer></script>
 <script src="../../assets/js/cookie-consent.js" defer></script>
