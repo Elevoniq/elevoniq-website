@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/gutachten",
+      "destination": "/einzelleistungen/gefaehrdungsbeurteilung/",
+      "permanent": false
+    }
+  ],
   "functions": {
     "api/upload.js": {
       "maxDuration": 30
