@@ -142,3 +142,33 @@ test("Ueber uns no longer shows fake testimonial placeholders", () => {
     "Expected ueber-uns to use anonymized case references instead",
   );
 });
+
+test("Datenschutz no longer exposes internal go-live review notes", () => {
+  const html = read("datenschutz/index.html");
+
+  assert.ok(
+    !html.includes("Vor Go-Live sind folgende Punkte zu klären"),
+    "Expected datenschutz page to remove visible internal go-live checklist copy",
+  );
+  assert.ok(
+    !html.includes("Ohne unterzeichnete AVVs darf diese Erklärung nicht veröffentlicht werden"),
+    "Expected datenschutz page to remove internal publication warning text",
+  );
+  assert.ok(
+    !html.includes('class="pending-note"'),
+    "Expected datenschutz page to remove the pending-note block from rendered content",
+  );
+});
+
+test("Smart Flap no longer ships unused placeholder styles", () => {
+  const html = read("laufende-betreuung/smart-flap/index.html");
+
+  assert.ok(
+    !html.includes(".problem-graphic-placeholder"),
+    "Expected smart-flap page to remove old problem placeholder styles",
+  );
+  assert.ok(
+    !html.includes(".video-placeholder"),
+    "Expected smart-flap page to remove old video placeholder styles",
+  );
+});
