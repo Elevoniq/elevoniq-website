@@ -974,6 +974,24 @@
   window.addEventListener('scroll',onScroll,{passive:true});
 }());
 
+/* Robust same-page form navigation for all upload CTAs */
+(function(){
+  var target=document.getElementById('pruefbericht-formular');
+  if(!target)return;
+  target.style.scrollMarginTop='96px';
+  document.querySelectorAll('a[href="#pruefbericht-formular"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if(window.history && window.history.replaceState){
+        window.history.replaceState(null, '', '#pruefbericht-formular');
+      } else {
+        window.location.hash='pruefbericht-formular';
+      }
+    });
+  });
+}());
+
 /* File upload label */
 (function(){
   var input=document.getElementById('pb-file-input');
@@ -988,12 +1006,51 @@
 }());
 
 /* Form submit */
+function getFirstInvalidField(form){
+  var requiredFields=form.querySelectorAll('[required]');
+  var radioGroupsChecked={};
+  for(var i=0;i<requiredFields.length;i++){
+    var field=requiredFields[i];
+    var type=(field.getAttribute('type')||'').toLowerCase();
+    if(type==='radio'){
+      var name=field.getAttribute('name')||'';
+      if(radioGroupsChecked[name]) continue;
+      radioGroupsChecked[name]=true;
+      if(!form.querySelector('input[type="radio"][name="'+name+'"]:checked')) return field;
+      continue;
+    }
+    if(type==='checkbox'){
+      if(!field.checked) return field;
+      continue;
+    }
+    if(type==='file'){
+      if(!field.files||!field.files.length) return field;
+      continue;
+    }
+    if(!String(field.value||'').trim()) return field;
+  }
+  return null;
+}
+
 document.getElementById('pruefbericht-form').addEventListener('submit',function(e){
   e.preventDefault();
   var form=this;
   var btn=form.querySelector('button[type="submit"]');
   var success=document.getElementById('pb-success');
   var error=document.getElementById('pb-error');
+  var defaultErrorHtml=error.innerHTML;
+  var firstInvalid=getFirstInvalidField(form);
+  if(firstInvalid){
+    success.style.display='none';
+    error.innerHTML='Bitte füllen Sie alle Pflichtfelder aus und laden Sie Ihren Prüfbericht hoch.';
+    error.style.display='block';
+    if(typeof firstInvalid.focus==='function') firstInvalid.focus();
+    if(typeof firstInvalid.scrollIntoView==='function'){
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
+  error.innerHTML=defaultErrorHtml;
   btn.disabled=true;
   btn.textContent='Wird hochgeladen…';
   success.style.display='none';
@@ -1006,6 +1063,7 @@ document.getElementById('pruefbericht-form').addEventListener('submit',function(
       window.location.href='/danke/';
     })
     .catch(function(){
+      error.innerHTML=defaultErrorHtml;
       error.style.display='block';
       btn.disabled=false;
       btn.textContent='Kostenlose Ersteinschätzung anfordern';

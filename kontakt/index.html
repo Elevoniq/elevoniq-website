@@ -477,7 +477,7 @@
           </div>
           <button type="submit" class="btn-submit">Nachricht senden</button>
           <div class="form-confirm" id="form-confirm" role="status" aria-live="polite">
-            Vielen Dank — wir melden uns innerhalb von 24 Stunden.
+            Ihr E-Mail-Programm wird geöffnet. Falls nichts passiert, schreiben Sie an info@elevoniq.de.
           </div>
         </form>
 
@@ -591,16 +591,34 @@
   // Contact form — no backend, confirmation message only
   document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    console.log('Form submission intercepted — backend integration pending. Form data:', {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone').value,
-      message: document.getElementById('message').value
-    });
+    var form = this;
+    var firstInvalid = form.querySelector(':invalid');
+    if (firstInvalid) {
+      if (typeof form.reportValidity === 'function') form.reportValidity();
+      if (typeof firstInvalid.focus === 'function') firstInvalid.focus();
+      return;
+    }
+
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var mailtoBody = [
+      'Name: ' + name,
+      'E-Mail: ' + email,
+      'Telefon: ' + (phone || 'nicht angegeben'),
+      '',
+      'Nachricht:',
+      message
+    ].join('\\n');
+
     var confirm = document.getElementById('form-confirm');
+    confirm.textContent = 'Ihr E-Mail-Programm wird geöffnet. Falls nichts passiert, schreiben Sie an info@elevoniq.de.';
     confirm.style.display = 'block';
-    this.querySelector('.btn-submit').disabled = true;
-    this.querySelector('.btn-submit').textContent = 'Gesendet';
+    window.location.href =
+      'mailto:info@elevoniq.de'
+      + '?subject=' + encodeURIComponent('Kontaktanfrage ueber elevoniq.de')
+      + '&body=' + encodeURIComponent(mailtoBody);
   });
 </script>
 <script src="../assets/js/nav.js" defer></script>
