@@ -765,11 +765,13 @@
     <div class="form-2col">
       <div class="form-panel">
         <h3 style="font-size:1.06rem;font-weight:800;line-height:1.3;margin:0 0 8px;">Was wir für den Einstieg brauchen</h3>
-        <p style="font-size:.95rem;line-height:1.74;color:var(--color-gray);margin:0;">Das Angebot als Datei und Ihre Kontaktdaten.</p>
+        <p style="font-size:.95rem;line-height:1.74;color:var(--color-gray);margin:0;">Das Angebot als Datei, technische Eckdaten zum Aufzug und Ihre Kontaktdaten.</p>
         <ul class="form-checklist">
           <li>Angebot als PDF, JPG oder PNG · max. 9 MB</li>
+          <li>Baujahr und Tragkraft des Aufzugs</li>
           <li>Vorname, Nachname, Firma</li>
           <li>Ihre E-Mail-Adresse</li>
+          <li>Optional: Prüfbericht als Ergänzung</li>
           <li>Optional: Freigabefrist oder konkrete Frage</li>
         </ul>
         <div class="note-box" style="margin-top:20px;">Die vertiefte Prüfung für 199 € zzgl. MwSt. wird direkt aus dem ELEVATOR HUB<sup>®</sup> heraus beauftragt – nicht im Einstiegsformular.</div>
@@ -782,6 +784,22 @@
             <small>PDF, JPG oder PNG · max. 9 MB</small>
             <input type="file" id="ap-file-input" name="sf_angebot_datei" accept=".pdf,.jpg,.jpeg,.png" required>
           </label>
+          <label class="ev-field-upload" for="ap-pruefbericht-input">
+            <span>Prüfbericht hochladen (optional)</span>
+            <small>PDF, JPG oder PNG · max. 9 MB</small>
+            <input type="file" id="ap-pruefbericht-input" name="sf_pruefbericht_datei" accept=".pdf,.jpg,.jpeg,.png">
+          </label>
+          <fieldset class="ev-fieldset">
+            <legend>Angaben zum Aufzug</legend>
+            <div class="ev-field-row">
+              <input type="number" name="sf_baujahr" id="ap-baujahr" class="ev-field" placeholder="Baujahr · z. B. 2008" aria-label="Baujahr" min="1900" required>
+              <input type="number" name="sf_tragkraft_kg" class="ev-field" placeholder="Tragkraft kg · z. B. 630" aria-label="Tragkraft in kg" min="1" required>
+            </div>
+            <div class="ev-field-row">
+              <input type="number" name="sf_haltestellen" class="ev-field" placeholder="Haltestellen · z. B. 5" aria-label="Anzahl Haltestellen" min="1">
+              <input type="text" name="sf_hersteller" class="ev-field" placeholder="Hersteller · z. B. TK Elevator" aria-label="Hersteller">
+            </div>
+          </fieldset>
           <div class="ev-field-row">
             <input type="text" name="sf_vorname" class="ev-field" placeholder="Vorname" required>
             <input type="text" name="sf_nachname" class="ev-field" placeholder="Nachname" required>
@@ -913,6 +931,25 @@
       small.textContent=input.files[0].name;
     }
   });
+}());
+
+/* Prüfbericht file upload label */
+(function(){
+  var input=document.getElementById('ap-pruefbericht-input');
+  var label=input&&input.closest('label');
+  if(!input||!label)return;
+  input.addEventListener('change',function(){
+    var small=label.querySelector('small');
+    if(input.files&&input.files[0]&&small){
+      small.textContent=input.files[0].name;
+    }
+  });
+}());
+
+/* Baujahr: max auf aktuelles Jahr setzen */
+(function(){
+  var f=document.getElementById('ap-baujahr');
+  if(f) f.setAttribute('max',new Date().getFullYear());
 }());
 
 /* Form submit */
