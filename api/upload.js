@@ -8,6 +8,10 @@ const ALLOWED_ORIGINS = [
 const MAX_FILE_SIZE = 9 * 1024 * 1024;
 const MAX_FILES = 5;
 
+// S-02: Allowlist — kein angreiferkontrollierter Wert darf in die Backend-URL interpoliert werden.
+// Werte entsprechen den drei Upload-Formularen (pruefbericht-check, angebotspruefung, frequenzumrichter).
+const ALLOWED_QUEUES = ['assessment-report', 'quotation', 'other-documents'];
+
 const MAGIC_PDF = [0x25, 0x50, 0x44, 0x46];
 const MAGIC_JPEG = [0xFF, 0xD8, 0xFF];
 const MAGIC_PNG = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
@@ -146,7 +150,13 @@ export default async function handler(request) {
     }
   }
 
-  const queueType = formData.get('queueType') || 'other-documents';
+  // S-02: queueType ist angreiferkontrolliert — explizit gegen Allowlist prüfen.
+  // Kein stiller Fallback bei ungültigem Wert; explizit mit 400 ablehnen.
+  const rawQueueType = formData.get('queueType');
+  if (!rawQueueType || !ALLOWED_QUEUES.includes(rawQueueType)) {
+    return err(400, 'Ungültiger Dokumenttyp.');
+  }
+  const queueType = rawQueueType;
 
   const upstreamData = new FormData();
   const meta = {};
@@ -181,7 +191,7 @@ export default async function handler(request) {
   let upstream;
   try {
     upstream = await fetch(
-      `https://hub-backend.elevoniq.de/api/v1/landing-page-documents/upload/${queueType}`,
+      `https://hub-backend.elevoniq.de/api/v1/landing-page-documents/upload/${encodeURIComponent(queueType)}`,
       {
         method: 'POST',
         headers: { 'x-api-key': apiKey },
