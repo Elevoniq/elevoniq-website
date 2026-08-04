@@ -2,8 +2,11 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = "/Users/ludwigv.busse/Documents/mirofish-market-research/elevoniq-website-repo";
+// Portabel: Repo-Wurzel relativ zum Speicherort dieser Testdatei (tests/ -> Repo-Root),
+// nicht mehr gegen einen fremden Klon per Absolutpfad.
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 function read(relativePath) {
   return fs.readFileSync(path.join(root, relativePath), "utf8");
@@ -36,29 +39,41 @@ test("Vercel redirects legacy /gutachten requests to the GBU service page", () =
   );
 });
 
-test("Pruefbericht sticky CTA uses explicit form scrolling", () => {
-  const html = read("einzelleistungen/pruefbericht-check/index.html");
+// INT-03/04-Regression: Sticky-CTA sprang hinter die fixierte Nav. Gewählte Lösung ist
+// die globale CSS-Regel scroll-padding-top (nicht ein JS-scrollIntoView-Interceptor).
+// Diese Tests sichern die tatsächlich ausgelieferte Lösung ab.
+test("Global CSS offsets in-page anchor jumps below the sticky nav (INT-03/04)", () => {
+  const css = read("assets/css/style.css");
 
   assert.ok(
-    html.includes("querySelectorAll('a[href=\"#pruefbericht-formular\"]')"),
-    "Expected explicit sticky/form anchor handling for pruefbericht form links",
-  );
-  assert.ok(
-    html.includes("scrollIntoView({ behavior: 'smooth', block: 'start' })"),
-    "Expected pruefbericht form links to scroll explicitly to the form",
+    /scroll-padding-top\s*:/.test(css),
+    "Expected global scroll-padding-top so anchor jumps land below the fixed nav",
   );
 });
 
-test("Angebotspruefung sticky CTA uses explicit form scrolling", () => {
+test("Pruefbericht sticky CTA anchors to the form section", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    html.includes('href="#pruefbericht-formular"'),
+    "Expected sticky CTA to link to the pruefbericht form anchor",
+  );
+  assert.ok(
+    html.includes('id="pruefbericht-formular"'),
+    "Expected the pruefbericht form section to expose the matching anchor id",
+  );
+});
+
+test("Angebotspruefung sticky CTA anchors to the form section", () => {
   const html = read("einzelleistungen/angebotspruefung/index.html");
 
   assert.ok(
-    html.includes("querySelectorAll('a[href=\"#angebotspruefung-formular\"]')"),
-    "Expected explicit sticky/form anchor handling for angebot form links",
+    html.includes('href="#angebotspruefung-formular"'),
+    "Expected sticky CTA to link to the angebot form anchor",
   );
   assert.ok(
-    html.includes("scrollIntoView({ behavior: 'smooth', block: 'start' })"),
-    "Expected angebot form links to scroll explicitly to the form",
+    html.includes('id="angebotspruefung-formular"'),
+    "Expected the angebot form section to expose the matching anchor id",
   );
 });
 
