@@ -1,3 +1,5 @@
+import { kv } from '@vercel/kv';
+
 export const config = { runtime: 'edge' };
 
 const ALLOWED_ORIGINS = [
@@ -11,6 +13,10 @@ const MAX_FILES = 5;
 // S-02: Allowlist — kein angreiferkontrollierter Wert darf in die Backend-URL interpoliert werden.
 // Werte entsprechen den drei Upload-Formularen (pruefbericht-check, angebotspruefung, frequenzumrichter).
 const ALLOWED_QUEUES = ['assessment-report', 'quotation', 'other-documents'];
+
+// S-03: Rate-Limiting-Konfiguration (Vercel KV / Upstash)
+const RATE_LIMIT = 10;            // max. Uploads pro IP und Stunde
+const RATE_LIMIT_WINDOW_S = 3_600; // 1 Stunde in Sekunden
 
 const MAGIC_PDF = [0x25, 0x50, 0x44, 0x46];
 const MAGIC_JPEG = [0xFF, 0xD8, 0xFF];
@@ -64,6 +70,27 @@ async function validateFile(file) {
   return null;
 }
 
+// S-03: IP-basiertes Fixed-Window-Rate-Limiting via Vercel KV.
+// Fenster: 1 Stunde (windowKey = aktuelle Stunde seit Epoch).
+// Voraussetzung: KV-Store provisioniert, env-Vars KV_REST_API_URL + KV_REST_API_TOKEN gesetzt.
+// Ohne KV: Warnung loggen, Upload nicht blind blockieren — Turnstile übernimmt als Fallback.
+async function checkRateLimit(ip) {
+  const windowKey = Math.floor(Date.now() / (RATE_LIMIT_WINDOW_S * 1000));
+  const key = `rl:upload:${ip}:${windowKey}`;
+  try {
+    const count = await kv.incr(key);
+    if (count === 1) {
+      // Erster Hit im Fenster — TTL setzen, damit der Key sich selbst aufräumt.
+      await kv.expire(key, RATE_LIMIT_WINDOW_S * 2);
+    }
+    return count <= RATE_LIMIT;
+  } catch {
+    // KV-Store nicht konfiguriert (env-Vars fehlen) oder vorübergehend nicht erreichbar.
+    console.warn('[rate-limit] rate-limit store not configured — falling back to Turnstile only');
+    return true; // Turnstile bleibt als Schutzschicht aktiv
+  }
+}
+
 export default async function handler(request) {
   if (request.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'Methode nicht erlaubt.' }), {
@@ -82,11 +109,17 @@ export default async function handler(request) {
     return err(403, 'Anfragen von dieser Quelle werden nicht akzeptiert.');
   }
 
-  // Für echtes Rate Limiting ist Vercel KV erforderlich (persistenter State über Edge-Instanzen hinweg).
-  // Ohne KV ist kein zuverlässiges IP-basiertes Zählen möglich — dieser Check ist nur eine Heuristik.
+  // S-03: IP aus x-forwarded-for extrahieren (Vercel setzt diesen Header zuverlässig).
   const clientIp = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '';
   if (!clientIp) {
     return err(400, 'Anfrage konnte nicht verarbeitet werden.');
+  }
+
+  // S-03: Rate-Limit prüfen — vor Turnstile, um externe siteverify-Calls bei Treffern zu sparen.
+  // Kein KV konfiguriert: checkRateLimit gibt true zurück, Turnstile greift als Fallback.
+  const rateLimitOk = await checkRateLimit(clientIp);
+  if (!rateLimitOk) {
+    return err(429, 'Zu viele Anfragen. Bitte versuchen Sie es später erneut.');
   }
 
   const apiKey = process.env.HUB_API_KEY;
