@@ -226,9 +226,8 @@
   <a href="/faq/" class="mobile-nav-link">FAQ</a>
   <div class="mobile-nav-cta">
     <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:14px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:12px 20px;border-radius:6px;margin-bottom:10px;">Kundenportal</a>
-    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
-       target="_blank" rel="noopener" class="btn-primary btn-full">
-      Erstgespräch buchen
+    <a href="#pruefbericht-formular" class="btn-primary btn-full">
+      Jetzt hochladen
     </a>
   </div>
 </div>
@@ -289,9 +288,8 @@
       <a href="/faq/" role="listitem">FAQ</a>
     </div>
     <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:none;font-size:13px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:7px 16px;border-radius:6px;white-space:nowrap;transition:background 0.2s,color 0.2s;" id="nav-portal-desktop" onmouseover="this.style.background='#3D7E79';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#3D7E79'">Kundenportal</a>
-    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
-       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
-      Erstgespräch buchen
+    <a href="#pruefbericht-formular" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+      Jetzt hochladen
     </a>
     <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
       <span></span><span></span><span></span>
@@ -347,15 +345,8 @@
             <div class="hero-card__item-label">Kostenlos</div>
             <p>Verständliche Einordnung der Mängel und Empfehlung zum nächsten Betreiber-Schritt – innerhalb von 48 Stunden. Ergebnis per Mail und im ELEVATOR HUB<sup>®</sup> (Ihr persönlicher Online-Bereich bei ELEVONIQ).</p>
           </div>
-          <div class="hero-card__item">
-            <div class="hero-card__item-label">Optional – 249 € zzgl. MwSt.</div>
-            <p>Vertiefte Einordnung, erste Priorisierung + Einholung von bis zu zwei Angeboten aus dem ELEVONIQ-Partnernetzwerk. Neutraler Abgleich mit dem Prüfbericht.</p>
-          </div>
-          <div class="hero-card__item">
-            <div class="hero-card__item-label">Bereits ein Angebot?</div>
-            <p>Angebot + Prüfbericht zusammen hochladen – wir prüfen, ob das Angebot zu den Mängeln und Aufzug passt.</p>
-          </div>
         </div>
+        <p style="font-size:.85rem;color:var(--color-gray);margin-top:14px;">Weitere Optionen nach der Ersteinschätzung.</p>
       </div>
     </div>
   </div>
@@ -452,21 +443,21 @@
       <p style="font-size:1.05rem;line-height:1.74;color:var(--color-gray);margin-top:14px;">Egal welche Situation – der Einstieg ist immer derselbe: Prüfbericht hochladen, wir kümmern uns. Die Auswahl hilft uns, Ihre Einschätzung besser auf Ihre Situation zuzuschneiden.</p>
     </div>
     <div class="choice-grid">
-      <a href="#pruefbericht-formular" class="choice-card">
+      <a href="#pruefbericht-formular" class="choice-card" data-anliegen="einordnen">
         <div class="choice-card__icon">01</div>
         <div class="choice-card__label">Prüfbericht einordnen</div>
         <h3 class="choice-card__h3" style="font-size:1.06rem;font-weight:800;line-height:1.3;margin:0;">Prüfbericht verstehen</h3>
         <p>Ich möchte zuerst verstehen, was die Mängel bedeuten und was jetzt zu tun ist.</p>
         <div class="choice-card__cta">Kostenlos starten &rsaquo;</div>
       </a>
-      <a href="#pruefbericht-formular" class="choice-card">
+      <a href="#pruefbericht-formular" class="choice-card" data-anliegen="angebot_pruefen">
         <div class="choice-card__icon">02</div>
         <div class="choice-card__label">Bestehendes Angebot prüfen</div>
         <h3 style="font-size:1.06rem;font-weight:800;line-height:1.3;margin:0;">Angebot überprüfen lassen</h3>
         <p>Ich habe bereits ein Angebot und möchte wissen, ob es zum Prüfbericht passt.</p>
         <div class="choice-card__cta">Bericht + Angebot einreichen &rsaquo;</div>
       </a>
-      <a href="#pruefbericht-formular" class="choice-card">
+      <a href="#pruefbericht-formular" class="choice-card" data-anliegen="angebote_einholen">
         <div class="choice-card__icon">03</div>
         <div class="choice-card__label">Angebote einholen</div>
         <h3 style="font-size:1.06rem;font-weight:800;line-height:1.3;margin:0;">Direkt handeln</h3>
@@ -806,9 +797,7 @@
       <h2 class="data-box__title" id="daten-heading">4 Millionen Datenpunkte. Kein anderer Anbieter hat das.</h2>
       <p class="data-box__text">ElevonIQ hat über 8.000 Aufzüge in Deutschland systematisch erfasst – mit je 500 Datenpunkten pro Anlage: Baujahr, Hersteller, Wartungshistorie, Prüfberichte, Mängelverläufe, Angebotspreise. Diese Datenbasis läuft durch unsere KI. Das Ergebnis wird von Fachleuten mit über 40 Jahren Branchenerfahrung geprüft und interpretiert.<br><br>Was das für Sie bedeutet: Ihr Aufzug wird nicht gegen einen Richtwert gemessen – sondern gegen tausende reale Anlagen unter realen Bedingungen.</p>
       <div class="data-box__bullets">
-        <div class="data-box__bullet"><span class="data-box__dot"></span>100.000+ Dokumente. Analysiert und geprüft.</div>
         <div class="data-box__bullet"><span class="data-box__dot"></span>15 Jahre Datenerfassung – KI-gestützt ausgewertet</div>
-        <div class="data-box__bullet"><span class="data-box__dot"></span>Menschliches Fachurteil: 40+ Jahre Aufzugsbranchenerfahrung</div>
       </div>
     </div>
   </div>
@@ -865,7 +854,7 @@
             <small>PDF, JPG oder PNG · Einzelbericht oder Sammelupload · max. 9 MB</small>
             <input type="file" id="pb-file-input" name="sf_pruefbericht_datei" accept=".pdf,.jpg,.jpeg,.png" required>
           </label>
-          <select name="sf_anliegen" class="ev-field" required>
+          <select name="sf_anliegen" id="pb-anliegen-select" class="ev-field" required>
             <option value="">Was trifft auf Ihren Fall zu?</option>
             <option value="einordnen">Prüfbericht einordnen lassen</option>
             <option value="angebot_pruefen">Bestehendes Angebot prüfen</option>
@@ -1164,5 +1153,15 @@ document.getElementById('pruefbericht-form').addEventListener('submit',function(
 })();
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+(function(){
+  document.querySelectorAll('.choice-card[data-anliegen]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var select = document.getElementById('pb-anliegen-select');
+      if (select) select.value = card.getAttribute('data-anliegen');
+    });
+  });
+}());
+</script>
 </body>
 </html>

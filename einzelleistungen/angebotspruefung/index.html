@@ -235,9 +235,8 @@
   <a href="/faq/" class="mobile-nav-link">FAQ</a>
   <div class="mobile-nav-cta">
     <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:14px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:12px 20px;border-radius:6px;margin-bottom:10px;">Kundenportal</a>
-    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
-       target="_blank" rel="noopener" class="btn-primary btn-full">
-      Erstgespräch buchen
+    <a href="#angebotspruefung-formular" class="btn-primary btn-full">
+      Jetzt hochladen
     </a>
   </div>
 </div>
@@ -298,9 +297,8 @@
       <a href="/faq/" role="listitem">FAQ</a>
     </div>
     <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:none;font-size:13px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:7px 16px;border-radius:6px;white-space:nowrap;transition:background 0.2s,color 0.2s;" id="nav-portal-desktop" onmouseover="this.style.background='#3D7E79';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#3D7E79'">Kundenportal</a>
-    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
-       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
-      Erstgespräch buchen
+    <a href="#angebotspruefung-formular" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+      Jetzt hochladen
     </a>
     <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
       <span></span><span></span><span></span>
@@ -521,6 +519,7 @@
       <span class="section-eyebrow">Beispiel-Ergebnis</span>
       <h2 class="section-title" id="beispiel-heading">So sieht eine erste ELEVONIQ-Einschätzung aus</h2>
       <p style="font-size:1.05rem;line-height:1.74;color:var(--color-gray);margin-top:14px;">Nicht technisch überladen – so aufbereitet, dass Verwalter und Entscheider schnell weiterkommen.</p>
+      <p style="font-size:.85rem;color:var(--color-gray);margin-top:8px;">Dasselbe Ergebnis wie oben, hier als vollständiger Report.</p>
     </div>
     <div class="result-grid">
       <div class="result-mock">
@@ -530,7 +529,7 @@
         </div>
         <div class="result-mock__body">
           <div class="result-mock__label">Management Summary</div>
-          <div class="result-mock__row"><span>Formale Vollständigkeit</span><span class="ev-badge ev-badge--green">Plausibel</span></div>
+          <div class="result-mock__row"><span>Formale Plausibilität</span><span class="ev-badge ev-badge--green">Plausibel</span></div>
           <div class="result-mock__row"><span>Technische Einordnung</span><span class="ev-badge ev-badge--yellow">Rückfrage sinnvoll</span></div>
           <div class="result-mock__row"><span>Preisniveau</span><span class="ev-badge ev-badge--red">Auffällig hoch</span></div>
           <div class="result-mock__row"><span>Empfehlung</span><strong style="color:var(--color-coral-dark);">Nachverhandlung vor Freigabe</strong></div>
@@ -555,29 +554,9 @@
     <div style="text-align:center;max-width:760px;margin:0 auto;">
       <span class="section-eyebrow">Praxisbeispiele</span>
       <h2 class="section-title" id="fallbeispiele-heading">Was eine neutrale Prüfung bewirken kann</h2>
-      <p style="font-size:1.05rem;line-height:1.74;color:var(--color-gray);margin-top:14px;">Zwei anonymisierte Beispiele aus typischen Verwalter- und Betreiberfällen.</p>
+      <p style="font-size:1.05rem;line-height:1.74;color:var(--color-gray);margin-top:14px;">Ein anonymisiertes Beispiel aus einem typischen Verwalter- oder Betreiberfall.</p>
     </div>
     <div style="margin-top:34px;">
-      <div class="case-item">
-        <div class="case-item__head">
-          <strong>Reparaturangebot Türantrieb</strong>
-          <span>WEG / Wohngebäude</span>
-        </div>
-        <div class="case-item__body">
-          <div class="case-item__col">
-            <div class="case-item__small">Erstangebot</div>
-            <div class="case-item__price">8.950 €</div>
-          </div>
-          <div class="case-item__col">
-            <div class="case-item__small">Nach Verhandlung</div>
-            <div class="case-item__price case-item__price--good">6.700 €</div>
-          </div>
-        </div>
-        <div class="case-item__foot">
-          <span>Empfohlene Aktion</span>
-          <span>Nachverhandlung vor Freigabe</span>
-        </div>
-      </div>
       <div class="case-item">
         <div class="case-item__head">
           <strong>Wartungsangebot Neuabschluss</strong>
@@ -610,76 +589,24 @@
       <h2 class="section-title" id="preis-heading">Einfacher Einstieg, klarer nächster Schritt</h2>
       <p style="font-size:1.05rem;line-height:1.74;color:var(--color-gray);margin-top:14px;">Starten Sie kostenlos. Wenn Sie eine vertiefte Prüfung oder Verhandlungsbegleitung benötigen, ist der nächste Schritt direkt aus dem Ergebnis heraus beauftragbar.</p>
     </div>
-    <div class="pricing-2">
+    <div class="pricing-2" style="grid-template-columns:1fr;max-width:420px;">
       <div class="price-card price-card--free">
         <span class="price-card__badge price-card__badge--free">Kostenlos</span>
         <div class="price-card__amount price-card__amount--free">0 €</div>
         <h3>Kostenlose Ersteinschätzung</h3>
         <ul class="price-list">
-          <li>Formale Plausibilitätsprüfung</li>
+          <li>Formale Plausibilität</li>
           <li>Technische Einordnung des Umfangs</li>
           <li>Erste Preisbewertung gegen Marktdaten</li>
           <li>Klare Handlungsempfehlung</li>
           <li>Rückmeldung in 48 Stunden per Mail</li>
         </ul>
       </div>
-      <div class="price-card price-card--paid">
-        <span class="price-card__badge price-card__badge--paid">Optional</span>
-        <div class="price-card__amount price-card__amount--paid">199 €</div>
-        <div class="price-card__vat">zzgl. MwSt. · Angebotsprüfung Plus</div>
-        <div style="font-size:.78rem;color:var(--color-gray);">(237,81 € inkl. 19 % MwSt.)</div>
-        <h3>Vertiefte Prüfung</h3>
-        <ul class="price-list">
-          <li>Vollständige Positions- und Preisanalyse</li>
-          <li>Bewertung technischer Notwendigkeit</li>
-          <li>Verhandlungsempfehlung mit konkreten Argumenten</li>
-          <li>Schriftliches Ergebnis für interne Dokumentation</li>
-          <li>Direkt aus dem ELEVATOR HUB<sup>®</sup> beauftragbar</li>
-        </ul>
-      </div>
-    </div>
-    <div class="note-box" style="max-width:820px;margin-left:auto;margin-right:auto;margin-top:20px;">
-      Die vertiefte Prüfung wird direkt aus dem ELEVATOR HUB<sup>®</sup> heraus beauftragt – nicht im Einstiegsformular.
     </div>
     <div class="price-hint">Alle Preise sind Nettopreise · zzgl. MwSt.</div>
     <p class="price-legal-notice">Alle Preise in Euro, zzgl. gesetzlicher Umsatzsteuer. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB. Eine Nutzung durch Verbraucher ist ausgeschlossen.</p>
     <div style="text-align:center;margin-top:28px;">
       <a href="#angebotspruefung-formular" class="btn-primary">Angebot kostenlos hochladen</a>
-    </div>
-  </div>
-</section>
-
-<!-- 9b. ERFOLGSHONORAR -->
-<section class="section" aria-labelledby="erfolgshonorar-heading">
-  <div class="container">
-    <div style="text-align:center;max-width:760px;margin:0 auto;">
-      <span class="section-eyebrow">Erfolgshonorar</span>
-      <h2 class="section-title" id="erfolgshonorar-heading">Sie zahlen nur, wenn Sie sparen.</h2>
-      <p style="font-size:1.05rem;line-height:1.74;color:#6B7280;margin-top:14px;">Unser Honorar bemisst sich ausschließlich an der nachgewiesenen Einsparung. Kein Ergebnis, kein Honorar.</p>
-    </div>
-    <div class="eh-cards">
-      <div class="eh-card">
-        <div class="eh-card__pct">35 %</div>
-        <h3>Gleiches Produkt, besserer Preis</h3>
-        <p class="eh-card__desc">Gilt, wenn dasselbe Produkt beim gleichen oder einem alternativen Anbieter zu einem günstigeren Preis beschafft werden kann.</p>
-        <div class="eh-card__example">
-          <div class="eh-card__example-label">Rechenbeispiel</div>
-          <div class="eh-card__example-text">Angebotspreise 24.000 € &mdash; verhandelt auf 18.000 € &mdash; Einsparung 6.000 € &mdash; Honorar 2.100 €</div>
-        </div>
-      </div>
-      <div class="eh-card">
-        <div class="eh-card__pct">20 %</div>
-        <h3>Alternative Lösung, gleiches Ergebnis</h3>
-        <p class="eh-card__desc">Gilt, wenn eine technisch gleichwertige Alternative ein identisches Ziel zu geringeren Kosten erfüllt.</p>
-        <div class="eh-card__example">
-          <div class="eh-card__example-label">Rechenbeispiel</div>
-          <div class="eh-card__example-text">Angebotspreise 24.000 € &mdash; Alternative 17.000 € &mdash; Einsparung 7.000 € &mdash; Honorar 1.400 €</div>
-        </div>
-      </div>
-    </div>
-    <p class="eh-trust">Erzielen wir keine nachgewiesene Einsparung, entstehen Ihnen keine Kosten.</p>
-    <div style="text-align:center;margin-top:28px;">
-      <a href="#angebotspruefung-formular" class="btn-primary">Angebot zur Prüfung einreichen</a>
     </div>
   </div>
 </section>
@@ -722,9 +649,7 @@
       <h2 class="data-box__title" id="daten-heading">4 Millionen Datenpunkte. Kein anderer Anbieter hat das.</h2>
       <p class="data-box__text">ElevonIQ hat über 8.000 Aufzüge in Deutschland systematisch erfasst – mit je 500 Datenpunkten pro Anlage: Baujahr, Hersteller, Wartungshistorie, Prüfberichte, Mängelverläufe, Angebotspreise. Diese Datenbasis läuft durch unsere KI. Das Ergebnis wird von Fachleuten mit über 40 Jahren Branchenerfahrung geprüft und interpretiert.<br><br>Was das für Sie bedeutet: Ihr Aufzug wird nicht gegen einen Richtwert gemessen – sondern gegen tausende reale Anlagen unter realen Bedingungen.</p>
       <div class="data-box__bullets">
-        <div class="data-box__bullet"><span class="data-box__dot"></span>8.000+ Aufzüge, 500 Datenpunkte pro Anlage</div>
         <div class="data-box__bullet"><span class="data-box__dot"></span>15 Jahre Datenerfassung – KI-gestützt ausgewertet</div>
-        <div class="data-box__bullet"><span class="data-box__dot"></span>Menschliches Fachurteil: 40+ Jahre Aufzugsbranchenerfahrung</div>
       </div>
     </div>
   </div>
@@ -792,8 +717,8 @@
           <fieldset class="ev-fieldset">
             <legend>Angaben zum Aufzug</legend>
             <div class="ev-field-row">
-              <input type="number" name="sf_baujahr" id="ap-baujahr" class="ev-field" placeholder="Baujahr · z. B. 2008" aria-label="Baujahr" min="1900" required>
-              <input type="number" name="sf_tragkraft_kg" class="ev-field" placeholder="Tragkraft kg · z. B. 630" aria-label="Tragkraft in kg" min="1" required>
+              <input type="number" name="sf_baujahr" id="ap-baujahr" class="ev-field" placeholder="Baujahr · z. B. 2008 (optional)" aria-label="Baujahr" min="1900">
+              <input type="number" name="sf_tragkraft_kg" class="ev-field" placeholder="Tragkraft kg · z. B. 630 (optional)" aria-label="Tragkraft in kg" min="1">
             </div>
             <div class="ev-field-row">
               <input type="number" name="sf_haltestellen" class="ev-field" placeholder="Haltestellen · z. B. 5" aria-label="Anzahl Haltestellen" min="1">
@@ -837,6 +762,62 @@
           <div class="ev-form-msg ev-form-msg--error" id="ap-error">Fehler beim Senden – bitte senden Sie uns eine E-Mail an <a href="mailto:support@elevoniq.de">support@elevoniq.de</a>.</div>
         </form>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nach Formular: Vertiefte Prüfung und Erfolgshonorar -->
+<section class="section" aria-labelledby="naechste-schritte-heading">
+  <div class="container">
+    <div style="text-align:center;max-width:760px;margin:0 auto;">
+      <span class="section-eyebrow">Nach Ihrer Ersteinschätzung</span>
+      <h2 class="section-title" id="naechste-schritte-heading">Die vertiefte Prüfung – direkt aus dem ELEVATOR HUB<sup>®</sup> heraus beauftragbar</h2>
+      <p style="font-size:1.05rem;line-height:1.74;color:var(--color-gray);margin-top:14px;">Die vertiefte Prüfung wird direkt aus dem ELEVATOR HUB<sup>®</sup> heraus beauftragt – nicht im Einstiegsformular.</p>
+    </div>
+    <div style="max-width:420px;margin:36px auto 0;">
+      <div class="price-card price-card--paid">
+        <span class="price-card__badge price-card__badge--paid">Optional</span>
+        <div class="price-card__amount price-card__amount--paid">199 €</div>
+        <div class="price-card__vat">zzgl. MwSt. · Angebotsprüfung Plus</div>
+        <div style="font-size:.78rem;color:var(--color-gray);">(237,81 € inkl. 19 % MwSt.)</div>
+        <h3>Vertiefte Prüfung</h3>
+        <ul class="price-list">
+          <li>Vollständige Positions- und Preisanalyse</li>
+          <li>Bewertung technischer Notwendigkeit</li>
+          <li>Verhandlungsempfehlung mit konkreten Argumenten</li>
+          <li>Schriftliches Ergebnis für interne Dokumentation</li>
+          <li>Direkt aus dem ELEVATOR HUB<sup>®</sup> beauftragbar</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;max-width:760px;margin:48px auto 0;">
+      <span class="section-eyebrow">Erfolgshonorar</span>
+      <h2 class="section-title" id="erfolgshonorar-heading">Sie zahlen nur, wenn Sie sparen.</h2>
+      <p style="font-size:1.05rem;line-height:1.74;color:#6B7280;margin-top:14px;">Unser Honorar bemisst sich ausschließlich an der nachgewiesenen Einsparung. Kein Ergebnis, kein Honorar.</p>
+    </div>
+    <div class="eh-cards">
+      <div class="eh-card">
+        <div class="eh-card__pct">35 %</div>
+        <h3>Gleiches Produkt, besserer Preis</h3>
+        <p class="eh-card__desc">Gilt, wenn dasselbe Produkt beim gleichen oder einem alternativen Anbieter zu einem günstigeren Preis beschafft werden kann.</p>
+        <div class="eh-card__example">
+          <div class="eh-card__example-label">Rechenbeispiel</div>
+          <div class="eh-card__example-text">Angebotspreise 24.000 € &mdash; verhandelt auf 18.000 € &mdash; Einsparung 6.000 € &mdash; Honorar 2.100 €</div>
+        </div>
+      </div>
+      <div class="eh-card">
+        <div class="eh-card__pct">20 %</div>
+        <h3>Alternative Lösung, gleiches Ergebnis</h3>
+        <p class="eh-card__desc">Gilt, wenn eine technisch gleichwertige Alternative ein identisches Ziel zu geringeren Kosten erfüllt.</p>
+        <div class="eh-card__example">
+          <div class="eh-card__example-label">Rechenbeispiel</div>
+          <div class="eh-card__example-text">Angebotspreise 24.000 € &mdash; Alternative 17.000 € &mdash; Einsparung 7.000 € &mdash; Honorar 1.400 €</div>
+        </div>
+      </div>
+    </div>
+    <p class="eh-trust">Erzielen wir keine nachgewiesene Einsparung, entstehen Ihnen keine Kosten.</p>
+    <div style="text-align:center;margin-top:28px;">
+      <a href="#angebotspruefung-formular" class="btn-primary">Angebot zur Prüfung einreichen</a>
     </div>
   </div>
 </section>
