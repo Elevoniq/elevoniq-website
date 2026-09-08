@@ -8,12 +8,24 @@
   --color-teal-dark: #3D7E79;
   --color-navy: #1E2761;
   --color-dark: #1A1A1A;
-  --color-gray: #6B7280;
+  --color-gray: #5F6670;         /* WCAG AA 5.80:1 gegen Weiß, 5.38:1 gegen bg-subtle */
   --color-white: #FFFFFF;
   --color-bg-subtle: #F4F7F6;
   --color-bg-warm: #FAF8F3;
   --color-amber: #C8873A;
+  --color-amber-dark: #A26820;   /* WCAG AA 4.63:1 gegen Weiß */
   --color-savings: #1D8348;
+
+  /* Verständnis-Engine, dunkles Sub-Theme auf hellem Hero */
+  --ve-surface:          var(--color-navy);
+  --ve-surface-card:     rgba(255,255,255,0.07);
+  --ve-line:             rgba(255,255,255,0.14);
+  --ve-text:             #FFFFFF;
+  --ve-text-secondary:   rgba(255,255,255,0.75);
+  --ve-text-tertiary:    rgba(255,255,255,0.65);
+  --ve-accent-input:     var(--color-coral);
+  --ve-accent-output:    var(--color-teal);
+
   --font-family: 'Work Sans', system-ui, -apple-system, sans-serif;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -171,10 +183,12 @@ p { line-height: 1.7; }
 .btn-full { width: 100%; text-align: center; }
 
 /* ─── BADGES & LABELS ────────────────────────────── */
+/* .badge = echter Statusmarker (z. B. "Kostenlos", "Neu").
+   Für Kategoriebezeichnungen auf Karten .card-label verwenden, nicht .badge. */
 .badge {
   display: inline-block;
   padding: 5px 14px;
-  border-radius: 20px;
+  border-radius: var(--border-radius);
   font-size: 11px;
   font-weight: var(--font-weight-bold);
   letter-spacing: 0.12em;
@@ -184,6 +198,8 @@ p { line-height: 1.7; }
   background: rgba(105,176,171,0.15);
   color: var(--color-teal-dark);
 }
+/* DEPRECATED: nur noch /betreiberpflichten/ nutzt .badge-coral.
+   Nach Migration dieser Seite ersatzlos entfernen. */
 .badge-coral {
   background: rgba(232,71,74,0.1);
   color: var(--color-coral-dark);
@@ -196,6 +212,19 @@ p { line-height: 1.7; }
   background: rgba(255,255,255,0.15);
   color: var(--color-white);
 }
+/* Kategorielabel auf Karten: flacher Text statt Pille, Kategorie-Trennung
+   läuft über Labeltext und Spaltenposition, nicht über Farbflächen. */
+.card-label {
+  display: block;
+  font-size: 11px;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-navy);        /* 13.8:1 gegen Weiß */
+  margin-bottom: 1.25rem;
+}
+.card-label--teal { color: var(--color-teal-dark); }   /* 4.71:1 gegen Weiß */
+.card-label--amber { color: var(--color-amber-dark); } /* 4.63:1 gegen Weiß */
 .trust-badge {
   display: inline-flex;
   align-items: center;
@@ -214,15 +243,13 @@ p { line-height: 1.7; }
 /* ─── CARDS ──────────────────────────────────────── */
 .card {
   background: var(--color-white);
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: var(--border-radius-lg);
+  border: 1px solid #E3E7E6;
+  border-radius: var(--border-radius);
   padding: 2rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--transition-base), transform var(--transition-base);
+  transition: border-color var(--transition-base);
 }
 .card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  border-color: var(--color-gray);
 }
 .card-link {
   display: block;
@@ -524,7 +551,8 @@ p { line-height: 1.7; }
 }
 .footer-legal-links {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
 }
 .footer-legal-links a {
   color: rgba(255,255,255,0.45);
@@ -550,9 +578,18 @@ p { line-height: 1.7; }
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 4rem;
+  /* 50/50: die Verständnis-Engine im Hero-Visual braucht die Breite für ihre
+     drei Innenspalten. minmax(0,…) statt 1fr, damit langer Kartentext die
+     Spaltenaufteilung nicht sprengt. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
   align-items: center;
+}
+.hero-visual {
+  /* .hero-section::before ist absolut positioniert und ohne z-index —
+     ohne eigenen Stacking-Kontext legt sich der Kreis über das Panel. */
+  position: relative;
+  z-index: 1;
 }
 .hero-eyebrow {
   display: inline-block;
@@ -864,19 +901,17 @@ details.faq-item .faq-answer {
   align-items: flex-start;
 }
 .feature-check {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: rgba(105,176,171,0.2);
-  color: var(--color-teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  font-weight: var(--font-weight-extrabold);
+  width: 16px;
+  color: var(--color-teal-dark);
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
   flex-shrink: 0;
   margin-top: 2px;
 }
+/* Auf Navy immer die Basis-Variante der Marktfarbe, nicht die "-dark"-Variante:
+   --color-teal-dark auf --color-navy ergibt nur 2,94:1 (WCAG AA verfehlt),
+   --color-teal ergibt 5,48:1. Siehe Guideline-Branding.md. */
+.section-navy .feature-check { color: var(--color-teal); }
 .feature-item-text {
   font-size: 15px;
   line-height: 1.6;
@@ -1187,10 +1222,35 @@ details.faq-item .faq-answer {
   .hero-interface-grid { gap: 0.75rem; }
 }
 
+/* ─── NAV BREAKPOINTS ────────────────────────────────
+   Gemessen bei 1440px: Logo 140 + .nav-links 661
+   + Kundenportal 122 + CTA 212 = 1135px reine Inhaltsbreite.
+   Zzgl. 64px Container-Padding braucht die volle Desktop-Navigation
+   rund 1240px Viewport. Darunter zweistufig reduzieren, statt die
+   Elemente kollidieren zu lassen.
+   Die beiden Buttons werden per Inline-Style aus dem Seiten-JS
+   eingeblendet, daher hier !important.                                */
+
+/* Stufe 1: 1080-1239px — Abstaende enger, Kundenportal aus.
+   Das Kundenportal bleibt ueber Footer und Mobile-Overlay erreichbar. */
+@media (min-width: 1080px) and (max-width: 1239.98px) {
+  .nav-links { gap: 1.25rem; }
+  #nav-portal-desktop { display: none !important; }
+}
+
+/* Stufe 2: bis 1079px — Hamburger uebernimmt. */
+@media (max-width: 1079.98px) {
+  .nav-links, .nav-dropdown { display: none; }
+  .nav-hamburger { display: flex; }
+  #nav-portal-desktop, #nav-cta-desktop { display: none !important; }
+}
+
 @media (max-width: 768px) {
   .container { padding: 0 1.25rem; }
-  .grid-2, .grid-3 { grid-template-columns: 1fr; }
-  .grid-4 { grid-template-columns: 1fr; }
+  /* minmax(0,1fr) statt 1fr: verhindert, dass die min-content-Breite
+     einer Karte das Raster ueber den Viewport hinaus aufzieht. */
+  .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); }
+  .grid-4 { grid-template-columns: minmax(0, 1fr); }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-mockup { display: none; }
   .trust-numbers-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1198,8 +1258,6 @@ details.faq-item .faq-answer {
   .roi-inputs { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
-  .nav-links, .nav-dropdown { display: none; }
-  .nav-hamburger { display: flex; }
   .hero-cta-row .btn-primary,
   .hero-cta-row .btn-secondary { width: 100%; text-align: center; }
   .hero-cta-row { flex-direction: column; }
@@ -1209,6 +1267,21 @@ details.faq-item .faq-answer {
 @media (max-width: 480px) {
   .footer-grid { grid-template-columns: 1fr; }
   .hero-trust-row { flex-direction: column; gap: 0.75rem; }
+}
+
+/* Unter 375px: lange CTA-Labels umbrechen lassen statt aus dem
+   Layout laufen zu lassen. Buttons haben sonst white-space: nowrap.
+   Bewusst erst unterhalb 375px, damit die gaengigen Geraetebreiten
+   ab iPhone SE/12 mini optisch unveraendert bleiben.               */
+@media (max-width: 374.98px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-teal,
+  .btn-white-outline {
+    white-space: normal;
+    line-height: 1.25;
+    padding-inline: 18px;
+  }
 }
 
 /* ─── index.html — page additions ───────────────────────────────────── */
@@ -1258,6 +1331,37 @@ details.faq-item .faq-answer {
 @keyframes hero-blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
+}
+
+/* ── Praxisfall-Raster ──
+   Ersetzt Inline-Styles (repeat(3,1fr) / repeat(2,1fr)), die auf
+   Mobil drei ~90px schmale Spalten mit abgeschnittenem Text ergaben.
+   minmax(0,1fr) verhindert zusaetzlich den min-content-Ueberlauf.  */
+.case-grid {
+  display: grid;
+  gap: 20px;
+}
+.case-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.case-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .case-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .case-grid--3,
+  .case-grid--2 { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ── Praxisfall-Karte: Problem/Loesung nebeneinander ──
+   Ersetzt einen frueheren Inline-Style, den keine Media Query
+   ueberschreiben konnte. Ab 600px einspaltig.                  */
+.case-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  flex: 1;
+}
+@media (max-width: 600px) {
+  .case-split { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ── Trust numbers: 5-column variant ── */
@@ -1912,4 +2016,24 @@ details.faq-item .faq-answer {
   color: var(--color-gray);
   margin-top: 0.75rem;
   line-height: 1.5;
+}
+
+/* ─── HERO / VERSTÄNDNIS-ENGINE (2026-09-08) ─────── */
+/* Das Hero-Visual (.ve-panel) klappt bei 1100px auf eine Spalte um — der
+   Hero-Grid muss an derselben Schwelle umbrechen, sonst steht das
+   einspaltige Panel in einer halbbreiten Spalte.
+   Component-CSS des Panels: Inline-<style> im <head> von index.html. */
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* ELEVATOR-HUB-Sektion: einspaltig, seit die Verständnis-Engine in den Hero
+   gezogen ist. Textbreite begrenzt, damit die Feature-Liste nicht über die
+   volle Containerbreite ausfranst. */
+.hub-single {
+  max-width: 720px;
+  margin-inline: auto;
 }
