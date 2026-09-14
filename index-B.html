@@ -645,20 +645,6 @@
       .service-card-b:first-child { border-radius: 10px 10px 0 0; }
       .service-card-b:last-child { border-radius: 0 0 10px 10px; }
     }
-    /* 360° Tour Teaser — responsive */
-    .tour-teaser-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-    .tour-teaser-iframe {
-      height: 420px;
-    }
-    @media (max-width: 768px) {
-      .tour-teaser-grid { grid-template-columns: 1fr; }
-      .tour-teaser-iframe { height: 300px; }
-    }
   </style>
 </head>
 <body>
@@ -965,7 +951,7 @@
   <!-- ── 360° TOUR TEASER ─────────────────────────────────────── -->
   <section class="section reveal" style="background:#f4f7f6;">
     <div class="container" style="max-width:1100px;">
-      <div class="tour-teaser-grid">
+      <div style="max-width:720px;">
 
         <div>
           <p class="section-eyebrow" style="color:#69B0AB;">Einmalig im Markt</p>
@@ -995,23 +981,6 @@
             </li>
           </ul>
           <a href="/laufende-betreuung/elevator-hub/" class="btn btn-primary">ELEVATOR HUB<sup>®</sup> entdecken</a>
-        </div>
-
-        <div style="position:relative;border-radius:14px;overflow:hidden;box-shadow:0 20px 56px rgba(30,39,97,0.16);">
-          <div style="position:absolute;top:12px;left:12px;z-index:10;background:#FF5B5C;color:#fff;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:16px;">
-            Live-Demo
-          </div>
-          <iframe
-            class="tour-teaser-iframe"
-            src="https://360tour.elevoniq.de/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbGV2YXRvcklkIjoiYTBPMXYwMDAwMGh4MnM2RUFBIiwid29ya09yZGVySWQiOiJhMFMxdjAwMDAwSnZqV09FQVoifQ.-xgMu9kXzmQDEwuBeuS77RdH8o2YzUI2341bvof1g6U"
-            width="100%"
-            frameborder="0"
-            allowfullscreen
-            allow="xr-spatial-tracking; gyroscope; accelerometer"
-            loading="lazy"
-            title="360°-Begehung Demo"
-            style="display:block;"
-          ></iframe>
         </div>
 
       </div>
