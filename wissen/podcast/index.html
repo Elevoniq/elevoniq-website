@@ -24,37 +24,89 @@
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-  <nav class="site-nav" id="site-nav" role="navigation" aria-label="Hauptnavigation">
-    <div class="nav-container">
-      <a href="/" class="nav-logo" aria-label="ElevonIQ — Startseite">
+  <div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+    <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">&#10005;</button>
+    <a href="/" class="nav-logo" style="margin-bottom:2rem;">
+      <img src="../../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager">
+    </a>
+    <span class="mobile-nav-section-label">Die Plattform</span>
+    <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link" style="font-weight:700;">ELEVATOR HUB<sup>®</sup></a>
+    <span class="mobile-nav-section-label">Leistungen</span>
+    <a href="/einzelleistungen/" class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Einzelleistungen</a>
+    <a href="/einzelleistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
+    <a href="/einzelleistungen/angebotspruefung/" class="mobile-nav-link">Angebotsprüfung</a>
+    <a href="/einzelleistungen/vertragscheck/" class="mobile-nav-link">Vertragscheck</a>
+    <a href="/einzelleistungen/zustandsbericht/" class="mobile-nav-link">Zustandsbericht</a>
+    <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="mobile-nav-link">Wartungsvertrag ausschreiben</a>
+    <a href="/einzelleistungen/modernisierung/" class="mobile-nav-link">Modernisierung begleiten</a>
+    <a href="/einzelleistungen/frequenzumrichter/" class="mobile-nav-link">Frequenzumrichter-Reparatur</a>
+    <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="mobile-nav-link">Gef&#228;hrdungsbeurteilung</a>
+    <a href="/laufende-betreuung/" class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Laufende Betreuung</a>
+    <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">Essentials Aufzugsmanagement</a>
+    <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link">ELEVATOR HUB<sup>®</sup></a>
+    <span class="mobile-nav-section-label">Informationen</span>
+    <a href="/betreiberpflichten/" class="mobile-nav-link">Betreiberpflichten</a>
+    <a href="/wissen/" class="mobile-nav-link">Wissen</a>
+    <a href="/ueber-uns/" class="mobile-nav-link">Über uns</a>
+    <a href="/faq/" class="mobile-nav-link">FAQ</a>
+    <div class="mobile-nav-cta">
+      <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:14px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:12px 20px;border-radius:6px;margin-bottom:10px;">Kundenportal</a>
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+         target="_blank" rel="noopener" class="btn-primary btn-full">
+        Erstgespräch buchen
+      </a>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+    <div class="container nav-inner">
+      <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite">
         <img src="../../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager">
       </a>
-      <ul class="nav-links" role="list">
-        <li class="nav-item has-dropdown">
-          <button class="nav-dropdown-trigger" aria-expanded="false" aria-haspopup="true">Leistungen <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-          <div class="nav-dropdown" role="menu">
-            <div class="nav-dropdown-inner">
-              <div class="nav-dropdown-col">
-                <p class="nav-dropdown-label">Einzelleistungen</p>
-                <a href="/einzelleistungen/pruefbericht-check/" class="nav-dropdown-item" role="menuitem"><strong>Prüfbericht-Check</strong><span>ab 149 €</span></a>
-                <a href="/einzelleistungen/angebotspruefung/" class="nav-dropdown-item" role="menuitem"><strong>Angebotsprüfung</strong><span>ab 199 €</span></a>
-                <a href="/einzelleistungen/" class="nav-dropdown-item nav-dropdown-more" role="menuitem">Alle Einzelleistungen →</a>
-              </div>
-              <div class="nav-dropdown-col">
-                <p class="nav-dropdown-label">Laufende Betreuung</p>
-                <a href="/laufende-betreuung/elevator-hub/" class="nav-dropdown-item" role="menuitem"><strong>ELEVATOR HUB<sup>®</sup></strong><span>Vollbetreuung</span></a>
-                <a href="/laufende-betreuung/all-inclusive/" class="nav-dropdown-item" role="menuitem"><strong>Essentials Aufzugsmanagement</strong><span>ab 49 €/Monat</span></a>
-                <a href="/laufende-betreuung/wartung-klappen/" class="nav-dropdown-item" role="menuitem"><strong>Wartung von Schachtentrauchungsklappen</strong><span>Energetisch sanieren</span></a>
-  <a href="/laufende-betreuung/" class="nav-dropdown-item nav-dropdown-more" role="menuitem">Alle laufenden Leistungen →</a>
-              </div>
+      <div class="nav-links" role="list">
+        <a href="/laufende-betreuung/elevator-hub/" role="listitem" style="font-weight:700;color:#1E2761;">ELEVATOR HUB<sup>®</sup></a>
+        <div class="nav-dropdown" role="listitem">
+          <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            Leistungen
+            <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <div>
+              <div class="dropdown-col-label"><a href="/einzelleistungen/" class="dropdown-col-link">EINZELLEISTUNGEN</a></div>
+              <a href="/einzelleistungen/pruefbericht-check/" class="dropdown-item" role="menuitem">Prüfbericht-Check <span class="item-price">Kostenlos, Ergebnis in 48 h</span></a>
+              <a href="/einzelleistungen/angebotspruefung/" class="dropdown-item" role="menuitem">Angebotsprüfung <span class="item-price">Kostenlos, 48 h</span></a>
+              <a href="/einzelleistungen/vertragscheck/" class="dropdown-item" role="menuitem">Vertragscheck <span class="item-price">Kostenlos</span></a>
+              <a href="/einzelleistungen/zustandsbericht/" class="dropdown-item" role="menuitem">Zustandsbericht &amp; Budgetplanung</a>
+              <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="dropdown-item" role="menuitem">Wartungsvertrag ausschreiben</a>
+              <a href="/einzelleistungen/modernisierung/" class="dropdown-item" role="menuitem">Modernisierung begleiten</a>
+              <a href="/einzelleistungen/frequenzumrichter/" class="dropdown-item" role="menuitem">Frequenzumrichter-Reparatur</a>
+              <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="dropdown-item" role="menuitem">Gef&#228;hrdungsbeurteilung</a>
+            </div>
+            <div>
+              <div class="dropdown-col-label"><a href="/laufende-betreuung/" class="dropdown-col-link">LAUFENDE BETREUUNG</a></div>
+              <a href="/laufende-betreuung/all-inclusive/" class="dropdown-item" role="menuitem">Essentials Aufzugsmanagement</a>
+              <a href="/laufende-betreuung/elevator-hub/" class="dropdown-item" role="menuitem">ELEVATOR HUB<sup>®</sup> <span class="item-price">Digitales Aufzugscockpit</span></a>
+              <a href="/laufende-betreuung/betriebskontrolle/" class="dropdown-item" role="menuitem">Betriebskontrolle / Aufzugswärter</a>
+              <a href="/laufende-betreuung/iot-monitoring/" class="dropdown-item" role="menuitem">ELEVATOR LIVE</a>
+              <a href="/laufende-betreuung/smart-flap/" class="dropdown-item" role="menuitem">SMART FLAP<sup>®</sup></a>
+              <a href="/laufende-betreuung/wartung-klappen/" class="dropdown-item" role="menuitem">Wartung von Schachtentrauchungsklappen</a>
             </div>
           </div>
-        </li>
-        <li class="nav-item"><a href="/betreiberpflichten/" class="nav-link">Betreiberpflichten</a></li>
-        <li class="nav-item"><a href="/wissen/" class="nav-link">Wissen</a></li>
-        <li class="nav-item"><a href="/ueber-uns/" class="nav-link">Über uns</a></li>
-      </ul>
-      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile" class="btn btn-primary nav-cta" id="nav-cta" style="display:none">Erstgespräch buchen</a>
+        </div>
+        <a href="/betreiberpflichten/" role="listitem">Betreiberpflichten</a>
+        <a href="/wissen/" role="listitem">Wissen</a>
+        <a href="/ueber-uns/" role="listitem">Über uns</a>
+        <a href="/faq/" role="listitem">FAQ</a>
+      </div>
+      <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:none;font-size:13px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:7px 16px;border-radius:6px;white-space:nowrap;transition:background 0.2s,color 0.2s;" id="nav-portal-desktop" onmouseover="this.style.background='#3D7E79';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#3D7E79'">Kundenportal</a>
+      <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+         target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+        Erstgespräch buchen
+      </a>
+      <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -154,9 +206,16 @@
       <p>&copy; 2026 ElevonIQ GmbH &middot; <a href="/impressum/">Impressum</a> &middot; <a href="/datenschutz/">Datenschutz</a> &middot; <a href="/widerrufsrecht/">Widerrufsrecht</a> &middot; <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">OS-Streitbeilegung</a></p>
     </div>
   </footer>
-  <script src="../../assets/js/cookie-consent.js"></script>
-  <script src="../../assets/js/nav.js"></script>
-  <script>document.addEventListener('DOMContentLoaded',function(){document.getElementById('nav-cta').style.display='';})</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var cta = document.getElementById('nav-cta-desktop');
+      if (cta) cta.style.display = 'inline-block';
+      var portal = document.getElementById('nav-portal-desktop');
+      if (portal) portal.style.display = 'inline-block';
+    });
+  </script>
+  <script src="../../assets/js/nav.js" defer></script>
+  <script src="../../assets/js/cookie-consent.js" defer></script>
 <!-- GA4 — nur nach Analytics-Consent -->
 <script>
 (function() {
