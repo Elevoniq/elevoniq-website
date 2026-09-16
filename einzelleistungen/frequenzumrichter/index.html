@@ -53,6 +53,12 @@
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
 
+    /* Hero split: text left, image right */
+    .hero-split { display:grid; grid-template-columns:1fr 560px; gap:3rem; align-items:center; }
+    .hero-photo-single { border-radius:12px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,0.22); }
+    .hero-photo-single img { width:100%; height:auto; display:block; }
+    @media (max-width:900px) { .hero-split { grid-template-columns:1fr; } }
+
     /* KPI Strip */
     .kpi-strip {
       background: #FAF8F3;
@@ -591,31 +597,44 @@
 <!-- HERO -->
 <section class="page-hero" aria-label="Frequenzumrichter">
   <div class="container">
-    <!-- Breadcrumb -->
-    <nav aria-label="Breadcrumb" class="breadcrumb" style="padding:0 0 1.25rem;">
-      <a href="/">ElevonIQ</a>
-      <span class="breadcrumb-sep">/</span>
-      <a href="../index.html">Einzelleistungen</a>
-      <span class="breadcrumb-sep">/</span>
-      <span>Frequenzumrichter</span>
-    </nav>
-    <span class="section-eyebrow" style="color:rgba(255,255,255,0.90);">Neuer Frequenzumrichter für Ihren defekten Aufzug</span>
-    <h1>Ihr Aufzug steht?<br>In 1 Woche zum Ersatzteil.<br><span class="accent">Und dazu noch 250 € Nachhaltigkeitsbonus.</span></h1>
-    <p>Sanieren Sie Ihren defekten Frequenzumrichter, statt wochenlang auf ein Neugerät zu warten. ElevonIQ unterstützt bei der ersten Einordnung, beim Express-Angebot und auf Wunsch auch bei der Prüfung bereits vorliegender Angebote.</p>
-    <div class="hero-badge-row">
-      <span class="hero-badge">Generalüberholt</span>
-      <span class="hero-badge">TÜV Süd-zertifizierter Prozess</span>
-      <span class="hero-badge">2 Jahre Garantie</span>
-      <span class="hero-badge">Bis zu 50 % günstiger</span>
+    <div class="hero-split">
+      <!-- Text-Spalte -->
+      <div>
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb" style="padding:0 0 1.25rem;">
+          <a href="/">ElevonIQ</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="../index.html">Einzelleistungen</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>Frequenzumrichter</span>
+        </nav>
+        <span class="section-eyebrow" style="color:rgba(255,255,255,0.90);">Neuer Frequenzumrichter für Ihren defekten Aufzug</span>
+        <h1>Ihr Aufzug steht?<br>In 1 Woche zum Ersatzteil.<br><span class="accent">Und dazu noch 250 € Nachhaltigkeitsbonus.</span></h1>
+        <p>Sanieren Sie Ihren defekten Frequenzumrichter, statt wochenlang auf ein Neugerät zu warten. ElevonIQ unterstützt bei der ersten Einordnung, beim Express-Angebot und auf Wunsch auch bei der Prüfung bereits vorliegender Angebote.</p>
+        <div class="hero-badge-row">
+          <span class="hero-badge">Generalüberholt</span>
+          <span class="hero-badge">TÜV Süd-zertifizierter Prozess</span>
+          <span class="hero-badge">2 Jahre Garantie</span>
+          <span class="hero-badge">Bis zu 50 % günstiger</span>
+        </div>
+        <div class="hero-cta-row">
+          <a href="#umrichter-formular" class="btn-primary">Angebot anfragen</a>
+          <a href="#preise" class="btn-secondary">Leistungsstufen ansehen</a>
+        </div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.80);margin:0;">
+          Fragen vorab?
+          <a href="https://wa.me/4915154963306" target="_blank" rel="noopener" style="color:#FFFFFF;font-weight:700;text-decoration:underline;">WhatsApp: 0151 5496 3306</a>
+        </p>
+      </div>
+      <!-- Bild-Spalte -->
+      <div class="hero-photo-single">
+        <img src="../../assets/images/frequenzumrichter/frequenzumrichter-schaltschrank-servicetechniker.jpg"
+             alt="Servicetechniker vor geöffnetem Frequenzumrichter-Schaltschrank neben einem stehenden Aufzug mit rotem Warnhinweis auf dem Display"
+             width="560" height="373"
+             loading="eager"
+             fetchpriority="high">
+      </div>
     </div>
-    <div class="hero-cta-row">
-      <a href="#umrichter-formular" class="btn-primary">Angebot anfragen</a>
-      <a href="#preise" class="btn-secondary">Leistungsstufen ansehen</a>
-    </div>
-    <p style="font-size:14px;color:rgba(255,255,255,0.80);margin:0;">
-      Fragen vorab?
-      <a href="https://wa.me/4915154963306" target="_blank" rel="noopener" style="color:#FFFFFF;font-weight:700;text-decoration:underline;">WhatsApp: 0151 5496 3306</a>
-    </p>
   </div>
 </section>
 
