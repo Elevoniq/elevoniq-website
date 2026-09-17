@@ -3,7 +3,7 @@
 /* ─── CSS CUSTOM PROPERTIES ─────────────────────── */
 :root {
   --color-coral: #FF5B5C;
-  --color-coral-dark: #E8474A;   /* WCAG AA 4.6:1 gegen Weiß */
+  --color-coral-dark: #E8474A;   /* ca. 3.9:1 gegen Weiß — Fail bei Normaltext, Pass nur bei Großtext ≥18.66px/fett bzw. ≥24px */
   --color-teal: #69B0AB;
   --color-teal-dark: #3D7E79;
   --color-navy: #1E2761;
@@ -417,6 +417,15 @@ p { line-height: 1.7; }
   opacity: 0.8;
   transition: opacity var(--transition-base);
   border-bottom: none;
+  overflow-wrap: break-word;
+}
+/* .nav-links a setzt white-space: nowrap für die Top-Level-Links — Regel
+   greift wegen Nachfahren-Selektor auch hier, deshalb hoehere Spezifitaet
+   noetig, um es fuer Dropdown-Items wieder aufzuheben (langer Produktname
+   "Wartung von energetischen Schachtentrauchungsklappen" lief sonst ueber
+   die Spaltenbreite hinaus, siehe Ida-Feedback 2026-09-17). */
+.nav-dropdown-menu .dropdown-item {
+  white-space: normal;
 }
 .dropdown-item:hover { opacity: 1; color: var(--color-coral-dark); }
 .dropdown-item .item-price {
@@ -490,6 +499,7 @@ p { line-height: 1.7; }
   font-weight: var(--font-weight-medium);
   color: var(--color-dark);
   border-bottom: 1px solid rgba(0,0,0,0.04);
+  overflow-wrap: break-word;
 }
 .mobile-nav-cta {
   margin-top: 2rem;

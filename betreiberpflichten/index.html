@@ -179,12 +179,12 @@
   .verwechslung-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 32px;
   }
 
   .vk-card {
     background: #ffffff;
-    border: 1px solid rgba(0,0,0,0.1);
+    border: 1.5px solid rgba(30,39,97,0.15);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 12px rgba(0,0,0,0.05);
@@ -194,7 +194,7 @@
 
   .vk-headline {
     padding: 16px 20px;
-    background: #FAF8F3;
+    background: #FFFFFF;
     color: #1A1A1A;
     font-size: 13px;
     font-weight: 700;
@@ -209,7 +209,7 @@
   }
 
   .vk-side {
-    padding: 18px;
+    padding: 20px;
   }
   .vk-side-left  { background: #FAF8F3; }
   .vk-side-right { background: #F0FAF9; }
@@ -218,33 +218,68 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     background: #ffffff;
-    padding: 0 10px;
-    border-left: 1px solid rgba(0,0,0,0.06);
-    border-right: 1px solid rgba(0,0,0,0.06);
+    padding: 0 16px;
+  }
+  .vk-divider::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; left: 50%;
+    width: 1px;
+    background: rgba(0,0,0,0.1);
+    transform: translateX(-50%);
   }
   .vk-divider-neq {
-    font-size: 22px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    border: 1.5px solid rgba(232,71,74,0.35);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    font-size: 20px;
     font-weight: 800;
     color: #E8474A;
     line-height: 1;
   }
 
   .vk-side-label {
+    display: inline-block;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #3D7E79;
-    margin-bottom: 8px;
+    color: #1E2761;
+    border-bottom: 2px solid rgba(30,39,97,0.3);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+  }
+  .vk-side-label-teal {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #2E625E;
+    border-bottom: 2px solid rgba(46,98,94,0.3);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
   }
   .vk-side-label-coral {
+    display: inline-block;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #E8474A;
-    margin-bottom: 8px;
+    color: #C93A3D;
+    border-bottom: 2px solid rgba(201,58,61,0.3);
+    padding-bottom: 4px;
+    margin-bottom: 10px;
   }
   .vk-side-list {
     list-style: none;
@@ -293,20 +328,21 @@
   }
 
   .vk-mitte {
-    padding: 12px 18px;
-    background: rgba(30,39,97,0.04);
-    border-top: 1px solid rgba(0,0,0,0.07);
-    border-bottom: 1px solid rgba(0,0,0,0.07);
+    margin: 16px 18px 18px;
+    padding: 14px 16px;
+    background: rgba(30,39,97,0.07);
+    border-left: 3px solid #1E2761;
+    border-radius: 0 8px 8px 0;
     font-size: 12px;
     color: #1E2761;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.6;
   }
 
   .vk-kernsatz {
-    margin: 0 18px 18px;
+    margin: 16px 18px 18px;
     padding: 12px 14px;
-    background: rgba(232,71,74,0.06);
+    background: rgba(232,71,74,0.08);
     border-left: 3px solid #E8474A;
     border-radius: 0 6px 6px 0;
     font-size: 12px;
@@ -316,19 +352,21 @@
   }
 
   .vk-hinweis {
-    padding: 12px 18px;
-    background: #FAFAFA;
-    border-top: 1px solid rgba(0,0,0,0.07);
+    margin: 0 18px 18px;
+    padding: 12px 16px;
+    background: #F7F6F4;
+    border-left: 3px solid #9CA3AF;
+    border-radius: 0 8px 8px 0;
     font-size: 11px;
-    color: #6B7280;
+    color: #4B5563;
     line-height: 1.6;
   }
   .vk-hinweis strong { color: #1A1A1A; font-weight: 600; }
 
   .vk-irrtum-list {
-    padding: 14px 18px;
-    background: #FEFCFC;
-    border-top: 1px solid rgba(0,0,0,0.07);
+    padding: 16px 18px;
+    background: #FCFAF9;
+    border-top: 2px solid rgba(0,0,0,0.08);
   }
   .vk-irrtum-list-title {
     font-size: 10px;
@@ -343,7 +381,7 @@
     color: #444;
     line-height: 1.6;
     padding: 8px 10px;
-    background: rgba(232,71,74,0.04);
+    background: rgba(232,71,74,0.07);
     border-radius: 6px;
     border-left: 2px solid #E8474A;
     margin-bottom: 8px;
@@ -355,12 +393,14 @@
   }
 
   .kern-unterschied {
-    padding: 12px 18px;
-    border-top: 1px solid rgba(0,0,0,0.07);
+    margin: 16px 18px 18px;
+    padding: 14px 16px;
+    background: rgba(30,39,97,0.06);
+    border-left: 3px solid #1E2761;
+    border-radius: 0 8px 8px 0;
     font-size: 12px;
-    color: #6B7280;
+    color: #4B5563;
     line-height: 1.65;
-    background: #FAFAFA;
   }
   .kern-unterschied strong { color: #1A1A1A; font-weight: 600; }
 
@@ -994,7 +1034,12 @@
   @media (max-width: 560px) {
     .pflichten-grid-v4 { grid-template-columns: 1fr; }
     .vk-split { grid-template-columns: 1fr; }
-    .vk-divider { padding: 6px 0; }
+    .vk-divider { padding: 16px 0; }
+    .vk-divider::before {
+      top: 50%; bottom: auto; left: 12px; right: 12px;
+      width: auto; height: 1px;
+      transform: translateY(-50%);
+    }
     .pflicht-card-meta { grid-template-columns: 1fr; }
   }
   </style>
@@ -1155,7 +1200,7 @@
           </div>
           <div class="vk-divider"><span class="vk-divider-neq">&#8800;</span></div>
           <div class="vk-side vk-side-right">
-            <div class="vk-side-label">Wartung</div>
+            <div class="vk-side-label-teal">Wartung</div>
             <ul class="vk-side-list">
               <li>Durchgeführt von einer zugelassenen Aufzugsfachfirma.</li>
               <li>Technische Inspektion, Einstellung, Verschleißteil-Tausch, kleine Reparaturen.</li>
@@ -1187,7 +1232,7 @@
           </div>
           <div class="vk-divider"><span class="vk-divider-neq">&#8800;</span></div>
           <div class="vk-side vk-side-right">
-            <div class="vk-side-label">ZÜS-Prüfbericht</div>
+            <div class="vk-side-label-teal">ZÜS-Prüfbericht</div>
             <ul class="vk-side-list">
               <li>Erstellt von einer zugelassenen Überwachungsstelle (TÜV, DEKRA, GTÜ).</li>
               <li>Amtliche Bescheinigung nach Haupt- oder Zwischenprüfung.</li>
@@ -1216,7 +1261,7 @@
           </div>
           <div class="vk-divider"><span class="vk-divider-neq">&#8800;</span></div>
           <div class="vk-side vk-side-right">
-            <div class="vk-side-label">Betriebskontrolle / Inaugenscheinnahme</div>
+            <div class="vk-side-label-teal">Betriebskontrolle / Inaugenscheinnahme</div>
             <ul class="vk-side-list">
               <li>Durchgeführt von der beauftragten Person (kein Fachmann).</li>
               <li>Wöchentlich — mindestens jedoch einmal pro Monat.</li>
