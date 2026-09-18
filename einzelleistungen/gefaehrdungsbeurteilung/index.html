@@ -56,14 +56,25 @@
 
     /* 2. Für-wen Karten mit Icon und farbigem Rand */
     .card--accent {
-      border-top: 4px solid var(--card-accent-color, #1E2761);
-      padding-top: 1.5rem;
+      border-left: 2px solid #1E2761;
+      padding-left: 1.5rem;
+    }
+    .card-icon-box {
+      width: 32px;
+      height: 32px;
+      background: rgba(30, 39, 97, 0.06);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
     }
     .card-icon {
-      width: 44px;
-      height: 44px;
-      margin-bottom: .9rem;
+      width: 18px;
+      height: 18px;
       display: block;
+      flex-shrink: 0;
     }
 
     /* 3. Feature-Grid — 2-Spalten mit Badge-Haken */
@@ -332,35 +343,44 @@
       <p class="section-eyebrow">Ihre Situation</p>
       <h2>Für wen ist das?</h2>
       <div class="grid-3">
-        <div class="card card--accent" style="--card-accent-color:#E8474A;">
-          <svg class="card-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <path d="M22 6L4 38h36L22 6z" fill="rgba(232,71,74,.12)" stroke="#E8474A" stroke-width="2" stroke-linejoin="round"/>
-            <line x1="22" y1="18" x2="22" y2="27" stroke="#E8474A" stroke-width="2.2" stroke-linecap="round"/>
-            <circle cx="22" cy="32" r="1.4" fill="#E8474A"/>
-          </svg>
+        <div class="card card--accent">
+          <div class="card-icon-box">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#1E2761" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" aria-hidden="true">
+              <polygon points="3,2 13,2 17,6 17,22 3,22"/>
+              <polyline points="13,2 13,6 17,6"/>
+              <line x1="5" y1="9.5" x2="15" y2="9.5"/>
+              <line x1="5" y1="12.5" x2="11" y2="12.5"/>
+              <line x1="5" y1="17" x2="8" y2="17"/>
+              <line x1="10" y1="17" x2="13" y2="17"/>
+            </svg>
+          </div>
           <h3 class="card-title">GBU fehlt oder veraltet</h3>
           <p class="card-body">Sie haben noch keine gültige Gefährdungsbeurteilung oder sie wurde seit Jahren nicht aktualisiert.</p>
         </div>
-        <div class="card card--accent" style="--card-accent-color:#69B0AB;">
-          <svg class="card-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <circle cx="22" cy="22" r="4" fill="rgba(105,176,171,.15)" stroke="#69B0AB" stroke-width="2"/>
-            <path d="M16 22a6 6 0 0112 0" stroke="#69B0AB" stroke-width="2" stroke-linecap="round" fill="none"/>
-            <path d="M10 22a12 12 0 0124 0" stroke="#69B0AB" stroke-width="2" stroke-linecap="round" fill="none"/>
-            <path d="M4 22a18 18 0 0136 0" stroke="#69B0AB" stroke-width="2" stroke-linecap="round" fill="none"/>
-          </svg>
+        <div class="card card--accent">
+          <div class="card-icon-box">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#1E2761" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" aria-hidden="true">
+              <rect x="3" y="7" width="13" height="14"/>
+              <line x1="9.5" y1="7" x2="9.5" y2="21"/>
+              <line x1="8.5" y1="9" x2="10.5" y2="9"/>
+              <line x1="8.5" y1="19" x2="10.5" y2="19"/>
+              <circle cx="17.5" cy="6" r="1.5" fill="#1E2761" stroke="none"/>
+              <line x1="17.5" y1="6" x2="23" y2="6"/>
+              <line x1="17.5" y1="6" x2="17.5" y2="2"/>
+            </svg>
+          </div>
           <h3 class="card-title">Vernetzter Aufzug</h3>
           <p class="card-body">Ihr Aufzug verfügt über Ferndiagnose, IoT oder digitale Schnittstellen. Der Cybersecurity-Check ist seit 2023 Pflicht.</p>
         </div>
-        <div class="card card--accent" style="--card-accent-color:#1E2761;">
-          <svg class="card-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
-            <rect x="6" y="8" width="32" height="28" rx="3" fill="rgba(30,39,97,.10)" stroke="#1E2761" stroke-width="2"/>
-            <line x1="6" y1="16" x2="38" y2="16" stroke="#1E2761" stroke-width="2"/>
-            <line x1="14" y1="8" x2="14" y2="16" stroke="#1E2761" stroke-width="2" stroke-linecap="round"/>
-            <line x1="30" y1="8" x2="30" y2="16" stroke="#1E2761" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="22" cy="27" r="4" fill="rgba(30,39,97,.12)" stroke="#1E2761" stroke-width="1.5"/>
-            <line x1="22" y1="25" x2="22" y2="27.5" stroke="#1E2761" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="22" y1="27.5" x2="24" y2="29.5" stroke="#1E2761" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+        <div class="card card--accent">
+          <div class="card-icon-box">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="#1E2761" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" aria-hidden="true">
+              <path d="M 15.1,3.5 A 9,9 0 1 1 8.9,3.5"/>
+              <path d="M 13.7,7.3 A 5,5 0 1 1 10.3,7.3"/>
+              <line x1="8.5" y1="13" x2="15.5" y2="13"/>
+              <polyline points="13.5,11 15.5,13 13.5,15"/>
+            </svg>
+          </div>
           <h3 class="card-title">Prüfung steht an</h3>
           <p class="card-body">Eine ZÜS-Prüfung steht an und Sie möchten sicherstellen, dass alle Dokumente vollständig und korrekt vorliegen.</p>
         </div>
