@@ -333,23 +333,28 @@
     <div class="section-header centered">
       <span class="section-eyebrow">Beispielrechnung</span>
       <h2 class="section-title" id="kostentabelle-heading">Was kostet Sie der Status quo?</h2>
-      <p class="section-lead">Verwaltung mit 8 Aufzügen — konservativ gerechnet, reale Hebel.</p>
+      <p class="section-lead">Verwaltung mit 8 Aufzügen — konservativ gerechnet, reale Hebel. Einmalige und wiederkehrende Effekte sind getrennt ausgewiesen.</p>
     </div>
+    <!-- Offener Punkt: Fuer "Modernisierung Steuerung" und "Notruf 2G-Umruestung" ist die zugrunde
+         gelegte Anlagenzahl nicht belegt. Der Bezug ist deshalb als "je Massnahme" bzw. "je Ausschreibung"
+         ausgewiesen und bewusst NICHT auf 8 Anlagen hochgerechnet.
+         Sobald die Anlagenzahl belegt ist: Bezugszeile praezisieren. -->
     <div style="overflow-x:auto;">
       <table style="width:100%;border-collapse:collapse;font-family:'Work Sans',sans-serif;font-size:15px;background:var(--color-white);border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
         <thead>
           <tr style="border-bottom:2px solid var(--color-dark);">
-            <th style="text-align:left;padding:18px 24px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-dark);width:36%;">Beispielposten<br><span style="font-weight:400;color:var(--color-gray);">Verwaltung mit 8 Aufzügen</span></th>
-            <th style="text-align:right;padding:18px 16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-teal-dark);width:20%;">Bsp. ElevonIQ<br><span style="font-weight:400;color:var(--color-gray);">Preis</span></th>
-            <th style="text-align:right;padding:18px 16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);width:20%;">Ist-Kosten<br><span style="font-weight:400;">beim Kunden</span></th>
-            <th style="text-align:right;padding:18px 24px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);width:24%;">Hebel mit ElevonIQ</th>
+            <th scope="col" style="text-align:left;padding:18px 24px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-dark);width:36%;">Beispielposten<br><span style="font-weight:400;color:var(--color-gray);">Verwaltung mit 8 Aufzügen · Bezugsgröße je Zeile angegeben</span></th>
+            <th scope="col" style="text-align:right;padding:18px 16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-teal-dark);width:20%;">Bsp. ElevonIQ<br><span style="font-weight:400;color:var(--color-gray);">Preis</span></th>
+            <th scope="col" style="text-align:right;padding:18px 16px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-gray);width:20%;">Ist-Kosten<br><span style="font-weight:400;">beim Kunden</span></th>
+            <th scope="col" style="text-align:right;padding:18px 24px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);width:24%;">Hebel mit ElevonIQ</th>
           </tr>
         </thead>
         <tbody>
           <tr style="border-bottom:1px solid #F0F0F0;">
             <td style="padding:20px 24px;">
-              <div style="font-weight:700;color:var(--color-dark);">Wartungsvertrag (3 Aufzüge)</div>
+              <div style="font-weight:700;color:var(--color-dark);">Wartungsvertrag</div>
               <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">nach Marktvergleich</div>
+              <div style="font-size:12px;color:var(--color-gray);margin-top:6px;">Bezug: 3 von 8 Anlagen · wiederkehrend pro Jahr</div>
             </td>
             <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">3.870 €/a</td>
             <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">4.920 €/a</td>
@@ -359,6 +364,7 @@
             <td style="padding:20px 24px;">
               <div style="font-weight:700;color:var(--color-dark);">Modernisierung Steuerung</div>
               <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">nach Ausschreibung</div>
+              <div style="font-size:12px;color:var(--color-gray);margin-top:6px;">Bezug: je Modernisierungsmaßnahme · einmalig</div>
             </td>
             <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">42.000 €</td>
             <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">63.000 €</td>
@@ -368,6 +374,7 @@
             <td style="padding:20px 24px;">
               <div style="font-weight:700;color:var(--color-dark);">Frequenzumrichter defekt</div>
               <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">Aufzug steht · Ersatzteilbeschaffung</div>
+              <div style="font-size:12px;color:var(--color-gray);margin-top:6px;">Bezug: je Störfall an einer Anlage · einmalig</div>
             </td>
             <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);line-height:1.6;">9.800 €<br><span style="font-size:12px;font-weight:400;">7 Tage</span></td>
             <td style="padding:20px 16px;text-align:right;color:var(--color-gray);line-height:1.6;">13.750 €<br><span style="font-size:12px;">21 Tage</span></td>
@@ -377,6 +384,7 @@
             <td style="padding:20px 24px;">
               <div style="font-weight:700;color:var(--color-dark);">Notruf 2G-Umrüstung</div>
               <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">gemeinsam ausgeschrieben</div>
+              <div style="font-size:12px;color:var(--color-gray);margin-top:6px;">Bezug: je Ausschreibung · einmalig</div>
             </td>
             <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">1.890 €</td>
             <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">2.640 €</td>
@@ -385,23 +393,35 @@
           <tr style="border-bottom:2px solid var(--color-dark);">
             <td style="padding:20px 24px;">
               <div style="font-weight:700;color:var(--color-dark);">SMART FLAP<sup>&reg;</sup> (Heizenergie)</div>
-              <div style="font-size:13px;color:var(--color-gray);margin-top:3px;">pro Anlage</div>
+              <div style="font-size:12px;color:var(--color-gray);margin-top:6px;">Bezug: 1 Anlage · wiederkehrend pro Jahr</div>
             </td>
             <td style="padding:20px 16px;text-align:right;font-weight:700;color:var(--color-teal-dark);">–</td>
             <td style="padding:20px 16px;text-align:right;color:var(--color-gray);line-height:1.6;">2.400 €<br><span style="font-size:12px;">9.500 kWh/a</span></td>
             <td style="padding:20px 24px;text-align:right;font-weight:700;color:var(--color-savings);line-height:1.6;">–2.400 €<br><span style="font-size:12px;">–9.500 kWh/a</span></td>
           </tr>
+        </tbody>
+        <tfoot>
           <tr style="background:#F0FAF4;border-top:2px solid var(--color-savings);">
             <td style="padding:20px 24px;">
-              <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);">Jährliche Wirkung · Konservativ</div>
+              <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);">Wiederkehrend pro Jahr</div>
+              <div style="font-size:12px;color:var(--color-gray);margin-top:6px;">Wartungsvertrag (3 Anlagen) + SMART FLAP<sup>&reg;</sup> (1 Anlage)</div>
             </td>
             <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">–</td>
             <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">–</td>
-            <td style="padding:20px 24px;text-align:right;font-size:20px;font-weight:700;color:var(--color-savings);">≈ –29.150 € / Jahr</td>
+            <td style="padding:20px 24px;text-align:right;font-size:20px;font-weight:700;color:var(--color-savings);">≈ –3.450 € / Jahr</td>
           </tr>
-        </tbody>
+          <tr style="background:#F0FAF4;border-top:1px solid #D6E8DC;">
+            <td style="padding:20px 24px;">
+              <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-savings);">Einmalige Effekte</div>
+              <div style="font-size:12px;color:var(--color-gray);margin-top:6px;">Modernisierung + Frequenzumrichter + Notruf-Umrüstung · einmalig, nicht jährlich wiederkehrend</div>
+            </td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">–</td>
+            <td style="padding:20px 16px;text-align:right;color:var(--color-gray);">–</td>
+            <td style="padding:20px 24px;text-align:right;font-size:20px;font-weight:700;color:var(--color-savings);">≈ –25.700 € einmalig</td>
+          </tr>
+        </tfoot>
       </table>
-      <p style="font-size:12px;color:var(--color-gray);margin-top:12px;font-style:italic;">Anonymisiertes Beispiel aus dem Bestand 2024. Reale Hebel je Anlage hängen von Vertragslaufzeit, Hersteller und Alter ab.</p>
+      <p style="font-size:12px;color:var(--color-gray);margin-top:12px;font-style:italic;">Anonymisiertes Beispiel aus dem Bestand 2024. Reale Hebel je Anlage hängen von Vertragslaufzeit, Hersteller und Alter ab. Einmalige und wiederkehrende Effekte werden getrennt ausgewiesen und nicht zu einem Jahreswert addiert.</p>
     </div>
     <div style="text-align:center;margin-top:40px;">
       <span class="btn-primary" style="opacity:0.65;cursor:not-allowed;display:inline-block;padding:13px 26px;border-radius:6px;font-size:15px;font-weight:700;background:#c93a3d;color:#fff;">
