@@ -90,6 +90,56 @@ test("Pruefbericht form validates required fields before upload fetch", () => {
   );
 });
 
+// Sammelupload: Das Formular versprach "Sammelupload", liess aber nur eine Datei zu.
+// Vercel lehnt Requests ueber 4,5 MB mit 413 ab (gemessen 24.09.2026), daher 4 MiB gesamt im Client.
+test("Pruefbericht upload accepts multiple files within the Vercel payload limit", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    /<input type="file" id="pb-file-input"[^>]*\bmultiple\b/.test(html),
+    "Expected the pruefbericht file input to allow selecting multiple files",
+  );
+  assert.ok(
+    html.includes("bis zu 5 Dateien · max. 4 MB gesamt"),
+    "Expected the dropzone hint to state the real file count and total size limit",
+  );
+  assert.ok(
+    !html.includes("max. 9 MB"),
+    "The 9 MB claim exceeds the 4.5 MB Vercel request limit and must not be shown",
+  );
+  assert.ok(
+    html.includes("var PB_MAX_FILES=5;") && html.includes("var PB_MAX_TOTAL_BYTES=4*1024*1024;"),
+    "Expected client-side limits matching api/upload.js (5 files) and the Vercel payload limit",
+  );
+  assert.ok(
+    html.includes('id="pb-file-status" class="ev-file-status" aria-live="polite"'),
+    "Expected the file selection to be announced via a polite live region",
+  );
+  assert.ok(
+    html.includes("r.status===413"),
+    "Expected a dedicated message when Vercel rejects the payload as too large",
+  );
+  assert.ok(
+    html.includes(".toFixed(1).replace('.',',')") &&
+      html.includes("' MB groß, erlaubt sind max. 4 MB.") &&
+      html.includes("' Alternativ senden Sie Ihre Unterlagen an '"),
+    "Expected the approved error wording with a German decimal comma",
+  );
+});
+
+test("Pruefbericht file input stays keyboard reachable (WCAG 2.1.1)", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    !html.includes('.ev-field-upload input[type="file"]{display:none;}'),
+    "display:none removes the file input from the tab order",
+  );
+  assert.ok(
+    html.includes(".ev-field-upload:focus-within{"),
+    "Expected a visible focus indicator on the dropzone when the file input has focus",
+  );
+});
+
 test("Angebotspruefung form validates required fields before upload fetch", () => {
   const html = read("einzelleistungen/angebotspruefung/index.html");
 
