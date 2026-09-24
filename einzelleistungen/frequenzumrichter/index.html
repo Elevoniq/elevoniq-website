@@ -814,8 +814,12 @@
           overflow: hidden;
           box-shadow: 0 8px 40px rgba(0,0,0,0.18);
         ">
+          <!-- src bewusst relativ: Seite und Nachweis muessen vom selben Host kommen
+               (elevoniq.de, www.elevoniq.de, Vercel-Preview). Eine absolute URL mit
+               festem Host wird auf jedem anderen Host von CSP frame-src 'self' und
+               X-Frame-Options SAMEORIGIN blockiert. Abgesichert in tests/. -->
           <iframe
-            src="https://elevoniq.de/einzelleistungen/frequenzumrichter/nachhaltigkeitsnachweis.html"
+            src="/einzelleistungen/frequenzumrichter/nachhaltigkeitsnachweis.html"
             style="
               position: absolute;
               top: 0; left: 0;

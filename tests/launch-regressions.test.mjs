@@ -175,6 +175,82 @@ test("Datenschutz no longer exposes internal go-live review notes", () => {
   );
 });
 
+// Nachhaltigkeitsnachweis-iframe (Frequenzumrichter): drei Schichten muessen zusammen
+// stimmen, sonst zeigt der Browser ein leeres Feld oder ein kaputtes Datei-Icon.
+// 1. iframe-src relativ (gleicher Host wie die Seite, egal ob elevoniq.de, www oder Preview)
+// 2. CSP frame-src enthaelt 'self' (die Seite darf eigene Inhalte einbetten)
+// 3. X-Frame-Options SAMEORIGIN fuer den Nachweis (statt des globalen DENY)
+// Vorfall 2026-09-24: absolute src https://elevoniq.de/... brach auf www.elevoniq.de.
+function listHtmlFiles(dir) {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    if (entry.name.startsWith(".") || entry.name === "node_modules") return [];
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) return listHtmlFiles(full);
+    return entry.name.endsWith(".html") ? [full] : [];
+  });
+}
+
+test("Own-site iframes use host-independent src (no fixed elevoniq.de host)", () => {
+  const offenders = [];
+  for (const file of listHtmlFiles(root)) {
+    const html = fs.readFileSync(file, "utf8");
+    for (const match of html.matchAll(/<iframe\b[^>]*?\bsrc="([^"]*)"/gis)) {
+      if (/^(https?:)?\/\/(www\.)?elevoniq\.de/i.test(match[1])) {
+        offenders.push(`${path.relative(root, file)}: ${match[1]}`);
+      }
+    }
+  }
+
+  assert.deepEqual(
+    offenders,
+    [],
+    "iframes to own pages must use a relative src, otherwise CSP frame-src 'self' and X-Frame-Options SAMEORIGIN block them on www/preview hosts",
+  );
+});
+
+test("Nachhaltigkeitsnachweis iframe points to the existing same-origin document", () => {
+  const html = read("einzelleistungen/frequenzumrichter/index.html");
+  const match = html.match(/<iframe\b[^>]*\bid="nachweis-iframe"[^>]*>/is);
+
+  assert.ok(match, "Expected the nachweis-iframe on the Frequenzumrichter page");
+  const src = match[0].match(/\bsrc="([^"]*)"/i)?.[1];
+  assert.equal(
+    src,
+    "/einzelleistungen/frequenzumrichter/nachhaltigkeitsnachweis.html",
+    "Nachweis iframe must use the root-relative path",
+  );
+  assert.ok(
+    fs.existsSync(path.join(root, src)),
+    "Embedded Nachhaltigkeitsnachweis document must exist in the repo",
+  );
+});
+
+test("Vercel headers allow the Nachhaltigkeitsnachweis self-embed", () => {
+  const vercel = JSON.parse(read("vercel.json"));
+  const headers = vercel.headers || [];
+  const globalIndex = headers.findIndex((entry) => entry.source === "/(.*)");
+  const nachweisIndex = headers.findIndex(
+    (entry) => entry.source === "/einzelleistungen/frequenzumrichter/nachhaltigkeitsnachweis.html",
+  );
+  const valueOf = (entry, key) =>
+    entry?.headers.find((h) => h.key.toLowerCase() === key.toLowerCase())?.value;
+
+  const csp = valueOf(headers[globalIndex], "Content-Security-Policy") || "";
+  const frameSrc = csp.split(";").map((d) => d.trim()).find((d) => d.startsWith("frame-src"));
+  assert.ok(
+    frameSrc && frameSrc.split(/\s+/).includes("'self'"),
+    "CSP frame-src must include 'self' so the page can embed its own Nachweis",
+  );
+  assert.ok(!/frame-ancestors\s+'none'/.test(csp), "CSP frame-ancestors 'none' would block the self-embed");
+
+  assert.ok(nachweisIndex > globalIndex, "Nachweis header rule must come after the global rule to override DENY");
+  assert.equal(
+    valueOf(headers[nachweisIndex], "X-Frame-Options"),
+    "SAMEORIGIN",
+    "Nachweis document must allow same-origin framing",
+  );
+});
+
 test("Smart Flap no longer ships unused placeholder styles", () => {
   const html = read("laufende-betreuung/smart-flap/index.html");
 
