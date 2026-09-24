@@ -165,6 +165,23 @@ test("Pruefbericht FAQ names the correct price for Angebote einholen", () => {
   );
 });
 
+test("Upload API keeps all file names of a Sammelupload in userInfo", () => {
+  const api = read("api/upload.js");
+
+  assert.ok(
+    !api.includes("filesByKey[key] = value.name;"),
+    "Overwriting per field keeps only the last file name of a multi-file upload",
+  );
+  assert.ok(
+    api.includes("filesByKey[key].push(value.name);"),
+    "Expected file names to be collected per form field",
+  );
+  assert.ok(
+    api.includes("sf_pruefbericht_dateiname: filesByKey['sf_pruefbericht_datei'].join(', ')"),
+    "Expected sf_pruefbericht_dateiname to stay a string (comma-separated) for the Hub",
+  );
+});
+
 test("Pruefbericht file input stays keyboard reachable (WCAG 2.1.1)", () => {
   const html = read("einzelleistungen/pruefbericht-check/index.html");
 

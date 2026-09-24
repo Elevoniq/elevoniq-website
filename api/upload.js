@@ -193,13 +193,16 @@ export default async function handler(request) {
 
   const upstreamData = new FormData();
   const meta = {};
+  // Dateinamen je Feld sammeln: Beim Sammelupload kommen mehrere Dateien unter demselben
+  // Feldnamen (z.B. sf_pruefbericht_datei), vorher blieb nur der letzte Name erhalten.
   const filesByKey = {};
 
   for (const [key, value] of formData.entries()) {
     if (key === 'queueType') continue;
     if (value instanceof File) {
       upstreamData.append('files', value);
-      filesByKey[key] = value.name;
+      if (!filesByKey[key]) filesByKey[key] = [];
+      filesByKey[key].push(value.name);
     } else if (key === 'userInfo') {
       upstreamData.set('userInfo', value);
     } else {
@@ -216,7 +219,8 @@ export default async function handler(request) {
       email: meta['sf_email'] || meta['email'] || '',
       name,
       ...meta,
-      ...(filesByKey['sf_pruefbericht_datei'] ? { sf_pruefbericht_dateiname: filesByKey['sf_pruefbericht_datei'] } : {}),
+      // Bleibt ein String (kommagetrennt), damit sich fuer den Hub bei Einzeluploads nichts aendert.
+      ...(filesByKey['sf_pruefbericht_datei'] ? { sf_pruefbericht_dateiname: filesByKey['sf_pruefbericht_datei'].join(', ') } : {}),
     };
     upstreamData.set('userInfo', JSON.stringify(userInfo));
   }
