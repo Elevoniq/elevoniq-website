@@ -187,6 +187,7 @@
     .ev-field-upload .ev-file-status{display:block;margin-top:8px;font-size:.82rem;font-weight:600;color:var(--color-dark);overflow-wrap:anywhere;}
     .ev-field-upload .ev-file-status:empty{margin-top:0;}
     .ev-field-upload .ev-file-status.is-error{color:#B91C1C;}
+    .ev-field-hint{font-size:.8rem;color:var(--color-gray);line-height:1.5;margin:-2px 0 10px;padding-left:2px;}
     .ev-field-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
     .ev-checkbox-label{display:flex;align-items:flex-start;gap:8px;font-size:.84rem;color:var(--color-gray);line-height:1.5;margin-bottom:8px;}
     .ev-checkbox-label input{accent-color:var(--color-coral-dark);margin-top:2px;flex-shrink:0;}
@@ -860,12 +861,13 @@
             <small id="pb-file-status" class="ev-file-status" aria-live="polite"></small>
             <input type="file" id="pb-file-input" name="sf_pruefbericht_datei" accept=".pdf,.jpg,.jpeg,.png" multiple required aria-labelledby="pb-file-title" aria-describedby="pb-file-hint pb-file-status">
           </label>
-          <select name="sf_anliegen" id="pb-anliegen-select" class="ev-field" required>
+          <select name="sf_anliegen" id="pb-anliegen-select" class="ev-field" required aria-label="Ihr Anliegen" aria-describedby="pb-anliegen-hint">
             <option value="">Was trifft auf Ihren Fall zu?</option>
-            <option value="einordnen">Prüfbericht einordnen lassen</option>
-            <option value="angebot_pruefen">Bestehendes Angebot prüfen</option>
-            <option value="angebote_einholen">Angebote einholen</option>
+            <option value="einordnen">Prüfbericht einordnen: kostenlos</option>
+            <option value="angebot_pruefen">Angebot prüfen: 148 €</option>
+            <option value="angebote_einholen">Angebote einholen: 249 €</option>
           </select>
+          <p id="pb-anliegen-hint" class="ev-field-hint">Preis je Aufzug, zzgl. MwSt.</p>
           <div class="ev-field-row">
             <input type="text" name="sf_vorname" class="ev-field" placeholder="Vorname" required>
             <input type="text" name="sf_nachname" class="ev-field" placeholder="Nachname" required>

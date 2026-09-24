@@ -127,6 +127,31 @@ test("Pruefbericht upload accepts multiple files within the Vercel payload limit
   );
 });
 
+// Preise im Anliegen-Dropdown (Muster Frequenzumrichter-Seite, Copy von Nora).
+// Kurze Labels, weil ein geschlossenes Select auf 360-px-Geraeten nur ca. 230 px Text zeigt.
+// value-Attribute muessen unveraendert bleiben, der Hub wertet sie aus.
+test("Pruefbericht Anliegen dropdown shows prices without changing option values", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    html.includes('<option value="einordnen">Prüfbericht einordnen: kostenlos</option>'),
+    "Expected the free option to state that it is free",
+  );
+  assert.ok(
+    html.includes('<option value="angebot_pruefen">Angebot prüfen: 148 €</option>'),
+    "Expected the Angebot pruefen option to show 148 €",
+  );
+  assert.ok(
+    html.includes('<option value="angebote_einholen">Angebote einholen: 249 €</option>'),
+    "Expected the Angebote einholen option to show 249 €",
+  );
+  assert.ok(
+    html.includes('aria-describedby="pb-anliegen-hint"') &&
+      html.includes('<p id="pb-anliegen-hint" class="ev-field-hint">Preis je Aufzug, zzgl. MwSt.</p>'),
+    "Expected the per-elevator and VAT note to be linked to the dropdown",
+  );
+});
+
 test("Pruefbericht file input stays keyboard reachable (WCAG 2.1.1)", () => {
   const html = read("einzelleistungen/pruefbericht-check/index.html");
 
