@@ -240,8 +240,19 @@
     gtag('js', new Date());
     gtag('config', 'G-RPSDHVCT33');
   }
+  /* cookie-consent.js laeuft mit defer, dieses Inline-Skript dagegen sofort beim
+     Parsen. window.elevoniqConsent existiert hier also noch nicht. Deshalb erst
+     nach DOMContentLoaded registrieren: deferred Skripte sind dann ausgefuehrt.
+     Ohne diesen Nachlauf wuerde GA4 nie geladen, auch nicht mit Consent. */
+  function registerConsentHook() {
+    if (window.elevoniqConsent) {
+      window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+    }
+  }
   if (window.elevoniqConsent) {
-    window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+    registerConsentHook();
+  } else {
+    document.addEventListener('DOMContentLoaded', registerConsentHook);
   }
 })();
 </script>
