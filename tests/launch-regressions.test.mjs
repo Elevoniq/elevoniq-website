@@ -278,8 +278,8 @@ test("Ueber uns no longer shows fake testimonial placeholders", () => {
     "Expected ueber-uns to remove fake example quote wording",
   );
   assert.ok(
-    html.includes("Anonymisierter Projektfall aus dem Bestand von ElevonIQ"),
-    "Expected ueber-uns to use anonymized case references instead",
+    html.includes("Kundenreferenz ElevonIQ"),
+    "Expected ueber-uns to show real named customer references (not placeholder copy)",
   );
 });
 
