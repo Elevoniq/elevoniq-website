@@ -857,7 +857,7 @@
         <form id="pruefbericht-form" enctype="multipart/form-data" novalidate>
           <label class="ev-field-upload" for="pb-file-input">
             <span id="pb-file-title">Prüfbericht hochladen</span>
-            <small id="pb-file-hint">PDF, JPG oder PNG · bis zu 5 Dateien · max. 4 MB gesamt · Größere Unterlagen: support@elevoniq.de</small>
+            <small id="pb-file-hint">PDF, JPG oder PNG · bis zu 5 Dateien · max. 4 MB gesamt · Größere Unterlagen: documents@elevoniq.de</small>
             <small id="pb-file-status" class="ev-file-status" aria-live="polite"></small>
             <input type="file" id="pb-file-input" name="sf_pruefbericht_datei" accept=".pdf,.jpg,.jpeg,.png" multiple required aria-labelledby="pb-file-title" aria-describedby="pb-file-hint pb-file-status">
           </label>
@@ -901,7 +901,7 @@
           <div class="cf-turnstile" data-sitekey="0x4AAAAAADixn7Q7EKPg70t5" style="margin-bottom:12px;"></div>
           <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border-radius:12px;border:none;cursor:pointer;margin-top:4px;">Kostenlose Ersteinschätzung anfordern</button>
           <div class="ev-form-msg ev-form-msg--success" id="pb-success">Wir haben Ihre Anfrage erhalten. Sie hören in 48 Stunden von uns.</div>
-          <div class="ev-form-msg ev-form-msg--error" id="pb-error" role="alert">Fehler beim Senden – bitte senden Sie uns eine E-Mail an <a href="mailto:support@elevoniq.de">support@elevoniq.de</a>.</div>
+          <div class="ev-form-msg ev-form-msg--error" id="pb-error" role="alert">Fehler beim Senden – bitte senden Sie uns eine E-Mail an <a href="mailto:documents@elevoniq.de">documents@elevoniq.de</a>.</div>
         </form>
       </div>
     </div>
@@ -1120,8 +1120,8 @@ function uploadError(userMessage){
 function showUserError(el,message){
   el.textContent=message+' Alternativ senden Sie Ihre Unterlagen an ';
   var link=document.createElement('a');
-  link.href='mailto:support@elevoniq.de';
-  link.textContent='support@elevoniq.de';
+  link.href='mailto:documents@elevoniq.de';
+  link.textContent='documents@elevoniq.de';
   el.appendChild(link);
   el.appendChild(document.createTextNode('.'));
 }

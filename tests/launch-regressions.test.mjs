@@ -127,6 +127,26 @@ test("Pruefbericht upload accepts multiple files within the Vercel payload limit
   );
 });
 
+// Unterlagen per Mail gehen an documents@, nicht an support@ (Vorgabe Ludwig, 24.09.2026).
+// Der Anbieterkontakt in den Pflichtinformationen nach Art. 246a EGBGB ist bewusst nicht Teil davon.
+test("Pruefbericht upload fallbacks point to documents@elevoniq.de", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    html.includes("Größere Unterlagen: documents@elevoniq.de</small>"),
+    "Expected the dropzone hint to name documents@elevoniq.de",
+  );
+  assert.ok(
+    html.includes('<a href="mailto:documents@elevoniq.de">documents@elevoniq.de</a>'),
+    "Expected the default upload error to link documents@elevoniq.de",
+  );
+  assert.ok(
+    html.includes("link.href='mailto:documents@elevoniq.de';") &&
+      !html.includes("link.href='mailto:support@elevoniq.de';"),
+    "Expected the error fallback link to point to documents@elevoniq.de",
+  );
+});
+
 // Preise im Anliegen-Dropdown (Muster Frequenzumrichter-Seite, Copy von Nora).
 // Kurze Labels, weil ein geschlossenes Select auf 360-px-Geraeten nur ca. 230 px Text zeigt.
 // value-Attribute muessen unveraendert bleiben, der Hub wertet sie aus.
