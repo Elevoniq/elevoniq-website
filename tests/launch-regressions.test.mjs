@@ -152,6 +152,19 @@ test("Pruefbericht Anliegen dropdown shows prices without changing option values
   );
 });
 
+test("Pruefbericht FAQ names the correct price for Angebote einholen", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    !html.includes('"Angebote einholen für 148 € zzgl. MwSt."'),
+    "Angebote einholen costs 249 €, 148 € belongs to Angebot pruefen lassen",
+  );
+  assert.ok(
+    html.includes('"Angebote einholen für 249 € zzgl. MwSt."'),
+    "Expected the FAQ to match the 249 € price shown everywhere else on the page",
+  );
+});
+
 test("Pruefbericht file input stays keyboard reachable (WCAG 2.1.1)", () => {
   const html = read("einzelleistungen/pruefbericht-check/index.html");
 
