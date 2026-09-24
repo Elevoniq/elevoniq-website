@@ -90,6 +90,111 @@ test("Pruefbericht form validates required fields before upload fetch", () => {
   );
 });
 
+// Sammelupload: Das Formular versprach "Sammelupload", liess aber nur eine Datei zu.
+// Vercel lehnt Requests ueber 4,5 MB mit 413 ab (gemessen 24.09.2026), daher 4 MiB gesamt im Client.
+test("Pruefbericht upload accepts multiple files within the Vercel payload limit", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    /<input type="file" id="pb-file-input"[^>]*\bmultiple\b/.test(html),
+    "Expected the pruefbericht file input to allow selecting multiple files",
+  );
+  assert.ok(
+    html.includes("bis zu 5 Dateien · max. 4 MB gesamt"),
+    "Expected the dropzone hint to state the real file count and total size limit",
+  );
+  assert.ok(
+    !html.includes("max. 9 MB"),
+    "The 9 MB claim exceeds the 4.5 MB Vercel request limit and must not be shown",
+  );
+  assert.ok(
+    html.includes("var PB_MAX_FILES=5;") && html.includes("var PB_MAX_TOTAL_BYTES=4*1024*1024;"),
+    "Expected client-side limits matching api/upload.js (5 files) and the Vercel payload limit",
+  );
+  assert.ok(
+    html.includes('id="pb-file-status" class="ev-file-status" aria-live="polite"'),
+    "Expected the file selection to be announced via a polite live region",
+  );
+  assert.ok(
+    html.includes("r.status===413"),
+    "Expected a dedicated message when Vercel rejects the payload as too large",
+  );
+  assert.ok(
+    html.includes(".toFixed(1).replace('.',',')") &&
+      html.includes("' MB groß, erlaubt sind max. 4 MB.") &&
+      html.includes("' Alternativ senden Sie Ihre Unterlagen an '"),
+    "Expected the approved error wording with a German decimal comma",
+  );
+});
+
+// Preise im Anliegen-Dropdown (Muster Frequenzumrichter-Seite, Copy von Nora).
+// Kurze Labels, weil ein geschlossenes Select auf 360-px-Geraeten nur ca. 230 px Text zeigt.
+// value-Attribute muessen unveraendert bleiben, der Hub wertet sie aus.
+test("Pruefbericht Anliegen dropdown shows prices without changing option values", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    html.includes('<option value="einordnen">Prüfbericht einordnen: kostenlos</option>'),
+    "Expected the free option to state that it is free",
+  );
+  assert.ok(
+    html.includes('<option value="angebot_pruefen">Angebot prüfen: 148 €</option>'),
+    "Expected the Angebot pruefen option to show 148 €",
+  );
+  assert.ok(
+    html.includes('<option value="angebote_einholen">Angebote einholen: 249 €</option>'),
+    "Expected the Angebote einholen option to show 249 €",
+  );
+  assert.ok(
+    html.includes('aria-describedby="pb-anliegen-hint"') &&
+      html.includes('<p id="pb-anliegen-hint" class="ev-field-hint">Preis je Aufzug, zzgl. MwSt.</p>'),
+    "Expected the per-elevator and VAT note to be linked to the dropdown",
+  );
+});
+
+test("Pruefbericht FAQ names the correct price for Angebote einholen", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    !html.includes('"Angebote einholen für 148 € zzgl. MwSt."'),
+    "Angebote einholen costs 249 €, 148 € belongs to Angebot pruefen lassen",
+  );
+  assert.ok(
+    html.includes('"Angebote einholen für 249 € zzgl. MwSt."'),
+    "Expected the FAQ to match the 249 € price shown everywhere else on the page",
+  );
+});
+
+test("Upload API keeps all file names of a Sammelupload in userInfo", () => {
+  const api = read("api/upload.js");
+
+  assert.ok(
+    !api.includes("filesByKey[key] = value.name;"),
+    "Overwriting per field keeps only the last file name of a multi-file upload",
+  );
+  assert.ok(
+    api.includes("filesByKey[key].push(value.name);"),
+    "Expected file names to be collected per form field",
+  );
+  assert.ok(
+    api.includes("sf_pruefbericht_dateiname: filesByKey['sf_pruefbericht_datei'].join(', ')"),
+    "Expected sf_pruefbericht_dateiname to stay a string (comma-separated) for the Hub",
+  );
+});
+
+test("Pruefbericht file input stays keyboard reachable (WCAG 2.1.1)", () => {
+  const html = read("einzelleistungen/pruefbericht-check/index.html");
+
+  assert.ok(
+    !html.includes('.ev-field-upload input[type="file"]{display:none;}'),
+    "display:none removes the file input from the tab order",
+  );
+  assert.ok(
+    html.includes(".ev-field-upload:focus-within{"),
+    "Expected a visible focus indicator on the dropzone when the file input has focus",
+  );
+});
+
 test("Angebotspruefung form validates required fields before upload fetch", () => {
   const html = read("einzelleistungen/angebotspruefung/index.html");
 
