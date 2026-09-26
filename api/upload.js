@@ -14,6 +14,10 @@ const MAX_FILES = 5;
 // Werte entsprechen den drei Upload-Formularen (pruefbericht-check, angebotspruefung, frequenzumrichter).
 const ALLOWED_QUEUES = ['assessment-report', 'quotation', 'other-documents'];
 
+// Pflicht-Upload je Formular: Pruefbericht-Check und Angebotspruefung verlangen mindestens
+// eine Datei. Beim Frequenzumrichter ist der Anhang optional (Formularfeld ohne required).
+const FILE_REQUIRED_QUEUES = ['assessment-report', 'quotation'];
+
 // S-03: Rate-Limiting-Konfiguration (Vercel KV / Upstash)
 const RATE_LIMIT = 10;            // max. Uploads pro IP und Stunde
 const RATE_LIMIT_WINDOW_S = 3_600; // 1 Stunde in Sekunden
@@ -36,6 +40,14 @@ function matchesMagic(bytes, magic) {
     if (bytes[i] !== magic[i]) return false;
   }
   return true;
+}
+
+// Browser schicken fuer ein leer gelassenes <input type="file"> trotzdem einen Eintrag mit
+// Dateiname "" und 0 Byte (HTML-Spec, "constructing the entry list"). Das ist keine Datei,
+// sondern ein leeres optionales Feld: nicht zaehlen, nicht validieren, nicht weiterleiten.
+// Eine echte 0-Byte-Datei mit Namen ist davon nicht betroffen und scheitert weiter an validateFile.
+function isEmptyFileEntry(value) {
+  return value instanceof File && value.name === '' && value.size === 0;
 }
 
 function detectFileType(bytes) {
@@ -161,14 +173,23 @@ export default async function handler(request) {
     return err(403, 'Sicherheitsverifikation fehlgeschlagen. Bitte Seite neu laden und erneut versuchen.');
   }
 
+  // S-02: queueType ist angreiferkontrolliert — explizit gegen Allowlist prüfen.
+  // Kein stiller Fallback bei ungültigem Wert; explizit mit 400 ablehnen.
+  // Steht vor der Dateipruefung, weil die Pflicht-Datei vom Formular (queueType) abhaengt.
+  const rawQueueType = formData.get('queueType');
+  if (!rawQueueType || !ALLOWED_QUEUES.includes(rawQueueType)) {
+    return err(400, 'Ungültiger Dokumenttyp.');
+  }
+  const queueType = rawQueueType;
+
   const files = [];
   for (const [, value] of formData.entries()) {
-    if (value instanceof File) {
+    if (value instanceof File && !isEmptyFileEntry(value)) {
       files.push(value);
     }
   }
 
-  if (files.length === 0) {
+  if (files.length === 0 && FILE_REQUIRED_QUEUES.includes(queueType)) {
     return err(400, 'Keine Datei übermittelt.');
   }
 
@@ -183,14 +204,6 @@ export default async function handler(request) {
     }
   }
 
-  // S-02: queueType ist angreiferkontrolliert — explizit gegen Allowlist prüfen.
-  // Kein stiller Fallback bei ungültigem Wert; explizit mit 400 ablehnen.
-  const rawQueueType = formData.get('queueType');
-  if (!rawQueueType || !ALLOWED_QUEUES.includes(rawQueueType)) {
-    return err(400, 'Ungültiger Dokumenttyp.');
-  }
-  const queueType = rawQueueType;
-
   const upstreamData = new FormData();
   const meta = {};
   // Dateinamen je Feld sammeln: Beim Sammelupload kommen mehrere Dateien unter demselben
@@ -199,6 +212,7 @@ export default async function handler(request) {
 
   for (const [key, value] of formData.entries()) {
     if (key === 'queueType') continue;
+    if (isEmptyFileEntry(value)) continue;
     if (value instanceof File) {
       upstreamData.append('files', value);
       if (!filesByKey[key]) filesByKey[key] = [];
