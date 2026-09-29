@@ -127,6 +127,35 @@ test("Pruefbericht upload accepts multiple files within the Vercel payload limit
   );
 });
 
+// Gleiche Vercel-Grenze wie beim Pruefbericht-Check: 4,5 MB pro Request inkl. aller Felder.
+// Angebotspruefung (Angebot + optionaler Pruefbericht) und Frequenzumrichter (mehrere Anhaenge)
+// teilen sich dieses Budget, daher "gesamt" an den Upload-Feldern.
+test("Angebotspruefung and Frequenzumrichter state the real upload size limit", () => {
+  const angebot = read("einzelleistungen/angebotspruefung/index.html");
+  const fu = read("einzelleistungen/frequenzumrichter/index.html");
+
+  for (const [page, html] of [["angebotspruefung", angebot], ["frequenzumrichter", fu]]) {
+    assert.ok(
+      !html.includes("max. 9 MB"),
+      `${page}: the 9 MB claim exceeds the 4.5 MB Vercel request limit and must not be shown`,
+    );
+  }
+  assert.equal(
+    (angebot.match(/<small>PDF, JPG oder PNG · max\. 4 MB gesamt<\/small>/g) || []).length,
+    2,
+    "Expected both Angebotspruefung upload fields to state the shared 4 MB limit",
+  );
+  assert.ok(
+    angebot.includes("<li>Angebot als PDF, JPG oder PNG · max. 4 MB</li>") &&
+      angebot.includes("<p>PDF, JPG oder PNG · max. 4 MB. Mehr braucht es für den Start nicht.</p>"),
+    "Expected the Angebotspruefung checklist and step copy to state max. 4 MB",
+  );
+  assert.ok(
+    fu.includes('<div class="form-hint">PDF, JPG oder PNG &middot; max. 4 MB gesamt &middot;'),
+    "Expected the Frequenzumrichter attachment hint to state the shared 4 MB limit",
+  );
+});
+
 // Unterlagen per Mail gehen an documents@, nicht an support@ (Vorgabe Ludwig, 24.09.2026).
 // Der Anbieterkontakt in den Pflichtinformationen nach Art. 246a EGBGB ist bewusst nicht Teil davon.
 test("Pruefbericht upload fallbacks point to documents@elevoniq.de", () => {
