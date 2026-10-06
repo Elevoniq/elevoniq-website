@@ -1003,7 +1003,6 @@ details.faq-item .faq-answer {
 /* ─── PAGE HERO (INNER PAGES) ────────────────────── */
 .page-hero {
   background: var(--color-navy);
-  border-top: 4px solid var(--color-coral-dark);
   padding: 72px 0 64px;
   color: var(--color-white);
 }
@@ -1023,7 +1022,6 @@ details.faq-item .faq-answer {
   line-height: 1.7;
   margin-bottom: 2rem;
 }
-.page-hero.teal { border-top-color: var(--color-teal); }
 
 /* ─── NAVY FEATURE SECTION ───────────────────────── */
 .section-navy {
@@ -1535,14 +1533,6 @@ details.faq-item .faq-answer {
 /* ── Section backgrounds ── */
 .section-subtle {
   background: var(--color-bg-subtle);
-}
-
-/* ── Card accents ── */
-.card--coral-top {
-  border-top: 3px solid var(--color-coral-dark);
-}
-.card--teal-top {
-  border-top: 3px solid var(--color-teal);
 }
 
 /* ── Badge margin ── */
