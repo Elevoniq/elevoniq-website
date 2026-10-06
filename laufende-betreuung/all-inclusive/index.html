@@ -82,28 +82,7 @@
       font-weight: 500;
     }
     /* Situation cards */
-    .situation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .situation-card {
-      padding: 28px 24px;
-      background: #F4F7F6;
-      border-radius: 8px;
-      border-left: 3px solid #69B0AB;
-    }
-    .situation-card-title {
-      font-weight: 700;
-      font-size: 15px;
-      color: #1A1A1A;
-      margin-bottom: 10px;
-    }
-    .situation-card-text {
-      font-size: 14px;
-      color: #374151;
-      line-height: 1.65;
-    }
+    /* .situation-grid, .situation-card, .pricing-block: global in assets/css/style.css */
     /* Feature list */
     .feature-checklist {
       max-width: 700px;
@@ -167,14 +146,6 @@
       font-size: 14px;
       color: #6B7280;
       line-height: 1.5;
-    }
-    /* Pricing block */
-    .pricing-block {
-      border-left: 4px solid #69B0AB;
-      padding: 28px 32px;
-      background: #EDF7F6;
-      border-radius: 0 8px 8px 0;
-      max-width: 560px;
     }
     .pricing-headline {
       font-size: 28px;
@@ -549,7 +520,7 @@
         </div>
       </div>
       <div>
-        <div style="background:#EDF7F6;border-radius:12px;padding:28px 32px;border-left:4px solid #69B0AB;">
+        <div class="pricing-block pricing-block--fluid">
           <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3D7E79;margin:0 0 16px;">Im Paket enthalten</p>
           <ul style="list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:12px;">
             <li style="display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#1A1A1A;line-height:1.5;">
@@ -588,19 +559,19 @@
     <h2 class="section-title" id="problem-heading">Aufzüge verwalten sich nicht von allein.</h2>
     <p style="font-size:16px;color:#374151;max-width:680px;line-height:1.7;margin-bottom:40px;">Verwalter und Eigentümer stehen täglich vor denselben Problemen und lösen sie jedes Mal neu. Das muss nicht so sein.</p>
     <div class="responsive-grid-2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;">
-      <div style="background:#fff;border-left:3px solid #E8474A;border-radius:8px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+      <div class="situation-card situation-card--white">
         <p style="font-weight:700;font-size:15px;color:#1A1A1A;margin:0 0 10px;">ZÜS-Termin verpasst, Wartung überfällig</p>
         <p style="font-size:14px;color:#374151;line-height:1.65;margin:0;">Prüffristen, Wartungsintervalle und behördliche Anforderungen (TRBS, BetrSichV) sind schwer zu überblicken, wenn man 30 Aufzüge in drei Liegenschaften betreut. Ein verpasster Termin bedeutet: Haftung.</p>
       </div>
-      <div style="background:#fff;border-left:3px solid #E8474A;border-radius:8px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+      <div class="situation-card situation-card--white">
         <p style="font-weight:700;font-size:15px;color:#1A1A1A;margin:0 0 10px;">Reparaturrechnung: 4.200 Euro. Prüfbar? Kaum.</p>
         <p style="font-size:14px;color:#374151;line-height:1.65;margin:0;">Ohne Fachkenntnis ist nicht erkennbar, ob Reparaturkosten dem Stand der Technik entsprechen, ob Gewährleistungsansprüche bestehen oder ob das Angebot fair ist. Die meisten Verwalter zahlen.</p>
       </div>
-      <div style="background:#fff;border-left:3px solid #E8474A;border-radius:8px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+      <div class="situation-card situation-card--white">
         <p style="font-weight:700;font-size:15px;color:#1A1A1A;margin:0 0 10px;">Mangel aus dem Prüfbericht: noch immer nicht behoben</p>
         <p style="font-size:14px;color:#374151;line-height:1.65;margin:0;">ZÜS-Mängel landen im Prüfbericht. Ohne systematische Nachverfolgung bleiben viele offen. Beim nächsten Prüftermin ist das Haftungsrisiko gewachsen, nicht gesunken.</p>
       </div>
-      <div style="background:#fff;border-left:3px solid #E8474A;border-radius:8px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+      <div class="situation-card situation-card--white">
         <p style="font-weight:700;font-size:15px;color:#1A1A1A;margin:0 0 10px;">Kleinteilige Vorgänge, aber viel Aufwand</p>
         <p style="font-size:14px;color:#374151;line-height:1.65;margin:0;">Rückfragen vom Wartungsunternehmen, Abstimmung mit Eigentümern, Dokumentensuche vor der Eigentümerversammlung. Aufzüge sind nicht das Kerngeschäft, binden aber Ressourcen wie ein Kernprozess.</p>
       </div>

@@ -416,20 +416,7 @@
       color: #374151;
       line-height: 1.6;
     }
-    /* Situation cards */
-    .situation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-    }
-    .situation-card {
-      padding: 28px 24px;
-      background: #F4F7F6;
-      border-radius: 8px;
-      border-left: 3px solid #69B0AB;
-    }
-    .situation-card-title { font-weight: 700; font-size: 15px; color: #1A1A1A; margin-bottom: 10px; }
-    .situation-card-text { font-size: 14px; color: #374151; line-height: 1.65; }
+    /* .situation-grid, .situation-card, .pricing-block: global in assets/css/style.css */
     /* Feature list */
     .feature-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
     .feature-check-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
@@ -437,7 +424,6 @@
     .check-circle { width: 22px; height: 22px; border-radius: 50%; background: #3D7E79; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
     .feature-check-text { color: #1A1A1A; font-size: 15px; line-height: 1.5; }
     /* Pricing */
-    .pricing-block { border-left: 4px solid #69B0AB; padding: 28px 32px; background: #EDF7F6; border-radius: 0 8px 8px 0; max-width: 560px; }
     .pricing-headline { font-size: 28px; font-weight: 800; color: #1A1A1A; margin-bottom: 6px; }
     .pricing-sub { font-size: 14px; color: #6B7280; margin-bottom: 16px; }
     .pricing-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
@@ -1021,17 +1007,10 @@
       background: rgba(255,255,255,0.045);
       border: 1px solid rgba(255,255,255,0.10);
       border-radius: 12px;
-      padding: 9px 12px 9px 15px;
+      padding: 9px 12px;
       transition: background .25s, border-color .25s, transform .2s;
     }
-    .jhr-scope .jhr-cluster::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 9px; bottom: 9px;
-      width: 4px;
-      border-radius: 0 4px 4px 0;
-      background: var(--jhr-cc);
-    }
+    /* Cluster-Farbe nur noch im Label (.jhr-k) und im aktiven Rahmen, kein Seitenstreifen */
     .jhr-scope .jhr-cluster .jhr-k {
       font-size: 9px;
       font-weight: 700;
@@ -1284,15 +1263,15 @@
     <span class="section-eyebrow">Ihre Situation</span>
     <h2 class="section-title" id="situation-heading">Für wen ist das?</h2>
     <div class="situation-grid">
-      <div class="situation-card">
+      <div class="situation-card situation-card--white">
         <div class="situation-card-title">Überblick fehlt</div>
         <div class="situation-card-text">Sie verwalten mehrere Aufzüge an verschiedenen Standorten und verlieren den Überblick über Fristen, Dokumente und Kosten.</div>
       </div>
-      <div class="situation-card">
+      <div class="situation-card situation-card--white">
         <div class="situation-card-title">Dokumentationspflicht</div>
         <div class="situation-card-text">Als WEG-Verwalter müssen Sie Eigentümern bei der Jahresversammlung lückenlose Nachweise vorlegen — digital und strukturiert.</div>
       </div>
-      <div class="situation-card">
+      <div class="situation-card situation-card--white">
         <div class="situation-card-title">Datenhoheit sichern</div>
         <div class="situation-card-text">Ihr Wartungsunternehmen hat alle Betriebsdaten — Sie möchten Unabhängigkeit und eigene Kontrolle über Ihre Aufzugsdaten.</div>
       </div>

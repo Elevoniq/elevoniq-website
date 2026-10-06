@@ -81,10 +81,10 @@
       line-height: 1.65;
     }
 
+    /* Basis (Kopflinie, Radius) global in assets/css/style.css.
+       Sektion ist bg-subtle, daher weiße Kartenfläche. */
     .situation-card {
-      background: var(--color-bg-subtle, #F4F7F6);
-      border-left: 4px solid #1E2761;
-      border-radius: 0 10px 10px 0;
+      background: var(--color-white);
       padding: 1.25rem 1.5rem;
     }
     .situation-card strong {
@@ -102,7 +102,7 @@
     }
     .situation-card .resolution {
       font-size: 13px;
-      color: #4A8F8A;
+      color: var(--color-teal-dark);  /* #4A8F8A verfehlte AA (ca. 3.9:1) */
       font-weight: 600;
       margin-top: 0.5rem;
     }
