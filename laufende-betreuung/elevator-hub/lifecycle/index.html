@@ -194,15 +194,10 @@
     background:rgba(255,255,255,0.045);
     border:1px solid rgba(255,255,255,0.10);
     border-radius:12px;
-    padding:12px 14px 12px 16px;
+    padding:12px 14px;
     transition:background .25s, border-color .25s, transform .2s;
   }
-  .cluster::before {
-    content:""; position:absolute;
-    left:0; top:11px; bottom:11px;
-    width:4px; border-radius:0 4px 4px 0;
-    background:var(--cc);
-  }
+  /* Cluster-Farbe nur im Label (.k) und im aktiven Rahmen, kein Seitenstreifen */
   .cluster .k {
     font-size:9.5px; font-weight:700;
     letter-spacing:0.16em; text-transform:uppercase;

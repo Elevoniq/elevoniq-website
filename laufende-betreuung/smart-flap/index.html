@@ -50,7 +50,7 @@
     /* ---- Problem Section ---- */
     .problem-split { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
     @media (max-width:768px) { .problem-split { grid-template-columns:1fr; } }
-    .fact-box { background:#FAF8F3; border-left:4px solid #E8474A; padding:20px 24px; border-radius:0 8px 8px 0; margin-top:24px; }
+    .fact-box { background:#FAF8F3; border-bottom:1px solid var(--color-notice-line); padding:20px 24px; border-radius:8px; margin-top:24px; }
     .fact-box p { margin:0; font-size:14px; color:#374151; line-height:1.65; }
 
     /* ---- Solution Section ---- */
@@ -69,7 +69,7 @@
     .co2-table tr:nth-child(even) td { background:#EDF7F6; }
     .co2-table td:first-child { font-weight:700; color:#1A1A1A; }
     .esg-points { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:32px; }
-    .esg-point { background:#fff; border-radius:8px; padding:24px; border-left:3px solid #69B0AB; }
+    .esg-point { background:#fff; border-radius:0 0 8px 8px; padding:24px; border-top:1px solid var(--color-structural); }
     .esg-point-title { font-weight:700; font-size:14px; color:#1A1A1A; margin-bottom:8px; }
     .esg-point-text { font-size:13px; color:#374151; line-height:1.6; }
     .highlight-box { background:#1E2761; color:#fff; padding:24px 28px; border-radius:8px; margin-top:24px; }
@@ -77,7 +77,7 @@
     .highlight-box strong { color:#69B0AB; }
 
     /* ---- Pricing ---- */
-    .pricing-block { border-left:4px solid #69B0AB; padding:28px 32px; background:#EDF7F6; border-radius:0 8px 8px 0; }
+    /* .pricing-block: global in assets/css/style.css (hier mit --fluid, volle Spaltenbreite) */
     /* ---- Pricing Pair ---- */
     .pricing-pair { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:32px; align-items:start; }
     @media (max-width:768px) { .pricing-pair { grid-template-columns:1fr; } }
@@ -91,7 +91,7 @@
 
     /* ---- Study Section ---- */
     .study-section { background:#FAF8F3; }
-    .pull-quote { border-left:4px solid #69B0AB; padding:24px 28px; background:#fff; border-radius:0 8px 8px 0; margin-top:24px; }
+    .pull-quote { margin:24px 0 0 24px; padding:0; }  /* Zitat: Einrückung + kursiv, keine Farblinie */
     .pull-quote blockquote { margin:0; font-size:16px; font-style:italic; color:#374151; line-height:1.7; }
     .pull-quote cite { display:block; margin-top:12px; font-size:13px; color:#6B7280; font-style:normal; }
     .study-source { margin-top:20px; font-size:13px; color:#6B7280; }
@@ -428,7 +428,7 @@
     <div class="pricing-pair">
 
       <!-- Entry: Machbarkeitsstudie -->
-      <div style="background:#EDF7F6;border-radius:10px;padding:28px 32px;border-left:4px solid #69B0AB;">
+      <div class="pricing-block pricing-block--fluid">
         <p style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3D7E79;margin:0 0 8px;">Einstieg</p>
         <div style="font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:6px;">1.499 € <span style="font-size:16px;font-weight:400;color:#6B7280;">zzgl. MwSt.</span></div>
         <p style="font-size:15px;font-weight:600;color:#1A1A1A;margin:0 0 12px;">Machbarkeitsstudie mit Einsparberechnung</p>
@@ -455,7 +455,7 @@
       </div>
 
       <!-- Installation pricing -->
-      <div class="pricing-block">
+      <div class="pricing-block pricing-block--fluid">
         <div class="pricing-headline">ab 7.900 €</div>
         <div class="pricing-sub">Installationskosten zzgl. MwSt. — 20 % BEG-Förderung möglich.</div>
         <div class="pricing-row">

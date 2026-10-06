@@ -31,10 +31,7 @@
     .badge-sub { color:#6B7280; font-size:13px; }
     .cta-row { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
     .price-pill { background:rgba(105,176,171,0.12); color:var(--color-teal-dark); padding:8px 18px; border-radius:20px; font-size:13px; font-weight:500; }
-    .situation-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; }
-    .situation-card { padding:28px 24px; background:#F4F7F6; border-radius:8px; border-left:3px solid #69B0AB; }
-    .situation-card-title { font-weight:700; font-size:15px; color:#1A1A1A; margin-bottom:10px; }
-    .situation-card-text { font-size:14px; color:#374151; line-height:1.65; }
+    /* .situation-grid, .situation-card, .pricing-block: global in assets/css/style.css */
     .feature-checklist { max-width:700px; }
     .feature-check-row { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.05); }
     .feature-check-row:last-child { border-bottom:none; }
@@ -45,7 +42,6 @@
     .process-number { width:48px; height:48px; border-radius:50%; background:var(--color-coral-dark); color:#fff; font-size:18px; font-weight:800; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
     .process-title { font-weight:700; font-size:15px; color:#1A1A1A; margin-bottom:8px; }
     .process-text { font-size:14px; color:#6B7280; line-height:1.5; }
-    .pricing-block { border-left:4px solid #69B0AB; padding:28px 32px; background:#EDF7F6; border-radius:0 8px 8px 0; max-width:560px; }
     .pricing-headline { font-size:28px; font-weight:800; color:#1A1A1A; margin-bottom:6px; }
     .pricing-sub { font-size:14px; color:#6B7280; margin-bottom:16px; }
     .pricing-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid rgba(0,0,0,0.06); }
@@ -179,8 +175,8 @@
 
 <!-- ElevonIQ Differenziator -->
 <div class="container" style="padding-top:2rem;">
-  <div style="background:#FAF8F3;border-left:4px solid #E8474A;padding:1.25rem 1.5rem;border-radius:6px;margin-bottom:2rem;">
-    <p style="font-size:1.05rem;line-height:1.7;color:#1A1A1A;margin:0;">
+  <div class="notice-box">
+    <p>
       <strong>Der ElevonIQ-Unterschied:</strong> Wir führen nicht nur Betriebskontrollen durch und senden ein Protokoll — wir schließen den Kreis. Festgestellte Mängel werden automatisch verfolgt, die Abstellung wird koordiniert und dokumentiert. Nicht nur Kontrolle. Sondern Kontrolle bis zur Lösung.
     </p>
   </div>
