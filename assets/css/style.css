@@ -750,7 +750,7 @@ p { line-height: 1.7; }
   margin-top: 1rem;
   font-size: 14px;
   font-weight: var(--font-weight-bold);
-  color: var(--color-coral-dark);
+  color: var(--color-coral-aa);
 }
 .service-card .card-link:hover { text-decoration: underline; }
 
@@ -910,7 +910,7 @@ p { line-height: 1.7; }
 .problem-card a {
   font-size: 13px;
   font-weight: var(--font-weight-bold);
-  color: var(--color-coral-dark);
+  color: var(--color-coral-aa);
 }
 
 /* ─── TESTIMONIALS ───────────────────────────────── */
@@ -2047,7 +2047,7 @@ details.faq-item .faq-answer {
   margin-top: 1rem;
   font-size: 13px;
   font-weight: var(--font-weight-bold);
-  color: var(--color-coral-dark);
+  color: var(--color-coral-aa);
 }
 
 /* ── 360° Tour frame ── */
