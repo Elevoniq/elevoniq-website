@@ -26,7 +26,22 @@ const MAGIC_PDF = [0x25, 0x50, 0x44, 0x46];
 const MAGIC_JPEG = [0xFF, 0xD8, 0xFF];
 const MAGIC_PNG = [0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A];
 
-const PDF_THREAT_PATTERN = /\/JS\s|\/JavaScript\s|\/OpenAction\s|\/AA\s/i;
+// PDF-Filter "aktive Inhalte" (Sekur-Review 29.09.2026, Stufe 1).
+// Abgelehnt wird nur der PDF-Name /JavaScript: Nach ISO 32000 traegt jede JavaScript-Aktion
+// (/S /JavaScript) und jedes dokumentweite Skript (/Names << /JavaScript ... >>) diesen Namen.
+// /OpenAction, /AA und /JS allein sind Ausloeser- bzw. Feldmarker ohne Nutzlast; sie fuehrten
+// auf echten Dokumenten gaengiger PDF-Erzeuger und Scan-Dienste ausschliesslich zu Fehlalarmen.
+// Bewusst kein Block fuer /EmbeddedFile (ZUGFeRD/XRechnung) und /Launch (Stufe 2).
+// Das ist ein Stolperdraht, keine Malware-Pruefung: JavaScript in komprimierten Objekt-Streams
+// (/ObjStm) sieht der Proxy nicht. Die echte Kontrolle folgt im Hub-Backend (Stufe 2).
+const PDF_JAVASCRIPT_NAME = [0x4A, 0x61, 0x76, 0x61, 0x53, 0x63, 0x72, 0x69, 0x70, 0x74]; // "JavaScript"
+
+// Ein PDF-Name endet an PDF-Whitespace (NUL, HT, LF, FF, CR, SP), an einem Delimiter
+// ( ) < > [ ] { } / % oder am Dateiende (ISO 32000-1, 7.2.2 und 7.3.5).
+const PDF_NAME_TERMINATOR = new Uint8Array(256);
+for (const byte of [0x00, 0x09, 0x0A, 0x0C, 0x0D, 0x20, 0x28, 0x29, 0x3C, 0x3E, 0x5B, 0x5D, 0x7B, 0x7D, 0x2F, 0x25]) {
+  PDF_NAME_TERMINATOR[byte] = 1;
+}
 
 function err(status, message) {
   return new Response(JSON.stringify({ error: message }), {
@@ -57,6 +72,43 @@ function detectFileType(bytes) {
   return null;
 }
 
+function hexDigitValue(byte) {
+  if (byte >= 0x30 && byte <= 0x39) return byte - 0x30; // 0-9
+  if (byte >= 0x41 && byte <= 0x46) return byte - 0x37; // A-F
+  if (byte >= 0x61 && byte <= 0x66) return byte - 0x57; // a-f
+  return -1;
+}
+
+// Liest den PDF-Namen, der bei bytes[start] (direkt nach dem "/") beginnt, und prueft, ob er
+// nach Aufloesen der #xx-Escapes exakt "JavaScript" lautet. Case-sensitiv wie PDF-Namen selbst.
+// Bricht beim ersten abweichenden Zeichen ab, daher linear und ohne String-Kopie der Datei.
+function readsAsJavaScriptName(bytes, start) {
+  let pos = start;
+  let matched = 0;
+  while (pos < bytes.length && !PDF_NAME_TERMINATOR[bytes[pos]]) {
+    let char = bytes[pos++];
+    if (char === 0x23 && pos + 1 < bytes.length) { // "#xx" (ISO 32000-1, 7.3.5)
+      const high = hexDigitValue(bytes[pos]);
+      const low = hexDigitValue(bytes[pos + 1]);
+      if (high >= 0 && low >= 0) {
+        char = high * 16 + low;
+        pos += 2;
+      }
+    }
+    if (matched === PDF_JAVASCRIPT_NAME.length || char !== PDF_JAVASCRIPT_NAME[matched]) return false;
+    matched++;
+  }
+  return matched === PDF_JAVASCRIPT_NAME.length;
+}
+
+// Prueft den gesamten Datei-Puffer (kein 64-KB-Fenster mehr) auf den PDF-Namen /JavaScript.
+function containsPdfJavaScript(bytes) {
+  for (let i = 0; i < bytes.length; i++) {
+    if (bytes[i] === 0x2F && readsAsJavaScriptName(bytes, i + 1)) return true;
+  }
+  return false;
+}
+
 async function validateFile(file) {
   if (file.size > MAX_FILE_SIZE) {
     return `Datei "${file.name}" überschreitet das Limit von 9 MB.`;
@@ -70,13 +122,8 @@ async function validateFile(file) {
     return `Datei "${file.name}" ist kein gültiges PDF, JPEG oder PNG.`;
   }
 
-  if (fileType === 'pdf') {
-    // Prüfe erste 64 KB auf eingebettetes JavaScript
-    const checkLength = Math.min(bytes.length, 65536);
-    const pdfText = new TextDecoder('latin1').decode(bytes.subarray(0, checkLength));
-    if (PDF_THREAT_PATTERN.test(pdfText)) {
-      return `Datei "${file.name}" enthält aktive Inhalte und wurde abgelehnt.`;
-    }
+  if (fileType === 'pdf' && containsPdfJavaScript(bytes)) {
+    return `Datei "${file.name}" enthält aktive Inhalte und wurde abgelehnt.`;
   }
 
   return null;
