@@ -16,6 +16,16 @@
   --color-amber-dark: #A26820;   /* WCAG AA 4.63:1 gegen Weiß */
   --color-savings: #1D8348;
 
+  /* Karten und Hinweisboxen ohne Seitenstreifen (Ida, Variante 4 + V3-Hover, 2026-10-06).
+     Farbige Seitenlinien (border-left) sind im Design System nicht erlaubt. */
+  --color-structural:    #5D6698;  /* Kopflinie Karte, 5.12:1 gegen Weiß (SC 1.4.11) */
+  --color-coral-aa:      #C83B3C;  /* Textlink auf hellen Flächen, 4.93:1 gegen Weiß (SC 1.4.3) */
+  --color-card-active:   #FDF8F8;  /* :active-Fläche, zarte Coral-Tönung */
+  --color-notice-line:   rgba(0,0,0,0.08); /* 1px Strukturlinie unter Hinweisboxen */
+  --shadow-card-hover:   0 2px 14px rgba(0,0,0,0.07);
+  --shadow-card-active:  0 2px 10px rgba(200,59,60,0.09);
+  --duration-card-hover: 200ms;
+
   /* Verständnis-Engine, dunkles Sub-Theme auf hellem Hero */
   --ve-surface:          var(--color-navy);
   --ve-surface-card:     rgba(255,255,255,0.07);
@@ -753,7 +763,6 @@ p { line-height: 1.7; }
 .problem-card {
   background: var(--color-bg-subtle);
   border: 1px solid rgba(0,0,0,0.06);
-  border-left: 3px solid var(--color-coral-dark);
   border-radius: var(--border-radius);
   padding: 1.25rem 1.5rem;
   transition: box-shadow var(--transition-base);
@@ -761,6 +770,133 @@ p { line-height: 1.7; }
 .problem-card:hover {
   box-shadow: var(--shadow-sm);
 }
+
+/* Klickbare Situations-Karte (Variante 4 + Hover aus Variante 3).
+   Ruhe: 1px Kopflinie in gedämpftem Navy, Linktext Coral-AA unterstrichen.
+   Hover (nur Zeigegeräte): 2px Coral-Linie zieht von links auf, leichter Schatten.
+   :active (Touch und Maus): 2px Coral-AA-Linie, zarte Coral-Fläche.
+   Die 2px-Linie liegt als ::before über der 1px-Kopflinie, daher kein Layoutshift. */
+.card-link.problem-card {
+  position: relative;
+  border: 0;
+  border-top: 1px solid var(--color-structural);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  transition: box-shadow var(--duration-card-hover) ease,
+              background-color var(--duration-card-hover) ease;
+}
+.card-link.problem-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-coral);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-card-hover) ease;
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-link.problem-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .card-link.problem-card:hover::before {
+    transform: scaleX(1);
+  }
+}
+.card-link.problem-card:active {
+  background: var(--color-card-active);
+  box-shadow: var(--shadow-card-active);
+}
+.card-link.problem-card:active::before {
+  background: var(--color-coral-aa);
+  transform: scaleX(1);
+  transition: none;
+}
+.card-link.problem-card:focus-visible {
+  outline: 3px solid var(--color-coral-aa);
+  outline-offset: 3px;
+}
+.card-link.problem-card:focus-visible::before {
+  transform: scaleX(1);
+}
+.problem-card-cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;              /* Touch-Target */
+  font-size: 13px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-coral-aa);  /* 4.93:1 gegen Weiß, ca. 4.6:1 gegen bg-subtle */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.card-link.problem-card:active .problem-card-cta {
+  text-decoration-thickness: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-link.problem-card,
+  .card-link.problem-card::before {
+    transition: none;
+  }
+}
+
+/* Statische Situations-Karte (nicht klickbar): nur die strukturelle Kopflinie,
+   kein Hover-Akzent, weil Farbe Interaktivität signalisiert. */
+.situation-card {
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-structural);
+  border-radius: 0 0 8px 8px;
+  padding: 28px 24px;
+}
+.situation-card--white {
+  background: var(--color-white);
+}
+.situation-card-title {
+  font-weight: var(--font-weight-bold);
+  font-size: 15px;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+.situation-card-text {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.65;
+}
+.situation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* Preisblock: Hintergrundton plus Spacing, 1px Strukturlinie unten. */
+.pricing-block {
+  background: #EDF7F6;
+  border-bottom: 1px solid var(--color-notice-line);
+  border-radius: 8px;
+  padding: 28px 32px;
+  max-width: 560px;
+}
+.pricing-block--fluid {
+  max-width: none;
+}
+
+/* Hinweisbox: Hintergrundton plus 1px Strukturlinie unten (Ida: notice.method). */
+.notice-box {
+  background: var(--color-bg-warm);
+  border-bottom: 1px solid var(--color-notice-line);
+  border-radius: var(--border-radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+.notice-box p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-dark);
+  margin: 0;
+}
+
 .problem-card h4 {
   font-size: 15px;
   margin-bottom: 0.4rem;
@@ -1135,7 +1271,6 @@ details.faq-item .faq-answer {
   border-radius: 10px;
   padding: 11px 14px;
   box-shadow: 0 1px 0 rgba(20,20,43,0.04), 0 12px 28px -16px rgba(20,20,43,0.18);
-  border-left: 3px solid var(--color-teal);
   margin-bottom: 8px;
 }
 .interface-answer-item .a-title {
@@ -1153,12 +1288,12 @@ details.faq-item .faq-answer {
 /* ─── AMBER / COMPLIANCE ─────────────────────────── */
 .compliance-block {
   background: rgba(200,135,58,0.1);
-  border-left: 3px solid var(--color-amber);
+  border-bottom: 1px solid var(--color-notice-line);
   border-radius: var(--border-radius);
   padding: 1.25rem 1.5rem;
 }
 .compliance-block h4 {
-  color: var(--color-amber);
+  color: var(--color-amber-dark);  /* Amber #C8873A verfehlt AA für Text */
   margin-bottom: 0.5rem;
 }
 
@@ -1310,10 +1445,9 @@ details.faq-item .faq-answer {
 /* ── Hero question box ── */
 .hero-question-box {
   position: relative;
-  border-left: 3px solid var(--color-coral-dark);
   padding: 18px 24px;
-  background: rgba(232, 71, 74, 0.04);
-  border-radius: 0 6px 6px 0;
+  background: rgba(232, 71, 74, 0.06);  /* ohne Seitenstreifen: Abgrenzung nur über Fläche und Spacing */
+  border-radius: 6px;
   max-width: 600px;
   margin-bottom: 28px;
   min-height: 72px;
@@ -1396,12 +1530,7 @@ details.faq-item .faq-answer {
   .problem-matrix--4col { grid-template-columns: 1fr; }
 }
 
-/* ── Problem card CTA link ── */
-.problem-card-cta {
-  font-size: 13px;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-coral-dark);
-}
+/* .problem-card-cta: siehe Abschnitt PROBLEM MATRIX (Variante 4) */
 
 /* ── Section backgrounds ── */
 .section-subtle {
