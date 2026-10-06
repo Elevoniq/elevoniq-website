@@ -331,8 +331,7 @@
     margin: 16px 18px 18px;
     padding: 14px 16px;
     background: rgba(30,39,97,0.07);
-    border-left: 3px solid #1E2761;
-    border-radius: 0 8px 8px 0;
+    border-radius: 8px;
     font-size: 12px;
     color: #1E2761;
     font-weight: 600;
@@ -343,8 +342,7 @@
     margin: 16px 18px 18px;
     padding: 12px 14px;
     background: rgba(232,71,74,0.08);
-    border-left: 3px solid #E8474A;
-    border-radius: 0 6px 6px 0;
+    border-radius: 6px;
     font-size: 12px;
     font-weight: 600;
     color: #c93a3d;
@@ -355,8 +353,8 @@
     margin: 0 18px 18px;
     padding: 12px 16px;
     background: #F7F6F4;
-    border-left: 3px solid #9CA3AF;
-    border-radius: 0 8px 8px 0;
+    border-bottom: 1px solid var(--color-notice-line);
+    border-radius: 8px;
     font-size: 11px;
     color: #4B5563;
     line-height: 1.6;
@@ -383,7 +381,6 @@
     padding: 8px 10px;
     background: rgba(232,71,74,0.07);
     border-radius: 6px;
-    border-left: 2px solid #E8474A;
     margin-bottom: 8px;
   }
   .vk-irrtum-item em {
@@ -396,8 +393,7 @@
     margin: 16px 18px 18px;
     padding: 14px 16px;
     background: rgba(30,39,97,0.06);
-    border-left: 3px solid #1E2761;
-    border-radius: 0 8px 8px 0;
+    border-radius: 8px;
     font-size: 12px;
     color: #4B5563;
     line-height: 1.65;
@@ -518,16 +514,6 @@
   }
   .sb-card--prov {
     width: 264px;
-  }
-  .sb-card--prov::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 24px; bottom: 24px;
-    width: 3px;
-    border-radius: 0 3px 3px 0;
-    background: #3D7E79;
-    opacity: 0.85;
   }
   /* Betreiber */
   .sb-card--betreiber {
@@ -1005,8 +991,8 @@
     margin: 10px 0 12px;
     padding: 10px 12px;
     background: rgba(200,135,58,0.08);
-    border-left: 3px solid #C8873A;
-    border-radius: 0 6px 6px 0;
+    border-bottom: 1px solid var(--color-notice-line);
+    border-radius: 6px;
     font-size: 11px;
     font-weight: 600;
     color: #7D4E0F;
