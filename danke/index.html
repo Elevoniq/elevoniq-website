@@ -172,10 +172,32 @@
     </svg>
 
     <h1>Vielen Dank.</h1>
-    <p class="danke-subline">
+    <p class="danke-subline" id="danke-subline">
       Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden.
       Schauen Sie sich in der Zwischenzeit unsere Ressourcen an.
     </p>
+    <script>
+    (function () {
+      var LABELS = {
+        'gefaehrdungsbeurteilung': 'Gefährdungsbeurteilung',
+        'zustandsbericht': 'Zustandsbericht',
+        'betriebskontrolle': 'Betriebskontrolle',
+        'wartungsvertrag-ausschreiben': 'Wartungsvertrag ausschreiben',
+        'modernisierung': 'Modernisierung',
+        'smart-flap': 'SMART FLAP®',
+        'all-inclusive': 'Essentials Aufzugsmanagement',
+      };
+      var params = new URLSearchParams(window.location.search);
+      var p = params.get('produkt');
+      if (p && LABELS[p]) {
+        var el = document.getElementById('danke-subline');
+        if (el) {
+          el.textContent =
+            'Wir haben Ihre Anfrage zur Leistung „' + LABELS[p] + '“ erhalten und melden uns innerhalb von 24 Stunden.';
+        }
+      }
+    })();
+    </script>
 
     <p class="danke-links-label">Das könnte Sie interessieren</p>
     <div class="danke-cards">

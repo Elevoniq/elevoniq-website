@@ -131,7 +131,7 @@
         <span class="hero-badge hero-badge--outline">Erfolgshonorar möglich</span>
       </div>
       <div class="hero-cta-row">
-        <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Wartungsvertrag%20ausschreiben%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+        <a href="#anfragen"
            class="btn-primary">
           Jetzt anfragen
         </a>
@@ -307,12 +307,90 @@
       <h2 style="color:#fff;">Bereit für den nächsten Schritt?</h2>
       <p style="color:rgba(255,255,255,.75);margin-bottom:2rem;">Kostenloses Erstgespräch: 15 Minuten, kein Druck, keine Verpflichtung.</p>
       <div class="cta-button-row">
-        <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Wartungsvertrag%20ausschreiben%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+        <a href="#anfragen"
            class="btn-primary">
           Jetzt anfragen
         </a>
         <a href="mailto:support@elevoniq.de" class="btn-secondary">Frage per E-Mail</a>
       </div>
+    </div>
+  </section>
+
+
+  <!-- BUCHUNGSFORMULAR -->
+  <section class="section contact-form-section" id="anfragen" aria-labelledby="anfragen-heading-wartungsvertrag-ausschreiben">
+    <div class="container container--narrow">
+      <p class="section-eyebrow">Direkt beauftragen</p>
+      <h2 id="anfragen-heading-wartungsvertrag-ausschreiben">Jetzt anfragen</h2>
+      <p class="section-lead">Tragen Sie Ihre Angaben ein &#8212; wir melden uns innerhalb von 24 Stunden.</p>
+
+      <form class="js-contact-form" novalidate>
+        <input type="hidden" name="produkt" value="wartungsvertrag-ausschreiben">
+        <!-- Honeypot: wird von echten Nutzern nicht ausgefüllt -->
+        <div class="contact-form__honeypot" aria-hidden="true">
+          <label>Website (nicht ausfüllen) <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="contact-form__grid">
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-name-wartungsvertrag-ausschreiben">Name <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-name-wartungsvertrag-ausschreiben" name="name" required autocomplete="name" placeholder="Vor- und Nachname">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-email-wartungsvertrag-ausschreiben">E-Mail <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="email" id="cf-email-wartungsvertrag-ausschreiben" name="email" required autocomplete="email" placeholder="ihre@email.de">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-telefon-wartungsvertrag-ausschreiben">Telefon <span class="contact-form__optional">(optional)</span></label>
+            <input class="contact-form__input" type="tel" id="cf-telefon-wartungsvertrag-ausschreiben" name="telefon" autocomplete="tel" placeholder="+49 ...">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-aufzuege-wartungsvertrag-ausschreiben">Anzahl Aufzüge <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-aufzuege-wartungsvertrag-ausschreiben" name="anzahl_aufzuege" required placeholder="z. B. 3">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-standort-wartungsvertrag-ausschreiben">Standort der Anlage(n) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-standort-wartungsvertrag-ausschreiben" name="standort" required placeholder="Straße, PLZ Ort">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-leistungsempfaenger-wartungsvertrag-ausschreiben">Leistungsempfänger (Name / Firma) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-leistungsempfaenger-wartungsvertrag-ausschreiben" name="leistungsempfaenger" required placeholder="WEG Musterstraße GbR o. ä.">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-rechnungsempfaenger-wartungsvertrag-ausschreiben">Rechnungsempfänger <span class="contact-form__optional">(optional, wenn abweichend)</span></label>
+            <input class="contact-form__input" type="text" id="cf-rechnungsempfaenger-wartungsvertrag-ausschreiben" name="rechnungsempfaenger" placeholder="Falls abweichend vom Leistungsempfänger">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-vertragsende-wartungsvertrag-ausschreiben">Aktuelles Vertragsende <span class="contact-form__optional">(optional)</span></label>
+            <input class="contact-form__input" type="text" id="cf-vertragsende-wartungsvertrag-ausschreiben" name="vertragsende" placeholder="z.&#x202F;B. 31.12.2025 oder &#8222;laufend&#8220;">
+          </div>
+
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-nachricht-wartungsvertrag-ausschreiben">Nachricht <span class="contact-form__optional">(optional)</span></label>
+            <textarea class="contact-form__textarea" id="cf-nachricht-wartungsvertrag-ausschreiben" name="nachricht" rows="4" placeholder="Ergänzende Informationen, Fragen ..."></textarea>
+          </div>
+
+          <div class="contact-form__turnstile">
+            <div class="cf-turnstile"
+                 data-sitekey="TURNSTILE_SITEKEY_HIER_EINTRAGEN"
+                 data-theme="light"
+                 data-language="de"></div>
+          </div>
+
+          <p class="contact-form__dsgvo">
+            Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Rechtsgrundlage ist Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;b DSGVO (vorvertragliche Maßnahmen). Zum Schutz vor Missbrauch setzt das Formular Cloudflare Turnstile ein (Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO). Details: <a href="/datenschutz/">Datenschutzerklärung</a>
+          </p>
+
+          <p class="js-contact-status contact-form__status" hidden aria-live="polite"></p>
+          <div class="js-contact-fallback contact-form__fallback" hidden>
+            Das Formular ist gerade nicht verfügbar. Bitte schreiben Sie uns direkt: <a href="mailto:anfragen@elevoniq.de?subject=Anfrage+Wartungsvertrag+ausschreiben+%E2%80%93+ElevonIQ">anfragen@elevoniq.de</a>
+          </div>
+
+          <div class="contact-form__submit">
+            <button type="submit" class="btn-primary js-contact-submit" aria-busy="false">Anfrage senden</button>
+          </div>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -410,5 +488,7 @@
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="../../assets/js/contact-form.js" defer></script>
 </body>
 </html>
