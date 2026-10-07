@@ -128,6 +128,20 @@
       color: #1E2761;
       text-decoration: underline;
     }
+    /* Scrollbarer Tabellen-Wrapper für schmale Viewports */
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.25rem 0;
+    }
+    .table-scroll .legal-table {
+      margin: 0;
+      min-width: 480px;
+    }
+    .table-scroll:focus-within {
+      outline: 2px solid var(--color-teal, #3D7E79);
+      outline-offset: 2px;
+    }
   </style>
 </head>
 <body>
@@ -310,6 +324,7 @@
         <h3>b) Optionale Technologien — nur nach Einwilligung</h3>
         <p>Darüber hinaus setzt diese Website Google Analytics 4 ein. Dieser Dienst wird technisch erst aktiviert, nachdem Sie Ihre ausdrückliche Einwilligung erteilt haben. Google Analytics 4 setzt folgende Cookies:</p>
 
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Cookie-Tabelle: Google Analytics">
         <table class="legal-table">
           <thead>
             <tr><th>Cookie</th><th>Zweck</th><th>Laufzeit</th></tr>
@@ -319,6 +334,7 @@
             <tr><td>_ga_RPSDHVCT33</td><td>Sitzungsstatus für die GA4-Property G-RPSDHVCT33</td><td>1 Jahr</td></tr>
           </tbody>
         </table>
+        </div>
 
         <p>Rechtsgrundlage für den Einsatz optionaler Cookies: § 25 Abs. 1 TTDSG in Verbindung mit Art. 6 Abs. 1 lit. a DSGVO (Einwilligung).</p>
 
@@ -368,6 +384,7 @@
         <h3>A. Notwendige Dienste</h3>
         <p>Die nachstehenden Dienstleister werden auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) und Art. 6 Abs. 1 lit. f DSGVO (berechtigte Interessen an einem sicheren und zuverlässigen Betrieb unserer Dienste) eingesetzt.</p>
 
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Tabelle: Notwendige Dienstleister">
         <table class="legal-table">
           <thead>
             <tr><th>Dienstleister</th><th>Funktion</th><th>Sitz / Drittland</th><th>Rolle</th><th>Garantie / Transfergrundlage</th></tr>
@@ -388,6 +405,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
 
         <p>Salesforce nutzt mit Einstein AI eine integrierte KI-Funktion. Soweit dabei Daten aus den ElevonIQ-CRM-Datensätzen verarbeitet werden, handelt Salesforce insoweit als eigenverantwortlicher Verarbeiter gemäß Art. 4 Nr. 7 DSGVO. Eine Übermittlung personenbezogener Daten an die Einstein-AI-Funktion findet nur statt, soweit dies für die vertragsgemäße Nutzung des CRM-Systems erforderlich ist. Weitere Informationen: <a href="https://www.salesforce.com/de/company/privacy/" target="_blank" rel="noopener noreferrer">Salesforce Datenschutzerklärung</a>.</p>
 
@@ -395,6 +413,7 @@
         <p>Die nachstehenden Dienste werden erst auf Ihre aktive Interaktion hin geladen. Für optionale Analysedienste (Google Analytics 4) ist eine ausdrückliche Einwilligung über den Cookie-Banner erforderlich. Eingebettete Medieninhalte (Loom, Vimeo) werden ausschließlich durch Klick auf "Video abspielen" aktiviert; eine separate Einwilligung über den Banner ist hierfür nicht erforderlich.</p>
         <p>Ihre Einwilligung können Sie jederzeit über den Link <strong>Cookie-Einstellungen</strong> in der Fußzeile dieser Website widerrufen.</p>
 
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Tabelle: Einwilligungsbasierte Dienste">
         <table class="legal-table">
           <thead>
             <tr><th>Dienstleister</th><th>Funktion</th><th>Sitz / Drittland</th><th>Rolle</th><th>Garantie / Transfergrundlage</th></tr>
@@ -423,6 +442,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
 
         <h3>Drittlandtransfers — ergänzende Hinweise</h3>
         <p>Soweit personenbezogene Daten in die USA übermittelt werden, stützen wir die Übermittlung vorrangig auf Standardvertragsklauseln gemäß Art. 46 Abs. 2 lit. c DSGVO, die wir mit den jeweiligen Empfängern abgeschlossen haben. Für Anbieter, die unter dem EU-U.S. Data Privacy Framework (DPF) zertifiziert sind, besteht zusätzlich ein Angemessenheitsbeschluss der Europäischen Kommission vom 10. Juli 2023 (Art. 45 DSGVO). Die DPF-Zertifizierung der jeweiligen Anbieter können Sie unter <a href="https://www.dataprivacyframework.gov" target="_blank" rel="noopener noreferrer">www.dataprivacyframework.gov</a> einsehen. Eine Kopie der abgeschlossenen Standardvertragsklauseln stellen wir Ihnen auf Anfrage zur Verfügung. Der DPF-Angemessenheitsbeschluss kann vom EuGH überprüft werden; für diesen Fall dienen die abgeschlossenen Standardvertragsklauseln als eigenständige Rückfallebene.</p>

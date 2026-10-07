@@ -244,6 +244,11 @@
       .schaubild-grid { grid-template-columns: 1fr; }
       .perspective-grid { grid-template-columns: 1fr; }
     }
+    /* Randabfallende Leiste: negativer Rand muss zum Container-Innenabstand
+       passen (style.css: 1.25rem bis 768px), sonst seitliches Scrollen. */
+    @media (max-width: 768px) {
+      .law-strip--bleed { margin-left: -1.25rem !important; margin-right: -1.25rem !important; padding-inline: 1.25rem !important; }
+    }
   </style>
 </head>
 <body>
@@ -375,7 +380,7 @@
     <p class="section-lead" style="max-width:640px;margin-bottom:1.5rem;">
       Als Betreiber eines Aufzugs tragen Sie acht gesetzliche Pflichten gleichzeitig. Jede hat eine eigene Rechtsgrundlage, einen eigenen Rhythmus und einen eigenen Verantwortungsträger. Dieses Schaubild gibt den Überblick.
     </p>
-    <div class="law-strip" style="margin:-1rem -2rem;padding:0.875rem 2rem;margin-bottom:0;border-radius:0;">
+    <div class="law-strip law-strip--bleed" style="margin:-1rem -2rem;padding:0.875rem 2rem;margin-bottom:0;border-radius:0;">
       <span class="law-strip-label">Rechtsgrundlagen</span>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <span class="law-tag">BetrSichV</span>

@@ -49,6 +49,12 @@
     .form-message--info{background:#EDF7F6;border:1px solid rgba(105,176,171,0.35);color:#23403E;}
     .form-message--error{background:#FFF3F3;border:1px solid rgba(232,71,74,0.25);color:#8F2729;}
     @media(max-width:768px){.form-grid{grid-template-columns:1fr;}}
+    /* Mobil: Preiszeilen untereinander statt nebeneinander (kein seitliches Scrollen) */
+    @media (max-width: 480px) {
+      .vc-preis-box { padding: 24px 20px !important; }
+      .vc-preis-zeile { flex-direction: column; gap: 2px; }
+      .vc-preis-zeile > span:last-child { padding-left: 0 !important; text-align: left !important; }
+    }
   </style>
 </head>
 <body>
@@ -266,15 +272,15 @@
 <section class="section" style="background:var(--color-bg-subtle);" aria-labelledby="preis-heading">
   <div class="container">
     <h2 class="section-title" id="preis-heading">Kostenlos — und das bedeutet wirklich kostenlos</h2>
-    <div style="padding:28px 32px;background:#fff;border-radius:8px;max-width:560px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
+    <div class="vc-preis-box" style="padding:28px 32px;background:#fff;border-radius:8px;max-width:560px;box-shadow:0 2px 12px rgba(0,0,0,0.06);">
       <div style="font-size:42px;font-weight:800;color:var(--color-coral-dark);margin-bottom:6px;">0 &#x20AC;</div>
       <p style="font-size:14px;color:var(--color-gray);margin-bottom:1rem;">für den vollständigen Befund. Kein Freemium, kein Abo, keine versteckte Beratungsgebühr.</p>
       <div style="border-top:1px solid rgba(0,0,0,0.07);padding-top:12px;">
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
+        <div class="vc-preis-zeile" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="font-size:14px;color:var(--color-gray);">Wenn wir keine Auffälligkeiten finden</span>
           <span style="font-size:14px;font-weight:700;text-align:right;padding-left:16px;">0 &#x20AC; — Sie haben eine unabhängige Bestätigung</span>
         </div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
+        <div class="vc-preis-zeile" style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(0,0,0,0.05);">
           <span style="font-size:14px;color:var(--color-gray);">Wenn wir Handlungsbedarf finden</span>
           <span style="font-size:14px;font-weight:700;text-align:right;padding-left:16px;">Befund + Handlungsempfehlungen, kostenlos</span>
         </div>

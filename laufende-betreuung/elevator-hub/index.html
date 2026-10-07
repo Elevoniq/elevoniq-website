@@ -439,11 +439,18 @@
     details.faq-item[open] summary::after { content: '−'; }
     .faq-answer { padding: 0 24px 20px; color: #374151; font-size: 15px; line-height: 1.7; background: #fff; border-top: 1px solid rgba(0,0,0,0.06); }
 
+    /* Stakeholder-Grid (4 Spalten → 2 → 1) */
+    .hub-stakeholder-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
     @media (max-width: 900px) {
       .hub-hero-inner { grid-template-columns: 1fr; }
       .hub-hero-mockup { display: none; }
       .lifecycle-teaser-grid { grid-template-columns: 1fr !important; }
       .lifecycle-teaser-grid svg { max-width:200px !important; margin-top:1.5rem; }
+      .hub-stakeholder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-checklist { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .hub-stakeholder-grid { grid-template-columns: minmax(0, 1fr); }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1326,7 +1333,7 @@
     <span class="section-eyebrow">Zusammenarbeit</span>
     <h2 class="section-title" id="zugang-heading">Ein Hub für alle Beteiligten</h2>
     <p class="section-lead" style="max-width:680px;">Der ELEVATOR HUB<sup>®</sup> ist nicht nur Ihr persönliches Cockpit — er ist die gemeinsame Arbeitsgrundlage für alle, die an Ihren Aufzügen beteiligt sind. Jeder Dienstleister erhält genau den Zugang, den er für seine Arbeit braucht. Nicht mehr, nicht weniger.</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2rem;">
+    <div class="hub-stakeholder-grid" style="margin-top:2rem;">
       <div class="card" style="padding:1.5rem;">
         <h4 style="margin-bottom:0.5rem;color:var(--color-navy);">Prüfgesellschaften (ZÜS)</h4>
         <p style="font-size:14px;color:var(--color-gray);margin:0;">Werden direkt eingeladen. Haben Zugriff auf alle prüfrelevanten Dokumente — Prüfberichte, GBU, Fristen. Keine Papierstapel, kein Mailverkehr vor der Prüfung.</p>
