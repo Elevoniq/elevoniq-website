@@ -205,7 +205,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 ElevonIQ GmbH &middot; <a href="/impressum/">Impressum</a> &middot; <a href="/datenschutz/">Datenschutz</a> &middot; <a href="/widerrufsrecht/">Widerrufsrecht</a> &middot; <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">OS-Streitbeilegung</a></p>
+      <p>&copy; 2026 ElevonIQ GmbH &middot; <a href="/impressum/">Impressum</a> &middot; <a href="/datenschutz/">Datenschutz</a> &middot; <a href="/widerrufsrecht/">Widerrufsrecht</a> &middot; <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">OS-Streitbeilegung</a> &middot; <a href="#" onclick="localStorage.removeItem('elevoniq_consent');location.reload();return false;">Cookie-Einstellungen</a></p>
     </div>
   </footer>
   <script>
@@ -231,8 +231,19 @@
     gtag('js', new Date());
     gtag('config', 'G-RPSDHVCT33');
   }
+  /* cookie-consent.js laeuft mit defer, dieses Inline-Skript dagegen sofort beim
+     Parsen. window.elevoniqConsent existiert hier also noch nicht. Deshalb erst
+     nach DOMContentLoaded registrieren: deferred Skripte sind dann ausgefuehrt.
+     Ohne diesen Nachlauf wuerde GA4 nie geladen, auch nicht mit Consent. */
+  function registerConsentHook() {
+    if (window.elevoniqConsent) {
+      window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+    }
+  }
   if (window.elevoniqConsent) {
-    window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+    registerConsentHook();
+  } else {
+    document.addEventListener('DOMContentLoaded', registerConsentHook);
   }
 })();
 </script>
