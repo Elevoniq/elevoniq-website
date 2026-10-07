@@ -937,6 +937,35 @@
   if(f) f.setAttribute('max',new Date().getFullYear());
 }());
 
+/* Datei-Groessencheck: Summe aller Anhaenge darf 4 MB nicht ueberschreiten */
+var AP_MAX_TOTAL_BYTES=4*1024*1024;
+
+function apGetTotalFileSize(form){
+  var inputs=form.querySelectorAll('input[type="file"]');
+  var total=0;
+  for(var i=0;i<inputs.length;i++){
+    var files=inputs[i].files;
+    for(var j=0;j<(files?files.length:0);j++) total+=files[j].size;
+  }
+  return total;
+}
+
+function apUploadError(userMessage){
+  var e=new Error('upload');
+  e.userMessage=userMessage;
+  return e;
+}
+
+/* Nutzerlesbare Fehlermeldung mit anklickbarem Mail-Link. */
+function apShowUserError(el,message){
+  el.textContent=message+' Für Unterlagen, die das Limit überschreiten, schreiben Sie uns bitte an ';
+  var link=document.createElement('a');
+  link.href='mailto:support@elevoniq.de';
+  link.textContent='support@elevoniq.de';
+  el.appendChild(link);
+  el.appendChild(document.createTextNode('.'));
+}
+
 /* Form submit */
 function getFirstInvalidField(form){
   var requiredFields=form.querySelectorAll('[required]');
@@ -964,13 +993,14 @@ function getFirstInvalidField(form){
   return null;
 }
 
+var apDefaultErrorHtml=document.getElementById('ap-error').innerHTML;
+
 document.getElementById('angebotspruefung-form').addEventListener('submit',function(e){
   e.preventDefault();
   var form=this;
   var btn=form.querySelector('button[type="submit"]');
   var success=document.getElementById('ap-success');
   var error=document.getElementById('ap-error');
-  var defaultErrorHtml=error.innerHTML;
   var firstInvalid=getFirstInvalidField(form);
   if(firstInvalid){
     success.style.display='none';
@@ -982,7 +1012,17 @@ document.getElementById('angebotspruefung-form').addEventListener('submit',funct
     }
     return;
   }
-  error.innerHTML=defaultErrorHtml;
+  /* Clientseitiger Groessencheck: Summe aller Anhaenge darf 4 MB nicht ueberschreiten */
+  var totalBytes=apGetTotalFileSize(form);
+  if(totalBytes>AP_MAX_TOTAL_BYTES){
+    var mbValue=Math.max(Math.round(totalBytes/1048576*10)/10,4.1);
+    var sizeMsg='Die Dateien sind zusammen '+mbValue.toFixed(1).replace('.',',')+' MB groß. Erlaubt sind maximal 4 MB. Bitte wählen Sie kleinere Dateien.';
+    success.style.display='none';
+    apShowUserError(error,sizeMsg);
+    error.style.display='block';
+    return;
+  }
+  error.innerHTML=apDefaultErrorHtml;
   btn.disabled=true;
   btn.textContent='Wird hochgeladen…';
   success.style.display='none';
@@ -991,12 +1031,23 @@ document.getElementById('angebotspruefung-form').addEventListener('submit',funct
   data.set('queueType','quotation');
   fetch('/api/upload',{method:'POST',body:data})
     .then(function(r){
-      if(!r.ok)throw new Error('server');
-      window.location.href='/danke/';
+      if(r.ok){window.location.href='/danke/';return;}
+      if(r.status===413) throw apUploadError('Die Dateien sind zu groß für den Upload. Bitte wählen Sie kleinere Dateien.');
+      if(r.status===429) throw apUploadError('\x00rate_limit');
+      throw apUploadError('');
     })
-    .catch(function(){
-      error.innerHTML=defaultErrorHtml;
+    .catch(function(e){
+      if(e&&e.userMessage==='\x00rate_limit'){
+        error.textContent='Zu viele Anfragen. Bitte versuchen Sie es später erneut.';
+      }else if(e&&e.userMessage){
+        apShowUserError(error,e.userMessage);
+      }else{
+        error.innerHTML=apDefaultErrorHtml;
+      }
       error.style.display='block';
+      if(window.turnstile&&typeof window.turnstile.reset==='function'){
+        try{window.turnstile.reset();}catch(_){}
+      }
       btn.disabled=false;
       btn.textContent='Kostenfreie Ersteinschätzung anfordern';
     });
