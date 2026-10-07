@@ -73,7 +73,8 @@
     }
     .service-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      /* min(): unter 360px Viewport darf die Karte schmaler als 320px werden */
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
       gap: 20px;
     }
     .service-card {

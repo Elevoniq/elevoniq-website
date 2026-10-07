@@ -107,6 +107,10 @@
 
     /* ---- General ---- */
     .section-eyebrow { display:block; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#69B0AB; margin-bottom:10px; }
+    /* Mobil: Effizienzklassen-Vergleich untereinander (kein seitliches Scrollen) */
+    @media (max-width: 480px) {
+      .sf-klassen-vergleich { grid-template-columns: minmax(0, 1fr) !important; }
+    }
   </style>
 </head>
 <body>
@@ -601,7 +605,7 @@
     </div>
 
     <!-- Vorher/Nachher Kasten -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:680px;margin:0 auto;">
+    <div class="sf-klassen-vergleich" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:680px;margin:0 auto;">
       <div style="background:#FFF3F3;border:2px solid #E8474A;border-radius:8px;padding:1.5rem;text-align:center;">
         <p style="font-size:12px;font-weight:700;color:#E8474A;letter-spacing:0.1em;margin:0 0 8px;">OHNE SMART FLAP®</p>
         <div style="font-size:3rem;font-weight:800;color:#E8474A;line-height:1;">D–F</div>

@@ -1414,18 +1414,48 @@ details.faq-item .faq-answer {
   .hero-trust-row { flex-direction: column; gap: 0.75rem; }
 }
 
-/* Unter 375px: lange CTA-Labels umbrechen lassen statt aus dem
-   Layout laufen zu lassen. Buttons haben sonst white-space: nowrap.
-   Bewusst erst unterhalb 375px, damit die gaengigen Geraetebreiten
-   ab iPhone SE/12 mini optisch unveraendert bleiben.               */
-@media (max-width: 374.98px) {
+/* Mobil: lange CTA-Labels umbrechen lassen statt aus dem Layout
+   laufen zu lassen (Buttons haben sonst white-space: nowrap).
+   Kurze Labels bleiben einzeilig; padding-block 11px gleicht die
+   hoehere line-height aus, die Buttonhoehe bleibt praktisch gleich. */
+@media (max-width: 767.98px) {
   .btn-primary,
   .btn-secondary,
   .btn-teal,
   .btn-white-outline {
     white-space: normal;
     line-height: 1.25;
+    padding-block: 11px;
+    max-width: 100%;
+  }
+}
+@media (max-width: 374.98px) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-teal,
+  .btn-white-outline {
     padding-inline: 18px;
+  }
+}
+
+/* Schmale Handys: lange deutsche Komposita in Ueberschriften
+   ("Datenschutzerklärung", "Wirtschaftlichkeitsrechnung") trennen
+   statt ueber den Viewport hinauszulaufen. Braucht lang="de".     */
+@media (max-width: 480px) {
+  h1, h2 {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Cloudflare-Turnstile-Widget ist fest 300px breit. Unter 360px passt
+   es nicht in die Formular-Panels: optisch skalieren statt die Seite
+   seitlich scrollen zu lassen. Markup und Logik bleiben unveraendert. */
+@media (max-width: 359.98px) {
+  .cf-turnstile {
+    transform: scale(0.8);
+    transform-origin: left top;
+    margin-bottom: 0 !important;
   }
 }
 
