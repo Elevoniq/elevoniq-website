@@ -21,29 +21,52 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Click-to-open Dropdown
-  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+  function closeAllDropdowns() {
+    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d) {
+      d.classList.remove('is-open');
+      var btn = d.querySelector('.nav-dropdown-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  }
 
-    // Toggle beim Klick auf den Button
+  document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+    var toggleBtn = dropdown.querySelector('.nav-dropdown-toggle');
+
+    // Toggle beim Klick auf den Button (auch per Enter/Space da das nativ click auslöst)
     dropdown.addEventListener('click', function(e) {
       e.stopPropagation();
       var isOpen = dropdown.classList.contains('is-open');
 
       // Alle anderen Dropdowns schliessen
-      document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d) {
-        d.classList.remove('is-open');
-      });
+      closeAllDropdowns();
 
       if (!isOpen) {
         dropdown.classList.add('is-open');
+        if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
       }
     });
+
+    // Space-Taste: Browser scrollt standardmässig – das verhinden wir nur wenn der Button fokussiert ist
+    if (toggleBtn) {
+      toggleBtn.addEventListener('keydown', function(e) {
+        if (e.key === ' ') {
+          e.preventDefault();
+          toggleBtn.click();
+        }
+      });
+    }
+  });
+
+  // Escape schliesst alle Dropdowns
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeAllDropdowns();
+    }
   });
 
   // Klick ausserhalb schliesst alle Dropdowns
   document.addEventListener('click', function() {
-    document.querySelectorAll('.nav-dropdown.is-open').forEach(function(d) {
-      d.classList.remove('is-open');
-    });
+    closeAllDropdowns();
   });
 
   // Transparent nav (Variant C)
