@@ -1089,7 +1089,8 @@ document.getElementById('pruefbericht-form').addEventListener('submit',function(
     .then(function(r){
       if(r.ok){window.location.href='/danke/';return;}
       if(r.status===413) throw uploadError(PB_MSG_PAYLOAD_TOO_LARGE);
-      if(r.status===400||r.status===429){
+      if(r.status===429) throw uploadError('\x00rate_limit');
+      if(r.status===400){
         return r.json().then(function(body){
           throw uploadError(body&&typeof body.error==='string'?body.error:'');
         },function(){
@@ -1099,7 +1100,9 @@ document.getElementById('pruefbericht-form').addEventListener('submit',function(
       throw uploadError('');
     })
     .catch(function(e){
-      if(e&&e.userMessage){
+      if(e&&e.userMessage==='\x00rate_limit'){
+        error.textContent='Zu viele Anfragen. Bitte versuchen Sie es später erneut.';
+      }else if(e&&e.userMessage){
         showUserError(error,e.userMessage);
       }else{
         error.innerHTML=defaultErrorHtml;
@@ -1124,8 +1127,8 @@ function uploadError(userMessage){
 function showUserError(el,message){
   el.textContent=message+' Alternativ senden Sie Ihre Unterlagen an ';
   var link=document.createElement('a');
-  link.href='mailto:documents@elevoniq.de';
-  link.textContent='documents@elevoniq.de';
+  link.href='mailto:support@elevoniq.de';
+  link.textContent='support@elevoniq.de';
   el.appendChild(link);
   el.appendChild(document.createTextNode('.'));
 }
