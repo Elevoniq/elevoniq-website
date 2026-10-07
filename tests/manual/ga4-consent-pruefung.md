@@ -2,13 +2,15 @@
 
 ## Zweck
 
-Diese Anleitung dokumentiert das manuelle Prüfverfahren für das Kernziel von PR #29: GA4-Anfragen dürfen ausschließlich nach expliziter Einwilligung des Nutzers ausgelöst werden. Kein automatisierter CI-Test prüft dieses Verhalten gegenwärtig. Die manuelle Prüfung ersetzt diesen Schutz und muss vor jedem Merge in main durchgeführt werden.
+Diese Anleitung dokumentiert das manuelle Prüfverfahren für das Kernziel von PR #29: GA4-Anfragen dürfen ausschließlich nach expliziter Einwilligung des Nutzers ausgelöst werden.
 
-Das Verfahren ergänzt `tests/manual/ga4-consent-check.mjs`, ein referenzielles Headless-Chrome-Skript, das dieselben vier Fälle automatisiert prüft, aber nicht Teil von `npm test` ist.
+Automatisiert: Die vier Fälle (plus Google-Fonts-Prüfung) laufen als Browser-Tests in `tests/e2e/consent.e2e.mjs` mit `npm run test:e2e`. Das ist die eine Quelle für die automatisierte Prüfung. Die statischen Regeln (cookie-consent.js eingebunden, Footer-Link "Cookie-Einstellungen", kein festes gtag-Skript) laufen in `npm test` über `tests/ga4-consent-static.test.mjs`.
+
+Diese manuelle Anleitung bleibt für die Sichtprüfung im echten Browser, z.B. nach Änderungen am Banner-Layout oder wenn kein Chrome für `test:e2e` verfügbar ist.
 
 ## Wann ist diese Prüfung durchzuführen?
 
-Vor jedem Merge in main und bei jeder Änderung an:
+Bei jeder Änderung an den folgenden Stellen mindestens `npm run test:e2e` ausführen, bei sichtbaren Banner-Änderungen zusätzlich diese manuelle Prüfung:
 
 - `assets/js/cookie-consent.js`
 - GA4-Inline-Blöcken in beliebigen HTML-Seiten (der Block zwischen den Kommentaren `GA4 Anfang` und `GA4 Ende`)
@@ -57,16 +59,16 @@ Schritte:
 3. Netzwerk-Tab: genau 1 Treffer erscheint.
 4. Optional: Application, localStorage prüfen. Der Schlüssel `elevoniq_consent` muss den Wert `all` enthalten.
 
-### Fall c: Nach Ablehnen oder Widerruf wieder 0 Anfragen, Banner erscheint erneut
+### Fall c: Nach Ablehnen oder Widerruf 0 Anfragen
 
-Erwartetes Ergebnis: nach Ablehnen oder Widerruf werden keine GA4-Anfragen ausgelöst. Nach Reload erscheint der Banner erneut.
+Erwartetes Ergebnis: nach Ablehnen oder Widerruf werden keine GA4-Anfragen ausgelöst. Nach Ablehnen ist die Entscheidung gespeichert (`elevoniq_consent` = `necessary`), der Banner erscheint beim Reload nicht erneut. Nach Widerruf (Footer-Link) ist die Entscheidung gelöscht und der Banner erscheint erneut.
 
 Schritte (Ablehnen):
 
 1. Speicher leeren (Clear site data), Seite neu laden.
 2. Auf "Nur notwendige" oder "Ablehnen" klicken.
 3. Netzwerk-Tab: 0 Treffer.
-4. Seite neu laden: Banner erscheint wieder. Netzwerk-Tab: weiterhin 0 Treffer.
+4. Seite neu laden: Banner erscheint nicht erneut (Ablehnung gespeichert). Netzwerk-Tab: weiterhin 0 Treffer.
 
 Schritte (Widerruf):
 
@@ -99,4 +101,4 @@ Datum, Prüfer und Ergebnis je Fall und Seite eintragen. "OK" bedeutet: Erwartet
 
 ## Zuletzt durchgeführt
 
-Datum: 2026-10-07. Prüfer: Ben. Branch: fix/ga4-consent-timing-v2. Ergebnis: alle vier Fälle auf 6 Seiten bestanden (siehe Bericht `Owners Inbox/ga4-fix-neu-aufsetzen/bericht.md`, Schritt 3, Tabelle). Verfahren: Headless Chrome via `tests/manual/ga4-consent-check.mjs`.
+Datum: 2026-10-07. Prüfer: Ben. Branch: test/consent-e2e-automatisiert (Stand origin/main 0ab1501). Ergebnis: `npm run test:e2e` 39/39 bestanden (7 Seiten x 5 Fälle, 4 Schriftseiten). Verfahren: `tests/e2e/consent.e2e.mjs` (ersetzt das frühere Referenzskript `tests/manual/ga4-consent-check.mjs`).

@@ -8,3 +8,4 @@ vergleich.html
 .env
 assets/videos/smartflap-demo.mp4
 assets/videos/smartflap-elevoniq.mp4
+node_modules/
