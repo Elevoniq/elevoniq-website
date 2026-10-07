@@ -2165,16 +2165,6 @@ details[open] > .faq-item__question .faq-item__icon::before {
   text-align: center;
   padding: 2rem 1.5rem;
 }
-.segment-bar {
-  width: 40px;
-  height: 4px;
-  border-radius: 2px;
-  margin: 0 auto 1rem;
-}
-.segment-bar--coral  { background: var(--color-coral-dark); }
-.segment-bar--teal   { background: var(--color-teal); }
-.segment-bar--navy   { background: var(--color-navy); }
-.segment-bar--amber  { background: var(--color-amber); }
 .segment-heading {
   margin-bottom: 0.75rem;
 }
