@@ -982,6 +982,126 @@ details.faq-item .faq-answer {
   color: var(--color-gray);
 }
 
+/* FAQ-Variante mit Wrapper (div.faq-item > details > summary.faq-item__question).
+   Genutzt auf modernisierung, wartungsvertrag-ausschreiben, gefaehrdungsbeurteilung.
+   Optik identisch zu details.faq-item oben: neutrale Haarlinien, Plus/Minus. */
+div.faq-item {
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+div.faq-item:first-child {
+  border-top: 1px solid rgba(0,0,0,0.07);
+}
+.faq-item__question {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.25rem 0;
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  user-select: none;
+}
+.faq-item__question::-webkit-details-marker { display: none; }
+.faq-item__question:focus-visible {
+  outline: 3px solid var(--color-coral-aa);
+  outline-offset: 3px;
+}
+/* Das "+" im Markup wird visuell durch Plus/Minus ersetzt (Span ist aria-hidden). */
+.faq-item__icon {
+  font-size: 0;
+  flex-shrink: 0;
+}
+.faq-item__icon::before {
+  content: "+";
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-coral-dark);
+}
+details[open] > .faq-item__question .faq-item__icon::before {
+  content: "−";
+}
+.faq-item__answer {
+  padding: 0 0 1.5rem;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-gray);
+}
+
+/* Hero-Badges auf dunklem .page-hero (Navy). Pillenform wie im Hero von
+   /einzelleistungen/vertragscheck/. Auf Navy die Basis-Coral, nicht coral-dark
+   (Branding-Guideline): #FF5B5C auf #1E2761 = 4,68:1. */
+.hero-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.9);
+}
+.hero-badge--outline {
+  background: rgba(255,255,255,0.12);
+}
+.hero-badge--coral {
+  background: transparent;
+  border-color: rgba(255,91,92,0.5);
+  color: var(--color-coral);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Preisbox: Karte nach Variante 4 (1px neutrale Kopflinie, kein Farbstreifen),
+   weiße Fläche auf bg-subtle. */
+.price-box {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-structural);
+  border-radius: 0 0 8px 8px;
+  padding: 28px 32px;
+  max-width: 560px;
+  margin-top: 1.5rem;
+}
+.price-box__amount {
+  font-size: 2rem;
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.1;
+  color: var(--color-dark);
+  margin-bottom: 0.75rem;
+}
+.price-box__note {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-gray);
+}
+.price-box__table {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+.price-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 14px;
+}
+.price-row:last-child { border-bottom: none; }
+.price-row__label { color: var(--color-gray); }
+.price-row__value { font-weight: 600; color: var(--color-dark); }
+@media (max-width: 480px) {
+  .price-box { padding: 24px 20px; }
+}
+
 /* ─── BREADCRUMB ─────────────────────────────────── */
 .breadcrumb {
   display: flex;
@@ -1003,7 +1123,6 @@ details.faq-item .faq-answer {
 /* ─── PAGE HERO (INNER PAGES) ────────────────────── */
 .page-hero {
   background: var(--color-navy);
-  border-top: 4px solid var(--color-coral-dark);
   padding: 72px 0 64px;
   color: var(--color-white);
 }
@@ -1023,7 +1142,6 @@ details.faq-item .faq-answer {
   line-height: 1.7;
   margin-bottom: 2rem;
 }
-.page-hero.teal { border-top-color: var(--color-teal); }
 
 /* ─── NAVY FEATURE SECTION ───────────────────────── */
 .section-navy {
@@ -1565,14 +1683,6 @@ details.faq-item .faq-answer {
 /* ── Section backgrounds ── */
 .section-subtle {
   background: var(--color-bg-subtle);
-}
-
-/* ── Card accents ── */
-.card--coral-top {
-  border-top: 3px solid var(--color-coral-dark);
-}
-.card--teal-top {
-  border-top: 3px solid var(--color-teal);
 }
 
 /* ── Badge margin ── */
