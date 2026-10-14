@@ -4,8 +4,8 @@
   <!-- ElevonIQ – Web-Entwicklung | 2026-10-14 | Störungsmeldung (Salesforce Web-to-Case) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Störung melden — ElevonIQ</title>
-  <meta name="description" content="Aufzugstörung melden. Bitte nutzen Sie dieses Formular nicht bei eingeschlossenen Personen — rufen Sie 112.">
+  <title>Störung melden: ElevonIQ</title>
+  <meta name="description" content="Aufzugstörung melden. Dieses Formular ist kein Notruf. Bei eingeschlossenen Personen sofort 112 anrufen.">
   <link rel="canonical" href="https://elevoniq.de/stoerungsmeldung/">
   <!-- Suchmaschinen-Indexierung ausgeschlossen: interne QR-Code-Utility-Seite -->
   <meta name="robots" content="noindex, nofollow">
@@ -439,7 +439,7 @@
         Web-to-Case Formular.
         - Kein JS-Versand, normaler HTML-POST.
         - Adresse/Lage werden per JS in description eingefügt (No-JS: nur
-          native Felder, Adresse/Lage gehen verloren — akzeptabler Fallback).
+          native Felder, Adresse/Lage gehen verloren; akzeptabler Fallback).
         - ?anlage= Vorbefüllung via input.value (kein innerHTML).
         - Honeypot-Feld: JS blockiert Submit bei Befüllung.
       -->
@@ -517,18 +517,20 @@
                    (kein name → kein POST-Parameter → akzeptabler Fallback).
         -->
         <div class="form-group">
-          <label for="adresse">Straße und Hausnummer</label>
+          <label for="adresse">Straße und Hausnummer <span aria-hidden="true">*</span></label>
           <input
             type="text"
             id="adresse"
             placeholder="z.&#8203;B. Musterstraße 12"
             autocomplete="street-address"
+            required
+            aria-required="true"
           >
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="plz">Postleitzahl</label>
+            <label for="plz">Postleitzahl <span aria-hidden="true">*</span></label>
             <input
               type="text"
               id="plz"
@@ -537,15 +539,19 @@
               inputmode="numeric"
               pattern="[0-9]{5}"
               maxlength="5"
+              required
+              aria-required="true"
             >
           </div>
           <div class="form-group">
-            <label for="ort">Ort</label>
+            <label for="ort">Ort <span aria-hidden="true">*</span></label>
             <input
               type="text"
               id="ort"
               placeholder="Berlin"
               autocomplete="address-level2"
+              required
+              aria-required="true"
             >
           </div>
         </div>
@@ -596,16 +602,20 @@
 
         <!--
           description: SF-Standardfeld.
-          Mit JS: Adresse/Lage werden durch handleSubmit() vorangestellt.
-          Ohne JS: nur der sichtbare Freitext wird übermittelt.
-          Ein separates verstecktes Feld ist nicht nötig: wir mutieren
-          den Wert dieses Textareas direkt vor dem nativen Submit.
+          Das sichtbare Textarea hat KEIN name-Attribut. Der Wert wird
+          niemals mutiert. Ein verstecktes Input übernimmt den name und
+          wird erst auf Submit befüllt (JS-Pfad) oder bleibt leer
+          (No-JS-Pfad: dann gehen nur die nativen Felder durch).
+          Damit ist das Doppel-Präfix-Problem beim bfcache-Rücksprung
+          ausgeschlossen.
         -->
+        <!-- Verstecktes Feld empfängt den zusammengesetzten description-Wert -->
+        <input type="hidden" id="description-hidden" name="description">
+
         <div class="form-group">
-          <label for="description">Beschreibung der Störung <span aria-hidden="true">*</span></label>
+          <label for="description-visible">Beschreibung der Störung <span aria-hidden="true">*</span></label>
           <textarea
-            id="description"
-            name="description"
+            id="description-visible"
             placeholder="Was passiert ist, wann die Störung aufgetreten ist, welche Etagen betroffen sind."
             required
             aria-required="true"
@@ -702,7 +712,7 @@
     if (portal) portal.style.display = 'inline-block';
 
     // -------------------------------------------------------------------
-    // ?anlage= Vorbefüllung — sicher via input.value, kein innerHTML
+    // ?anlage= Vorbefüllung: sicher via input.value, kein innerHTML
     // -------------------------------------------------------------------
     try {
       var params = new URLSearchParams(window.location.search);
@@ -710,20 +720,23 @@
       if (anlageParam) {
         var anlageField = document.getElementById('00NW700000Jh2I9');
         if (anlageField) {
-          // Nur druckbare ASCII, maximal 12 Zeichen (Feldlimit)
           var sicher = String(anlageParam).replace(/[^\x20-\x7E]/g, '').substring(0, 12);
           if (sicher) anlageField.value = sicher;
         }
       }
-    } catch (e) { /* URLSearchParams nicht verfügbar — kein Prefill */ }
+    } catch (e) { /* URLSearchParams nicht verfuegbar: kein Prefill */ }
 
     // -------------------------------------------------------------------
     // Formular-Submit-Handler
+    // Das sichtbare Textarea wird nie mutiert. Der zusammengesetzte
+    // description-Wert geht in das versteckte input#description-hidden.
+    // Damit ist kein Doppel-Praefixproblem beim bfcache-Ruecksprung
+    // moeglich: das sichtbare Feld bleibt unveraendert.
     // -------------------------------------------------------------------
     var form = document.getElementById('stoerung-form');
     form.addEventListener('submit', function (e) {
 
-      // 1. Honeypot-Prüfung: befülltes Feld = Bot → Submit stillschweigend blockieren
+      // 1. Honeypot: befuelltes Feld deutet auf Bot hin, Submit still blockieren
       var hp = document.getElementById('fax_hp');
       if (hp && hp.value) {
         e.preventDefault();
@@ -739,33 +752,50 @@
         return;
       }
 
-      // 3. Adresse/Lage in description einfügen
-      var adresse = (document.getElementById('adresse') || {}).value || '';
-      var plz     = (document.getElementById('plz')     || {}).value || '';
-      var ort     = (document.getElementById('ort')     || {}).value || '';
-      var lage    = (document.getElementById('lage')    || {}).value || '';
-
-      var desc = document.getElementById('description');
-      var freitext = desc.value.trim();
+      // 3. Standort und Freitext zusammensetzen, in Hidden-Feld schreiben
+      var adresse  = (document.getElementById('adresse')           || {}).value || '';
+      var plz      = (document.getElementById('plz')               || {}).value || '';
+      var ort      = (document.getElementById('ort')               || {}).value || '';
+      var lage     = (document.getElementById('lage')              || {}).value || '';
+      var freitext = (document.getElementById('description-visible') || {}).value || '';
 
       var standort = [
         adresse.trim() ? 'Adresse: ' + adresse.trim() + ', ' + plz.trim() + ' ' + ort.trim() : '',
-        lage.trim()    ? 'Lage: '    + lage.trim()    : ''
+        lage.trim()    ? 'Lage: '    + lage.trim()                                            : ''
       ].filter(Boolean).join('\n');
 
-      if (standort) {
-        desc.value = standort + '\n\nBeschreibung:\n' + freitext;
+      var hidden = document.getElementById('description-hidden');
+      if (hidden) {
+        hidden.value = standort
+          ? standort + '\n\nBeschreibung:\n' + freitext.trim()
+          : freitext.trim();
       }
 
-      // 4. Button deaktivieren (Doppel-Submit verhindern)
+      // 4. Button sperren (Doppel-Submit verhindern)
       var btn = document.getElementById('submit-btn');
       if (btn) {
         btn.disabled = true;
         btn.textContent = 'Wird übermittelt…';
       }
 
-      // Nativer POST läuft weiter; Salesforce leitet zu retURL um.
+      // Nativer POST laeuft weiter; Salesforce leitet zu retURL um.
     });
+  });
+
+  // -------------------------------------------------------------------
+  // bfcache-Ruecksprung: Button wieder aktivieren, Hidden-Feld leeren.
+  // Das sichtbare Textarea war nie veraendert, kein Reset noetig.
+  // -------------------------------------------------------------------
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      var btn = document.getElementById('submit-btn');
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Störung absenden';
+      }
+      var hidden = document.getElementById('description-hidden');
+      if (hidden) hidden.value = '';
+    }
   });
 </script>
 <script src="../assets/js/nav.js" defer></script>
