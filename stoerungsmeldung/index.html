@@ -440,7 +440,7 @@
         - Kein JS-Versand, normaler HTML-POST.
         - Adresse/Lage werden per JS in description eingefügt (No-JS: nur
           native Felder, Adresse/Lage gehen verloren; akzeptabler Fallback).
-        - ?anlage= Vorbefüllung via input.value (kein innerHTML).
+        - ?fabriknummer= befüllt Fabriknummer, ?anlage= befüllt Anlagennummer (input.value, kein innerHTML).
         - Honeypot-Feld: JS blockiert Submit bei Befüllung.
       -->
       <form
@@ -508,13 +508,49 @@
         <!-- ============================================================ -->
         <!-- Abschnitt 2: Aufzug                                           -->
         <!-- ============================================================ -->
-        <p class="form-section-label">Standort des Aufzugs</p>
+        <p class="form-section-label">Angaben zum Aufzug</p>
+
+        <!-- Fabriknummer zuerst: Salesforce ordnet den Fall darüber zu -->
+        <div class="form-group anlage-highlight">
+          <label for="00NW700000Jh2I9">Fabriknummer <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="00NW700000Jh2I9"
+            name="00NW700000Jh2I9"
+            placeholder="z.&#8203;B. 1234567"
+            maxlength="12"
+            required
+            aria-required="true"
+            aria-describedby="fabriknummer-hint"
+          >
+          <span class="field-hint" id="fabriknummer-hint">
+            Die Fabriknummer steht auf dem Schild in der Kabine oder auf dem Aufkleber neben dem QR-Code.
+          </span>
+        </div>
+
+        <!--
+          Anlagennummer: optional, KEIN name-Attribut.
+          Wird per JS in den Kopfblock der Case-Beschreibung geschrieben.
+        -->
+        <div class="form-group">
+          <label for="anlagennummer">Anlagennummer <span class="optional">(optional)</span></label>
+          <input
+            type="text"
+            id="anlagennummer"
+            placeholder="z.&#8203;B. ANL-4711"
+            maxlength="40"
+            aria-describedby="anlagennummer-hint"
+          >
+          <span class="field-hint" id="anlagennummer-hint">
+            Steht ggf. auf dem Aufkleber am Aufzug oder in Unterlagen der Hausverwaltung.
+          </span>
+        </div>
 
         <!--
           Adresse und Lage: KEIN name-Attribut.
           Mit JS: Werte werden vor Submit in description eingefügt.
           Ohne JS: Felder werden sichtbar ausgefüllt, aber nicht übermittelt
-                   (kein name → kein POST-Parameter → akzeptabler Fallback).
+                   (kein name, kein POST-Parameter, akzeptabler Fallback).
         -->
         <div class="form-group">
           <label for="adresse">Straße und Hausnummer <span aria-hidden="true">*</span></label>
@@ -563,23 +599,6 @@
             id="lage"
             placeholder="z.&#8203;B. Haus B, linkes Treppenhaus"
           >
-        </div>
-
-        <!-- Anlagennummer: prominent, weil Salesforce darüber zuordnet -->
-        <div class="form-group anlage-highlight">
-          <label for="00NW700000Jh2I9">Anlagen-/Fabriknummer <span class="optional">(optional, aber hilfreich)</span></label>
-          <input
-            type="text"
-            id="00NW700000Jh2I9"
-            name="00NW700000Jh2I9"
-            placeholder="z.&#8203;B. 1234567"
-            maxlength="12"
-            aria-describedby="anlage-hint"
-          >
-          <span class="field-hint" id="anlage-hint">
-            Steht auf einem Schild in der Kabine oder an der Kabinentür.
-            Wenn Sie die Nummer angeben, kann der Aufzug direkt zugeordnet werden.
-          </span>
         </div>
 
         <!-- ============================================================ -->
@@ -712,16 +731,28 @@
     if (portal) portal.style.display = 'inline-block';
 
     // -------------------------------------------------------------------
-    // ?anlage= Vorbefüllung: sicher via input.value, kein innerHTML
+    // URL-Vorbefüllung: sicher via input.value, kein innerHTML
+    // ?fabriknummer= befüllt Fabriknummer (maxlength 12)
+    // ?anlage=       befüllt Anlagennummer (maxlength 40)
     // -------------------------------------------------------------------
     try {
       var params = new URLSearchParams(window.location.search);
+
+      var fabriknummerParam = params.get('fabriknummer');
+      if (fabriknummerParam) {
+        var fabriknummerField = document.getElementById('00NW700000Jh2I9');
+        if (fabriknummerField) {
+          var sicherFab = String(fabriknummerParam).replace(/[^\x20-\x7E]/g, '').substring(0, 12);
+          if (sicherFab) fabriknummerField.value = sicherFab;
+        }
+      }
+
       var anlageParam = params.get('anlage');
       if (anlageParam) {
-        var anlageField = document.getElementById('00NW700000Jh2I9');
+        var anlageField = document.getElementById('anlagennummer');
         if (anlageField) {
-          var sicher = String(anlageParam).replace(/[^\x20-\x7E]/g, '').substring(0, 12);
-          if (sicher) anlageField.value = sicher;
+          var sicherAnl = String(anlageParam).replace(/[^\x20-\x7E]/g, '').substring(0, 40);
+          if (sicherAnl) anlageField.value = sicherAnl;
         }
       }
     } catch (e) { /* URLSearchParams nicht verfuegbar: kein Prefill */ }
@@ -753,15 +784,17 @@
       }
 
       // 3. Standort und Freitext zusammensetzen, in Hidden-Feld schreiben
-      var adresse  = (document.getElementById('adresse')           || {}).value || '';
-      var plz      = (document.getElementById('plz')               || {}).value || '';
-      var ort      = (document.getElementById('ort')               || {}).value || '';
-      var lage     = (document.getElementById('lage')              || {}).value || '';
-      var freitext = (document.getElementById('description-visible') || {}).value || '';
+      var adresse      = (document.getElementById('adresse')            || {}).value || '';
+      var plz          = (document.getElementById('plz')                || {}).value || '';
+      var ort          = (document.getElementById('ort')                || {}).value || '';
+      var lage         = (document.getElementById('lage')               || {}).value || '';
+      var anlagennr    = (document.getElementById('anlagennummer')       || {}).value || '';
+      var freitext     = (document.getElementById('description-visible') || {}).value || '';
 
       var standort = [
-        adresse.trim() ? 'Adresse: ' + adresse.trim() + ', ' + plz.trim() + ' ' + ort.trim() : '',
-        lage.trim()    ? 'Lage: '    + lage.trim()                                            : ''
+        adresse.trim()   ? 'Adresse: '      + adresse.trim() + ', ' + plz.trim() + ' ' + ort.trim() : '',
+        lage.trim()      ? 'Lage: '         + lage.trim()                                            : '',
+        anlagennr.trim() ? 'Anlagennummer: ' + anlagennr.trim()                                      : ''
       ].filter(Boolean).join('\n');
 
       var hidden = document.getElementById('description-hidden');
