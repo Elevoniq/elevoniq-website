@@ -193,7 +193,7 @@
       margin-top: 0.25rem;
     }
 
-    /* Anlagennummer — prominent hervorgehoben */
+    /* Aufzugs-ID — prominent hervorgehoben */
     .anlage-highlight {
       background: #f0f7f6;
       border: 1px solid #69B0AB;
@@ -440,7 +440,7 @@
         - Kein JS-Versand, normaler HTML-POST.
         - Adresse/Lage werden per JS in description eingefügt (No-JS: nur
           native Felder, Adresse/Lage gehen verloren; akzeptabler Fallback).
-        - ?fabriknummer= befüllt Fabriknummer, ?anlage= befüllt Anlagennummer (input.value, kein innerHTML).
+        - ?aufzugsid= befüllt Aufzugs-ID (max 12), ?fabriknummer= befüllt Fabriknummer (max 40), je input.value, kein innerHTML.
         - Honeypot-Feld: JS blockiert Submit bei Befüllung.
       -->
       <form
@@ -510,39 +510,42 @@
         <!-- ============================================================ -->
         <p class="form-section-label">Angaben zum Aufzug</p>
 
-        <!-- Fabriknummer zuerst: Salesforce ordnet den Fall darüber zu -->
+        <!--
+          Aufzugs-ID und Fabriknummer: mindestens eine muss ausgefüllt sein.
+          Aufzugs-ID geht via name="00NW700000Jh2I9" direkt nach Salesforce.
+          Fabriknummer: kein name-Attribut, wird per JS in Beschreibung geschrieben.
+          Beide Nummern werden zusätzlich als Zeilen in den Kopfblock der Beschreibung geschrieben.
+        -->
+        <p class="field-hint nummern-pflicht-hinweis" id="nummern-pflicht-hinweis" aria-live="polite">
+          Bitte mindestens eine der beiden Nummern angeben.
+        </p>
+
         <div class="form-group anlage-highlight">
-          <label for="00NW700000Jh2I9">Fabriknummer <span aria-hidden="true">*</span></label>
+          <label for="aufzugsid">Aufzugs-ID</label>
           <input
             type="text"
-            id="00NW700000Jh2I9"
+            id="aufzugsid"
             name="00NW700000Jh2I9"
             placeholder="z.&#8203;B. 1234567"
             maxlength="12"
-            required
-            aria-required="true"
-            aria-describedby="fabriknummer-hint"
+            aria-describedby="aufzugsid-hint nummern-pflicht-hinweis"
           >
-          <span class="field-hint" id="fabriknummer-hint">
-            Die Fabriknummer steht auf dem Schild in der Kabine oder auf dem Aufkleber neben dem QR-Code.
+          <span class="field-hint" id="aufzugsid-hint">
+            Steht auf dem Aufkleber mit dem QR-Code.
           </span>
         </div>
 
-        <!--
-          Anlagennummer: optional, KEIN name-Attribut.
-          Wird per JS in den Kopfblock der Case-Beschreibung geschrieben.
-        -->
         <div class="form-group">
-          <label for="anlagennummer">Anlagennummer <span class="optional">(optional)</span></label>
+          <label for="fabriknummer">Fabriknummer</label>
           <input
             type="text"
-            id="anlagennummer"
-            placeholder="z.&#8203;B. ANL-4711"
+            id="fabriknummer"
+            placeholder="z.&#8203;B. 12345678901234"
             maxlength="40"
-            aria-describedby="anlagennummer-hint"
+            aria-describedby="fabriknummer-hint nummern-pflicht-hinweis"
           >
-          <span class="field-hint" id="anlagennummer-hint">
-            Steht ggf. auf dem Aufkleber am Aufzug oder in Unterlagen der Hausverwaltung.
+          <span class="field-hint" id="fabriknummer-hint">
+            Steht auf dem Typenschild in der Kabine.
           </span>
         </div>
 
@@ -732,30 +735,55 @@
 
     // -------------------------------------------------------------------
     // URL-Vorbefüllung: sicher via input.value, kein innerHTML
-    // ?fabriknummer= befüllt Fabriknummer (maxlength 12)
-    // ?anlage=       befüllt Anlagennummer (maxlength 40)
+    // ?aufzugsid=    befüllt Aufzugs-ID    (maxlength 12)
+    // ?fabriknummer= befüllt Fabriknummer  (maxlength 40)
     // -------------------------------------------------------------------
     try {
       var params = new URLSearchParams(window.location.search);
 
-      var fabriknummerParam = params.get('fabriknummer');
-      if (fabriknummerParam) {
-        var fabriknummerField = document.getElementById('00NW700000Jh2I9');
-        if (fabriknummerField) {
-          var sicherFab = String(fabriknummerParam).replace(/[^\x20-\x7E]/g, '').substring(0, 12);
-          if (sicherFab) fabriknummerField.value = sicherFab;
+      var aufzugsidParam = params.get('aufzugsid');
+      if (aufzugsidParam) {
+        var aufzugsidField = document.getElementById('aufzugsid');
+        if (aufzugsidField) {
+          var sicherID = String(aufzugsidParam).replace(/[^\x20-\x7E]/g, '').substring(0, 12);
+          if (sicherID) aufzugsidField.value = sicherID;
         }
       }
 
-      var anlageParam = params.get('anlage');
-      if (anlageParam) {
-        var anlageField = document.getElementById('anlagennummer');
-        if (anlageField) {
-          var sicherAnl = String(anlageParam).replace(/[^\x20-\x7E]/g, '').substring(0, 40);
-          if (sicherAnl) anlageField.value = sicherAnl;
+      var fabriknummerParam = params.get('fabriknummer');
+      if (fabriknummerParam) {
+        var fabriknummerField = document.getElementById('fabriknummer');
+        if (fabriknummerField) {
+          var sicherFab = String(fabriknummerParam).replace(/[^\x20-\x7E]/g, '').substring(0, 40);
+          if (sicherFab) fabriknummerField.value = sicherFab;
         }
       }
     } catch (e) { /* URLSearchParams nicht verfuegbar: kein Prefill */ }
+
+    // -------------------------------------------------------------------
+    // Mindestens-eine-Nummer-Validierung
+    // Keines der Felder ist einzeln required. JS setzt/leert setCustomValidity
+    // auf dem aufzugsid-Feld, sobald sich eines der Felder ändert.
+    // -------------------------------------------------------------------
+    var aufzugsidInput   = document.getElementById('aufzugsid');
+    var fabriknummerInput = document.getElementById('fabriknummer');
+    var NUMMER_FEHLER = 'Bitte geben Sie die Aufzugs-ID oder die Fabriknummer an.';
+
+    function pruefeNummernpflicht() {
+      if (!aufzugsidInput) return;
+      var idWert  = aufzugsidInput.value.trim();
+      var fabWert = fabriknummerInput ? fabriknummerInput.value.trim() : '';
+      if (!idWert && !fabWert) {
+        aufzugsidInput.setCustomValidity(NUMMER_FEHLER);
+      } else {
+        aufzugsidInput.setCustomValidity('');
+      }
+    }
+
+    if (aufzugsidInput)    aufzugsidInput.addEventListener('input',    pruefeNummernpflicht);
+    if (fabriknummerInput) fabriknummerInput.addEventListener('input', pruefeNummernpflicht);
+    // Initialer Check (Seite kann mit Prefill laden)
+    pruefeNummernpflicht();
 
     // -------------------------------------------------------------------
     // Formular-Submit-Handler
@@ -774,7 +802,10 @@
         return;
       }
 
-      // 2. Validierung: erstes ungültiges Feld fokussieren
+      // 2. Nummernpflicht manuell prüfen (setCustomValidity macht Feld :invalid)
+      pruefeNummernpflicht();
+
+      // 3. Validierung: erstes ungültiges Feld fokussieren
       var firstInvalid = form.querySelector(':invalid');
       if (firstInvalid) {
         e.preventDefault();
@@ -783,18 +814,20 @@
         return;
       }
 
-      // 3. Standort und Freitext zusammensetzen, in Hidden-Feld schreiben
+      // 4. Standort und Freitext zusammensetzen, in Hidden-Feld schreiben
       var adresse      = (document.getElementById('adresse')            || {}).value || '';
       var plz          = (document.getElementById('plz')                || {}).value || '';
       var ort          = (document.getElementById('ort')                || {}).value || '';
       var lage         = (document.getElementById('lage')               || {}).value || '';
-      var anlagennr    = (document.getElementById('anlagennummer')       || {}).value || '';
+      var aufzugsid    = (document.getElementById('aufzugsid')          || {}).value || '';
+      var fabriknr     = (document.getElementById('fabriknummer')       || {}).value || '';
       var freitext     = (document.getElementById('description-visible') || {}).value || '';
 
       var standort = [
-        adresse.trim()   ? 'Adresse: '      + adresse.trim() + ', ' + plz.trim() + ' ' + ort.trim() : '',
-        lage.trim()      ? 'Lage: '         + lage.trim()                                            : '',
-        anlagennr.trim() ? 'Anlagennummer: ' + anlagennr.trim()                                      : ''
+        aufzugsid.trim()  ? 'Aufzugs-ID: '   + aufzugsid.trim()                                        : '',
+        fabriknr.trim()   ? 'Fabriknummer: '  + fabriknr.trim()                                        : '',
+        adresse.trim()    ? 'Adresse: '       + adresse.trim() + ', ' + plz.trim() + ' ' + ort.trim() : '',
+        lage.trim()       ? 'Lage: '          + lage.trim()                                            : ''
       ].filter(Boolean).join('\n');
 
       var hidden = document.getElementById('description-hidden');
