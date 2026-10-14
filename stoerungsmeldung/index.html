@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- ElevonIQ – Web-Entwicklung | 2026-10-14 | Störungsmeldung -->
+  <!-- ElevonIQ – Web-Entwicklung | 2026-10-14 | Störungsmeldung (Salesforce Web-to-Case) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Störung melden — ElevonIQ</title>
@@ -111,14 +111,13 @@
     @media (max-width: 600px) {
       .form-card {
         padding: 1.5rem 1.25rem;
-        border-radius: 8px;
+        border-radius: 0;
         border-left: none;
         border-right: none;
-        border-radius: 0;
       }
     }
 
-    /* Abschnittsüberschriften innerhalb des Formulars */
+    /* Abschnittsüberschriften */
     .form-section-label {
       font-size: 11px;
       font-weight: 700;
@@ -166,8 +165,7 @@
       margin-left: 0.25rem;
     }
     .form-group input,
-    .form-group textarea,
-    .form-group select {
+    .form-group textarea {
       border: 1px solid rgba(0,0,0,0.14);
       border-radius: 6px;
       padding: 0.625rem 0.875rem;
@@ -180,15 +178,10 @@
       box-sizing: border-box;
     }
     .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
+    .form-group textarea:focus {
       outline: none;
       border-color: var(--color-teal, #69B0AB);
       box-shadow: 0 0 0 3px rgba(105,176,171,0.18);
-    }
-    .form-group input:invalid:not(:placeholder-shown),
-    .form-group textarea:invalid:not(:placeholder-shown) {
-      border-color: #c0392b;
     }
     .form-group textarea {
       resize: vertical;
@@ -198,6 +191,17 @@
       font-size: 12px;
       color: var(--color-gray, #888);
       margin-top: 0.25rem;
+    }
+
+    /* Anlagennummer — prominent hervorgehoben */
+    .anlage-highlight {
+      background: #f0f7f6;
+      border: 1px solid #69B0AB;
+      border-radius: 8px;
+      padding: 1rem 1.125rem;
+    }
+    .anlage-highlight label {
+      color: #2a5f54;
     }
 
     /* Datenschutz-Checkbox */
@@ -229,6 +233,18 @@
       text-decoration: underline;
     }
 
+    /* Honeypot — visuell versteckt, bleibt im DOM für SR-Test */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      tab-index: -1;
+    }
+
     /* Absenden-Button */
     .btn-submit {
       display: block;
@@ -257,22 +273,10 @@
       outline: 3px solid var(--color-teal, #69B0AB);
       outline-offset: 3px;
     }
-
-    /* Bestätigungsmeldung */
-    .form-confirm {
-      display: none;
-      background: #eef7f4;
-      border: 1px solid #69B0AB;
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
-      font-size: 0.9rem;
-      color: #2a5f54;
-      margin-top: 1rem;
-      line-height: 1.5;
-    }
-    .form-confirm strong {
-      display: block;
-      margin-bottom: 0.25rem;
+    .btn-submit:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
     }
 
     /* Fallback-Hinweis */
@@ -295,28 +299,20 @@
       text-decoration: underline;
     }
 
-    /* Responsive-Anpassungen für sehr kleine Displays */
     @media (max-width: 400px) {
-      .page-hero {
-        padding: 2.5rem 0 2rem;
-      }
-      .form-section {
-        padding: 2rem 0 3.5rem;
-      }
+      .page-hero { padding: 2.5rem 0 2rem; }
+      .form-section { padding: 2rem 0 3.5rem; }
     }
   </style>
 </head>
 <body>
 
 <!-- ===================================================================== -->
-<!-- Notfall-Banner                                                          -->
-<!-- Nicht nur farblich hervorgehoben: zusätzlich Symbol, fette Überschrift -->
-<!-- und expliziter Textverweis auf 112.                                    -->
+<!-- Notfall-Banner: nicht nur Farbe — Symbol + Fetttext + 112-Link        -->
 <!-- ===================================================================== -->
 <div class="emergency-banner" role="alert" aria-label="Notfall-Hinweis">
   <div class="container">
     <div class="emergency-icon" aria-hidden="true">
-      <!-- Ausrufezeichen-Dreieck (SVG, kein Icon-Font) -->
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="#7B1D1D" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
         <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
@@ -439,9 +435,35 @@
   <div class="container">
     <div class="form-card">
 
-      <form id="stoerung-form" class="stoerung-form" novalidate>
+      <!--
+        Web-to-Case Formular.
+        - Kein JS-Versand, normaler HTML-POST.
+        - Adresse/Lage werden per JS in description eingefügt (No-JS: nur
+          native Felder, Adresse/Lage gehen verloren — akzeptabler Fallback).
+        - ?anlage= Vorbefüllung via input.value (kein innerHTML).
+        - Honeypot-Feld: JS blockiert Submit bei Befüllung.
+      -->
+      <form
+        id="stoerung-form"
+        class="stoerung-form"
+        action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8&orgId=00D0Y0000033rYE"
+        method="POST"
+        novalidate
+      >
+        <!-- Salesforce Pflicht-Felder -->
+        <input type="hidden" name="orgid" value="00D0Y0000033rYE">
+        <input type="hidden" name="retURL" value="https://elevoniq.de/stoerungsmeldung/danke/">
 
-        <!-- Abschnitt 1: Kontakt -->
+        <!-- Honeypot: für Menschen unsichtbar, für Bots verlockend -->
+        <!-- JS blockiert Submit wenn befüllt; ohne JS wird das Feld ignoriert (SF kennt "fax_hp" nicht) -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="fax_hp">Fax (bitte leer lassen)</label>
+          <input type="text" id="fax_hp" name="fax_hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- Abschnitt 1: Kontaktdaten                                     -->
+        <!-- ============================================================ -->
         <p class="form-section-label">Ihre Kontaktdaten</p>
 
         <div class="form-group">
@@ -454,7 +476,6 @@
             autocomplete="name"
             required
             aria-required="true"
-            aria-describedby="name-hint"
           >
         </div>
 
@@ -479,100 +500,113 @@
               name="email"
               placeholder="ihre@email.de"
               autocomplete="email"
+              maxlength="80"
             >
           </div>
         </div>
 
-        <!-- Abschnitt 2: Aufzug -->
+        <!-- ============================================================ -->
+        <!-- Abschnitt 2: Aufzug                                           -->
+        <!-- ============================================================ -->
         <p class="form-section-label">Standort des Aufzugs</p>
 
+        <!--
+          Adresse und Lage: KEIN name-Attribut.
+          Mit JS: Werte werden vor Submit in description eingefügt.
+          Ohne JS: Felder werden sichtbar ausgefüllt, aber nicht übermittelt
+                   (kein name → kein POST-Parameter → akzeptabler Fallback).
+        -->
         <div class="form-group">
-          <label for="adresse">Straße und Hausnummer <span aria-hidden="true">*</span></label>
+          <label for="adresse">Straße und Hausnummer</label>
           <input
             type="text"
             id="adresse"
-            name="adresse"
             placeholder="z.&#8203;B. Musterstraße 12"
             autocomplete="street-address"
-            required
-            aria-required="true"
           >
         </div>
 
         <div class="form-row">
           <div class="form-group">
-            <label for="plz">Postleitzahl <span aria-hidden="true">*</span></label>
+            <label for="plz">Postleitzahl</label>
             <input
               type="text"
               id="plz"
-              name="plz"
               placeholder="10115"
               autocomplete="postal-code"
               inputmode="numeric"
               pattern="[0-9]{5}"
               maxlength="5"
-              required
-              aria-required="true"
             >
           </div>
           <div class="form-group">
-            <label for="ort">Ort <span aria-hidden="true">*</span></label>
+            <label for="ort">Ort</label>
             <input
               type="text"
               id="ort"
-              name="ort"
               placeholder="Berlin"
               autocomplete="address-level2"
-              required
-              aria-required="true"
             >
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="lage">Lage des Aufzugs <span class="optional">(optional)</span></label>
-            <input
-              type="text"
-              id="lage"
-              name="lage"
-              placeholder="z.&#8203;B. Haus B, linkes Treppenhaus"
-            >
-          </div>
-          <div class="form-group">
-            <label for="anlage">Anlagen-/Fabriknummer <span class="optional">(optional)</span></label>
-            <input
-              type="text"
-              id="anlage"
-              name="anlage"
-              placeholder="steht oft auf einem Schild in der Kabine"
-              aria-describedby="anlage-hint"
-            >
-            <span class="field-hint" id="anlage-hint">Die Nummer steht häufig auf einem Schild im Aufzug oder an der Kabinentür.</span>
-          </div>
+        <div class="form-group">
+          <label for="lage">Lage des Aufzugs <span class="optional">(optional)</span></label>
+          <input
+            type="text"
+            id="lage"
+            placeholder="z.&#8203;B. Haus B, linkes Treppenhaus"
+          >
         </div>
 
-        <!-- Abschnitt 3: Störung -->
+        <!-- Anlagennummer: prominent, weil Salesforce darüber zuordnet -->
+        <div class="form-group anlage-highlight">
+          <label for="00NW700000Jh2I9">Anlagen-/Fabriknummer <span class="optional">(optional, aber hilfreich)</span></label>
+          <input
+            type="text"
+            id="00NW700000Jh2I9"
+            name="00NW700000Jh2I9"
+            placeholder="z.&#8203;B. 1234567"
+            maxlength="12"
+            aria-describedby="anlage-hint"
+          >
+          <span class="field-hint" id="anlage-hint">
+            Steht auf einem Schild in der Kabine oder an der Kabinentür.
+            Wenn Sie die Nummer angeben, kann der Aufzug direkt zugeordnet werden.
+          </span>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- Abschnitt 3: Störung                                          -->
+        <!-- ============================================================ -->
         <p class="form-section-label">Beschreibung der Störung</p>
 
         <div class="form-group">
-          <label for="betreff">Betreff <span aria-hidden="true">*</span></label>
+          <label for="subject">Betreff <span aria-hidden="true">*</span></label>
           <input
             type="text"
-            id="betreff"
-            name="betreff"
+            id="subject"
+            name="subject"
             placeholder="z.&#8203;B. Aufzug fährt nicht ab Erdgeschoss"
+            maxlength="80"
             required
             aria-required="true"
           >
         </div>
 
+        <!--
+          description: SF-Standardfeld.
+          Mit JS: Adresse/Lage werden durch handleSubmit() vorangestellt.
+          Ohne JS: nur der sichtbare Freitext wird übermittelt.
+          Ein separates verstecktes Feld ist nicht nötig: wir mutieren
+          den Wert dieses Textareas direkt vor dem nativen Submit.
+        -->
         <div class="form-group">
-          <label for="beschreibung">Beschreibung der Störung <span aria-hidden="true">*</span></label>
+          <label for="description">Beschreibung der Störung <span aria-hidden="true">*</span></label>
           <textarea
-            id="beschreibung"
-            name="beschreibung"
-            placeholder="Beschreiben Sie, was passiert ist: Wann trat die Störung auf? Welche Anzeichen gibt es? Welche Etagen sind betroffen?"
+            id="description"
+            name="description"
+            placeholder="Was passiert ist, wann die Störung aufgetreten ist, welche Etagen betroffen sind."
             required
             aria-required="true"
           ></textarea>
@@ -582,23 +616,17 @@
         <div class="form-checkbox">
           <input type="checkbox" id="dsgvo" name="dsgvo" required aria-required="true">
           <label for="dsgvo">
-            Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Meldung elektronisch erhoben und gespeichert werden. Ich kann meine Einwilligung jederzeit per E-Mail an <a href="mailto:anfragen@elevoniq.de">anfragen@elevoniq.de</a> widerrufen. <span aria-hidden="true">*</span>
+            Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Meldung elektronisch erhoben und gespeichert werden. Ich kann meine Einwilligung jederzeit per E-Mail an <a href="mailto:support@elevoniq.de">support@elevoniq.de</a> widerrufen. <span aria-hidden="true">*</span>
           </label>
         </div>
 
-        <button type="submit" class="btn-submit">Störung absenden</button>
-
-        <!-- Bestätigungsmeldung (nach Submit eingeblendet) -->
-        <div class="form-confirm" id="form-confirm" role="status" aria-live="polite">
-          <strong>Ihre Störungsmeldung wird jetzt versendet.</strong>
-          Ihr E-Mail-Programm öffnet sich mit einer vorausgefüllten Nachricht. Bitte senden Sie diese ab. Falls kein E-Mail-Programm geöffnet wird, schreiben Sie direkt an <a href="mailto:anfragen@elevoniq.de">anfragen@elevoniq.de</a>.
-        </div>
+        <button type="submit" class="btn-submit" id="submit-btn">Störung absenden</button>
 
       </form>
 
-      <!-- Permanenter Fallback-Hinweis, unabhängig vom Formular-Submit -->
+      <!-- Fallback-Hinweis: immer sichtbar -->
       <div class="fallback-hint" aria-label="Alternative Kontaktmöglichkeit">
-        Kein E-Mail-Programm auf diesem Gerät? Schreiben Sie direkt an <a href="mailto:anfragen@elevoniq.de">anfragen@elevoniq.de</a> und nennen Sie die Adresse des Aufzugs, Ihre Telefonnummer und eine kurze Beschreibung der Störung.
+        Falls das Absenden nicht klappt, schreiben Sie direkt an <a href="mailto:support@elevoniq.de">support@elevoniq.de</a> mit der Adresse des Aufzugs, Ihrer Telefonnummer und einer kurzen Beschreibung der Störung.
       </div>
 
     </div>
@@ -665,12 +693,7 @@
 
 <script>
   // -------------------------------------------------------------------
-  // Empfänger-Adresse: an einer Stelle ändern, wirkt überall
-  // -------------------------------------------------------------------
-  var EMPFAENGER = 'anfragen@elevoniq.de';
-
-  // -------------------------------------------------------------------
-  // Nav-CTAs einblenden (identisch zu anderen Seiten)
+  // Nav-CTAs einblenden
   // -------------------------------------------------------------------
   document.addEventListener('DOMContentLoaded', function () {
     var cta = document.getElementById('nav-cta-desktop');
@@ -679,82 +702,70 @@
     if (portal) portal.style.display = 'inline-block';
 
     // -------------------------------------------------------------------
-    // URL-Parameter ?anlage= sicher vorbefüllen
-    // Kein innerHTML — direktes Setzen von input.value ist sicher.
+    // ?anlage= Vorbefüllung — sicher via input.value, kein innerHTML
     // -------------------------------------------------------------------
     try {
       var params = new URLSearchParams(window.location.search);
       var anlageParam = params.get('anlage');
       if (anlageParam) {
-        var anlageField = document.getElementById('anlage');
+        var anlageField = document.getElementById('00NW700000Jh2I9');
         if (anlageField) {
-          // Maximal 80 Zeichen, nur druckbare ASCII-Zeichen akzeptieren
-          var sicher = String(anlageParam).replace(/[^\x20-\x7E]/g, '').substring(0, 80);
-          if (sicher) {
-            anlageField.value = sicher;
-          }
+          // Nur druckbare ASCII, maximal 12 Zeichen (Feldlimit)
+          var sicher = String(anlageParam).replace(/[^\x20-\x7E]/g, '').substring(0, 12);
+          if (sicher) anlageField.value = sicher;
         }
       }
-    } catch (e) {
-      // URLSearchParams nicht verfügbar (sehr altes Gerät) — kein Prefill, kein Fehler
-    }
-  });
+    } catch (e) { /* URLSearchParams nicht verfügbar — kein Prefill */ }
 
-  // -------------------------------------------------------------------
-  // Formular-Submit: mailto öffnen
-  // -------------------------------------------------------------------
-  document.getElementById('stoerung-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var form = this;
+    // -------------------------------------------------------------------
+    // Formular-Submit-Handler
+    // -------------------------------------------------------------------
+    var form = document.getElementById('stoerung-form');
+    form.addEventListener('submit', function (e) {
 
-    // Browser-Validierung nutzen; erstes ungültiges Feld fokussieren
-    var firstInvalid = form.querySelector(':invalid');
-    if (firstInvalid) {
-      if (typeof form.reportValidity === 'function') form.reportValidity();
-      if (typeof firstInvalid.focus === 'function') firstInvalid.focus();
-      return;
-    }
+      // 1. Honeypot-Prüfung: befülltes Feld = Bot → Submit stillschweigend blockieren
+      var hp = document.getElementById('fax_hp');
+      if (hp && hp.value) {
+        e.preventDefault();
+        return;
+      }
 
-    var name         = document.getElementById('name').value.trim();
-    var phone        = document.getElementById('phone').value.trim();
-    var email        = document.getElementById('email').value.trim();
-    var adresse      = document.getElementById('adresse').value.trim();
-    var plz          = document.getElementById('plz').value.trim();
-    var ort          = document.getElementById('ort').value.trim();
-    var lage         = document.getElementById('lage').value.trim();
-    var anlage       = document.getElementById('anlage').value.trim();
-    var betreff      = document.getElementById('betreff').value.trim();
-    var beschreibung = document.getElementById('beschreibung').value.trim();
+      // 2. Validierung: erstes ungültiges Feld fokussieren
+      var firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) {
+        e.preventDefault();
+        if (typeof form.reportValidity === 'function') form.reportValidity();
+        if (typeof firstInvalid.focus === 'function') firstInvalid.focus();
+        return;
+      }
 
-    var zeilen = [
-      'Störungsmeldung über elevoniq.de/stoerungsmeldung/',
-      '',
-      'KONTAKT',
-      'Name: '    + name,
-      'Telefon: ' + phone,
-      'E-Mail: '  + (email || 'nicht angegeben'),
-      '',
-      'STANDORT',
-      'Adresse: ' + adresse + ', ' + plz + ' ' + ort,
-      'Lage: '    + (lage   || 'nicht angegeben'),
-      'Anlage-/Fabriknummer: ' + (anlage || 'nicht angegeben'),
-      '',
-      'STÖRUNG',
-      'Beschreibung:',
-      beschreibung
-    ];
+      // 3. Adresse/Lage in description einfügen
+      var adresse = (document.getElementById('adresse') || {}).value || '';
+      var plz     = (document.getElementById('plz')     || {}).value || '';
+      var ort     = (document.getElementById('ort')     || {}).value || '';
+      var lage    = (document.getElementById('lage')    || {}).value || '';
 
-    var mailtoBetreff = 'Störungsmeldung: ' + betreff;
-    var mailtoBody    = zeilen.join('\n');
+      var desc = document.getElementById('description');
+      var freitext = desc.value.trim();
 
-    // Bestätigung einblenden, bevor mailto ausgelöst wird
-    var confirm = document.getElementById('form-confirm');
-    confirm.style.display = 'block';
+      var standort = [
+        adresse.trim() ? 'Adresse: ' + adresse.trim() + ', ' + plz.trim() + ' ' + ort.trim() : '',
+        lage.trim()    ? 'Lage: '    + lage.trim()    : ''
+      ].filter(Boolean).join('\n');
 
-    window.location.href =
-      'mailto:' + EMPFAENGER +
-      '?subject=' + encodeURIComponent(mailtoBetreff) +
-      '&body='    + encodeURIComponent(mailtoBody);
+      if (standort) {
+        desc.value = standort + '\n\nBeschreibung:\n' + freitext;
+      }
+
+      // 4. Button deaktivieren (Doppel-Submit verhindern)
+      var btn = document.getElementById('submit-btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Wird übermittelt…';
+      }
+
+      // Nativer POST läuft weiter; Salesforce leitet zu retURL um.
+    });
   });
 </script>
 <script src="../assets/js/nav.js" defer></script>
