@@ -440,7 +440,7 @@
         - Kein JS-Versand, normaler HTML-POST.
         - Adresse/Lage werden per JS in description eingefügt (No-JS: nur
           native Felder, Adresse/Lage gehen verloren; akzeptabler Fallback).
-        - ?aufzugsid= befüllt Aufzugs-ID (max 12), ?fabriknummer= befüllt Fabriknummer (max 40), je input.value, kein innerHTML.
+        - ?aufzugsid= befüllt Aufzugs-ID (max 40), ?fabriknummer= befüllt Fabriknummer (max 40), je input.value, kein innerHTML.
         - Honeypot-Feld: JS blockiert Submit bei Befüllung.
       -->
       <form
@@ -513,8 +513,9 @@
 
         <!--
           Aufzugs-ID und Fabriknummer: mindestens eine muss ausgefüllt sein.
-          Aufzugs-ID geht via name="00NW700000Jh2I9" direkt nach Salesforce.
-          Fabriknummer: kein name-Attribut, wird per JS in Beschreibung geschrieben.
+          Aufzugs-ID -> SF Incident_Elevator_Id__c (name="00N1v00000TBmpG", Zuordnung von Leo angenommen).
+          Fabriknummer -> SF Elevator__c (name="00N1v00000SwPr8", von Ludwig bestaetigt).
+          Beide Nummern zusaetzlich als Zeilen im Kopfblock der Beschreibung (Sicherheitsnetz fuer SF-Lookup).
           Beide Nummern werden zusätzlich als Zeilen in den Kopfblock der Beschreibung geschrieben.
         -->
         <p class="field-hint nummern-pflicht-hinweis" id="nummern-pflicht-hinweis" aria-live="polite">
@@ -526,9 +527,9 @@
           <input
             type="text"
             id="aufzugsid"
-            name="00NW700000Jh2I9"
+            name="00N1v00000TBmpG"
             placeholder="z.&#8203;B. 1234567"
-            maxlength="12"
+            maxlength="40"
             aria-describedby="aufzugsid-hint nummern-pflicht-hinweis"
           >
           <span class="field-hint" id="aufzugsid-hint">
@@ -541,6 +542,7 @@
           <input
             type="text"
             id="fabriknummer"
+            name="00N1v00000SwPr8"
             placeholder="z.&#8203;B. 12345678901234"
             maxlength="40"
             aria-describedby="fabriknummer-hint nummern-pflicht-hinweis"
@@ -737,7 +739,7 @@
 
     // -------------------------------------------------------------------
     // URL-Vorbefüllung: sicher via input.value, kein innerHTML
-    // ?aufzugsid=    befüllt Aufzugs-ID    (maxlength 12)
+    // ?aufzugsid=    befüllt Aufzugs-ID    (maxlength 40)
     // ?fabriknummer= befüllt Fabriknummer  (maxlength 40)
     // -------------------------------------------------------------------
     try {
@@ -747,7 +749,7 @@
       if (aufzugsidParam) {
         var aufzugsidField = document.getElementById('aufzugsid');
         if (aufzugsidField) {
-          var sicherID = String(aufzugsidParam).replace(/[^\x20-\x7E]/g, '').substring(0, 12);
+          var sicherID = String(aufzugsidParam).replace(/[^\x20-\x7E]/g, '').substring(0, 40);
           if (sicherID) aufzugsidField.value = sicherID;
         }
       }
