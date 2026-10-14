@@ -2,6 +2,8 @@
 *Erstellt: 2026-05-26 | Für Netlify `_redirects` und Vercel `vercel.json` Konfiguration*
 *Quelle: SEO-Audit elevoniq.de, Rembert, 2026-05-25*
 
+**Status:** Alle 14 Weiterleitungen umgesetzt am 2026-10-14 in `vercel.json` (Branch fix/wp-redirects). Slash-Pattern: `{/}?` (Vercel path-to-regexp, greift mit und ohne Trailing Slash). Anker `#ueber-uns` auf der Startseite nicht vorhanden — `/ueber-uns/elevoniq` leitet auf `/` weiter statt `/#ueber-uns`.
+
 ---
 
 ## Kritische Redirects (sofort, vor Go-Live)

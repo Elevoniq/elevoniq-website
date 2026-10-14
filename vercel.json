@@ -4,6 +4,76 @@
       "source": "/gutachten",
       "destination": "/einzelleistungen/gefaehrdungsbeurteilung/",
       "permanent": false
+    },
+    {
+      "source": "/produkte/elevator-services{/}?",
+      "destination": "/laufende-betreuung/",
+      "permanent": true
+    },
+    {
+      "source": "/produkte/elevator-hub{/}?",
+      "destination": "/laufende-betreuung/elevator-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/produkte/elevator-live{/}?",
+      "destination": "/laufende-betreuung/iot-monitoring/",
+      "permanent": true
+    },
+    {
+      "source": "/produkte/weitere-services{/}?",
+      "destination": "/laufende-betreuung/",
+      "permanent": true
+    },
+    {
+      "source": "/produkte{/}?",
+      "destination": "/laufende-betreuung/",
+      "permanent": true
+    },
+    {
+      "source": "/vorteile/pflichten-gesetze{/}?",
+      "destination": "/betreiberpflichten/",
+      "permanent": true
+    },
+    {
+      "source": "/vorteile/kostenoptimierung{/}?",
+      "destination": "/laufende-betreuung/",
+      "permanent": true
+    },
+    {
+      "source": "/vorteile/nachhaltigkeit{/}?",
+      "destination": "/betreiberpflichten/",
+      "permanent": true
+    },
+    {
+      "source": "/vorteile/verfugbarkeit-steigern{/}?",
+      "destination": "/laufende-betreuung/iot-monitoring/",
+      "permanent": true
+    },
+    {
+      "source": "/neuer-frequenzumrichter{/}?",
+      "destination": "/einzelleistungen/frequenzumrichter/",
+      "permanent": true
+    },
+    {
+      "source": "/ueber-uns/podcast{/}?",
+      "destination": "/wissen/podcast/",
+      "permanent": true
+    },
+    {
+      "source": "/ueber-uns/elevoniq{/}?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ueber-uns/referenzen{/}?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutzerklaerung{/}?",
+      "destination": "/datenschutz/",
+      "permanent": true
     }
   ],
   "functions": {
