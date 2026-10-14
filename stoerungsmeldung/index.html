@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <!-- ElevonIQ – Web-Entwicklung | 2026-10-14 | Störungsmeldung -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Störung melden — ElevonIQ</title>
+  <meta name="description" content="Aufzugstörung melden. Bitte nutzen Sie dieses Formular nicht bei eingeschlossenen Personen — rufen Sie 112.">
+  <link rel="canonical" href="https://elevoniq.de/stoerungsmeldung/">
+  <!-- Suchmaschinen-Indexierung ausgeschlossen: interne QR-Code-Utility-Seite -->
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../assets/fonts/work-sans.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* ------------------------------------------------------------------ */
+    /* Notfall-Banner                                                       */
+    /* ------------------------------------------------------------------ */
+    .emergency-banner {
+      background: #7B1D1D;
+      color: #fff;
+      padding: 1.25rem 0;
+    }
+    .emergency-banner .container {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .emergency-icon {
+      flex-shrink: 0;
+      width: 2.25rem;
+      height: 2.25rem;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .emergency-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    .emergency-text strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .emergency-text p {
+      font-size: 0.9rem;
+      margin: 0;
+      line-height: 1.5;
+      opacity: 0.92;
+    }
+    .emergency-text a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Page Hero                                                            */
+    /* ------------------------------------------------------------------ */
+    .page-hero {
+      padding: 4rem 0 3rem;
+      background: var(--color-bg-subtle, #f5f6f8);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .page-hero .breadcrumb {
+      font-size: 13px;
+      color: var(--color-gray, #666);
+      margin-bottom: 1.25rem;
+    }
+    .page-hero .breadcrumb a {
+      color: var(--color-gray, #666);
+      text-decoration: none;
+    }
+    .page-hero .breadcrumb a:hover {
+      color: var(--color-coral-dark, #E04E50);
+    }
+    .page-hero .breadcrumb span {
+      margin: 0 0.4rem;
+      opacity: 0.5;
+    }
+    .page-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--color-navy, #1E2761);
+      margin-bottom: 0.75rem;
+    }
+    .page-hero .hero-subline {
+      font-size: 1.0625rem;
+      color: var(--color-gray, #666);
+      max-width: 540px;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Formular-Sektion                                                     */
+    /* ------------------------------------------------------------------ */
+    .form-section {
+      padding: 3.5rem 0 5rem;
+    }
+    .form-card {
+      max-width: 680px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    @media (max-width: 600px) {
+      .form-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: 8px;
+        border-left: none;
+        border-right: none;
+        border-radius: 0;
+      }
+    }
+
+    /* Abschnittsüberschriften innerhalb des Formulars */
+    .form-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-gray, #888);
+      margin: 2rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .form-section-label:first-child {
+      margin-top: 0;
+    }
+
+    /* Formular-Felder */
+    .stoerung-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 520px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-navy, #1E2761);
+    }
+    .form-group label .optional {
+      font-weight: 400;
+      color: var(--color-gray, #888);
+      font-size: 12px;
+      margin-left: 0.25rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      border: 1px solid rgba(0,0,0,0.14);
+      border-radius: 6px;
+      padding: 0.625rem 0.875rem;
+      font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.9375rem;
+      color: #1a1a1a;
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--color-teal, #69B0AB);
+      box-shadow: 0 0 0 3px rgba(105,176,171,0.18);
+    }
+    .form-group input:invalid:not(:placeholder-shown),
+    .form-group textarea:invalid:not(:placeholder-shown) {
+      border-color: #c0392b;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+    .form-group .field-hint {
+      font-size: 12px;
+      color: var(--color-gray, #888);
+      margin-top: 0.25rem;
+    }
+
+    /* Datenschutz-Checkbox */
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .form-checkbox input[type="checkbox"] {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.1rem;
+      accent-color: var(--color-teal, #69B0AB);
+      cursor: pointer;
+    }
+    .form-checkbox label {
+      font-size: 0.875rem;
+      color: #444;
+      line-height: 1.55;
+      cursor: pointer;
+    }
+    .form-checkbox label a {
+      color: var(--color-teal, #69B0AB);
+      text-decoration: none;
+    }
+    .form-checkbox label a:hover {
+      text-decoration: underline;
+    }
+
+    /* Absenden-Button */
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: var(--color-coral, #FF5B5C);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .btn-submit:hover {
+      background: #e84a4b;
+      transform: translateY(-1px);
+    }
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+    .btn-submit:focus-visible {
+      outline: 3px solid var(--color-teal, #69B0AB);
+      outline-offset: 3px;
+    }
+
+    /* Bestätigungsmeldung */
+    .form-confirm {
+      display: none;
+      background: #eef7f4;
+      border: 1px solid #69B0AB;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      color: #2a5f54;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+    .form-confirm strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Fallback-Hinweis */
+    .fallback-hint {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: #f5f6f8;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      color: #555;
+      line-height: 1.5;
+      border-left: 3px solid var(--color-teal, #69B0AB);
+    }
+    .fallback-hint a {
+      color: var(--color-teal, #69B0AB);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .fallback-hint a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive-Anpassungen für sehr kleine Displays */
+    @media (max-width: 400px) {
+      .page-hero {
+        padding: 2.5rem 0 2rem;
+      }
+      .form-section {
+        padding: 2rem 0 3.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===================================================================== -->
+<!-- Notfall-Banner                                                          -->
+<!-- Nicht nur farblich hervorgehoben: zusätzlich Symbol, fette Überschrift -->
+<!-- und expliziter Textverweis auf 112.                                    -->
+<!-- ===================================================================== -->
+<div class="emergency-banner" role="alert" aria-label="Notfall-Hinweis">
+  <div class="container">
+    <div class="emergency-icon" aria-hidden="true">
+      <!-- Ausrufezeichen-Dreieck (SVG, kein Icon-Font) -->
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="#7B1D1D" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="12" y1="9" x2="12" y2="13" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="12" cy="17" r="1" fill="#fff"/>
+      </svg>
+    </div>
+    <div class="emergency-text">
+      <strong>Notruf: Sind Personen im Aufzug eingeschlossen?</strong>
+      <p>Drücken Sie sofort den Notrufknopf in der Kabine oder rufen Sie <a href="tel:112">112</a>. Dieses Formular ist kein Notruf und wird nicht rund um die Uhr überwacht.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Nav Overlay -->
+<div id="mobile-nav-overlay" class="mobile-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation">
+  <button id="mobile-nav-close" class="mobile-nav-close" aria-label="Schließen">&#10005;</button>
+  <a href="/" class="nav-logo" style="margin-bottom:2rem;">
+    <img src="../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager">
+  </a>
+  <span class="mobile-nav-section-label">Die Plattform</span>
+  <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link" style="font-weight:700;">ELEVATOR HUB<sup>®</sup></a>
+  <span class="mobile-nav-section-label">Leistungen</span>
+  <a href="/einzelleistungen/" class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Einzelleistungen</a>
+  <a href="/einzelleistungen/pruefbericht-check/" class="mobile-nav-link">Prüfbericht-Check <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
+  <a href="/einzelleistungen/angebotspruefung/" class="mobile-nav-link">Angebotsprüfung</a>
+  <a href="/einzelleistungen/vertragscheck/" class="mobile-nav-link">Vertragscheck</a>
+  <a href="/einzelleistungen/zustandsbericht/" class="mobile-nav-link">Zustandsbericht</a>
+  <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="mobile-nav-link">Wartungsvertrag ausschreiben</a>
+  <a href="/einzelleistungen/modernisierung/" class="mobile-nav-link">Neubau und Modernisierung</a>
+  <a href="/einzelleistungen/frequenzumrichter/" class="mobile-nav-link">Frequenzumrichter-Reparatur</a>
+  <a href="/einzelleistungen/notruf-umruestung/" class="mobile-nav-link">Notruf-Umrüstung <small style="color:#69B0AB;font-size:11px;">kostenlos</small></a>
+  <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="mobile-nav-link">Gef&#228;hrdungsbeurteilung</a>
+  <a href="/laufende-betreuung/" class="mobile-nav-section-label" style="font-size:9px;letter-spacing:.12em;color:#aaa;text-transform:uppercase;padding-top:.25rem;padding-bottom:.25rem;border:none;margin:0;">Laufende Betreuung</a>
+  <a href="/laufende-betreuung/all-inclusive/" class="mobile-nav-link">Essentials Aufzugsmanagement</a>
+  <a href="/laufende-betreuung/elevator-hub/" class="mobile-nav-link">ELEVATOR HUB<sup>®</sup></a>
+  <span class="mobile-nav-section-label">Informationen</span>
+  <a href="/betreiberpflichten/" class="mobile-nav-link">Betreiberpflichten</a>
+  <a href="/wissen/" class="mobile-nav-link">Wissen</a>
+  <a href="/ueber-uns/" class="mobile-nav-link">Über uns</a>
+  <a href="/faq/" class="mobile-nav-link">FAQ</a>
+  <div class="mobile-nav-cta">
+    <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:block;text-align:center;font-size:14px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:12px 20px;border-radius:6px;margin-bottom:10px;">Kundenportal</a>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary btn-full">
+      Erstgespräch buchen
+    </a>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="site-nav" role="navigation" aria-label="Hauptnavigation">
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo" aria-label="ElevonIQ Startseite">
+      <img src="../assets/images/elevon-iq-main.svg" alt="ElevonIQ" class="nav-logo-img" width="140" height="40" loading="eager">
+    </a>
+    <div class="nav-links" role="list">
+      <a href="/laufende-betreuung/elevator-hub/" role="listitem" style="font-weight:700;color:#1E2761;">ELEVATOR HUB<sup>®</sup></a>
+      <div class="nav-dropdown" role="listitem">
+        <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          Leistungen
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          <div>
+            <div class="dropdown-col-label"><a href="/einzelleistungen/" class="dropdown-col-link">EINZELLEISTUNGEN</a></div>
+            <a href="/einzelleistungen/pruefbericht-check/" class="dropdown-item" role="menuitem">Prüfbericht-Check <span class="item-price">Kostenlos, Ergebnis in 48 h</span></a>
+            <a href="/einzelleistungen/angebotspruefung/" class="dropdown-item" role="menuitem">Angebotsprüfung <span class="item-price">Kostenlos, 48 h</span></a>
+            <a href="/einzelleistungen/vertragscheck/" class="dropdown-item" role="menuitem">Vertragscheck <span class="item-price">Kostenlos</span></a>
+            <a href="/einzelleistungen/zustandsbericht/" class="dropdown-item" role="menuitem">Zustandsbericht &amp; Budgetplanung</a>
+            <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="dropdown-item" role="menuitem">Wartungsvertrag ausschreiben</a>
+            <a href="/einzelleistungen/modernisierung/" class="dropdown-item" role="menuitem">Neubau und Modernisierung</a>
+            <a href="/einzelleistungen/frequenzumrichter/" class="dropdown-item" role="menuitem">Frequenzumrichter-Reparatur</a>
+            <a href="/einzelleistungen/notruf-umruestung/" class="dropdown-item" role="menuitem">Notruf-Umrüstung <span class="item-price">Kostenlos</span></a>
+            <a href="/einzelleistungen/gefaehrdungsbeurteilung/" class="dropdown-item" role="menuitem">Gef&#228;hrdungsbeurteilung</a>
+          </div>
+          <div>
+            <div class="dropdown-col-label"><a href="/laufende-betreuung/" class="dropdown-col-link">LAUFENDE BETREUUNG</a></div>
+            <a href="/laufende-betreuung/all-inclusive/" class="dropdown-item" role="menuitem">Essentials Aufzugsmanagement</a>
+            <a href="/laufende-betreuung/elevator-hub/" class="dropdown-item" role="menuitem">ELEVATOR HUB<sup>®</sup> <span class="item-price">Digitales Aufzugscockpit</span></a>
+            <a href="/laufende-betreuung/betriebskontrolle/" class="dropdown-item" role="menuitem">Betriebskontrolle / Aufzugswärter</a>
+            <a href="/laufende-betreuung/iot-monitoring/" class="dropdown-item" role="menuitem">ELEVATOR LIVE</a>
+            <a href="/laufende-betreuung/smart-flap/" class="dropdown-item" role="menuitem">SMART FLAP<sup>®</sup></a>
+            <a href="/laufende-betreuung/wartung-klappen/" class="dropdown-item" role="menuitem">Wartung von energetischen Schachtentrauchungsklappen</a>
+          </div>
+        </div>
+      </div>
+      <a href="/betreiberpflichten/" role="listitem">Betreiberpflichten</a>
+      <a href="/wissen/" role="listitem">Wissen</a>
+      <a href="/ueber-uns/" role="listitem">Über uns</a>
+      <a href="/faq/" role="listitem">FAQ</a>
+    </div>
+    <a href="https://customer.elevoniq.de/" target="_blank" rel="noopener" style="display:none;font-size:13px;font-weight:600;color:#3D7E79;text-decoration:none;border:1.5px solid #3D7E79;padding:7px 16px;border-radius:6px;white-space:nowrap;transition:background 0.2s,color 0.2s;" id="nav-portal-desktop" onmouseover="this.style.background='#3D7E79';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#3D7E79'">Kundenportal</a>
+    <a href="https://outlook.office.com/bookwithme/user/9dab19aff8b8483abddcaff87f267a9f@elevoniq.de/meetingtype/A_6IXzXinEymwIUZ-G7NXQ2?anonymous&ismsaljsauthenabled&ep=mLinkFromTile"
+       target="_blank" rel="noopener" class="btn-primary" style="display:none;" id="nav-cta-desktop">
+      Erstgespräch buchen
+    </a>
+    <button id="nav-hamburger" class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav-overlay">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- Page Hero -->
+<section class="page-hero" aria-label="Störung melden">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Störung melden</span>
+    </nav>
+    <h1>Störung melden</h1>
+    <p class="hero-subline">Beschreiben Sie die Störung. Wir setzen uns mit Ihnen in Verbindung. Bei einem Notfall rufen Sie bitte 112.</p>
+  </div>
+</section>
+
+<!-- Formular -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-card">
+
+      <form id="stoerung-form" class="stoerung-form" novalidate>
+
+        <!-- Abschnitt 1: Kontakt -->
+        <p class="form-section-label">Ihre Kontaktdaten</p>
+
+        <div class="form-group">
+          <label for="name">Name <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Vor- und Nachname"
+            autocomplete="name"
+            required
+            aria-required="true"
+            aria-describedby="name-hint"
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Telefon für Rückruf <span aria-hidden="true">*</span></label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+49 ..."
+              autocomplete="tel"
+              required
+              aria-required="true"
+            >
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail <span class="optional">(optional)</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ihre@email.de"
+              autocomplete="email"
+            >
+          </div>
+        </div>
+
+        <!-- Abschnitt 2: Aufzug -->
+        <p class="form-section-label">Standort des Aufzugs</p>
+
+        <div class="form-group">
+          <label for="adresse">Straße und Hausnummer <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="adresse"
+            name="adresse"
+            placeholder="z.&#8203;B. Musterstraße 12"
+            autocomplete="street-address"
+            required
+            aria-required="true"
+          >
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="plz">Postleitzahl <span aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="plz"
+              name="plz"
+              placeholder="10115"
+              autocomplete="postal-code"
+              inputmode="numeric"
+              pattern="[0-9]{5}"
+              maxlength="5"
+              required
+              aria-required="true"
+            >
+          </div>
+          <div class="form-group">
+            <label for="ort">Ort <span aria-hidden="true">*</span></label>
+            <input
+              type="text"
+              id="ort"
+              name="ort"
+              placeholder="Berlin"
+              autocomplete="address-level2"
+              required
+              aria-required="true"
+            >
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="lage">Lage des Aufzugs <span class="optional">(optional)</span></label>
+            <input
+              type="text"
+              id="lage"
+              name="lage"
+              placeholder="z.&#8203;B. Haus B, linkes Treppenhaus"
+            >
+          </div>
+          <div class="form-group">
+            <label for="anlage">Anlagen-/Fabriknummer <span class="optional">(optional)</span></label>
+            <input
+              type="text"
+              id="anlage"
+              name="anlage"
+              placeholder="steht oft auf einem Schild in der Kabine"
+              aria-describedby="anlage-hint"
+            >
+            <span class="field-hint" id="anlage-hint">Die Nummer steht häufig auf einem Schild im Aufzug oder an der Kabinentür.</span>
+          </div>
+        </div>
+
+        <!-- Abschnitt 3: Störung -->
+        <p class="form-section-label">Beschreibung der Störung</p>
+
+        <div class="form-group">
+          <label for="betreff">Betreff <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="betreff"
+            name="betreff"
+            placeholder="z.&#8203;B. Aufzug fährt nicht ab Erdgeschoss"
+            required
+            aria-required="true"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="beschreibung">Beschreibung der Störung <span aria-hidden="true">*</span></label>
+          <textarea
+            id="beschreibung"
+            name="beschreibung"
+            placeholder="Beschreiben Sie, was passiert ist: Wann trat die Störung auf? Welche Anzeichen gibt es? Welche Etagen sind betroffen?"
+            required
+            aria-required="true"
+          ></textarea>
+        </div>
+
+        <!-- Datenschutz -->
+        <div class="form-checkbox">
+          <input type="checkbox" id="dsgvo" name="dsgvo" required aria-required="true">
+          <label for="dsgvo">
+            Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> zur Kenntnis genommen. Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Meldung elektronisch erhoben und gespeichert werden. Ich kann meine Einwilligung jederzeit per E-Mail an <a href="mailto:anfragen@elevoniq.de">anfragen@elevoniq.de</a> widerrufen. <span aria-hidden="true">*</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit">Störung absenden</button>
+
+        <!-- Bestätigungsmeldung (nach Submit eingeblendet) -->
+        <div class="form-confirm" id="form-confirm" role="status" aria-live="polite">
+          <strong>Ihre Störungsmeldung wird jetzt versendet.</strong>
+          Ihr E-Mail-Programm öffnet sich mit einer vorausgefüllten Nachricht. Bitte senden Sie diese ab. Falls kein E-Mail-Programm geöffnet wird, schreiben Sie direkt an <a href="mailto:anfragen@elevoniq.de">anfragen@elevoniq.de</a>.
+        </div>
+
+      </form>
+
+      <!-- Permanenter Fallback-Hinweis, unabhängig vom Formular-Submit -->
+      <div class="fallback-hint" aria-label="Alternative Kontaktmöglichkeit">
+        Kein E-Mail-Programm auf diesem Gerät? Schreiben Sie direkt an <a href="mailto:anfragen@elevoniq.de">anfragen@elevoniq.de</a> und nennen Sie die Adresse des Aufzugs, Ihre Telefonnummer und eine kurze Beschreibung der Störung.
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">
+          <img src="../assets/images/elevon-iq-inverted.svg" alt="ElevonIQ" class="footer-logo-img" width="120" height="34" loading="lazy">
+        </a>
+        <p class="footer-tagline">Die externe Aufzugsabteilung.<br>Herstellerneutral. Bundesweit.</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,0.5);margin-top:10px;letter-spacing:0.01em;">We take the lift in Berlin.</p>
+      </div>
+      <div>
+        <div class="footer-col-label">Einzelleistungen</div>
+        <a href="/einzelleistungen/" class="footer-link">Übersicht</a>
+        <a href="/einzelleistungen/pruefbericht-check/" class="footer-link">Prüfbericht-Check</a>
+        <a href="/einzelleistungen/angebotspruefung/" class="footer-link">Angebotsprüfung</a>
+        <a href="/einzelleistungen/vertragscheck/" class="footer-link">Vertragscheck</a>
+        <a href="/einzelleistungen/zustandsbericht/" class="footer-link">Zustandsbericht</a>
+        <a href="/einzelleistungen/wartungsvertrag-ausschreiben/" class="footer-link">Wartungsvertrag ausschreiben</a>
+        <a href="/einzelleistungen/modernisierung/" class="footer-link">Modernisierung</a>
+        <a href="/einzelleistungen/frequenzumrichter/" class="footer-link">Frequenzumrichter-Reparatur</a>
+      </div>
+      <div>
+        <div class="footer-col-label">Laufende Betreuung</div>
+        <a href="/laufende-betreuung/" class="footer-link">Übersicht</a>
+        <a href="/laufende-betreuung/all-inclusive/" class="footer-link">Essentials Aufzugsmanagement</a>
+        <a href="/laufende-betreuung/elevator-hub/" class="footer-link">ELEVATOR HUB<sup>®</sup></a>
+        <a href="/laufende-betreuung/betriebskontrolle/" class="footer-link">Betriebskontrolle / Aufzugswärter</a>
+        <a href="/laufende-betreuung/iot-monitoring/" class="footer-link">ELEVATOR LIVE</a>
+        <a href="/laufende-betreuung/smart-flap/" class="footer-link">SMART FLAP<sup>®</sup></a>
+      </div>
+      <div>
+        <div class="footer-col-label">Wissen &amp; Unternehmen</div>
+        <a href="/betreiberpflichten/" class="footer-link">Betreiberpflichten</a>
+        <a href="/ueber-uns/" class="footer-link">Über uns</a>
+        <a href="/kontakt/" class="footer-link">Kontakt</a>
+        <div style="margin-top:1.5rem;" class="footer-col-label">Rechtliches</div>
+        <a href="/impressum/" class="footer-link">Impressum</a>
+        <a href="/datenschutz/" class="footer-link">Datenschutz</a>
+        <a href="/widerrufsrecht/" class="footer-link">Widerrufsrecht</a>
+        <a href="https://ec.europa.eu/consumers/odr/" class="footer-link" target="_blank" rel="noopener">OS-Streitbeilegung</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 ElevonIQ GmbH, Berlin</span>
+      <div class="footer-legal-links">
+        <a href="/impressum/">Impressum</a>
+        <a href="/datenschutz/">Datenschutz</a>
+        <a href="/widerrufsrecht/">Widerrufsrecht</a>
+        <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">OS-Streitbeilegung</a>
+        <a href="#" onclick="localStorage.removeItem('elevoniq_consent');location.reload();return false;">Cookie-Einstellungen</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // -------------------------------------------------------------------
+  // Empfänger-Adresse: an einer Stelle ändern, wirkt überall
+  // -------------------------------------------------------------------
+  var EMPFAENGER = 'anfragen@elevoniq.de';
+
+  // -------------------------------------------------------------------
+  // Nav-CTAs einblenden (identisch zu anderen Seiten)
+  // -------------------------------------------------------------------
+  document.addEventListener('DOMContentLoaded', function () {
+    var cta = document.getElementById('nav-cta-desktop');
+    if (cta) cta.style.display = 'inline-block';
+    var portal = document.getElementById('nav-portal-desktop');
+    if (portal) portal.style.display = 'inline-block';
+
+    // -------------------------------------------------------------------
+    // URL-Parameter ?anlage= sicher vorbefüllen
+    // Kein innerHTML — direktes Setzen von input.value ist sicher.
+    // -------------------------------------------------------------------
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var anlageParam = params.get('anlage');
+      if (anlageParam) {
+        var anlageField = document.getElementById('anlage');
+        if (anlageField) {
+          // Maximal 80 Zeichen, nur druckbare ASCII-Zeichen akzeptieren
+          var sicher = String(anlageParam).replace(/[^\x20-\x7E]/g, '').substring(0, 80);
+          if (sicher) {
+            anlageField.value = sicher;
+          }
+        }
+      }
+    } catch (e) {
+      // URLSearchParams nicht verfügbar (sehr altes Gerät) — kein Prefill, kein Fehler
+    }
+  });
+
+  // -------------------------------------------------------------------
+  // Formular-Submit: mailto öffnen
+  // -------------------------------------------------------------------
+  document.getElementById('stoerung-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = this;
+
+    // Browser-Validierung nutzen; erstes ungültiges Feld fokussieren
+    var firstInvalid = form.querySelector(':invalid');
+    if (firstInvalid) {
+      if (typeof form.reportValidity === 'function') form.reportValidity();
+      if (typeof firstInvalid.focus === 'function') firstInvalid.focus();
+      return;
+    }
+
+    var name         = document.getElementById('name').value.trim();
+    var phone        = document.getElementById('phone').value.trim();
+    var email        = document.getElementById('email').value.trim();
+    var adresse      = document.getElementById('adresse').value.trim();
+    var plz          = document.getElementById('plz').value.trim();
+    var ort          = document.getElementById('ort').value.trim();
+    var lage         = document.getElementById('lage').value.trim();
+    var anlage       = document.getElementById('anlage').value.trim();
+    var betreff      = document.getElementById('betreff').value.trim();
+    var beschreibung = document.getElementById('beschreibung').value.trim();
+
+    var zeilen = [
+      'Störungsmeldung über elevoniq.de/stoerungsmeldung/',
+      '',
+      'KONTAKT',
+      'Name: '    + name,
+      'Telefon: ' + phone,
+      'E-Mail: '  + (email || 'nicht angegeben'),
+      '',
+      'STANDORT',
+      'Adresse: ' + adresse + ', ' + plz + ' ' + ort,
+      'Lage: '    + (lage   || 'nicht angegeben'),
+      'Anlage-/Fabriknummer: ' + (anlage || 'nicht angegeben'),
+      '',
+      'STÖRUNG',
+      'Beschreibung:',
+      beschreibung
+    ];
+
+    var mailtoBetreff = 'Störungsmeldung: ' + betreff;
+    var mailtoBody    = zeilen.join('\n');
+
+    // Bestätigung einblenden, bevor mailto ausgelöst wird
+    var confirm = document.getElementById('form-confirm');
+    confirm.style.display = 'block';
+
+    window.location.href =
+      'mailto:' + EMPFAENGER +
+      '?subject=' + encodeURIComponent(mailtoBetreff) +
+      '&body='    + encodeURIComponent(mailtoBody);
+  });
+</script>
+<script src="../assets/js/nav.js" defer></script>
+<script src="../assets/js/cookie-consent.js" defer></script>
+<!-- GA4 — nur nach Analytics-Consent -->
+<script>
+(function () {
+  function loadGA4() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPSDHVCT33';
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-RPSDHVCT33');
+  }
+  function registerConsentHook() {
+    if (window.elevoniqConsent) {
+      window.elevoniqConsent.onAnalyticsAccepted(loadGA4);
+    }
+  }
+  if (window.elevoniqConsent) {
+    registerConsentHook();
+  } else {
+    document.addEventListener('DOMContentLoaded', registerConsentHook);
+  }
+})();
+</script>
+</body>
+</html>
