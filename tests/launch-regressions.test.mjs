@@ -265,7 +265,7 @@ test("Kontakt form no longer fakes a successful empty submission", () => {
     "Expected kontakt form to validate required fields before submit",
   );
   assert.ok(
-    html.includes("mailto:info@elevoniq.de"),
+    html.includes("mailto:anfragen@elevoniq.de"),
     "Expected kontakt form to use an explicit mail fallback instead of fake success",
   );
   assert.ok(
@@ -282,7 +282,7 @@ test("Vertragscheck uses explicit mail fallback instead of backend placeholder s
     "Expected vertragscheck form to have a concrete JS hook id",
   );
   assert.ok(
-    html.includes("mailto:info@elevoniq.de"),
+    html.includes("mailto:anfragen@elevoniq.de"),
     "Expected vertragscheck form to open a mail fallback",
   );
   assert.ok(

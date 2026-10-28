@@ -27,7 +27,7 @@
         "@id": "https://elevoniq.de/#org",
         "name": "ElevonIQ GmbH",
         "url": "https://elevoniq.de",
-        "email": "info@elevoniq.de",
+        "email": "anfragen@elevoniq.de",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Kurfürstendamm 90",
@@ -479,7 +479,7 @@
           </div>
           <button type="submit" class="btn-submit">Nachricht senden</button>
           <div class="form-confirm" id="form-confirm" role="status" aria-live="polite">
-            Ihr E-Mail-Programm wird geöffnet. Falls nichts passiert, schreiben Sie an info@elevoniq.de.
+            Ihr E-Mail-Programm wird geöffnet. Falls nichts passiert, schreiben Sie an anfragen@elevoniq.de.
           </div>
         </form>
 
@@ -501,7 +501,7 @@
       <div class="contact-detail-item">
         <span class="contact-detail-label">E-Mail</span>
         <span class="contact-detail-value">
-          <a href="mailto:info@elevoniq.de">info@elevoniq.de</a>
+          <a href="mailto:anfragen@elevoniq.de">anfragen@elevoniq.de</a>
         </span>
       </div>
       <div class="contact-detail-item">
@@ -615,10 +615,10 @@
     ].join('\\n');
 
     var confirm = document.getElementById('form-confirm');
-    confirm.textContent = 'Ihr E-Mail-Programm wird geöffnet. Falls nichts passiert, schreiben Sie an info@elevoniq.de.';
+    confirm.textContent = 'Ihr E-Mail-Programm wird geöffnet. Falls nichts passiert, schreiben Sie an anfragen@elevoniq.de.';
     confirm.style.display = 'block';
     window.location.href =
-      'mailto:info@elevoniq.de'
+      'mailto:anfragen@elevoniq.de'
       + '?subject=' + encodeURIComponent('Kontaktanfrage ueber elevoniq.de')
       + '&body=' + encodeURIComponent(mailtoBody);
   });
