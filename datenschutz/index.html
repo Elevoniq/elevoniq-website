@@ -294,7 +294,7 @@
 
         <h3>c) Anfrageformulare auf Produktseiten</h3>
         <p>Auf den Seiten Gef&#228;hrdungsbeurteilung, Zustandsbericht, Betriebskontrolle, Wartungsvertrag ausschreiben, Modernisierung, SMART FLAP und Essentials Aufzugsmanagement k&#246;nnen Sie eine Anfrage direkt &#252;ber das Formular der jeweiligen Seite stellen. Dabei verarbeiten wir: Name, E-Mail-Adresse, optional Telefonnummer, Anzahl der Aufz&#252;ge, Standort der Anlage, Leistungsempf&#228;nger, Rechnungsempf&#228;nger sowie den Inhalt Ihrer Nachricht.</p>
-        <p>Die &#220;bertragung erfolgt &#252;ber die Schnittstelle von Resend Inc., 3 East 28th Street, New York, NY 10016, USA, als Auftragsverarbeiterin. Resend leitet die Anfrage als E-Mail an anfragen@elevoniq.de weiter und verarbeitet diese Daten in Rechenzentren in der Region Frankfurt (EU) auf Grundlage eines Auftragsverarbeitungsvertrags sowie Standardvertragsklauseln gem&#228;&#223; Art.&thinsp;46 Abs.&thinsp;2 lit.&thinsp;c DSGVO.</p>
+        <p>Die Formulardaten werden nach dem Absenden an unsere eigene Backend-Infrastruktur unter <strong>hub-backend.elevoniq.de</strong> übertragen, die wir auf Servern der Google Cloud Platform in der Region Frankfurt (EU) betreiben. Das Backend versendet die Anfrage als E-Mail an anfragen@elevoniq.de und nutzt dafür Azure Communication Services von Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA. Microsoft agiert insoweit als Auftragsverarbeiter. Die eingesetzte Azure-Communication-Services-Ressource betreibt Microsoft im Rahmen des EU Data Boundary-Programms. E-Mail-Inhalte werden von Azure Communication Services nach dem Versand nicht gespeichert. Versandprotokolle (Zeitstempel, Absender- und Empfängeradresse) werden für 90 Tage aufbewahrt.</p>
         <p>Zum Schutz vor automatisierten Missbrauchsanfragen setzen diese Formulare Cloudflare Turnstile ein. Hierbei gelten dieselben Bedingungen wie in &#167;&thinsp;2a beschrieben.</p>
         <p>Zum Schutz der Infrastruktur vor &#252;berm&#228;&#223;ig h&#228;ufigen Anfragen speichern wir einen nicht r&#252;ckf&#252;hrbaren Hash-Wert Ihrer IP-Adresse in Vercel KV. Der Hash wird nach 60 Minuten automatisch gel&#246;scht und weder zur Identifikation noch zur Profilbildung verwendet.</p>
         <p>Rechtsgrundlage f&#252;r die Formulardaten: Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;b DSGVO. Rechtsgrundlage f&#252;r Turnstile und Rate-Limiting: Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO.</p>
@@ -397,13 +397,12 @@
             <tr><th>Dienstleister</th><th>Funktion</th><th>Sitz / Drittland</th><th>Rolle</th><th>Garantie / Transfergrundlage</th></tr>
           </thead>
           <tbody>
-            <tr><td>Resend Inc.</td><td>Transaktionale E-Mail-Weiterleitung (Anfrageformulare auf Produktseiten)</td><td>USA</td><td>Auftragsverarbeiter (AVV abgeschlossen)</td><td>SCC gem. Art.&thinsp;46 Abs.&thinsp;2 lit.&thinsp;c DSGVO; EU-Region Frankfurt</td></tr>
             <tr><td>Vercel Inc.</td><td>Hosting, Edge-Netzwerk, CDN</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert</td></tr>
             <tr><td>GitHub Inc. (Microsoft-Konzern)</td><td>Code-Repository, Versionsverwaltung</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert (Microsoft)</td></tr>
             <tr><td>Salesforce Inc.</td><td>CRM, Verwaltung von Kundendaten</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert</td></tr>
             <tr><td>Google Cloud Platform (Google LLC)</td><td>Datenspeicherung, Cloud-Infrastruktur</td><td>EU (Frankfurt)</td><td>Auftragsverarbeiter</td><td>Kein Drittlandtransfer. AVV mit Google abgeschlossen.</td></tr>
             <tr><td>Telekom Cloud (Deutsche Telekom AG)</td><td>Datenspeicherung, Cloud-Infrastruktur</td><td>Deutschland (EU)</td><td>Auftragsverarbeiter</td><td>Kein Drittlandtransfer</td></tr>
-            <tr><td>Microsoft Corporation (365 / Outlook / Bookings)</td><td>E-Mail-Kommunikation, Terminbuchung</td><td>USA</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert</td></tr>
+            <tr><td>Microsoft Corporation (365 / Outlook / Bookings / Azure Communication Services)</td><td>E-Mail-Kommunikation, Terminbuchung, Versand von Anfrageformularen über Azure Communication Services</td><td>EU (Azure Communication Services: EU Data Boundary-Programm)</td><td>Auftragsverarbeiter</td><td>SCC gem. Art. 46 Abs. 2 lit. c DSGVO; DPF-zertifiziert</td></tr>
             <tr>
               <td>Cloudflare Inc.</td>
               <td>Bot-Schutz / Turnstile (Verifizierung bei Dokumenten-Uploads und Anfrageformularen)</td>
