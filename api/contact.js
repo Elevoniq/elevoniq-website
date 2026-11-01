@@ -1,7 +1,7 @@
 /**
  * api/contact.js — ElevonIQ Buchungsformular Backend
  * Muster: api/upload.js (Validierung, Turnstile, Rate-Limit, CORS, kein PII-Logging)
- * Env-Vars: RESEND_API_KEY, CONTACT_MAIL_TO, TURNSTILE_SECRET_KEY, CONTACT_AUTOREPLY
+ * Env-Vars: EMAIL_SEND_API_KEY, CONTACT_MAIL_TO, TURNSTILE_SECRET_KEY, CONTACT_AUTOREPLY
  */
 
 import { kv } from '@vercel/kv';
@@ -104,12 +104,12 @@ export default async function handler(request) {
     return err(429, 'Zu viele Anfragen. Bitte versuchen Sie es später erneut.');
   }
 
-  const resendKey = process.env.RESEND_API_KEY;
+  const emailSendKey = process.env.EMAIL_SEND_API_KEY;
   const mailTo = process.env.CONTACT_MAIL_TO || 'anfragen@elevoniq.de';
   const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
   const autoreply = process.env.CONTACT_AUTOREPLY === '1';
 
-  if (!resendKey || !turnstileSecret) {
+  if (!emailSendKey || !turnstileSecret) {
     return err(500, 'Serverkonfiguration unvollständig.');
   }
 
@@ -188,24 +188,24 @@ export default async function handler(request) {
   const subject = `Neue Anfrage: ${raw.produkt} — ElevonIQ`;
   const body = buildMailBody(raw);
 
-  // Mail senden via Resend (EU-Region Frankfurt)
+  // Mail senden über hub-backend (Azure Communication Services, Absender DoNotReply@elevoniq.de)
   let sendOk = false;
   try {
-    const resendResp = await fetch('https://api.resend.com/emails', {
+    const hubResp = await fetch('https://hub-backend.elevoniq.de/api/v1/emails/send', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${resendKey}`,
+        'x-api-key': emailSendKey,
       },
       body: JSON.stringify({
-        from: 'ElevonIQ Formular <noreply@elevoniq.de>',
-        to: [mailTo],
-        reply_to: raw.email,
+        to: mailTo,
+        replyTo: raw.email,
         subject,
-        text: body,
+        body: { text: body },
       }),
+      signal: AbortSignal.timeout(30000),
     });
-    sendOk = resendResp.status >= 200 && resendResp.status < 300;
+    sendOk = hubResp.ok;
   } catch {
     return err(502, 'Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es per E-Mail.');
   }
@@ -217,18 +217,19 @@ export default async function handler(request) {
   // Automatische Bestätigungsmail (opt-in via Env-Var)
   if (autoreply) {
     try {
-      await fetch('https://api.resend.com/emails', {
+      await fetch('https://hub-backend.elevoniq.de/api/v1/emails/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${resendKey}`,
+          'x-api-key': emailSendKey,
         },
         body: JSON.stringify({
-          from: 'ElevonIQ <anfragen@elevoniq.de>',
-          to: [raw.email],
+          to: raw.email,
+          replyTo: 'anfragen@elevoniq.de',
           subject: 'Ihre Anfrage bei ElevonIQ ist eingegangen',
-          text: buildAutoreplyBody(raw),
+          body: { text: buildAutoreplyBody(raw) },
         }),
+        signal: AbortSignal.timeout(30000),
       });
     } catch {
       // Autoreply-Fehler ist nicht kritisch — Hauptmail wurde gesendet
