@@ -141,7 +141,7 @@
         <span class="hero-badge hero-badge--outline">Technische &amp; kaufmännische Begleitung</span>
       </div>
       <div class="hero-cta-row">
-        <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Neubau%20und%20Modernisierung%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+        <a href="#anfragen"
            class="btn-primary">
           Jetzt anfragen
         </a>
@@ -477,12 +477,90 @@
       <h2 style="color:#fff;">Bereit für den nächsten Schritt?</h2>
       <p style="color:rgba(255,255,255,.75);margin-bottom:2rem;">Kostenloses Erstgespräch: 15 Minuten, kein Druck, keine Verpflichtung.</p>
       <div class="cta-button-row">
-        <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Neubau%20und%20Modernisierung%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+        <a href="#anfragen"
            class="btn-primary">
           Jetzt anfragen
         </a>
         <a href="mailto:support@elevoniq.de" class="btn-secondary">Frage per E-Mail</a>
       </div>
+    </div>
+  </section>
+
+
+  <!-- BUCHUNGSFORMULAR -->
+  <section class="section contact-form-section" id="anfragen" aria-labelledby="anfragen-heading-modernisierung">
+    <div class="container container--narrow">
+      <p class="section-eyebrow">Direkt beauftragen</p>
+      <h2 id="anfragen-heading-modernisierung">Jetzt anfragen</h2>
+      <p class="section-lead">Tragen Sie Ihre Angaben ein &#8212; wir melden uns innerhalb von 24 Stunden.</p>
+
+      <form class="js-contact-form" novalidate>
+        <input type="hidden" name="produkt" value="modernisierung">
+        <!-- Honeypot: wird von echten Nutzern nicht ausgefüllt -->
+        <div class="contact-form__honeypot" aria-hidden="true">
+          <label>Website (nicht ausfüllen) <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="contact-form__grid">
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-name-modernisierung">Name <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-name-modernisierung" name="name" required autocomplete="name" placeholder="Vor- und Nachname">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-email-modernisierung">E-Mail <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="email" id="cf-email-modernisierung" name="email" required autocomplete="email" placeholder="ihre@email.de">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-telefon-modernisierung">Telefon <span class="contact-form__optional">(optional)</span></label>
+            <input class="contact-form__input" type="tel" id="cf-telefon-modernisierung" name="telefon" autocomplete="tel" placeholder="+49 ...">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-aufzuege-modernisierung">Anzahl Aufzüge <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-aufzuege-modernisierung" name="anzahl_aufzuege" required placeholder="z. B. 3">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-standort-modernisierung">Standort der Anlage(n) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-standort-modernisierung" name="standort" required placeholder="Straße, PLZ Ort">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-leistungsempfaenger-modernisierung">Leistungsempfänger (Name / Firma) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-leistungsempfaenger-modernisierung" name="leistungsempfaenger" required placeholder="WEG Musterstraße GbR o. ä.">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-rechnungsempfaenger-modernisierung">Rechnungsempfänger <span class="contact-form__optional">(optional, wenn abweichend)</span></label>
+            <input class="contact-form__input" type="text" id="cf-rechnungsempfaenger-modernisierung" name="rechnungsempfaenger" placeholder="Falls abweichend vom Leistungsempfänger">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-baujahr-modernisierung">Baujahr Aufzug(e) <span class="contact-form__optional">(optional)</span></label>
+            <input class="contact-form__input" type="text" id="cf-baujahr-modernisierung" name="baujahr" placeholder="z.&#x202F;B. 1998">
+          </div>
+
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-nachricht-modernisierung">Nachricht <span class="contact-form__optional">(optional)</span></label>
+            <textarea class="contact-form__textarea" id="cf-nachricht-modernisierung" name="nachricht" rows="4" placeholder="Ergänzende Informationen, Fragen ..."></textarea>
+          </div>
+
+          <div class="contact-form__turnstile">
+            <div class="cf-turnstile"
+                 data-sitekey="0x4AAAAAAFwxF5EupU6dixDO"
+                 data-theme="light"
+                 data-language="de"></div>
+          </div>
+
+          <p class="contact-form__dsgvo">
+            Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Rechtsgrundlage ist Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;b DSGVO (vorvertragliche Maßnahmen). Zum Schutz vor Missbrauch setzt das Formular Cloudflare Turnstile ein (Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO). Details: <a href="/datenschutz/">Datenschutzerklärung</a>
+          </p>
+
+          <p class="js-contact-status contact-form__status" hidden aria-live="polite"></p>
+          <div class="js-contact-fallback contact-form__fallback" hidden>
+            Das Formular ist gerade nicht verfügbar. Bitte schreiben Sie uns direkt: <a href="mailto:anfragen@elevoniq.de?subject=Anfrage+Modernisierung+%E2%80%93+ElevonIQ">anfragen@elevoniq.de</a>
+          </div>
+
+          <div class="contact-form__submit">
+            <button type="submit" class="btn-primary js-contact-submit" aria-busy="false">Anfrage senden</button>
+          </div>
+        </div>
+      </form>
     </div>
   </section>
 
@@ -581,5 +659,7 @@
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="../../assets/js/contact-form.js" defer></script>
 </body>
 </html>

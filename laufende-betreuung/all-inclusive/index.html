@@ -514,7 +514,7 @@
           <span class="hero-badge">ELEVATOR HUB® inklusive</span>
         </div>
         <div class="cta-row">
-          <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Essentials%20Aufzugsmanagement%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0AStandort%20der%20Anlage(n)%3A%20%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0AAnsprechpartner%20%2B%20E-Mail%3A%20" class="btn-primary">Erstgespräch buchen</a>
+          <a href="#anfragen" class="btn-primary">Erstgespräch buchen</a>
           <a href="../index.html" class="btn-secondary">Zur Übersicht</a>
         </div>
       </div>
@@ -965,6 +965,80 @@
   </div>
 </section>
 
+
+  <!-- BUCHUNGSFORMULAR -->
+  <section class="section contact-form-section" id="anfragen" aria-labelledby="anfragen-heading-all-inclusive">
+    <div class="container container--narrow">
+      <p class="section-eyebrow">Direkt beauftragen</p>
+      <h2 id="anfragen-heading-all-inclusive">Jetzt anfragen</h2>
+      <p class="section-lead">Tragen Sie Ihre Angaben ein &#8212; wir melden uns innerhalb von 24 Stunden.</p>
+
+      <form class="js-contact-form" novalidate>
+        <input type="hidden" name="produkt" value="all-inclusive">
+        <!-- Honeypot: wird von echten Nutzern nicht ausgefüllt -->
+        <div class="contact-form__honeypot" aria-hidden="true">
+          <label>Website (nicht ausfüllen) <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="contact-form__grid">
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-name-all-inclusive">Name <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-name-all-inclusive" name="name" required autocomplete="name" placeholder="Vor- und Nachname">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-email-all-inclusive">E-Mail <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="email" id="cf-email-all-inclusive" name="email" required autocomplete="email" placeholder="ihre@email.de">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-telefon-all-inclusive">Telefon <span class="contact-form__optional">(optional)</span></label>
+            <input class="contact-form__input" type="tel" id="cf-telefon-all-inclusive" name="telefon" autocomplete="tel" placeholder="+49 ...">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-aufzuege-all-inclusive">Anzahl Aufzüge <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-aufzuege-all-inclusive" name="anzahl_aufzuege" required placeholder="z. B. 3">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-standort-all-inclusive">Standort der Anlage(n) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-standort-all-inclusive" name="standort" required placeholder="Straße, PLZ Ort">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-leistungsempfaenger-all-inclusive">Leistungsempfänger (Name / Firma) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-leistungsempfaenger-all-inclusive" name="leistungsempfaenger" required placeholder="WEG Musterstraße GbR o. ä.">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-rechnungsempfaenger-all-inclusive">Rechnungsempfänger <span class="contact-form__optional">(optional, wenn abweichend)</span></label>
+            <input class="contact-form__input" type="text" id="cf-rechnungsempfaenger-all-inclusive" name="rechnungsempfaenger" placeholder="Falls abweichend vom Leistungsempfänger">
+          </div>
+
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-nachricht-all-inclusive">Nachricht <span class="contact-form__optional">(optional)</span></label>
+            <textarea class="contact-form__textarea" id="cf-nachricht-all-inclusive" name="nachricht" rows="4" placeholder="Ergänzende Informationen, Fragen ..."></textarea>
+          </div>
+
+          <div class="contact-form__turnstile">
+            <div class="cf-turnstile"
+                 data-sitekey="0x4AAAAAAFwxF5EupU6dixDO"
+                 data-theme="light"
+                 data-language="de"></div>
+          </div>
+
+          <p class="contact-form__dsgvo">
+            Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Rechtsgrundlage ist Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;b DSGVO (vorvertragliche Maßnahmen). Zum Schutz vor Missbrauch setzt das Formular Cloudflare Turnstile ein (Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO). Details: <a href="/datenschutz/">Datenschutzerklärung</a>
+          </p>
+
+          <p class="js-contact-status contact-form__status" hidden aria-live="polite"></p>
+          <div class="js-contact-fallback contact-form__fallback" hidden>
+            Das Formular ist gerade nicht verfügbar. Bitte schreiben Sie uns direkt: <a href="mailto:anfragen@elevoniq.de?subject=Anfrage+Essentials+Aufzugsmanagement+%E2%80%93+ElevonIQ">anfragen@elevoniq.de</a>
+          </div>
+
+          <div class="contact-form__submit">
+            <button type="submit" class="btn-primary js-contact-submit" aria-busy="false">Anfrage senden</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
 </main>
 
 <!-- Footer -->
@@ -1065,5 +1139,7 @@
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="../../assets/js/contact-form.js" defer></script>
 </body>
 </html>

@@ -79,6 +79,9 @@
   "functions": {
     "api/upload.js": {
       "maxDuration": 30
+    },
+    "api/contact.js": {
+      "maxDuration": 15
     }
   },
   "headers": [

@@ -165,7 +165,7 @@
     <h1>Regelmäßige Betriebskontrolle — nachweisbar, digital oder persönlich.</h1>
     <p class="lead">Die regelmäßige Betriebskontrolle nach Betriebssicherheitsverordnung — zwei Wege, beide vollständig nachweisbar dokumentiert: (1) Full-Service durch ElevonIQ — wir übernehmen Kontrolle, Protokoll und Nachweis komplett. (2) Mit eigenen Mitarbeitern — über die ElevonIQ To Go App: geführte Checkliste, digitales Protokoll, direkt nachweisbar dokumentiert.</p>
     <div class="cta-row">
-      <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Betriebskontrolle%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+      <a href="#anfragen"
          class="btn-primary">Jetzt beauftragen</a>
       <a href="../index.html" class="btn-secondary">Zur Übersicht</a>
       <span class="price-pill">5,99 € pro Betriebskontrolle</span>
@@ -334,12 +334,86 @@
     <h2 id="cta-bk-heading" style="color:#FFFFFF;margin-bottom:1rem;">Bereit für den nächsten Schritt?</h2>
     <p style="color:rgba(255,255,255,0.85);margin-bottom:2rem;">Kostenloses Erstgespräch — 15 Minuten, kein Druck, keine Verpflichtung.</p>
     <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-      <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Betriebskontrolle%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+      <a href="#anfragen"
          class="btn-primary">Jetzt beauftragen</a>
       <a href="mailto:support@elevoniq.de" class="btn-white-outline">Frage per E-Mail</a>
     </div>
   </div>
 </section>
+
+
+  <!-- BUCHUNGSFORMULAR -->
+  <section class="section contact-form-section" id="anfragen" aria-labelledby="anfragen-heading-betriebskontrolle">
+    <div class="container container--narrow">
+      <p class="section-eyebrow">Direkt beauftragen</p>
+      <h2 id="anfragen-heading-betriebskontrolle">Jetzt anfragen</h2>
+      <p class="section-lead">Tragen Sie Ihre Angaben ein &#8212; wir melden uns innerhalb von 24 Stunden.</p>
+
+      <form class="js-contact-form" novalidate>
+        <input type="hidden" name="produkt" value="betriebskontrolle">
+        <!-- Honeypot: wird von echten Nutzern nicht ausgefüllt -->
+        <div class="contact-form__honeypot" aria-hidden="true">
+          <label>Website (nicht ausfüllen) <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="contact-form__grid">
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-name-betriebskontrolle">Name <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-name-betriebskontrolle" name="name" required autocomplete="name" placeholder="Vor- und Nachname">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-email-betriebskontrolle">E-Mail <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="email" id="cf-email-betriebskontrolle" name="email" required autocomplete="email" placeholder="ihre@email.de">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-telefon-betriebskontrolle">Telefon <span class="contact-form__optional">(optional)</span></label>
+            <input class="contact-form__input" type="tel" id="cf-telefon-betriebskontrolle" name="telefon" autocomplete="tel" placeholder="+49 ...">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-aufzuege-betriebskontrolle">Anzahl Aufzüge <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-aufzuege-betriebskontrolle" name="anzahl_aufzuege" required placeholder="z. B. 3">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-standort-betriebskontrolle">Standort der Anlage(n) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-standort-betriebskontrolle" name="standort" required placeholder="Straße, PLZ Ort">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-leistungsempfaenger-betriebskontrolle">Leistungsempfänger (Name / Firma) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-leistungsempfaenger-betriebskontrolle" name="leistungsempfaenger" required placeholder="WEG Musterstraße GbR o. ä.">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-rechnungsempfaenger-betriebskontrolle">Rechnungsempfänger <span class="contact-form__optional">(optional, wenn abweichend)</span></label>
+            <input class="contact-form__input" type="text" id="cf-rechnungsempfaenger-betriebskontrolle" name="rechnungsempfaenger" placeholder="Falls abweichend vom Leistungsempfänger">
+          </div>
+
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-nachricht-betriebskontrolle">Nachricht <span class="contact-form__optional">(optional)</span></label>
+            <textarea class="contact-form__textarea" id="cf-nachricht-betriebskontrolle" name="nachricht" rows="4" placeholder="Ergänzende Informationen, Fragen ..."></textarea>
+          </div>
+
+          <div class="contact-form__turnstile">
+            <div class="cf-turnstile"
+                 data-sitekey="0x4AAAAAAFwxF5EupU6dixDO"
+                 data-theme="light"
+                 data-language="de"></div>
+          </div>
+
+          <p class="contact-form__dsgvo">
+            Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Rechtsgrundlage ist Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;b DSGVO (vorvertragliche Maßnahmen). Zum Schutz vor Missbrauch setzt das Formular Cloudflare Turnstile ein (Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO). Details: <a href="/datenschutz/">Datenschutzerklärung</a>
+          </p>
+
+          <p class="js-contact-status contact-form__status" hidden aria-live="polite"></p>
+          <div class="js-contact-fallback contact-form__fallback" hidden>
+            Das Formular ist gerade nicht verfügbar. Bitte schreiben Sie uns direkt: <a href="mailto:anfragen@elevoniq.de?subject=Anfrage+Betriebskontrolle+%E2%80%93+ElevonIQ">anfragen@elevoniq.de</a>
+          </div>
+
+          <div class="contact-form__submit">
+            <button type="submit" class="btn-primary js-contact-submit" aria-busy="false">Anfrage senden</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
 
 </main>
 
@@ -439,5 +513,7 @@
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="../../assets/js/contact-form.js" defer></script>
 </body>
 </html>

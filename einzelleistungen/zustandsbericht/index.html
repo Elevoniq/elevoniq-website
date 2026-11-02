@@ -130,7 +130,7 @@
       <span style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.9);">ab 989 &#x20AC; zzgl. MwSt.</span>
     </div>
     <div class="hero-cta-row">
-      <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Zustandsbericht%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+      <a href="#anfragen"
          class="btn-primary">
         Jetzt beauftragen
       </a>
@@ -301,7 +301,7 @@
     <p class="price-legal-notice">Alle Preise in Euro, zzgl. gesetzlicher Umsatzsteuer. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne von § 14 BGB. Eine Nutzung durch Verbraucher ist ausgeschlossen.</p>
     <p style="font-size:13px;color:var(--color-gray);margin-top:1rem;margin-bottom:0;">Bei Aufzügen mit mehr als 13 Haltestellen: 15 € Zuschlag je weiterer Haltestelle. Wir klären das vor der Beauftragung mit Ihnen.</p>
     <div style="margin-top:1.5rem;">
-      <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Zustandsbericht%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+      <a href="#anfragen"
          class="btn-primary">
         Jetzt beauftragen
       </a>
@@ -363,7 +363,7 @@
     <h2 id="cta-heading" style="color:#fff;margin-bottom:1rem;">Bereit für den nächsten Schritt?</h2>
     <p style="color:rgba(255,255,255,0.75);margin-bottom:2rem;">Kostenloses Erstgespräch — 15 Minuten, kein Druck, keine Verpflichtung.</p>
     <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
-      <a href="mailto:anfragen@elevoniq.de?subject=Anfrage%20Zustandsbericht%20%E2%80%93%20ElevonIQ&body=Anzahl%20Aufz%C3%BCge%3A%20%0D%0AStandort%20der%20Anlage(n)%3A%20%0D%0ALeistungsempf%C3%A4nger%20(Name%20%2F%20Firma)%3A%20%0D%0ARechnungsempf%C3%A4nger%20(falls%20abweichend)%3A%20%0D%0AAnsprechpartner%20%2B%20E-Mail%3A%20"
+      <a href="#anfragen"
          class="btn-primary">
         Jetzt beauftragen
       </a>
@@ -371,6 +371,80 @@
     </div>
   </div>
 </section>
+
+
+  <!-- BUCHUNGSFORMULAR -->
+  <section class="section contact-form-section" id="anfragen" aria-labelledby="anfragen-heading-zustandsbericht">
+    <div class="container container--narrow">
+      <p class="section-eyebrow">Direkt beauftragen</p>
+      <h2 id="anfragen-heading-zustandsbericht">Jetzt anfragen</h2>
+      <p class="section-lead">Tragen Sie Ihre Angaben ein &#8212; wir melden uns innerhalb von 24 Stunden.</p>
+
+      <form class="js-contact-form" novalidate>
+        <input type="hidden" name="produkt" value="zustandsbericht">
+        <!-- Honeypot: wird von echten Nutzern nicht ausgefüllt -->
+        <div class="contact-form__honeypot" aria-hidden="true">
+          <label>Website (nicht ausfüllen) <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="contact-form__grid">
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-name-zustandsbericht">Name <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-name-zustandsbericht" name="name" required autocomplete="name" placeholder="Vor- und Nachname">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-email-zustandsbericht">E-Mail <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="email" id="cf-email-zustandsbericht" name="email" required autocomplete="email" placeholder="ihre@email.de">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-telefon-zustandsbericht">Telefon <span class="contact-form__optional">(optional)</span></label>
+            <input class="contact-form__input" type="tel" id="cf-telefon-zustandsbericht" name="telefon" autocomplete="tel" placeholder="+49 ...">
+          </div>
+          <div class="contact-form__group">
+            <label class="contact-form__label" for="cf-aufzuege-zustandsbericht">Anzahl Aufzüge <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-aufzuege-zustandsbericht" name="anzahl_aufzuege" required placeholder="z. B. 3">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-standort-zustandsbericht">Standort der Anlage(n) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-standort-zustandsbericht" name="standort" required placeholder="Straße, PLZ Ort">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-leistungsempfaenger-zustandsbericht">Leistungsempfänger (Name / Firma) <span aria-hidden="true">*</span></label>
+            <input class="contact-form__input" type="text" id="cf-leistungsempfaenger-zustandsbericht" name="leistungsempfaenger" required placeholder="WEG Musterstraße GbR o. ä.">
+          </div>
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-rechnungsempfaenger-zustandsbericht">Rechnungsempfänger <span class="contact-form__optional">(optional, wenn abweichend)</span></label>
+            <input class="contact-form__input" type="text" id="cf-rechnungsempfaenger-zustandsbericht" name="rechnungsempfaenger" placeholder="Falls abweichend vom Leistungsempfänger">
+          </div>
+
+          <div class="contact-form__group contact-form__group--full">
+            <label class="contact-form__label" for="cf-nachricht-zustandsbericht">Nachricht <span class="contact-form__optional">(optional)</span></label>
+            <textarea class="contact-form__textarea" id="cf-nachricht-zustandsbericht" name="nachricht" rows="4" placeholder="Ergänzende Informationen, Fragen ..."></textarea>
+          </div>
+
+          <div class="contact-form__turnstile">
+            <div class="cf-turnstile"
+                 data-sitekey="0x4AAAAAAFwxF5EupU6dixDO"
+                 data-theme="light"
+                 data-language="de"></div>
+          </div>
+
+          <p class="contact-form__dsgvo">
+            Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Rechtsgrundlage ist Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;b DSGVO (vorvertragliche Maßnahmen). Zum Schutz vor Missbrauch setzt das Formular Cloudflare Turnstile ein (Art.&thinsp;6 Abs.&thinsp;1 lit.&thinsp;f DSGVO). Details: <a href="/datenschutz/">Datenschutzerklärung</a>
+          </p>
+
+          <p class="js-contact-status contact-form__status" hidden aria-live="polite"></p>
+          <div class="js-contact-fallback contact-form__fallback" hidden>
+            Das Formular ist gerade nicht verfügbar. Bitte schreiben Sie uns direkt: <a href="mailto:anfragen@elevoniq.de?subject=Anfrage+Zustandsbericht+%E2%80%93+ElevonIQ">anfragen@elevoniq.de</a>
+          </div>
+
+          <div class="contact-form__submit">
+            <button type="submit" class="btn-primary js-contact-submit" aria-busy="false">Anfrage senden</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
 
 </main>
 
@@ -471,5 +545,7 @@
   }
 })();
 </script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="../../assets/js/contact-form.js" defer></script>
 </body>
 </html>
