@@ -205,6 +205,25 @@ test("script-src enthaelt https://www.googletagmanager.com (GTM-Skriptladen)", (
   );
 });
 
+test("connect-src enthaelt https://*.google.com (Google-Pflichtangabe fuer GA4 ohne Ads)", () => {
+  // Quelle: Google Tag Platform CSP Guide, Abschnitt "Google Analytics",
+  // "To use Google Analytics without any Ads features":
+  //   connect-src muss https://*.google.com enthalten.
+  // Hinweis: *.google.com deckt analytics.google.com (eine Ebene tief) ab,
+  // aber NICHT region1.analytics.google.com (zwei Ebenen tief). Der Eintrag
+  // *.analytics.google.com bleibt deshalb weiterhin erforderlich.
+  const cspEntry = loadCspEntry();
+  assert.ok(cspEntry, "Kein CSP-Header gefunden");
+  const sources = parseDirective(cspEntry.value, "connect-src");
+  const hasGoogleDotCom = sources.some((src) => {
+    return src === "https://*.google.com";
+  });
+  assert.ok(
+    hasGoogleDotCom,
+    `https://*.google.com fehlt in connect-src (Google-Pflichtangabe fuer GA4 ohne Ads).\nconnect-src: ${sources.join(" ")}`,
+  );
+});
+
 test("connect-src enthaelt 'self' und Cloudflare (Regressionswache)", () => {
   const cspEntry = loadCspEntry();
   assert.ok(cspEntry, "Kein CSP-Header gefunden");

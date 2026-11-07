@@ -340,6 +340,13 @@ async function run() {
         });
 
         // Fall (b): nach "Alle akzeptieren"
+        // Strukturelle Testbedingung: gtm.js wird durch route.abort() abgefangen
+        // und nie ausgefuehrt. Ohne gtm.js-Ausfuehrung sendet gtag.js keinen
+        // /g/collect-Hit. GA4=0 ist daher eine unvermeidliche Einschraenkung
+        // dieses Lokaltests, keine Eigenschaft der CSP. Die PASS-Bedingung
+        // beruht auf counter.gtm >= 1 (GTM-Anfrage abgefangen), nicht auf GA4-Hits.
+        // Der End-to-End-Nachweis (echte /g/collect, Status 204) erfordert einen
+        // Live-Deploy (Beobachtung B-01 im Review).
         await withPage(browser, base, async ({ counter, open, accept }) => {
           await open(p);
           await accept();
